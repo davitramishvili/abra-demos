@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ka" class="nojs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Golden grill — სწრაფი კვება</title>
+<script>document.documentElement.className="js";</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700;800&family=Noto+Serif+Georgian:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --accent:#cf3a1f; --h2:#902815; --accent-50:#faebe8;
+  --bg:#fff4ef; --surface:#ffffff; --ink:#16181f; --ink2:#566072; --line:#e9e7e2;
+  --font-head:'Noto Sans Georgian', system-ui, sans-serif; --head-w:800;
+  --r:16px; --shadow:0 1px 2px rgba(10,12,20,.05),0 16px 34px -20px rgba(10,12,20,.28);
+  --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:64px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Noto Sans Georgian',system-ui,sans-serif;color:var(--ink);background:var(--bg);
+  line-height:1.65;-webkit-font-smoothing:antialiased;padding-bottom:72px}
+img{max-width:100%;display:block}
+h1,h2{font-family:var(--font-head);font-weight:var(--head-w);letter-spacing:-.01em}
+h2{font-size:1.4rem;color:var(--h2);margin:0 0 var(--s4)}
+.wrap{max-width:660px;margin:0 auto;padding:0 var(--s5)}
+.section{padding:var(--s7) 0;border-bottom:1px solid var(--line)}
+.section:last-of-type{border-bottom:0}
+.hero{position:relative;min-height:74vh;background-size:cover;background-position:center;display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+.hero-plain{min-height:48vh;background:linear-gradient(135deg,var(--accent),#11131b)}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,9,14,.84) 4%,rgba(8,9,14,.30) 48%,rgba(8,9,14,.10) 100%)}
+.hero-inner{position:relative;padding:var(--s7) var(--s5) var(--s6);width:100%;max-width:660px;margin:0 auto}
+.eyebrow{margin:0 0 .55rem;text-transform:uppercase;letter-spacing:.2em;font-size:.72rem;font-weight:600;opacity:.9}
+.hero h1{margin:0;font-size:2.6rem;line-height:1.07;text-shadow:0 2px 26px rgba(0,0,0,.5)}
+.hero-sub{margin:.6rem 0 0;font-size:1.06rem;opacity:.94;max-width:34ch}
+.hero-rating{margin:.7rem 0 0;display:flex;align-items:center;gap:.5rem;font-size:1rem}
+.hero-rating b{font-size:1.05rem}.hero-rating span{opacity:.85}
+.ribbon{position:absolute;top:15px;right:-36px;transform:rotate(45deg);background:rgba(12,14,20,.8);color:#fff;
+  font-size:.64rem;letter-spacing:.14em;font-weight:600;padding:5px 44px;z-index:3}
+.stars{color:#ffc848;letter-spacing:1px}.star-off{color:rgba(255,255,255,.32)}.r-stars .star-off{color:var(--line)}
+.trust{display:flex;align-items:center;gap:var(--s4);background:var(--accent-50);border:1px solid var(--line);
+  border-radius:var(--r);padding:var(--s4) var(--s5);margin:var(--s6) 0 0}
+.trust .big{font-family:var(--font-head);font-size:2.1rem;font-weight:700;color:var(--h2);line-height:1}
+.trust .meta{font-size:.92rem;color:var(--ink2)}.trust .stars{font-size:1.05rem;color:#f0a500}
+.reviews{display:grid;gap:var(--s4)}
+.review{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:var(--s5);box-shadow:var(--shadow)}
+.review .r-stars{color:#f0a500;font-size:.95rem;margin-bottom:.4rem}
+.review blockquote{margin:0;font-size:1.04rem}.review figcaption{margin-top:.6rem;color:var(--ink2);font-size:.88rem;font-weight:600}
+.about{font-size:1.08rem}
+.hours{list-style:none;padding:0;margin:0;display:grid;gap:.15rem}
+.hours li span{display:block;padding:.32rem 0;border-bottom:1px dashed var(--line);font-size:.96rem}
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.shot{margin:0;border-radius:14px;overflow:hidden;aspect-ratio:4/3;box-shadow:var(--shadow)}
+.shot img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}.shot:hover img{transform:scale(1.05)}
+.cta{display:flex;flex-direction:column;gap:.7rem;max-width:420px}
+.btn{display:flex;align-items:center;justify-content:center;gap:.5rem;text-decoration:none;font-weight:700;
+  font-size:1.02rem;padding:1rem 1.2rem;border-radius:14px;min-height:54px;transition:transform .12s}
+.btn .ico{font-size:1.1rem}
+.btn-primary{background:#25d366;color:#08361b;box-shadow:0 8px 20px -8px rgba(37,211,102,.6)}
+.btn-ghost{background:var(--surface);color:var(--h2);border:1.5px solid var(--accent)}
+.btn-link{color:var(--h2);font-weight:600;min-height:auto;padding:.4rem}
+.btn:active{transform:scale(.985)}
+.phone{margin:.9rem 0 0;color:var(--ink2);font-size:.96rem}
+.map{width:100%;height:300px;border:0;border-radius:var(--r);box-shadow:var(--shadow)}
+.addr{margin:.8rem 0 0;color:var(--ink2)}
+.foot{padding:var(--s7) 0 var(--s8);text-align:center;color:var(--ink2);font-size:.85rem;line-height:1.7}
+.foot b{color:var(--h2)}
+.demo-banner{position:fixed;left:0;right:0;bottom:0;z-index:60;background:#101220;color:#fff;display:flex;gap:.7rem;
+  justify-content:center;align-items:center;flex-wrap:wrap;padding:.6rem .9rem;font-size:.85rem;box-shadow:0 -8px 24px -16px rgba(0,0,0,.6)}
+.demo-banner b{color:#ffd166}
+.demo-banner a{color:#08361b;background:#25d366;padding:.4rem .85rem;border-radius:999px;text-decoration:none;font-weight:700;white-space:nowrap}
+.js .reveal{opacity:0;transform:translateY(18px)}
+.js .reveal.in{opacity:1;transform:none;transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+@media(prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none}}
+@media(min-width:600px){.hero h1{font-size:3.1rem}.gallery{grid-template-columns:repeat(3,1fr)}.reviews{grid-template-columns:1fr 1fr}
+  .cta{flex-direction:row;flex-wrap:wrap}.btn{flex:1 1 auto}.btn-link{flex-basis:100%}}
+</style>
+</head>
+<body>
+<header class='hero' style="background-image:url('assets/photo1.jpg')"><span class='ribbon'>დემო ვერსია</span><div class='hero-scrim'></div><div class='hero-inner reveal'><p class='eyebrow'>სწრაფი კვება</p><h1>Golden grill</h1><p class='hero-sub'>სწრაფი და გემრიელი</p><p class='hero-rating'><span class='stars'>★★★★<span class='star-off'>★</span></span> <b>4.1</b> <span>· 208 შეფასება</span></p></div></header>
+<div class="wrap">
+  <div class="trust reveal"><div class="big">4.1</div>
+    <div class="meta"><div class="stars"><span class='stars'>★★★★<span class='star-off'>★</span></span></div>Google-ის შეფასება · 208 მომხმარებელი</div></div>
+  <section class='section reveal'><h2>შეფასებები</h2><div class='reviews'><figure class='review reveal'><div class='r-stars'><span class='stars'>★★★★★<span class='star-off'></span></span></div><blockquote>“საუკეთესო მომსახურება, უგემრიელესი კერძები,და მყუდრო გარემო 🤍”</blockquote><figcaption>— Anna Kadagidze</figcaption></figure><figure class='review reveal'><div class='r-stars'><span class='stars'>★★★★★<span class='star-off'></span></span></div><blockquote>“ყველაზე გემრიელი ბურგერები და შაურმა.😍😍”</blockquote><figcaption>— Diko diko</figcaption></figure></div></section>
+  <section class='section reveal'><h2>გალერეა</h2><div class='gallery'><figure class='shot'><img loading='lazy' src='assets/photo2.jpg' alt=''></figure><figure class='shot'><img loading='lazy' src='assets/photo3.jpg' alt=''></figure><figure class='shot'><img loading='lazy' src='assets/photo4.jpg' alt=''></figure><figure class='shot'><img loading='lazy' src='assets/photo5.jpg' alt=''></figure><figure class='shot'><img loading='lazy' src='assets/photo6.jpg' alt=''></figure></div></section>
+  <section class="section reveal"><h2>ჩვენ შესახებ</h2><p class="about">Golden grill — სწრაფი კვება თბილისის ცენტრში. Google-ზე საშუალო შეფასება 4.1 ★, 208 მომხმარებლის მიხედვით.</p></section>
+  <section class='section reveal'><h2>სამუშაო საათები</h2><ul class='hours'><li><span>ორშაბათი: 11:00 AM – 12:00 AM</span></li><li><span>სამშაბათი: 11:00 AM – 12:00 AM</span></li><li><span>ოთხშაბათი: 11:00 AM – 12:00 AM</span></li><li><span>ხუთშაბათი: 11:00 AM – 12:00 AM</span></li><li><span>პარასკევი: 11:00 AM – 12:00 AM</span></li><li><span>შაბათი: 11:00 AM – 3:00 AM</span></li><li><span>კვირა: 11:00 AM – 12:00 AM</span></li></ul></section>
+  <section class='section reveal'><h2>დაგვიკავშირდით</h2><div class='cta'><a class='btn btn-primary' href='https://wa.me/995591076351' target='_blank' rel='noopener'><span class='ico'>💬</span> WhatsApp-ით მოწერა</a><a class='btn btn-ghost' href='tel:+995591076351'><span class='ico'>📞</span> დარეკვა</a><a class='btn btn-link' href='https://maps.google.com/?cid=5525679643857149045&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA' target='_blank' rel='noopener'>Google Maps-ზე ნახვა →</a></div><p class='phone'>591 07 63 51</p></section>
+  <section class='section reveal'><h2>მდებარეობა</h2><iframe class='map' loading='lazy' src='https://www.openstreetmap.org/export/embed.html?bbox=44.796681%2C41.701366%2C44.804681%2C41.709366&amp;layer=mapnik&amp;marker=41.705366,44.800681'></iframe><p class='addr'>📍 49-55 დავით აღმაშენებელის გამზირი, თბილისი</p></section>
+  <div class="foot">ეს არის უფასო სადემონსტრაციო ვერსია. რეალურ ვებგვერდზე გამოყენებული იქნება თქვენი ფოტოები და ტექსტი.<br>
+  დამზადებულია <b>Abra</b>-ის მიერ · 2026</div>
+</div>
+<div class="demo-banner"><span><b>უფასო დემო</b> — დამზადებულია Abra-ის მიერ</span>
+  <a href="https://wa.me/995557223993" target="_blank" rel="noopener">დაგაინტერესათ? მოგვწერეთ</a></div>
+<script>
+(function(){var els=document.querySelectorAll('.reveal');
+if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+els.forEach(function(e){io.observe(e)});})();
+</script>
+</body>
+</html>
