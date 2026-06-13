@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>რესტორანი მარგალიტა — ქართული გასტრონომია თბილისში</title>
+<meta name="description" content="რესტორანი მარგალიტა — ავთენტური ქართული სამზარეულო თბილისის გულში. დაჯავშნეთ მაგიდა, იხილეთ ჩვენი ფირმური კერძები და განსაკუთრებული ატმოსფერო.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wght@400;500;600;700&family=Noto+Sans+Georgian:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#100c0a;
+    --bg-2:#16100d;
+    --bg-3:#1d1612;
+    --panel:#211913;
+    --ink:#f4ece0;
+    --ink-soft:#cdbfac;
+    --ink-mute:#9c8e7c;
+    --line:rgba(201,162,75,.18);
+    --line-soft:rgba(244,236,224,.10);
+    --gold:#d8b15c;
+    --gold-deep:#b88e3d;
+    --gold-glow:rgba(216,177,92,.30);
+    --cream:#efe3cf;
+    --maxw:1180px;
+    --ease:cubic-bezier(.22,1,.36,1);
+    --serif:"Noto Serif Georgian",Georgia,serif;
+    --sans:"Noto Sans Georgian",system-ui,sans-serif;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    font-weight:300;
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--gold-glow);color:#fff}
+
+  /* ---------- film grain overlay ---------- */
+  .grain{
+    position:fixed;inset:0;z-index:9000;pointer-events:none;
+    opacity:.05;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation:grain 1.2s steps(3) infinite;
+  }
+  @keyframes grain{
+    0%{transform:translate(0,0)}33%{transform:translate(-3%,2%)}66%{transform:translate(2%,-2%)}100%{transform:translate(0,0)}
+  }
+
+  /* ---------- layout helpers ---------- */
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  section{position:relative}
+  .eyebrow{
+    font-family:var(--sans);
+    font-size:.74rem;letter-spacing:.42em;text-transform:uppercase;
+    color:var(--gold);font-weight:500;
+    display:inline-flex;align-items:center;gap:.85em;
+  }
+  .eyebrow::before{content:"";width:34px;height:1px;background:var(--gold-deep);opacity:.7}
+  .eyebrow.center::after{content:"";width:34px;height:1px;background:var(--gold-deep);opacity:.7}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08;letter-spacing:-.01em}
+  .h-display{font-size:clamp(2.7rem,8vw,6.2rem)}
+  .h-section{font-size:clamp(2rem,5vw,3.4rem)}
+  .lede{color:var(--ink-soft);font-size:clamp(1rem,1.4vw,1.18rem);font-weight:300}
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:.65em;
+    min-height:52px;padding:0 30px;border-radius:2px;
+    font-family:var(--sans);font-size:.82rem;font-weight:500;
+    letter-spacing:.16em;text-transform:uppercase;cursor:pointer;
+    transition:all .45s var(--ease);border:1px solid transparent;
+    position:relative;overflow:hidden;
+  }
+  .btn-gold{background:var(--gold);color:#1a120a}
+  .btn-gold:hover{background:var(--cream);transform:translateY(-2px);box-shadow:0 14px 34px -12px var(--gold-glow)}
+  .btn-ghost{border-color:var(--line);color:var(--ink);background:transparent}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+  .btn svg{width:16px;height:16px;flex:none}
+
+  /* ---------- nav ---------- */
+  header.nav{
+    position:fixed;top:0;left:0;right:0;z-index:1000;
+    padding:22px 0;transition:all .5s var(--ease);
+  }
+  header.nav.scrolled{
+    padding:13px 0;
+    background:rgba(16,12,10,.82);
+    backdrop-filter:blur(14px) saturate(1.2);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .brand{display:flex;align-items:center;gap:13px;font-family:var(--serif);font-size:1.32rem;color:var(--ink);font-weight:600;letter-spacing:.01em}
+  .brand .mark{
+    width:38px;height:38px;border:1px solid var(--gold);border-radius:50%;
+    display:grid;place-items:center;color:var(--gold);flex:none;
+    font-family:var(--serif);font-size:1.18rem;line-height:1;padding-bottom:2px;
+  }
+  .nav-links{display:flex;align-items:center;gap:34px}
+  .nav-links a{
+    font-size:.82rem;letter-spacing:.07em;color:var(--ink-soft);font-weight:400;
+    position:relative;padding:4px 0;transition:color .35s var(--ease);
+  }
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--gold);transition:width .4s var(--ease)}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a:hover::after{width:100%}
+  .nav-cta{display:flex;align-items:center;gap:18px}
+  .nav-tel{font-size:.85rem;letter-spacing:.04em;color:var(--ink-soft);display:none}
+  .nav-tel:hover{color:var(--gold)}
+  .menu-toggle{display:none;background:none;border:none;color:var(--ink);cursor:pointer;flex-direction:column;gap:5px;padding:8px;width:44px;height:44px;justify-content:center;align-items:center}
+  .menu-toggle span{width:24px;height:1.5px;background:var(--ink);transition:.4s var(--ease)}
+
+  /* mobile drawer */
+  .drawer{
+    position:fixed;inset:0;z-index:999;background:var(--bg-2);
+    display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;
+    opacity:0;visibility:hidden;transition:opacity .5s var(--ease),visibility .5s;
+  }
+  .drawer.open{opacity:1;visibility:visible}
+  .drawer a{font-family:var(--serif);font-size:1.9rem;color:var(--ink);padding:10px;font-weight:500}
+  .drawer a:hover{color:var(--gold)}
+  .drawer .drawer-sub{margin-top:26px;font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+
+  /* ---------- hero ---------- */
+  .hero{min-height:100svh;display:flex;align-items:flex-end;position:relative;overflow:hidden}
+  .hero-media{position:absolute;inset:0;z-index:0}
+  .hero-media img{
+    width:100%;height:100%;object-fit:cover;
+    animation:slowzoom 24s var(--ease) infinite alternate;
+    will-change:transform;
+  }
+  @keyframes slowzoom{from{transform:scale(1.02)}to{transform:scale(1.16)}}
+  .hero-media::after{
+    content:"";position:absolute;inset:0;
+    background:
+      linear-gradient(180deg,rgba(16,12,10,.62) 0%,rgba(16,12,10,.28) 32%,rgba(16,12,10,.55) 64%,rgba(16,12,10,.97) 100%),
+      radial-gradient(120% 80% at 50% 0%,transparent 40%,rgba(16,12,10,.55) 100%);
+  }
+  .hero-inner{position:relative;z-index:2;width:100%;padding-bottom:clamp(46px,8vh,90px);padding-top:140px}
+  .hero h1{margin:.28em 0 .42em;max-width:14ch}
+  .hero h1 .accent{color:var(--gold);font-style:italic;font-weight:400}
+  .hero-lede{max-width:46ch;margin-bottom:2.3em}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+  .hero-rating{
+    display:inline-flex;align-items:center;gap:12px;margin-left:6px;
+    color:var(--ink-soft);font-size:.85rem;
+  }
+  .stars{display:inline-flex;gap:2px;color:var(--gold)}
+  .stars svg{width:15px;height:15px}
+  .hero-rating b{color:var(--ink);font-weight:600}
+
+  .scroll-hint{
+    position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:3;
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+    color:var(--ink-mute);font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;
+  }
+  .scroll-hint .line{width:1px;height:46px;background:linear-gradient(var(--gold),transparent);position:relative;overflow:hidden}
+  .scroll-hint .line::after{content:"";position:absolute;top:-50%;left:0;width:100%;height:50%;background:var(--gold);animation:drop 2.2s var(--ease) infinite}
+  @keyframes drop{0%{top:-50%}60%,100%{top:100%}}
+
+  /* ---------- marquee strip ---------- */
+  .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-2);overflow:hidden;padding:18px 0}
+  .marquee{display:flex;gap:0;white-space:nowrap;width:max-content;animation:marq 32s linear infinite}
+  .marquee span{
+    font-family:var(--serif);font-size:1.05rem;color:var(--ink-soft);
+    padding:0 34px;display:inline-flex;align-items:center;gap:34px;letter-spacing:.02em;
+  }
+  .marquee span::after{content:"✦";color:var(--gold);font-size:.7rem}
+  @keyframes marq{to{transform:translateX(-50%)}}
+
+  /* ---------- section frame ---------- */
+  .sec-pad{padding:clamp(72px,11vh,140px) 0}
+  .sec-head{max-width:620px;margin-bottom:clamp(40px,6vh,68px)}
+  .sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+  .sec-head h2{margin:.4em 0 .5em}
+  .sec-head .lede{margin-top:.2em}
+
+  /* ---------- about ---------- */
+  .about{background:var(--bg-2)}
+  .about-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(36px,6vw,80px);align-items:center}
+  .about-copy h2{margin:.4em 0 .6em}
+  .about-copy p{color:var(--ink-soft);margin-bottom:1.2em}
+  .about-stats{display:flex;gap:40px;margin-top:38px;flex-wrap:wrap}
+  .stat .num{font-family:var(--serif);font-size:2.6rem;color:var(--gold);line-height:1}
+  .stat .lbl{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute);margin-top:8px}
+  .about-media{position:relative}
+  .about-media .frame{position:relative;overflow:hidden;border-radius:3px}
+  .about-media img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5;transition:transform 1.1s var(--ease)}
+  .about-media:hover img{transform:scale(1.05)}
+  .about-media .badge{
+    position:absolute;bottom:-26px;left:-26px;background:var(--panel);
+    border:1px solid var(--line);padding:22px 26px;border-radius:3px;
+    max-width:230px;box-shadow:0 28px 60px -30px #000;
+  }
+  .about-media .badge .sig{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--gold);line-height:1.1}
+  .about-media .badge .role{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute);margin-top:8px}
+  .about-media .corner{position:absolute;top:-12px;right:-12px;width:84px;height:84px;border-top:1px solid var(--gold);border-right:1px solid var(--gold);opacity:.55}
+
+  /* ---------- signature dishes ---------- */
+  .signature{background:var(--bg);position:relative}
+  .dish-list{display:flex;flex-direction:column;gap:0}
+  .dish{
+    display:grid;grid-template-columns:auto 1fr auto auto;gap:clamp(18px,3vw,44px);
+    align-items:center;padding:30px 0;border-top:1px solid var(--line-soft);
+    transition:background .5s var(--ease),padding-left .5s var(--ease);
+  }
+  .dish:last-child{border-bottom:1px solid var(--line-soft)}
+  .dish:hover{background:linear-gradient(90deg,rgba(216,177,92,.05),transparent);padding-left:14px}
+  .dish .idx{font-family:var(--serif);font-size:.95rem;color:var(--gold);opacity:.8;min-width:30px}
+  .dish .body h3{font-size:clamp(1.3rem,2.4vw,1.85rem);font-weight:500}
+  .dish .body p{color:var(--ink-mute);font-size:.92rem;margin-top:5px;max-width:54ch}
+  .dish .tag{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);border:1px solid var(--line);padding:6px 12px;border-radius:40px;white-space:nowrap}
+  .dish .price{font-family:var(--serif);font-size:1.5rem;color:var(--cream);white-space:nowrap}
+  .dish .price small{font-size:.8rem;color:var(--ink-mute);font-family:var(--sans)}
+  .dish-thumb{
+    position:absolute;width:240px;height:300px;border-radius:4px;overflow:hidden;pointer-events:none;
+    opacity:0;transform:translate(-50%,-42%) scale(.92) rotate(-3deg);
+    z-index:40;box-shadow:0 30px 70px -20px #000;transition:opacity .4s var(--ease),transform .4s var(--ease);
+    border:1px solid var(--line);
+  }
+  .dish-thumb img{width:100%;height:100%;object-fit:cover}
+  .dish-thumb.show{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(-3deg)}
+
+  /* ---------- gallery ---------- */
+  .gallery{background:var(--bg-2)}
+  .gal-grid{
+    display:grid;grid-template-columns:repeat(12,1fr);
+    grid-auto-rows:150px;gap:14px;
+  }
+  .gal-item{position:relative;overflow:hidden;border-radius:3px;background:var(--bg-3)}
+  .gal-item img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease),filter 1s var(--ease);filter:saturate(.92) brightness(.9)}
+  .gal-item:hover img{transform:scale(1.07);filter:saturate(1.05) brightness(1)}
+  .gal-item::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(16,12,10,.6));opacity:0;transition:opacity .5s var(--ease)}
+  .gal-item:hover::after{opacity:1}
+  .gal-cap{position:absolute;left:18px;bottom:14px;z-index:2;font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--cream);opacity:0;transform:translateY(8px);transition:.5s var(--ease)}
+  .gal-item:hover .gal-cap{opacity:1;transform:translateY(0)}
+  .g-a{grid-column:span 7;grid-row:span 3}
+  .g-b{grid-column:span 5;grid-row:span 2}
+  .g-c{grid-column:span 5;grid-row:span 2}
+  .g-d{grid-column:span 4;grid-row:span 2}
+  .g-e{grid-column:span 4;grid-row:span 2}
+  .g-f{grid-column:span 4;grid-row:span 2}
+
+  /* ---------- hours / quote band ---------- */
+  .band{
+    position:relative;padding:clamp(90px,16vh,180px) 0;text-align:center;overflow:hidden;
+  }
+  .band-media{position:absolute;inset:0;z-index:0}
+  .band-media img{width:100%;height:100%;object-fit:cover}
+  .band-media::after{content:"";position:absolute;inset:0;background:rgba(13,9,7,.78)}
+  .band-inner{position:relative;z-index:2;max-width:880px;margin:0 auto}
+  .band blockquote{font-family:var(--serif);font-style:italic;font-size:clamp(1.6rem,4vw,3rem);line-height:1.3;color:var(--cream);font-weight:400}
+  .band cite{display:block;margin-top:28px;font-style:normal;font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+
+  /* ---------- hours ---------- */
+  .hours{background:var(--bg)}
+  .hours-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,80px);align-items:center}
+  .hours-list{border-top:1px solid var(--line-soft)}
+  .hours-row{display:flex;justify-content:space-between;align-items:baseline;padding:17px 0;border-bottom:1px solid var(--line-soft);gap:20px}
+  .hours-row .day{font-family:var(--serif);font-size:1.15rem;color:var(--ink)}
+  .hours-row .time{color:var(--ink-soft);font-size:.95rem;letter-spacing:.02em}
+  .hours-row.today{padding-left:16px;border-left:2px solid var(--gold);margin-left:-16px}
+  .hours-row.today .day{color:var(--gold)}
+  .hours-row .pill{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border:1px solid var(--line);border-radius:30px;padding:3px 9px;margin-left:10px}
+  .hours-media{position:relative;overflow:hidden;border-radius:3px}
+  .hours-media img{width:100%;height:100%;object-fit:cover;aspect-ratio:1/1;filter:saturate(.95)}
+  .hours-note{margin-top:26px;color:var(--ink-mute);font-size:.9rem}
+  .hours-note a{color:var(--gold)}
+
+  /* ---------- reservation / contact ---------- */
+  .reserve{background:var(--bg-3);position:relative;overflow:hidden}
+  .reserve::before{content:"";position:absolute;top:-40%;right:-10%;width:60vw;height:60vw;background:radial-gradient(circle,var(--gold-glow),transparent 60%);opacity:.4;pointer-events:none}
+  .reserve-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,90px);align-items:start;position:relative;z-index:2}
+  .reserve-copy h2{margin:.4em 0 .5em}
+  .reserve-copy p{color:var(--ink-soft);margin-bottom:1.6em;max-width:42ch}
+  .contact-line{display:flex;align-items:center;gap:16px;padding:18px 0;border-top:1px solid var(--line-soft)}
+  .contact-line:last-child{border-bottom:1px solid var(--line-soft)}
+  .contact-line .ico{width:44px;height:44px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--gold);flex:none}
+  .contact-line .ico svg{width:18px;height:18px}
+  .contact-line .t{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute)}
+  .contact-line .v{font-family:var(--serif);font-size:1.2rem;color:var(--ink)}
+  .contact-line a.v:hover{color:var(--gold)}
+
+  .form-card{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:clamp(26px,3vw,40px)}
+  .form-card .ttl{font-family:var(--serif);font-size:1.5rem;margin-bottom:6px}
+  .form-card .sub{color:var(--ink-mute);font-size:.88rem;margin-bottom:24px}
+  .field{margin-bottom:18px}
+  .field label{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px}
+  .field input,.field select,.field textarea{
+    width:100%;background:var(--bg-2);border:1px solid var(--line-soft);
+    color:var(--ink);font-family:var(--sans);font-size:.95rem;font-weight:300;
+    padding:13px 15px;border-radius:3px;transition:border-color .35s var(--ease),box-shadow .35s var(--ease);
+  }
+  .field input::placeholder,.field textarea::placeholder{color:var(--ink-mute)}
+  .field input:focus,.field select:focus,.field textarea:focus{
+    outline:none;border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-glow)
+  }
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .form-card .btn{width:100%;margin-top:8px}
+  .form-note{margin-top:16px;font-size:.78rem;color:var(--ink-mute);text-align:center;line-height:1.6}
+  .form-note a{color:var(--gold)}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--bg);border-top:1px solid var(--line-soft);padding:64px 0 34px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:48px}
+  .foot-brand .brand{margin-bottom:18px}
+  .foot-brand p{color:var(--ink-mute);font-size:.92rem;max-width:38ch}
+  .foot-col h4{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;font-family:var(--sans);font-weight:500}
+  .foot-col a,.foot-col p{display:block;color:var(--ink-soft);font-size:.92rem;margin-bottom:11px;transition:color .3s var(--ease)}
+  .foot-col a:hover{color:var(--gold)}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;padding-top:26px;border-top:1px solid var(--line-soft)}
+  .foot-bottom p{font-size:.8rem;color:var(--ink-mute)}
+  .foot-bottom .socials{display:flex;gap:12px}
+  .foot-bottom .socials a{width:38px;height:38px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--ink-soft);transition:all .35s var(--ease)}
+  .foot-bottom .socials a:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+  .foot-bottom .socials svg{width:16px;height:16px}
+
+  /* ---------- reveal animation ---------- */
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.1s}
+  .reveal.d2{transition-delay:.2s}
+  .reveal.d3{transition-delay:.3s}
+
+  /* ---------- floating reserve (mobile) ---------- */
+  .float-cta{
+    position:fixed;left:16px;right:16px;bottom:16px;z-index:800;
+    display:none;
+  }
+  .float-cta .btn{width:100%;box-shadow:0 18px 40px -12px rgba(0,0,0,.8)}
+
+  /* ---------- responsive ---------- */
+  @media(min-width:880px){
+    .nav-tel{display:inline}
+  }
+  @media(max-width:880px){
+    .nav-links{display:none}
+    .menu-toggle{display:flex}
+    .nav-cta .btn-gold{display:none}
+    .about-grid,.hours-grid,.reserve-grid{grid-template-columns:1fr}
+    .about-media{order:-1;margin-bottom:44px;max-width:440px}
+    .about-media .badge{left:0}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .gal-grid{grid-auto-rows:120px}
+    .g-a{grid-column:span 12;grid-row:span 3}
+    .g-b,.g-c{grid-column:span 6;grid-row:span 2}
+    .g-d,.g-e,.g-f{grid-column:span 4;grid-row:span 2}
+    .dish-thumb{display:none}
+    .float-cta{display:block}
+    footer{padding-bottom:90px}
+  }
+  @media(max-width:560px){
+    .wrap{padding:0 18px}
+    .dish{grid-template-columns:auto 1fr;gap:14px;row-gap:6px}
+    .dish .tag{display:none}
+    .dish .price{grid-column:2;justify-self:start;font-size:1.25rem}
+    .dish .idx{align-self:start;padding-top:4px}
+    .hero-actions{flex-direction:column;align-items:stretch;width:100%}
+    .hero-actions .btn{width:100%}
+    .hero-rating{justify-content:center;margin:14px 0 0}
+    .field-row{grid-template-columns:1fr}
+    .about-stats{gap:28px}
+    .foot-grid{grid-template-columns:1fr}
+    .g-d,.g-e,.g-f{grid-column:span 6}
+    .g-f{grid-column:span 12}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+    .hero-media img{animation:none;transform:scale(1.05)}
+    .reveal{opacity:1;transform:none}
+    .grain{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ===== NAV ===== -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand" aria-label="რესტორანი მარგალიტა, მთავარზე გადასვლა">
+      <span class="mark" aria-hidden="true">მ</span>
+      <span>მარგალიტა</span>
+    </a>
+    <nav class="nav-links" aria-label="მთავარი ნავიგაცია">
+      <a href="#about">ჩვენ შესახებ</a>
+      <a href="#menu">კერძები</a>
+      <a href="#gallery">გალერეა</a>
+      <a href="#hours">გრაფიკი</a>
+      <a href="#reserve">კონტაქტი</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="tel:+995574114343" class="nav-tel">+995 574 11 43 43</a>
+      <a href="#reserve" class="btn btn-gold">მაგიდის დაჯავშნა</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="მენიუს გახსნა" aria-expanded="false" aria-controls="drawer">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- mobile drawer -->
+<div class="drawer" id="drawer" aria-hidden="true">
+  <a href="#about">ჩვენ შესახებ</a>
+  <a href="#menu">კერძები</a>
+  <a href="#gallery">გალერეა</a>
+  <a href="#hours">გრაფიკი</a>
+  <a href="#reserve">კონტაქტი</a>
+  <a href="https://wa.me/995574114343" class="drawer-sub" target="_blank" rel="noopener">WhatsApp · დაჯავშნა</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <div class="hero-media" aria-hidden="true">
+    <img src="../../restorani-margalita/assets/photo1.jpg" alt="">
+  </div>
+  <div class="wrap hero-inner">
+    <p class="eyebrow reveal in">ქართული გასტრონომია · თბილისი</p>
+    <h1 class="h-display reveal in d1">გემოვნება, რომელიც <span class="accent">ისტორიას</span> ჰყვება</h1>
+    <p class="lede hero-lede reveal in d2">ავთენტური ქართული სამზარეულო, ღამის თბილი შუქი და სტუმართმოყვარეობა, რომელიც თაობებს ერთ მაგიდასთან კრებს. მოგესალმებათ მარგალიტა.</p>
+    <div class="hero-actions reveal in d3">
+      <a href="#reserve" class="btn btn-gold">
+        მაგიდის დაჯავშნა
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#menu" class="btn btn-ghost">ფირმური კერძები</a>
+      <span class="hero-rating">
+        <span class="stars" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.8.7-5 4.6 1.4 6.7L12 17.8 5.9 20.3 7.3 13.6l-5-4.6 6.8-.7z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.8.7-5 4.6 1.4 6.7L12 17.8 5.9 20.3 7.3 13.6l-5-4.6 6.8-.7z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.8.7-5 4.6 1.4 6.7L12 17.8 5.9 20.3 7.3 13.6l-5-4.6 6.8-.7z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.8.7-5 4.6 1.4 6.7L12 17.8 5.9 20.3 7.3 13.6l-5-4.6 6.8-.7z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.8.7-5 4.6 1.4 6.7L12 17.8 5.9 20.3 7.3 13.6l-5-4.6 6.8-.7z"/></svg>
+        </span>
+        <span><b>4.6</b> / 5 · 1456 შეფასება Google-ზე</span>
+      </span>
+    </div>
+  </div>
+  <div class="scroll-hint" aria-hidden="true">
+    <span>ქვევით</span>
+    <span class="line"></span>
+  </div>
+</section>
+
+<!-- ===== MARQUEE STRIP ===== -->
+<div class="strip" aria-hidden="true">
+  <div class="marquee">
+    <span>ცხელ-ცხელი ხინკალი</span><span>თონის პური</span><span>საფირმო მწვადი</span><span>ქართული ღვინო</span><span>ცოცხალი მუსიკა</span><span>ოჯახური ატმოსფერო</span>
+    <span>ცხელ-ცხელი ხინკალი</span><span>თონის პური</span><span>საფირმო მწვადი</span><span>ქართული ღვინო</span><span>ცოცხალი მუსიკა</span><span>ოჯახური ატმოსფერო</span>
+  </div>
+</div>
+
+<!-- ===== ABOUT ===== -->
+<section class="about sec-pad" id="about">
+  <div class="wrap about-grid">
+    <div class="about-copy">
+      <p class="eyebrow reveal">ჩვენი ისტორია</p>
+      <h2 class="h-section reveal d1">მაგიდა, სადაც<br>თბილისი იკრიბება</h2>
+      <p class="reveal d1">მარგალიტა დაიბადა მარტივი რწმენით — რომ ნამდვილი ქართული კერძი მხოლოდ საკვები არ არის, არამედ შეხვედრის, საუბრისა და სითბოს რიტუალია. ჩვენი სამზარეულო ემყარება ბებიების რეცეპტებს, ადგილობრივ პროდუქტსა და სეზონის საუკეთესო ინგრედიენტებს.</p>
+      <p class="reveal d2">აგურის კედლები, ხელნაკეთი აბაჟურები და სანთლის შუქი ქმნის ატმოსფეროს, რომელშიც დრო ნელდება. აქ ყოველი ვახშამი დღესასწაულად იქცევა — სუფრა, რომელიც ისტორიას იმახსოვრებს.</p>
+      <div class="about-stats reveal d2">
+        <div class="stat"><div class="num">12+</div><div class="lbl">წელი თბილისში</div></div>
+        <div class="stat"><div class="num">40+</div><div class="lbl">ფირმური კერძი</div></div>
+        <div class="stat"><div class="num">4.6★</div><div class="lbl">სტუმრების შეფასება</div></div>
+      </div>
+    </div>
+    <div class="about-media reveal d1">
+      <span class="corner" aria-hidden="true"></span>
+      <div class="frame">
+        <img src="../../restorani-margalita/assets/photo2.jpg" alt="მარგალიტას დარბაზის მყუდრო კუთხე — ყვავილებით მორთული სუფრა და ხელნაკეთი სკამები">
+      </div>
+      <div class="badge">
+        <div class="sig">გემრიელად</div>
+        <div class="role">შენი მასპინძელი მარგალიტა</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SIGNATURE DISHES / MENU ===== -->
+<section class="signature sec-pad" id="menu">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow reveal">სამზარეულო</p>
+      <h2 class="h-section reveal d1">ფირმური კერძები</h2>
+      <p class="lede reveal d1">ყოველი კერძი ხელით მზადდება შეკვეთისთანავe — ტრადიციული გემო თანამედროვე გაფორმებით. ქვემოთ ჩვენი სტუმრების რჩეული რამდენიმე.</p>
+    </div>
+
+    <div class="dish-list" id="dishList">
+      <article class="dish reveal" data-img="../../restorani-margalita/assets/photo3.jpg">
+        <span class="idx">01</span>
+        <div class="body">
+          <h3>მარგალიტას სამეფო ფირფიტა</h3>
+          <p>მწვადის, ცხვრის, ბოსტნეულისა და თონის პურის ხელნაკეთი ასორტი — სუფრა ორი-ოთხი სტუმრისთვის.</p>
+        </div>
+        <span class="tag">შეფის რჩეული</span>
+        <span class="price">68 <small>₾</small></span>
+      </article>
+
+      <article class="dish reveal" data-img="../../restorani-margalita/assets/photo4.jpg">
+        <span class="idx">02</span>
+        <div class="body">
+          <h3>შემწვარი სეზონური ბოსტნeული</h3>
+          <p>ღუმელში გამომცხვარი ბოსტნeული, არომატული მწვანილითა და ნიგვზის ნაზი სოუსით.</p>
+        </div>
+        <span class="tag">ვეგეტარიანული</span>
+        <span class="price">24 <small>₾</small></span>
+      </article>
+
+      <article class="dish reveal" data-img="../../restorani-margalita/assets/photo3.jpg">
+        <span class="idx">03</span>
+        <div class="body">
+          <h3>ცხელ-ცხელი ხინკალი</h3>
+          <p>ხელით დაგრეხილი ხინკალი ნელ-ნელ მოხარშული — ხორცის წვენით სავსე, ტრადიციული რეცეპტით.</p>
+        </div>
+        <span class="tag">ხელნაკეთი</span>
+        <span class="price">2.5 <small>₾ / ც</small></span>
+      </article>
+
+      <article class="dish reveal" data-img="../../restorani-margalita/assets/photo2.jpg">
+        <span class="idx">04</span>
+        <div class="body">
+          <h3>ქართული სუფრა &amp; ღვინო</h3>
+          <p>შერჩეული კახური ღვინის ბოთლი, ყველის ასორტისა და მაჭახელას აკომპანიმენტით.</p>
+        </div>
+        <span class="tag">წყვილისთვის</span>
+        <span class="price">95 <small>₾</small></span>
+      </article>
+
+      <article class="dish reveal" data-img="../../restorani-margalita/assets/photo1.jpg">
+        <span class="idx">05</span>
+        <div class="body">
+          <h3>შემოდგომის სადღესასწაულo ვახშამი</h3>
+          <p>ხუთკერძიანი დეგუსტაცია ცოცხალი მუსიკის თანხლებით — მხოლოდ წინასწარი ჯავშნით.</p>
+        </div>
+        <span class="tag">დეგუსტაცია</span>
+        <span class="price">120 <small>₾</small></span>
+      </article>
+    </div>
+
+    <div class="dish-thumb" id="dishThumb" aria-hidden="true"><img src="" alt=""></div>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section class="gallery sec-pad" id="gallery">
+  <div class="wrap">
+    <div class="sec-head center">
+      <p class="eyebrow center reveal">ატმოსფერო</p>
+      <h2 class="h-section reveal d1">ერთი შეხედვით მარგალიტა</h2>
+    </div>
+    <div class="gal-grid">
+      <figure class="gal-item g-a reveal">
+        <img src="../../restorani-margalita/assets/photo6.jpg" alt="მარგალიტას ფართო დარბაზი — ღვინის თაროები, მცენარეები და გაწყობილი სუფრები">
+        <figcaption class="gal-cap">ჩვენი დარბაზი</figcaption>
+      </figure>
+      <figure class="gal-item g-b reveal d1">
+        <img src="../../restorani-margalita/assets/photo3.jpg" alt="ქართული კერძების მდიდარი ფირფიტა ტრადიციულ სუფრაზე">
+        <figcaption class="gal-cap">სამეფო ფირფიტა</figcaption>
+      </figure>
+      <figure class="gal-item g-c reveal d2">
+        <img src="../../restorani-margalita/assets/photo5.jpg" alt="საღამოს ატმოსფერო — სტუმრები და ცოცხალი მუსიკა მყუდრო შუქზე">
+        <figcaption class="gal-cap">ცოცხალი მუსიკა</figcaption>
+      </figure>
+      <figure class="gal-item g-d reveal">
+        <img src="../../restorani-margalita/assets/photo2.jpg" alt="ყვავილებით მორთული მყუდრო მაგიდა ხელნაკეთი სკამებით">
+        <figcaption class="gal-cap">მყუდრო კუთხე</figcaption>
+      </figure>
+      <figure class="gal-item g-e reveal d1">
+        <img src="../../restorani-margalita/assets/photo4.jpg" alt="შემწვარი სეზონური ბოსტნეული ლამაზად გაფორმებულ თეფშზე">
+        <figcaption class="gal-cap">სეზონის გემო</figcaption>
+      </figure>
+      <figure class="gal-item g-f reveal d2">
+        <img src="../../restorani-margalita/assets/photo1.jpg" alt="მარგალიტას ნათელი დარბაზი დღის შუქზე, აგურის კედლებითა და აბაჟურებით">
+        <figcaption class="gal-cap">დღის შუქი</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUOTE BAND ===== -->
+<section class="band">
+  <div class="band-media" aria-hidden="true">
+    <img src="../../restorani-margalita/assets/photo5.jpg" alt="">
+  </div>
+  <div class="wrap band-inner">
+    <blockquote class="reveal">„მარგალიტაში ვახშამი თბილისის ნამდვილი გემოა — ცოცხალი მუსიკა, გულითადი მასპინძლები და კერძები, რომლებსაც სახლი ენატრება.“</blockquote>
+    <cite class="reveal d1">— სტუმრის შეფასება · Google 4.6 ★</cite>
+  </div>
+</section>
+
+<!-- ===== HOURS ===== -->
+<section class="hours sec-pad" id="hours">
+  <div class="wrap hours-grid">
+    <div>
+      <p class="eyebrow reveal">სამუშაო გრაფიკი</p>
+      <h2 class="h-section reveal d1" style="margin:.4em 0 .8em">გელოდებით ყოველ<br>საღამოს</h2>
+      <div class="hours-list reveal d1">
+        <div class="hours-row"><span class="day">ორშაბათი — ხუთშაბათი</span><span class="time">12:00 — 23:00</span></div>
+        <div class="hours-row"><span class="day">პარასკევი</span><span class="time">12:00 — 00:00</span></div>
+        <div class="hours-row today"><span class="day">შაბათი <span class="pill">დღეს</span></span><span class="time">12:00 — 00:00</span></div>
+        <div class="hours-row"><span class="day">კვირა</span><span class="time">12:00 — 22:00</span></div>
+      </div>
+      <p class="hours-note reveal d2">დიდი ჯგუფისთვის ან დღესასწაულისთვის გირჩევთ წინასწარ დაჯავშნას — <a href="https://wa.me/995574114343" target="_blank" rel="noopener">მოგვწერეთ WhatsApp-ზე</a>.</p>
+    </div>
+    <div class="hours-media reveal d1">
+      <img src="../../restorani-margalita/assets/photo1.jpg" alt="მარგალიტას სტუმრებისთვის გამზადებული დარბაზი თბილისში">
+    </div>
+  </div>
+</section>
+
+<!-- ===== RESERVATION / CONTACT ===== -->
+<section class="reserve sec-pad" id="reserve">
+  <div class="wrap reserve-grid">
+    <div class="reserve-copy">
+      <p class="eyebrow reveal">დაჯავშნა</p>
+      <h2 class="h-section reveal d1">დაიჯავშნეთ<br>თქვენი მაგიდა</h2>
+      <p class="reveal d1">დაგვიტოვეთ მოთხოვნა და ჩვენი გუნდი დაგიდასტურებთ ჯავშანს. სასწრაფო შემთხვევაში დაგვირეკეთ ან მოგვწერეთ WhatsApp-ზე — ყოველთვის სიამოვნებით გიპასუხებთ.</p>
+
+      <a class="contact-line reveal d1" href="tel:+995574114343">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.8 2.1z"/></svg></span>
+        <span><span class="t">დაგვირეკეთ</span><span class="v">+995 574 11 43 43</span></span>
+      </a>
+      <a class="contact-line reveal d2" href="https://wa.me/995574114343" target="_blank" rel="noopener">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M.06 24l1.7-6.1A11.9 11.9 0 1 1 12 24a11.9 11.9 0 0 1-5.7-1.5L.06 24zM6.6 20l.4.2a9.9 9.9 0 1 0-3.4-3.4l.2.4-1 3.6 3.8-.8zM17.5 14.4c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.1-.3.2-.5 0a8 8 0 0 1-2.4-1.5 9 9 0 0 1-1.6-2c-.2-.3 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5 0-.2 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.5h-.5c-.2 0-.4 0-.6.3a2.7 2.7 0 0 0-.9 2c0 1.2.9 2.4 1 2.6.1.2 1.7 2.7 4.2 3.8.6.3 1 .4 1.4.5.6.2 1.1.2 1.5.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3z"/></svg></span>
+        <span><span class="t">WhatsApp</span><span class="v">+995 574 11 43 43</span></span>
+      </a>
+      <div class="contact-line reveal d2">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+        <span><span class="t">მისამართი</span><span class="v">თბილისი, საქართველო</span></span>
+      </div>
+    </div>
+
+    <form class="form-card reveal d1" id="resForm" novalidate>
+      <div class="ttl">ჯავშნის მოთხოვნა</div>
+      <p class="sub">შეავსეთ ფორმა — დაგიდასტურებთ უმოკლეს ვადაში.</p>
+
+      <div class="field">
+        <label for="rname">სახელი</label>
+        <input id="rname" name="name" type="text" placeholder="თქვენი სახელი" required autocomplete="name">
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="rphone">ტელეფონი</label>
+          <input id="rphone" name="phone" type="tel" placeholder="+995 5xx xx xx xx" required autocomplete="tel">
+        </div>
+        <div class="field">
+          <label for="rguests">სტუმრები</label>
+          <select id="rguests" name="guests">
+            <option>1 — 2 სტუმარი</option>
+            <option selected>3 — 4 სტუმარი</option>
+            <option>5 — 6 სტუმარი</option>
+            <option>7+ სტუმარი</option>
+          </select>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="rdate">თარიღი</label>
+          <input id="rdate" name="date" type="date" required>
+        </div>
+        <div class="field">
+          <label for="rtime">დრო</label>
+          <input id="rtime" name="time" type="time" value="19:00" required>
+        </div>
+      </div>
+      <div class="field">
+        <label for="rnote">დამატებითი სურვილი <span style="text-transform:none;letter-spacing:0;color:var(--ink-mute)">(არასავალდებულო)</span></label>
+        <textarea id="rnote" name="note" rows="2" placeholder="მაგ.: დაბადების დღე, ფანჯარასთან მაგიდა…"></textarea>
+      </div>
+      <button type="submit" class="btn btn-gold">
+        ჯავშნის გაგზავნა
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+      <p class="form-note">გაგზავნით ფორმა გადამისამართდება WhatsApp-ზე დასადასტურებლად.<br>ან პირდაპირ <a href="tel:+995574114343">დაგვირეკეთ</a>.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#top" class="brand">
+          <span class="mark" aria-hidden="true">მ</span>
+          <span>მარგალიტა</span>
+        </a>
+        <p>ავთენტური ქართული სამზარეულო თბილისის გულში — ადგილი, სადაც ყოველი სუფრა ისტორიად იქცევა.</p>
+      </div>
+      <div class="foot-col">
+        <h4>ნავიგაცია</h4>
+        <a href="#about">ჩვენ შესახებ</a>
+        <a href="#menu">ფირმური კერძები</a>
+        <a href="#gallery">გალერეა</a>
+        <a href="#hours">გრაფიკი</a>
+        <a href="#reserve">დაჯავშნა</a>
+      </div>
+      <div class="foot-col">
+        <h4>კონტაქტი</h4>
+        <a href="tel:+995574114343">+995 574 11 43 43</a>
+        <a href="https://wa.me/995574114343" target="_blank" rel="noopener">WhatsApp</a>
+        <p>თბილისი, საქართველო</p>
+        <p>ყოველდღე · 12:00 — 00:00</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© 2026 რესტორანი მარგალიტა. ყველა უფლება დაცულია.</p>
+      <div class="socials">
+        <a href="https://wa.me/995574114343" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.06 24l1.7-6.1A11.9 11.9 0 1 1 12 24a11.9 11.9 0 0 1-5.7-1.5L.06 24zM6.6 20l.4.2a9.9 9.9 0 1 0-3.4-3.4l.2.4-1 3.6 3.8-.8zM17.5 14.4c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.1-.3.2-.5 0a8 8 0 0 1-2.4-1.5 9 9 0 0 1-1.6-2c-.2-.3 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5 0-.2 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.5h-.5c-.2 0-.4 0-.6.3a2.7 2.7 0 0 0-.9 2c0 1.2.9 2.4 1 2.6.1.2 1.7 2.7 4.2 3.8.6.3 1 .4 1.4.5.6.2 1.1.2 1.5.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3z"/></svg>
+        </a>
+        <a href="tel:+995574114343" aria-label="ტელეფონი">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.8 2.1z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- floating mobile CTA -->
+<div class="float-cta">
+  <a href="#reserve" class="btn btn-gold">მაგიდის დაჯავშნა</a>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var nav=document.getElementById('nav');
+  var onScroll=function(){ nav.classList.toggle('scrolled',window.scrollY>40); };
+  onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
+
+  // mobile drawer
+  var toggle=document.getElementById('menuToggle');
+  var drawer=document.getElementById('drawer');
+  var open=false;
+  function setDrawer(v){
+    open=v;
+    drawer.classList.toggle('open',v);
+    drawer.setAttribute('aria-hidden',String(!v));
+    toggle.setAttribute('aria-expanded',String(v));
+    document.body.style.overflow=v?'hidden':'';
+  }
+  toggle.addEventListener('click',function(){setDrawer(!open);});
+  drawer.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setDrawer(false);});});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&open)setDrawer(false);});
+
+  // reveal on scroll
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els=document.querySelectorAll('.reveal');
+  if(reduce||!('IntersectionObserver' in window)){
+    els.forEach(function(el){el.classList.add('in');});
+  }else{
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}
+      });
+    },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(el){ if(!el.classList.contains('in')) io.observe(el); });
+  }
+
+  // dish hover preview (desktop pointer only)
+  var thumb=document.getElementById('dishThumb');
+  var thumbImg=thumb?thumb.querySelector('img'):null;
+  var dishes=document.querySelectorAll('.dish[data-img]');
+  var fine=window.matchMedia('(pointer:fine)').matches;
+  if(thumb&&fine&&!reduce){
+    var raf=null,mx=0,my=0;
+    function move(){ thumb.style.left=mx+'px'; thumb.style.top=my+'px'; raf=null; }
+    dishes.forEach(function(d){
+      d.addEventListener('mouseenter',function(){
+        var src=d.getAttribute('data-img');
+        if(thumbImg.getAttribute('src')!==src){thumbImg.setAttribute('src',src);}
+        thumb.classList.add('show');
+      });
+      d.addEventListener('mouseleave',function(){thumb.classList.remove('show');});
+      d.addEventListener('mousemove',function(e){
+        mx=e.clientX; my=e.clientY;
+        if(!raf) raf=requestAnimationFrame(move);
+      });
+    });
+  }
+
+  // reservation form -> WhatsApp
+  var form=document.getElementById('resForm');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      if(!form.checkValidity()){form.reportValidity();return;}
+      var d=new FormData(form);
+      var lines=[
+        'გამარჯობა მარგალიტა! მსურს მაგიდის დაჯავშნა:',
+        'სახელი: '+(d.get('name')||''),
+        'ტელეფონი: '+(d.get('phone')||''),
+        'სტუმრები: '+(d.get('guests')||''),
+        'თარიღი: '+(d.get('date')||''),
+        'დრო: '+(d.get('time')||'')
+      ];
+      var note=(d.get('note')||'').trim();
+      if(note) lines.push('სურვილი: '+note);
+      var url='https://wa.me/995574114343?text='+encodeURIComponent(lines.join('\n'));
+      window.open(url,'_blank','noopener');
+    });
+  }
+
+  // set min date = today
+  var dateEl=document.getElementById('rdate');
+  if(dateEl){
+    var t=new Date();var z=function(n){return(n<10?'0':'')+n;};
+    dateEl.min=t.getFullYear()+'-'+z(t.getMonth()+1)+'-'+z(t.getDate());
+    if(!dateEl.value) dateEl.value=dateEl.min;
+  }
+})();
+</script>
+</body>
+</html>
