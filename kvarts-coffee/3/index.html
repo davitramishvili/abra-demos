@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ყავა და სითბო ქალაქის ცენტრში — კაფე</title>
+<meta name="description" content="Kvarts Coffee · 2100-ზე მეტი შეფასება, საშუალო 4.5 ★ · ☆ 4.5 / 2150 შეფასება." />
+<meta name="theme-color" content="#0c0907" />
+
+<meta property="og:title" content="ყავა და სითბო ქალაქის ცენტრში" />
+<meta property="og:description" content="Kvarts Coffee · 2100-ზე მეტი შეფასება, საშუალო 4.5 ★" />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@300;400;500;600;700&family=Noto+Serif+Georgian:opsz,wght@8..144,400;8..144,500;8..144,600;8..144,700&display=swap" rel="stylesheet" />
+
+<style>
+  /* ============================================================
+     DARK PREMIUM / MOODY — reusable token template (style3)
+     Single-file static landing page. All text Georgian.
+     ============================================================ */
+
+  :root{
+    /* core palette — espresso night, warm brick, gold & cream */
+    --ink:        #0c0907;   /* near-black espresso */
+    --ink-2:      #131009;   /* raised surface */
+    --ink-3:      #1c1710;   /* card / elevated */
+    --line:       rgba(214,184,128,.16);
+    --line-soft:  rgba(214,184,128,.10);
+
+    --cream:      #f3ead9;   /* primary light text */
+    --cream-dim:  #cfc3ad;   /* secondary text (>=4.5:1 on ink) */
+    --muted:      #9a8f78;   /* tertiary / captions (decorative) */
+
+    --gold:       #d8b878;   /* primary accent */
+    --gold-soft:  #e7cf9c;
+    --gold-deep:  #a98442;
+    --brick:      #b66a3e;   /* warm secondary accent */
+    --ember:      #e08a4e;
+
+    --maxw: 1240px;
+    --gut: clamp(20px, 5vw, 64px);
+
+    --serif: "Noto Serif Georgian", Georgia, serif;
+    --sans:  "Noto Sans Georgian", system-ui, -apple-system, sans-serif;
+
+    --ease: cubic-bezier(.22,.61,.36,1);
+    --ease-out: cubic-bezier(.16,1,.3,1);
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+  }
+
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--cream);
+    font-family:var(--sans);
+    font-weight:400;
+    line-height:1.65;
+    font-size:clamp(15px,1.05vw,17px);
+    letter-spacing:.005em;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+
+  /* atmospheric film grain over the whole page */
+  body::after{
+    content:"";
+    position:fixed; inset:0;
+    pointer-events:none; z-index:9;
+    opacity:.05; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  a{ color:inherit; text-decoration:none; }
+  img{ display:block; max-width:100%; }
+  button{ font-family:inherit; cursor:pointer; }
+  h1,h2,h3,h4{ margin:0; font-weight:600; line-height:1.08; }
+
+  ::selection{ background:var(--gold); color:var(--ink); }
+
+  :focus-visible{
+    outline:2px solid var(--gold);
+    outline-offset:3px;
+    border-radius:3px;
+  }
+
+  .wrap{ width:100%; max-width:var(--maxw); margin-inline:auto; padding-inline:var(--gut); }
+
+  /* skip link */
+  .skip{
+    position:absolute; left:14px; top:-60px; z-index:200;
+    background:var(--gold); color:var(--ink);
+    padding:12px 18px; border-radius:8px; font-weight:600;
+    transition:top .2s var(--ease);
+  }
+  .skip:focus{ top:14px; }
+
+  /* eyebrow / kicker */
+  .kicker{
+    display:inline-flex; align-items:center; gap:.6em;
+    font-size:.74rem; font-weight:600;
+    letter-spacing:.34em; text-transform:uppercase;
+    color:var(--gold);
+  }
+  .kicker::before{
+    content:""; width:34px; height:1px;
+    background:linear-gradient(90deg,transparent,var(--gold));
+  }
+  .kicker.center::after{
+    content:""; width:34px; height:1px;
+    background:linear-gradient(90deg,var(--gold),transparent);
+  }
+  .kicker.center::before{
+    background:linear-gradient(90deg,var(--gold),transparent);
+  }
+
+  .display{
+    font-family:var(--serif);
+    font-weight:600;
+    letter-spacing:-.01em;
+    line-height:1.02;
+  }
+
+  /* ============================== NAV ============================== */
+  header.nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    transition:background .4s var(--ease), border-color .4s var(--ease), backdrop-filter .4s var(--ease);
+    border-bottom:1px solid transparent;
+  }
+  header.nav.scrolled{
+    background:rgba(10,8,6,.72);
+    backdrop-filter:blur(14px) saturate(120%);
+    -webkit-backdrop-filter:blur(14px) saturate(120%);
+    border-bottom-color:var(--line);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    height:74px; gap:24px;
+  }
+  .brand{
+    display:flex; align-items:center; gap:12px;
+    font-family:var(--serif); font-weight:700;
+    font-size:1.2rem; letter-spacing:.02em; color:var(--cream);
+  }
+  .brand .mark{
+    width:38px; height:38px; flex:none;
+    border:1px solid var(--gold); border-radius:50%;
+    display:grid; place-items:center;
+    color:var(--gold); font-family:var(--serif);
+    font-size:1.05rem; font-weight:700;
+    position:relative;
+  }
+  .brand .mark::after{
+    content:""; position:absolute; inset:4px;
+    border:1px solid var(--line); border-radius:50%;
+  }
+  .brand small{
+    display:block; font-family:var(--sans);
+    font-size:.58rem; font-weight:500; letter-spacing:.32em;
+    text-transform:uppercase; color:var(--gold); margin-top:1px;
+  }
+
+  .nav-links{
+    display:flex; align-items:center; gap:34px;
+    list-style:none; margin:0; padding:0;
+  }
+  .nav-links a{
+    font-size:.82rem; font-weight:500; letter-spacing:.04em;
+    color:var(--cream-dim); position:relative; padding:6px 0;
+    transition:color .25s var(--ease);
+  }
+  .nav-links a::after{
+    content:""; position:absolute; left:0; bottom:0;
+    width:0; height:1px; background:var(--gold);
+    transition:width .3s var(--ease);
+  }
+  .nav-links a:hover{ color:var(--cream); }
+  .nav-links a:hover::after{ width:100%; }
+
+  /* ---- buttons (neutral contract classes mapped to this style) ---- */
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:.55em;
+    font-weight:600; font-size:.84rem; letter-spacing:.02em;
+    padding:13px 24px; border-radius:999px;
+    min-height:46px; border:1px solid transparent;
+    transition:transform .25s var(--ease), background .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease);
+    white-space:nowrap;
+  }
+  /* primary = gold pill, dark ink text → contrast ~9:1 */
+  .btn-primary, .btn-gold{
+    background:var(--gold); color:var(--ink);
+    box-shadow:0 8px 30px -10px rgba(216,184,120,.5);
+  }
+  .btn-primary:hover, .btn-gold:hover{ background:var(--gold-soft); transform:translateY(-2px); box-shadow:0 14px 38px -10px rgba(216,184,120,.6); }
+  /* ghost = outlined, cream text on ink → contrast ~12:1 */
+  .btn-ghost{
+    background:transparent; color:var(--cream);
+    border-color:var(--line);
+  }
+  .btn-ghost:hover{ border-color:var(--gold); color:var(--gold-soft); transform:translateY(-2px); }
+  /* link = underlined gold text */
+  .btn-link{
+    background:transparent; color:var(--gold-soft);
+    border-color:transparent; padding-inline:10px;
+    text-decoration:underline; text-underline-offset:5px;
+    text-decoration-color:var(--line);
+  }
+  .btn-link:hover{ color:var(--gold); text-decoration-color:var(--gold); }
+  @media (prefers-reduced-motion: reduce){
+    .btn:hover{ transform:none; }
+  }
+
+  .nav-cta{ display:flex; align-items:center; gap:14px; }
+
+  /* hamburger */
+  .burger{
+    display:none; width:46px; height:46px;
+    background:transparent; border:1px solid var(--line);
+    border-radius:10px; padding:0; align-items:center; justify-content:center;
+    flex-direction:column; gap:5px;
+  }
+  .burger span{ width:20px; height:1.5px; background:var(--cream); transition:.3s var(--ease); }
+  .burger[aria-expanded="true"] span:nth-child(1){ transform:translateY(6.5px) rotate(45deg); }
+  .burger[aria-expanded="true"] span:nth-child(2){ opacity:0; }
+  .burger[aria-expanded="true"] span:nth-child(3){ transform:translateY(-6.5px) rotate(-45deg); }
+
+  /* mobile menu sheet */
+  .mobile-menu{
+    position:fixed; inset:0 0 0 auto; width:min(82vw,360px);
+    background:var(--ink-2); z-index:99;
+    border-left:1px solid var(--line);
+    transform:translateX(100%); transition:transform .45s var(--ease-out);
+    padding:104px var(--gut) 40px;
+    display:flex; flex-direction:column; gap:6px;
+  }
+  .mobile-menu.open{ transform:translateX(0); }
+  .mobile-menu a{
+    font-family:var(--serif); font-size:1.5rem; font-weight:500;
+    color:var(--cream); padding:14px 0; border-bottom:1px solid var(--line-soft);
+  }
+  .mobile-menu a:hover{ color:var(--gold); }
+  .mobile-menu .btn{ margin-top:22px; }
+  .scrim{
+    position:fixed; inset:0; background:rgba(0,0,0,.6); z-index:98;
+    opacity:0; visibility:hidden; transition:.4s var(--ease);
+    backdrop-filter:blur(2px);
+  }
+  .scrim.show{ opacity:1; visibility:visible; }
+
+  /* ============================== HERO ============================== */
+  .hero{
+    position:relative; min-height:100svh;
+    display:flex; align-items:flex-end;
+    padding-bottom:clamp(48px,8vh,96px); padding-top:120px;
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute; inset:0; z-index:0;
+    background-position:center 30%;
+    background-size:cover;
+    background-repeat:no-repeat;
+    transform:scale(1.08);
+    animation:slowZoom 22s var(--ease) infinite alternate;
+    will-change:transform;
+  }
+  /* graceful fallback when no hero photo: cinematic gold/espresso gradient */
+  .hero-bg.is-empty{
+    background:
+      radial-gradient(120% 100% at 78% 12%, rgba(182,106,62,.30), transparent 55%),
+      radial-gradient(90% 80% at 12% 90%, rgba(216,184,120,.16), transparent 60%),
+      linear-gradient(160deg, #15110b 0%, #0c0907 60%, #080605 100%);
+    animation:none; transform:none;
+  }
+  @keyframes slowZoom{ from{ transform:scale(1.04); } to{ transform:scale(1.14); } }
+  @media (prefers-reduced-motion: reduce){
+    .hero-bg{ animation:none; transform:scale(1.04); }
+  }
+  /* cinematic grade — darken for legibility, warm vignette */
+  .hero-bg::after{
+    content:""; position:absolute; inset:0;
+    background:
+      radial-gradient(120% 90% at 75% 18%, rgba(12,9,7,0) 0%, rgba(12,9,7,.35) 55%, rgba(12,9,7,.82) 100%),
+      linear-gradient(180deg, rgba(12,9,7,.55) 0%, rgba(12,9,7,.18) 30%, rgba(12,9,7,.62) 72%, rgba(12,9,7,.96) 100%);
+  }
+  .hero-grain{ position:absolute; inset:0; z-index:1; box-shadow:inset 0 0 220px 40px rgba(0,0,0,.7); pointer-events:none; }
+
+  .hero .wrap{ position:relative; z-index:2; width:100%; }
+  .hero-content{ max-width:820px; }
+  .hero h1{
+    font-family:var(--serif); font-weight:700;
+    font-size:clamp(2.9rem,8.4vw,6.6rem);
+    line-height:.98; letter-spacing:-.015em;
+    color:var(--cream);
+    text-shadow:0 2px 40px rgba(0,0,0,.5);
+    margin:.32em 0 0;
+  }
+  .hero-lead{
+    margin:1.4rem 0 0; max-width:46ch;
+    font-size:clamp(1rem,1.4vw,1.18rem);
+    color:var(--cream-dim); line-height:1.7;
+  }
+  .hero-actions{
+    display:flex; flex-wrap:wrap; gap:14px; margin-top:2.2rem;
+  }
+  .hero-meta{
+    display:flex; flex-wrap:wrap; align-items:center; gap:14px 30px;
+    margin-top:2.6rem; padding-top:2.1rem;
+    border-top:1px solid var(--line);
+  }
+  .rating{ display:flex; align-items:center; gap:12px; }
+  .stars{ display:inline-flex; gap:3px; color:var(--gold); font-size:1.05rem; letter-spacing:1px; }
+  .rating b{ font-weight:700; color:var(--cream); font-size:1.05rem; }
+  .rating span{ color:var(--cream-dim); font-size:.86rem; }
+  .meta-dot{ width:4px; height:4px; border-radius:50%; background:var(--gold-deep); }
+  .hero-tag{ font-size:.84rem; color:var(--cream-dim); display:inline-flex; align-items:center; gap:9px; }
+  .hero-tag svg{ width:17px; height:17px; stroke:var(--gold); fill:none; }
+
+  /* demo ribbon on hero */
+  .demo-ribbon{
+    position:absolute; top:96px; right:-52px; z-index:6;
+    transform:rotate(45deg);
+    background:linear-gradient(90deg,var(--brick),var(--ember));
+    color:#fff;
+    font-family:var(--sans); font-weight:700;
+    font-size:.72rem; letter-spacing:.22em; text-transform:uppercase;
+    padding:9px 60px;
+    box-shadow:0 10px 28px -10px rgba(0,0,0,.7);
+    border-top:1px solid rgba(255,255,255,.25);
+    border-bottom:1px solid rgba(0,0,0,.25);
+  }
+
+  /* scroll cue */
+  .scroll-cue{
+    position:absolute; left:50%; bottom:26px; z-index:3;
+    transform:translateX(-50%);
+    display:flex; flex-direction:column; align-items:center; gap:9px;
+    color:var(--cream-dim); font-size:.62rem; letter-spacing:.3em; text-transform:uppercase;
+  }
+  .scroll-cue .line{ width:1px; height:46px; background:linear-gradient(var(--gold),transparent); position:relative; overflow:hidden; }
+  .scroll-cue .line::after{
+    content:""; position:absolute; top:-50%; left:0; width:100%; height:50%;
+    background:var(--cream); animation:cueDrop 2.1s var(--ease) infinite;
+  }
+  @keyframes cueDrop{ 0%{ top:-50%; } 60%,100%{ top:100%; } }
+  @media (prefers-reduced-motion: reduce){ .scroll-cue .line::after{ animation:none; } }
+
+  /* ============================ SECTIONS ============================ */
+  section{ position:relative; }
+  .section{ padding:clamp(72px,11vh,140px) 0; }
+  /* alternate section backgrounds for rhythm */
+  .section:nth-of-type(even){ background:var(--ink-2); }
+  .section-head{ max-width:760px; margin-bottom:clamp(40px,6vh,72px); }
+  .section-head.center{ margin-inline:auto; text-align:center; }
+  h2{
+    font-family:var(--serif); font-weight:600;
+    font-size:clamp(2rem,4.6vw,3.5rem);
+    letter-spacing:-.01em; line-height:1.04;
+    color:var(--cream);
+  }
+  .section-head h2{ margin-top:1rem; }
+  .section-head h2 em{ font-style:italic; color:var(--gold-soft); }
+  .section-head p{
+    margin:1.2rem 0 0; color:var(--cream-dim);
+    font-size:clamp(1rem,1.3vw,1.12rem); max-width:56ch;
+  }
+  .section-head.center p{ margin-inline:auto; }
+
+  /* default section heading (build.py emits plain <h2> inside sections) */
+  .section > .wrap > h2{
+    margin-bottom:clamp(32px,5vh,56px);
+  }
+  .section > .wrap > h2::before{
+    content:""; display:block; width:46px; height:1px;
+    background:linear-gradient(90deg,var(--gold),transparent);
+    margin-bottom:1.1rem;
+  }
+
+  /* ----- ABOUT ----- */
+  .about{ background:linear-gradient(180deg,var(--ink) 0%, var(--ink-2) 100%); }
+  .about-grid{
+    display:grid; grid-template-columns:1.05fr .95fr;
+    gap:clamp(36px,6vw,84px); align-items:center;
+  }
+  .about-media{ position:relative; }
+  .about-media .frame{
+    position:relative; border-radius:14px; overflow:hidden;
+    aspect-ratio:4/5; box-shadow:0 40px 80px -30px rgba(0,0,0,.8);
+    background:
+      radial-gradient(90% 80% at 70% 15%, rgba(182,106,62,.28), transparent 60%),
+      linear-gradient(160deg, #15110b, #0c0907);
+    border:1px solid var(--line);
+    display:grid; place-items:center;
+  }
+  .about-media .frame .glyph{
+    font-family:var(--serif); font-size:5rem; color:var(--gold);
+    opacity:.5; line-height:1;
+  }
+  .about-media .deco{
+    position:absolute; top:-22px; right:-18px; z-index:-1;
+    width:120px; height:120px; border:1px solid var(--line);
+    border-radius:14px;
+  }
+  .about-copy h2{
+    font-family:var(--serif); font-weight:600;
+    font-size:clamp(1.9rem,4.2vw,3.2rem); line-height:1.05;
+    letter-spacing:-.01em; margin:1rem 0 0; color:var(--cream);
+  }
+  .about-copy h2 em{ font-style:italic; color:var(--gold-soft); }
+  .about-copy p{ margin:1.3rem 0 0; color:var(--cream-dim); }
+  .about-copy .sig{
+    margin-top:1.8rem; font-family:var(--serif); font-style:italic;
+    font-size:1.35rem; color:var(--gold-soft);
+  }
+
+  /* ----- GALLERY ----- */
+  .gallery{ background:linear-gradient(180deg,var(--ink-2),var(--ink)); }
+  .gallery h2{ text-align:center; }
+  .gallery h2::before{ margin-inline:auto; }
+  .gallery .gallery{
+    display:grid; gap:14px;
+    grid-template-columns:repeat(auto-fill, minmax(230px, 1fr));
+    grid-auto-rows:230px;
+  }
+  .shot{
+    position:relative; overflow:hidden; border-radius:12px;
+    border:1px solid var(--line-soft); margin:0;
+    background:var(--ink-3);
+  }
+  .shot img{
+    width:100%; height:100%; object-fit:cover;
+    filter:saturate(.9) contrast(1.04) brightness(.9);
+    transition:transform 1s var(--ease), filter .6s var(--ease);
+  }
+  .shot::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg,transparent 55%, rgba(12,9,7,.55));
+    opacity:.8; transition:opacity .5s var(--ease);
+    pointer-events:none;
+  }
+  .shot:hover img{ transform:scale(1.07); filter:saturate(1.02) contrast(1.06) brightness(1); }
+  .shot:hover::after{ opacity:.4; }
+  .shot figcaption{
+    position:absolute; left:18px; bottom:14px; z-index:2;
+    font-family:var(--serif); font-style:italic; font-size:1.02rem; color:var(--cream);
+    text-shadow:0 2px 14px rgba(0,0,0,.7);
+  }
+  /* let the first gallery shot span larger for editorial rhythm */
+  .gallery .gallery .shot:first-child{ grid-column:span 2; grid-row:span 2; }
+  @media (max-width:700px){
+    .gallery .gallery .shot:first-child{ grid-column:auto; grid-row:auto; }
+  }
+
+  /* ----- REVIEWS ----- */
+  .reviews-wrap{ background:var(--ink); }
+  .reviews{
+    display:grid; gap:20px;
+    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+  }
+  .review{
+    margin:0; padding:clamp(26px,3vw,38px);
+    background:var(--ink-3); border:1px solid var(--line);
+    border-radius:16px; position:relative; overflow:hidden;
+  }
+  .review::before{
+    content:"\201C";
+    position:absolute; top:6px; right:22px;
+    font-family:var(--serif); font-size:5rem; line-height:1;
+    color:var(--gold); opacity:.14;
+  }
+  .review .r-stars{
+    display:inline-flex; gap:3px; color:var(--gold);
+    font-size:1rem; letter-spacing:1px; margin-bottom:1rem;
+  }
+  .review blockquote{
+    margin:0; font-family:var(--serif); font-size:1.12rem;
+    line-height:1.6; color:var(--cream);
+  }
+  .review figcaption{
+    margin-top:1.4rem; font-size:.86rem; font-weight:600;
+    letter-spacing:.04em; color:var(--gold-soft);
+    display:flex; align-items:center; gap:10px;
+  }
+  .review figcaption::before{
+    content:""; width:22px; height:1px; background:var(--gold-deep);
+  }
+
+  /* ----- HOURS ----- */
+  .hours-wrap{ background:var(--ink); }
+  .hours-card{
+    background:var(--ink-3); border:1px solid var(--line);
+    border-radius:16px; padding:clamp(28px,4vw,44px);
+    position:relative; overflow:hidden; max-width:640px;
+  }
+  .hours-card::before{
+    content:""; position:absolute; top:0; left:0; right:0; height:1px;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  }
+  .hours{
+    list-style:none; margin:0; padding:0;
+    display:flex; flex-direction:column; gap:2px;
+  }
+  .hours li{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding:14px 0; border-bottom:1px solid var(--line-soft); gap:16px;
+  }
+  .hours li:last-child{ border-bottom:0; }
+  .hours li span:first-child{ color:var(--cream-dim); }
+  .hours li span:last-child{ font-weight:600; color:var(--cream); font-variant-numeric:tabular-nums; }
+  /* if build.py wraps each day in a single <span>, keep it readable */
+  .hours li > span{ display:inline-flex; gap:.5em; }
+
+  /* ----- CONTACT / CTA ----- */
+  .cta, .contact{
+    position:relative; overflow:hidden;
+    background:
+      linear-gradient(180deg, rgba(12,9,7,.6), rgba(12,9,7,.78)),
+      radial-gradient(80% 80% at 50% 0%, rgba(182,106,62,.20), transparent 60%),
+      var(--ink-2);
+    text-align:center;
+  }
+  .cta .wrap, .contact .wrap{ position:relative; z-index:2; text-align:center; }
+  .cta h2, .contact h2{
+    font-family:var(--serif); font-weight:600;
+    font-size:clamp(2.2rem,6vw,4.6rem); line-height:1.02; letter-spacing:-.015em;
+    color:var(--cream); max-width:18ch; margin-inline:auto;
+  }
+  .cta h2::before, .contact h2::before{ content:none; }
+  .cta h2 em, .contact h2 em{ font-style:italic; color:var(--gold-soft); }
+  .cta p, .contact p{ margin:1.4rem auto 0; max-width:52ch; color:var(--cream-dim); font-size:1.08rem; }
+  .cta .btn, .contact .btn{ margin-top:.6rem; }
+  .cta-actions{ display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:2.4rem; }
+  /* style the button group build.py emits inside <section class='section'><h2>დაგვიკავშირდით</h2><div class='cta'><a class='btn btn-primary' href='https://wa.me/995571150715' target='_blank' rel='noopener'><span class='ico'>💬</span> WhatsApp-ით მოწერა</a><a class='btn btn-ghost' href='tel:+995571150715'><span class='ico'>📞</span> დარეკვა</a><a class='btn btn-link' href='https://maps.google.com/?cid=7333983901403083616&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA' target='_blank' rel='noopener'>Google Maps-ზე ნახვა →</a></div><p class='phone'>571 15 07 15</p></section> */
+  .cta a.btn, .contact a.btn{ margin:8px 7px 0; }
+  .btn-lg{ padding:17px 34px; min-height:56px; font-size:.92rem; }
+  .cta-phone, .contact-phone{
+    margin-top:2.2rem; font-family:var(--serif); font-size:clamp(1.3rem,3vw,1.9rem);
+    color:var(--cream); letter-spacing:.02em;
+  }
+  .cta-phone a:hover, .contact-phone a:hover{ color:var(--gold-soft); }
+
+  /* ----- MAP ----- */
+  .map-wrap{ background:var(--ink-2); }
+  .map{
+    width:100%; height:clamp(320px,46vh,460px);
+    border:1px solid var(--line); border-radius:16px;
+    filter:grayscale(.35) contrast(1.05) brightness(.9);
+    background:var(--ink-3);
+  }
+  .addr{
+    margin:1.4rem 0 0; color:var(--cream-dim);
+    display:inline-flex; align-items:center; gap:10px;
+    font-size:.96rem;
+  }
+  .addr::before{
+    content:""; width:18px; height:18px; flex:none;
+    background:no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d8b878' stroke-width='1.6'%3E%3Cpath d='M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z'/%3E%3Ccircle cx='12' cy='10' r='3'/%3E%3C/svg%3E");
+  }
+
+  /* ============================ FOOTER ============================ */
+  footer{ background:var(--ink); border-top:1px solid var(--line); padding:clamp(48px,7vh,80px) 0 32px; }
+  .foot-grid{
+    display:grid; grid-template-columns:1.6fr 1fr;
+    gap:clamp(30px,5vw,64px); padding-bottom:48px; border-bottom:1px solid var(--line-soft);
+  }
+  .foot-brand .brand{ margin-bottom:1.2rem; }
+  .foot-brand p{ color:var(--cream-dim); max-width:46ch; font-size:.94rem; }
+  .foot-col h4{
+    font-size:.74rem; letter-spacing:.24em; text-transform:uppercase;
+    color:var(--gold); font-weight:600; margin-bottom:1.2rem;
+  }
+  .foot-col ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px; }
+  .foot-col a, .foot-col li{ color:var(--cream-dim); font-size:.92rem; transition:color .25s var(--ease); }
+  .foot-col a:hover{ color:var(--gold-soft); }
+  .foot-bottom{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;
+    gap:14px; padding-top:28px;
+  }
+  .foot-bottom p{ margin:0; color:var(--muted); font-size:.82rem; }
+  .foot-bottom .stars{ font-size:.9rem; }
+
+  /* ============================ DEMO BANNER ============================ */
+  .demo-banner{
+    position:fixed; left:0; right:0; bottom:0; z-index:120;
+    background:rgba(10,8,6,.92);
+    backdrop-filter:blur(12px) saturate(120%);
+    -webkit-backdrop-filter:blur(12px) saturate(120%);
+    border-top:1px solid var(--gold-deep);
+    box-shadow:0 -10px 30px -16px rgba(0,0,0,.8);
+  }
+  .demo-banner .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:16px 24px; padding-block:12px; flex-wrap:wrap;
+  }
+  .demo-banner .demo-text{
+    display:inline-flex; align-items:center; gap:11px;
+    font-size:.9rem; color:var(--cream); font-weight:500;
+  }
+  .demo-banner .demo-text .dot{
+    width:8px; height:8px; border-radius:50%; flex:none;
+    background:var(--gold);
+    box-shadow:0 0 0 4px rgba(216,184,120,.18);
+  }
+  .demo-banner .demo-text b{ color:var(--gold-soft); font-weight:700; }
+  /* banner button: gold pill, ink text → ~9:1 contrast */
+  .demo-banner .btn{ min-height:42px; padding:10px 22px; }
+
+  /* keep content clear of the fixed banner */
+  body{ padding-bottom:84px; }
+  @media (max-width:560px){
+    body{ padding-bottom:120px; }
+  }
+
+  /* ============================ REVEAL ANIM ============================ */
+  .reveal{ opacity:0; transform:translateY(34px); transition:opacity .9s var(--ease-out), transform .9s var(--ease-out); }
+  .reveal.in{ opacity:1; transform:none; }
+  .reveal.d1{ transition-delay:.08s; }
+  .reveal.d2{ transition-delay:.16s; }
+  .reveal.d3{ transition-delay:.24s; }
+  .reveal.d4{ transition-delay:.32s; }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1 !important; transform:none !important; transition:none !important; }
+  }
+
+  /* ============================ RESPONSIVE ============================ */
+  @media (max-width:1080px){
+    .about-grid{ grid-template-columns:1fr; }
+    .about-media{ max-width:480px; }
+  }
+  @media (max-width:860px){
+    .nav-links, .nav-cta .btn{ display:none; }
+    .burger{ display:flex; }
+    .nav-cta{ gap:10px; }
+    .foot-grid{ grid-template-columns:1fr; }
+  }
+  @media (max-width:560px){
+    .hero-meta{ gap:12px 18px; }
+    .demo-ribbon{ top:84px; right:-58px; font-size:.66rem; padding:8px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">გადასვლა მთავარ კონტენტზე</a>
+
+<!-- ============================ NAV ============================ -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top" aria-label="Kvarts Coffee · 2100-ზე მეტი შეფასება, საშუალო 4.5 ★ — მთავარი">
+      <span class="mark" aria-hidden="true">★</span>
+      <span>Abra<small>კაფე</small></span>
+    </a>
+
+    <nav aria-label="მთავარი ნავიგაცია">
+      <ul class="nav-links">
+        <li><a href="#about">ჩვენ შესახებ</a></li>
+        <li><a href="#gallery">გალერეა</a></li>
+        <li><a href="#reviews">შეფასებები</a></li>
+        <li><a href="#hours">საათები</a></li>
+        <li><a href="#contact">კონტაქტი</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-cta">
+      <a class="btn btn-ghost" href="#contact">კონტაქტი</a>
+      <a class="btn btn-gold" href="https://wa.me/995557223993" target="_blank" rel="noopener">WhatsApp</a>
+      <button class="burger" id="burger" aria-label="მენიუს გახსნა" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- mobile menu -->
+<div class="scrim" id="scrim"></div>
+<aside class="mobile-menu" id="mobileMenu" aria-label="მობილური მენიუ">
+  <a href="#about">ჩვენ შესახებ</a>
+  <a href="#gallery">გალერეა</a>
+  <a href="#reviews">შეფასებები</a>
+  <a href="#hours">საათები</a>
+  <a href="#contact">კონტაქტი</a>
+  <a class="btn btn-gold" href="https://wa.me/995557223993" target="_blank" rel="noopener">დაგვიკავშირდით WhatsApp-ით</a>
+</aside>
+
+<main id="main">
+
+<!-- ============================ HERO ============================ -->
+<section class="hero" id="top">
+  <div class="hero-bg" id="heroBg" data-img="../assets/photo1.jpg" role="img" aria-label="Kvarts Coffee · 2100-ზე მეტი შეფასება, საშუალო 4.5 ★"></div>
+  <div class="hero-grain" aria-hidden="true"></div>
+
+  <span class="demo-ribbon" aria-hidden="true">დემო ვერსია</span>
+
+  <div class="wrap">
+    <div class="hero-content">
+      <span class="kicker reveal in">კაფე</span>
+      <h1 class="reveal in d1">ყავა და სითბო ქალაქის ცენტრში</h1>
+      <p class="hero-lead reveal in d2">Kvarts Coffee · 2100-ზე მეტი შეფასება, საშუალო 4.5 ★</p>
+      <div class="hero-actions reveal in d3">
+        <a class="btn btn-gold" href="#contact">დაგვიკავშირდით</a>
+        <a class="btn btn-ghost" href="#gallery">გალერეას ნახვა</a>
+      </div>
+
+      <div class="hero-meta reveal in d4">
+        <div class="rating">
+          <span class='stars'>★★★★<span class='star-off'>★</span></span>
+          <span><b>4.5</b> &nbsp;/&nbsp; <span>Google · 2150 შეფასება</span></span>
+        </div>
+        <span class="meta-dot" aria-hidden="true"></span>
+        <span class="hero-tag">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z" stroke-width="1.6"/><circle cx="12" cy="10" r="3" stroke-width="1.6"/></svg>
+          საქართველო
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-cue" aria-hidden="true">
+    <span>ქვემოთ</span>
+    <span class="line"></span>
+  </div>
+</section>
+
+<!-- ============================ ABOUT ============================ -->
+<section class="section about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-media reveal">
+      <div class="deco" aria-hidden="true"></div>
+      <div class="frame">
+        <span class="glyph" aria-hidden="true">★</span>
+      </div>
+    </div>
+
+    <div class="about-copy reveal d1">
+      <span class="kicker">ჩვენ შესახებ</span>
+      <h2>Kvarts Coffee · 2100-ზე მეტი შეფასება, საშუალო 4.5 ★</h2>
+      <p>Kvarts Coffee არის ყავის სივრცე თბილისის ცენტრში, სადაც ხარისხიანი ყავა და მყუდრო ატმოსფერო ერთმანეთს ხვდება. Google-ზე 2100-ზე მეტმა ვიზიტორმა დაგვიტოვა შეფასება — საშუალოდ 4.5 ვარსკვლავი.</p>
+      <div class="sig">— Abra</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ GALLERY ============================ -->
+<div class="gallery"><section class='section'><h2>გალერეა</h2><div class='gallery'><figure class='shot'><img loading='lazy' src='../assets/photo2.jpg' alt=''></figure><figure class='shot'><img loading='lazy' src='../assets/photo3.jpg' alt=''></figure><figure class='shot'><img loading='lazy' src='../assets/photo4.jpg' alt=''></figure><figure class='shot'><img loading='lazy' src='../assets/photo5.jpg' alt=''></figure><figure class='shot'><img loading='lazy' src='../assets/photo6.jpg' alt=''></figure></div></section></div>
+
+<!-- ============================ REVIEWS ============================ -->
+<div class="reviews-wrap"><section class='section'><h2>შეფასებები</h2><div class='reviews'><figure class='review'><div class='r-stars'><span class='stars'>★★★★★<span class='star-off'></span></span></div><blockquote>“საინტერესო და ლამაზია ნახატი ჭიქაზე და ყავასაც კარგად აკეთებენ , ხშირად ვსვამ 😍”</blockquote><figcaption>— Lizi Asakashvili</figcaption></figure><figure class='review'><div class='r-stars'><span class='stars'>★★★★★<span class='star-off'></span></span></div><blockquote>“ძალიან თბილი და სასიამოვნო ხალხია, ყავა მართლაც ძალიან გემრიელია. გოგონა, რომელიც მუშაობის დროს მუსიკას თან სდევს და თან აჰყვება – საოცარი მუსიკალური გემოვნება აქვს, მ…”</blockquote><figcaption>— F97</figcaption></figure></div></section></div>
+
+<!-- ============================ HOURS ============================ -->
+<div class="hours-wrap"><section class='section'><h2>სამუშაო საათები</h2><ul class='hours'><li><span>ორშაბათი: 9:00 AM – 10:00 PM</span></li><li><span>სამშაბათი: 9:00 AM – 10:00 PM</span></li><li><span>ოთხშაბათი: 9:00 AM – 10:00 PM</span></li><li><span>ხუთშაბათი: 9:00 AM – 10:00 PM</span></li><li><span>პარასკევი: 9:00 AM – 10:00 PM</span></li><li><span>შაბათი: 9:00 AM – 10:00 PM</span></li><li><span>კვირა: 9:00 AM – 10:00 PM</span></li></ul></section></div>
+
+<!-- ============================ CONTACT / CTA ============================ -->
+<section class="section cta" id="contact">
+  <div class="wrap">
+    <span class="kicker center reveal">დაგვიკავშირდით</span>
+    <h2 class="reveal d1">მოდით <em>გავიცნოთ</em> ერთმანეთი</h2>
+    <p class="reveal d2">დაგვირეკეთ, მოგვწერეთ ან ეწვიეთ — სიამოვნებით დაგხვდებით.</p>
+    <div class="cta-actions reveal d3">
+      <section class='section'><h2>დაგვიკავშირდით</h2><div class='cta'><a class='btn btn-primary' href='https://wa.me/995571150715' target='_blank' rel='noopener'><span class='ico'>💬</span> WhatsApp-ით მოწერა</a><a class='btn btn-ghost' href='tel:+995571150715'><span class='ico'>📞</span> დარეკვა</a><a class='btn btn-link' href='https://maps.google.com/?cid=7333983901403083616&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA' target='_blank' rel='noopener'>Google Maps-ზე ნახვა →</a></div><p class='phone'>571 15 07 15</p></section>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ MAP ============================ -->
+<div class="map-wrap"><section class='section'><h2>მდებარეობა</h2><iframe class='map' loading='lazy' src='https://www.openstreetmap.org/export/embed.html?bbox=44.791476%2C41.696505%2C44.799476%2C41.704505&amp;layer=mapnik&amp;marker=41.700505,44.795476'></iframe><p class='addr'>📍 26 შოთა რუსთაველის გამზირი, თბილისი 0108</p></section></div>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="#top" aria-label="Abra">
+          <span class="mark" aria-hidden="true">★</span>
+          <span>Abra<small>კაფე</small></span>
+        </a>
+        <p>Kvarts Coffee არის ყავის სივრცე თბილისის ცენტრში, სადაც ხარისხიანი ყავა და მყუდრო ატმოსფერო ერთმანეთს ხვდება. Google-ზე 2100-ზე მეტმა ვიზიტორმა დაგვიტოვა შეფასება — საშუალოდ 4.5 ვარსკვლავი.</p>
+      </div>
+
+      <div class="foot-col">
+        <h4>ნავიგაცია</h4>
+        <ul>
+          <li><a href="#about">ჩვენ შესახებ</a></li>
+          <li><a href="#gallery">გალერეა</a></li>
+          <li><a href="#reviews">შეფასებები</a></li>
+          <li><a href="#hours">საათები</a></li>
+          <li><a href="#contact">კონტაქტი</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <p>© <span id="year">2026</span> Abra · ყველა უფლება დაცულია</p>
+      <p class="rating" style="gap:8px;">
+        <span class='stars'>★★★★<span class='star-off'>★</span></span>
+        <span style="color:var(--cream-dim); font-size:.82rem;">4.5 / 2150 შეფასება Google-ზე</span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ DEMO BANNER ============================ -->
+<div class="demo-banner" role="complementary" aria-label="დემო ინფორმაცია">
+  <div class="wrap">
+    <span class="demo-text">
+      <span class="dot" aria-hidden="true"></span>
+      <span>უფასო დემო — დამზადებულია <b>Abra</b>-ის მიერ</span>
+    </span>
+    <a class="btn btn-gold" href="https://wa.me/995557223993" target="_blank" rel="noopener">დაგაინტერესათ? მოგვწერეთ</a>
+  </div>
+</div>
+
+<script>
+  /* ---- year ---- */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ---- hero image with graceful empty fallback ---- */
+  (function(){
+    var hb = document.getElementById('heroBg');
+    var img = hb ? hb.getAttribute('data-img') : '';
+    if(hb && img){
+      hb.style.backgroundImage = "url('" + img + "')";
+    } else if(hb){
+      hb.classList.add('is-empty');
+      hb.removeAttribute('role');
+      hb.removeAttribute('aria-label');
+    }
+  })();
+
+  /* ---- nav scrolled state ---- */
+  var nav = document.getElementById('nav');
+  var onScroll = function(){
+    if(window.scrollY > 28){ nav.classList.add('scrolled'); }
+    else{ nav.classList.remove('scrolled'); }
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive:true });
+
+  /* ---- mobile menu ---- */
+  var burger = document.getElementById('burger');
+  var menu = document.getElementById('mobileMenu');
+  var scrim = document.getElementById('scrim');
+  function setMenu(open){
+    menu.classList.toggle('open', open);
+    scrim.classList.toggle('show', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? 'მენიუს დახურვა' : 'მენიუს გახსნა');
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  burger.addEventListener('click', function(){ setMenu(!menu.classList.contains('open')); });
+  scrim.addEventListener('click', function(){ setMenu(false); });
+  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setMenu(false); }); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') setMenu(false); });
+
+  /* ---- scroll reveal (respects reduced motion) ---- */
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var reveals = document.querySelectorAll('.reveal:not(.in)');
+  if(reduce || !('IntersectionObserver' in window)){
+    reveals.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold:0.12, rootMargin:'0px 0px -8% 0px' });
+    reveals.forEach(function(el){ io.observe(el); });
+  }
+</script>
+
+</body>
+</html>

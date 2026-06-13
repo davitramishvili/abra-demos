@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="ka" class="nojs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Golden grill — სწრაფი კვება</title>
+<script>document.documentElement.className="js";</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700;800;900&family=Noto+Serif+Georgian:opsz,wght@8..144,500;8..144,700;8..144,900&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     VIBRANT · PLAYFUL — reusable token-template (style4)
+     Self-contained palette: works for ANY business category.
+     ============================================================ */
+  :root{
+    --canvas:#FFF7F0;        /* warm neutral canvas */
+    --canvas-deep:#FCEDE2;
+    --ink:#221A2E;           /* deep plum-ink (reads as near-black) */
+    --ink-soft:#52465F;
+
+    --grape:#6B4CF6;         /* primary playful violet — brand-agnostic */
+    --grape-deep:#4A2FD0;    /* AA-safe on white for buttons/text */
+    --coral:#FF5B7F;         /* hot pink-coral accent (decorative) */
+    --coral-deep:#D6285A;    /* AA-safe coral for text/buttons on white */
+    --sun:#FFC93C;           /* sunny yellow */
+    --teal:#1FC2B0;          /* mint-teal (decorative) */
+    --teal-deep:#0A7567;     /* AA-safe teal: text on canvas / white on it */
+    --sky:#3DA5FF;           /* breezy blue pop */
+    --white:#FFFFFF;
+
+    --radius:30px;
+    --radius-lg:48px;
+    --shadow-sm:0 6px 0 rgba(34,26,46,.14);
+    --shadow:0 18px 40px -22px rgba(34,26,46,.55);
+    --shadow-pop:0 22px 48px -20px rgba(34,26,46,.5);
+    --border:3px solid var(--ink);
+    --ease:cubic-bezier(.34,1.56,.64,1); /* springy */
+
+    --maxw:1120px;
+    --sans:"Noto Sans Georgian",system-ui,sans-serif;
+    --serif:"Noto Serif Georgian",Georgia,serif;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:var(--sans);
+    background:var(--canvas);
+    color:var(--ink);
+    line-height:1.55;
+    overflow-x:hidden;
+    font-size:17px;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:84px; /* room for fixed demo banner */
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--grape);color:var(--white)}
+
+  /* focus visibility for a11y */
+  a:focus-visible,button:focus-visible{
+    outline:3px solid var(--coral-deep);
+    outline-offset:3px;
+    border-radius:8px;
+  }
+
+  .wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:clamp(18px,5vw,40px)}
+
+  /* ============== KINETIC MARQUEE ============== */
+  .marquee{
+    background:var(--ink);
+    color:var(--canvas);
+    border-bottom:var(--border);
+    overflow:hidden;
+    white-space:nowrap;
+    padding-block:11px;
+    position:relative;
+    z-index:5;
+  }
+  .marquee__track{
+    display:inline-flex;gap:0;
+    animation:slide 26s linear infinite;
+    will-change:transform;
+  }
+  .marquee span{
+    font-weight:800;font-size:.95rem;letter-spacing:.06em;
+    padding-inline:26px;display:inline-flex;align-items:center;gap:26px;
+  }
+  .marquee span::after{content:"✦";color:var(--sun)}
+  @keyframes slide{to{transform:translateX(-50%)}}
+
+  /* ============== HERO ============== */
+  .hero{position:relative;padding-top:clamp(36px,6vw,72px);padding-bottom:clamp(44px,7vw,92px);overflow:hidden}
+  .hero__blob{
+    position:absolute;z-index:0;border-radius:46% 54% 60% 40%/52% 44% 56% 48%;
+    filter:blur(2px);opacity:.85;pointer-events:none;
+  }
+  .blob-a{width:340px;height:340px;background:var(--sun);top:-70px;right:-90px;animation:morph 14s ease-in-out infinite}
+  .blob-b{width:260px;height:260px;background:var(--teal);bottom:-80px;left:-100px;opacity:.5;animation:morph 18s ease-in-out infinite reverse}
+  @keyframes morph{
+    0%,100%{border-radius:46% 54% 60% 40%/52% 44% 56% 48%}
+    50%{border-radius:60% 40% 42% 58%/44% 58% 42% 56%}
+  }
+  .hero__grid{position:relative;z-index:2;display:grid;gap:clamp(28px,5vw,52px);align-items:center}
+  @media(min-width:900px){.hero__grid{grid-template-columns:1.05fr .95fr}}
+
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-weight:800;
+    color:var(--teal-deep);letter-spacing:.12em;text-transform:uppercase;font-size:.82rem;margin-bottom:18px}
+  .eyebrow::before{content:"";width:30px;height:3px;background:var(--coral);border-radius:3px}
+
+  .hero h1{
+    font-family:var(--serif);
+    font-weight:900;
+    font-size:clamp(2.7rem,8vw,5.2rem);
+    line-height:.98;letter-spacing:-.02em;
+    margin-bottom:22px;
+  }
+  /* decorative highlight applied to the whole headline token */
+  .hero h1 .wink{
+    color:var(--grape-deep);position:relative;display:inline;
+  }
+  .hero h1 .wink::after{
+    content:"";position:absolute;left:0;right:0;bottom:.04em;height:.16em;
+    background:var(--sun);z-index:-1;border-radius:6px;transform:rotate(-.8deg);
+  }
+  .hero p.lead{font-size:clamp(1.05rem,2.4vw,1.26rem);max-width:34ch;color:var(--ink-soft);margin-bottom:28px;font-weight:500}
+
+  .rating{display:inline-flex;align-items:center;gap:13px;background:var(--white);
+    border:var(--border);border-radius:50px;padding:9px 9px 9px 18px;box-shadow:var(--shadow-sm);max-width:max-content}
+  .rating .stars{color:var(--sun);font-size:1.05rem;letter-spacing:1px;-webkit-text-stroke:.6px var(--ink)}
+  .rating .stars .star-off{color:var(--canvas-deep);-webkit-text-stroke:.6px var(--ink)}
+  .rating b{font-weight:900}
+  .rating .pill{background:var(--ink);color:var(--canvas);font-weight:800;font-size:.8rem;
+    padding:6px 13px;border-radius:50px}
+
+  /* hero photo cluster (organic blob frame) */
+  .hero__art{position:relative;justify-self:center;width:100%;max-width:460px}
+  .hero__frame{
+    position:relative;border:var(--border);border-radius:50% 50% 48% 52%/46% 50% 50% 54%;
+    overflow:hidden;background:var(--canvas-deep);box-shadow:var(--shadow-pop);
+    aspect-ratio:1/1;transform:rotate(-2deg);
+    transition:transform .5s var(--ease);
+  }
+  .hero__frame img{width:100%;height:100%;object-fit:cover}
+  /* gradient fallback fill when no hero photo */
+  .hero__frame.is-empty{
+    background:
+      radial-gradient(120% 120% at 18% 12%, var(--sun) 0%, transparent 46%),
+      radial-gradient(130% 120% at 88% 20%, var(--coral) 0%, transparent 50%),
+      linear-gradient(135deg,var(--grape) 0%, var(--teal) 100%);
+  }
+  .hero__frame.is-empty::after{
+    content:"✦";position:absolute;inset:0;display:grid;place-items:center;
+    font-size:5rem;color:rgba(255,255,255,.9);text-shadow:0 6px 18px rgba(34,26,46,.35);
+  }
+  .hero__art:hover .hero__frame{transform:rotate(0deg) scale(1.01)}
+  .hero__chip{
+    position:absolute;background:var(--white);border:var(--border);border-radius:20px;
+    padding:11px 15px;box-shadow:var(--shadow-pop);font-weight:800;font-size:.86rem;z-index:6;
+    display:flex;align-items:center;gap:9px;
+  }
+  .hero__chip .dot{width:11px;height:11px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px color-mix(in srgb,var(--teal) 30%,transparent)}
+  .chip-1{top:7%;left:-6%;--r:-7deg;transform:rotate(-7deg);animation:float 5s ease-in-out infinite}
+  .chip-2{bottom:9%;right:-7%;--r:6deg;transform:rotate(6deg);background:var(--sun);animation:float 6.5s ease-in-out infinite}
+  @keyframes float{0%,100%{transform:translateY(0) rotate(var(--r,-7deg))}50%{transform:translateY(-12px) rotate(var(--r,-7deg))}}
+
+  /* round wobbling demo stamp (playful "დემო ვერსია" ribbon) */
+  .hero__stamp{
+    position:absolute;top:-22px;right:5%;width:118px;height:118px;border-radius:50%;
+    background:var(--coral);border:var(--border);color:var(--white);
+    display:grid;place-content:center;text-align:center;
+    font-weight:900;font-size:.82rem;line-height:1.2;letter-spacing:.02em;
+    box-shadow:var(--shadow-pop);z-index:7;
+    animation:wobble 6s ease-in-out infinite;
+  }
+  .hero__stamp small{display:block;font-size:1.05rem;line-height:1.1}
+  @keyframes wobble{0%,100%{transform:rotate(-9deg)}50%{transform:rotate(6deg)}}
+
+  /* ============== SECTIONS (neutral .section / h2 styled playfully) ============== */
+  .section{padding-block:clamp(48px,8vw,92px);position:relative;border-bottom:3px dashed color-mix(in srgb,var(--ink) 18%,transparent)}
+  .section:last-of-type{border-bottom:0}
+  .section .wrap{position:relative;z-index:2}
+  .section h2{
+    font-family:var(--serif);font-weight:900;
+    font-size:clamp(1.9rem,5.2vw,3.1rem);line-height:1.04;letter-spacing:-.02em;
+    margin-bottom:clamp(22px,4vw,40px);position:relative;display:inline-block;
+  }
+  .section h2::after{
+    content:"";position:absolute;left:2px;right:2px;bottom:-8px;height:7px;
+    background:var(--sun);border-radius:7px;transform:rotate(-.8deg);z-index:-1;
+  }
+
+  /* ---- ABOUT ---- */
+  .about{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(1.18rem,2.6vw,1.5rem);line-height:1.45;color:var(--ink);
+    max-width:46ch;
+  }
+  .section--about{background:var(--canvas)}
+
+  /* ---- GALLERY (blobby sticker tiles) ---- */
+  .section--gallery{background:var(--canvas-deep)}
+  .gallery{display:grid;gap:16px;grid-template-columns:repeat(2,1fr)}
+  @media(min-width:760px){.gallery{grid-template-columns:repeat(3,1fr)}}
+  .shot{
+    margin:0;border:var(--border);overflow:hidden;position:relative;
+    border-radius:42% 58% 52% 48%/55% 45% 55% 45%;
+    box-shadow:var(--shadow-sm);background:var(--canvas);aspect-ratio:1/1;
+    transition:transform .4s var(--ease),border-radius .5s var(--ease);
+  }
+  .shot:nth-child(2n){border-radius:55% 45% 48% 52%/45% 55% 45% 55%;transform:rotate(1.5deg)}
+  .shot:nth-child(3n){border-radius:48% 52% 58% 42%/52% 48% 52% 48%;transform:rotate(-1.5deg)}
+  .shot img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+  .shot:hover{transform:translateY(-6px) rotate(0deg);border-radius:30px}
+  .shot:hover img{transform:scale(1.07)}
+
+  /* ---- REVIEWS (speech bubbles) ---- */
+  .section--reviews{background:var(--canvas)}
+  .reviews{display:grid;gap:26px}
+  @media(min-width:760px){.reviews{grid-template-columns:1fr 1fr}}
+  .review{
+    margin:0;background:var(--white);border:var(--border);border-radius:var(--radius);
+    padding:26px 26px 30px;box-shadow:var(--shadow-sm);position:relative;
+    transition:transform .3s var(--ease),box-shadow .3s var(--ease);
+  }
+  .review:nth-child(odd){background:var(--sun)}
+  .review:nth-child(even){background:var(--white)}
+  .review:hover{transform:translateY(-6px) rotate(-1deg);box-shadow:0 16px 0 rgba(34,26,46,.12)}
+  /* speech-bubble tail */
+  .review::after{
+    content:"";position:absolute;left:34px;bottom:-15px;width:26px;height:26px;
+    background:inherit;border-right:var(--border);border-bottom:var(--border);
+    transform:rotate(45deg);
+  }
+  .review .r-stars{color:var(--coral-deep);font-size:1.05rem;letter-spacing:1px;margin-bottom:.5rem}
+  .review .r-stars .star-off{color:color-mix(in srgb,var(--ink) 22%,transparent)}
+  .review blockquote{margin:0;font-family:var(--serif);font-weight:700;font-size:1.1rem;line-height:1.4}
+  .review figcaption{margin-top:.85rem;font-weight:800;font-size:.9rem;color:var(--ink)}
+
+  /* ---- HOURS (chunky list) ---- */
+  .section--hours{background:var(--ink);color:var(--canvas)}
+  .section--hours h2{color:var(--white)}
+  .section--hours h2::after{background:var(--coral)}
+  .hours{list-style:none;padding:0;margin:0;display:grid;gap:12px;max-width:560px}
+  .hours li{
+    background:rgba(255,255,255,.06);border:2.5px solid rgba(255,247,240,.22);
+    border-radius:18px;overflow:hidden;font-weight:600;
+    transition:transform .25s var(--ease),background .25s ease;
+  }
+  .hours li:hover{transform:translateX(6px);background:rgba(255,255,255,.12)}
+  .hours li span{display:block;padding:14px 20px;font-size:.98rem}
+
+  /* ---- CONTACT (buttons) ---- */
+  .section--contact{background:var(--canvas-deep)}
+  .cta{display:flex;flex-wrap:wrap;gap:14px;max-width:560px}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    font-weight:800;font-size:1.02rem;min-height:54px;padding:14px 26px;
+    border-radius:50px;border:var(--border);cursor:pointer;text-align:center;
+    transition:transform .22s var(--ease),box-shadow .22s var(--ease);
+    box-shadow:var(--shadow-sm);
+  }
+  .btn-primary{background:var(--grape-deep);color:var(--white)}
+  .btn-ghost{background:var(--white);color:var(--grape-deep)}
+  .btn-link{background:transparent;color:var(--coral-deep);border-color:transparent;box-shadow:none;
+    text-decoration:underline;text-underline-offset:4px;min-height:auto;padding:10px 14px}
+  .btn:hover{transform:translateY(-4px);box-shadow:0 12px 0 rgba(34,26,46,.16)}
+  .btn-link:hover{transform:translateY(-2px);box-shadow:none;text-decoration-thickness:2px}
+  .btn:active{transform:translateY(-1px);box-shadow:0 4px 0 rgba(34,26,46,.16)}
+  .phone{margin-top:18px;font-weight:700;color:var(--ink-soft)}
+
+  /* ---- MAP ---- */
+  .section--map{background:var(--canvas)}
+  .map{width:100%;height:340px;border:var(--border);border-radius:var(--radius);
+    box-shadow:var(--shadow);background:var(--canvas-deep)}
+  .addr{margin-top:16px;font-weight:700;color:var(--ink-soft)}
+
+  /* ============== FOOTER ============== */
+  .foot{background:var(--ink);color:var(--canvas);border-top:var(--border);
+    padding-block:44px 40px;text-align:center}
+  .foot__brand{display:inline-flex;align-items:center;gap:11px;font-weight:900;font-size:1.3rem;margin-bottom:14px}
+  .foot__brand .mark{
+    width:40px;height:40px;border-radius:50% 50% 50% 14px;
+    background:var(--coral);border:var(--border);
+    display:grid;place-items:center;color:var(--white);font-size:1.15rem;
+    transform:rotate(-6deg);flex:0 0 auto;
+  }
+  .foot p{color:color-mix(in srgb,var(--canvas) 74%,transparent);max-width:46ch;
+    margin-inline:auto;font-size:.95rem;font-weight:500}
+  .foot .heart{color:var(--coral)}
+
+  /* ============== DEMO BANNER (mandatory) ============== */
+  .demo-banner{
+    position:fixed;left:0;right:0;bottom:0;z-index:80;
+    background:var(--grape-deep);color:var(--white);border-top:var(--border);
+    display:flex;gap:14px;justify-content:center;align-items:center;flex-wrap:wrap;
+    padding:11px 16px;font-size:.9rem;font-weight:700;
+    box-shadow:0 -10px 30px -16px rgba(0,0,0,.6);
+  }
+  .demo-banner b{color:var(--sun)}
+  .demo-banner a{
+    background:var(--sun);color:var(--ink);border:var(--border);
+    padding:9px 18px;border-radius:50px;font-weight:800;white-space:nowrap;min-height:44px;
+    display:inline-flex;align-items:center;
+    box-shadow:0 4px 0 rgba(34,26,46,.25);transition:transform .2s var(--ease),box-shadow .2s var(--ease);
+  }
+  .demo-banner a:hover{transform:translateY(-3px);box-shadow:0 8px 0 rgba(34,26,46,.25)}
+  .demo-banner a:active{transform:translateY(-1px);box-shadow:0 2px 0 rgba(34,26,46,.25)}
+
+  /* ============== REVEAL ON SCROLL ============== */
+  .js .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s var(--ease)}
+  .js .reveal.in{opacity:1;transform:none}
+
+  /* ============== REDUCED MOTION ============== */
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
+      transition-duration:.001ms!important;scroll-behavior:auto!important}
+    .js .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== KINETIC MARQUEE ===== -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>სწრაფი კვება</span>
+    <span>★ 4.1 Google</span>
+    <span>208 შეფასება</span>
+    <span>დაგვიკავშირდით WhatsApp-ით</span>
+    <span>სწრაფი კვება</span>
+    <span>★ 4.1 Google</span>
+    <span>208 შეფასება</span>
+    <span>დაგვიკავშირდით WhatsApp-ით</span>
+  </div>
+</div>
+
+<!-- ===== HERO ===== -->
+<main id="top">
+<header class="hero">
+  <span class="hero__blob blob-a" aria-hidden="true"></span>
+  <span class="hero__blob blob-b" aria-hidden="true"></span>
+  <div class="wrap hero__grid">
+    <div class="hero__copy reveal">
+      <p class="eyebrow">სწრაფი კვება</p>
+      <h1><span class="wink">Golden grill</span></h1>
+      <p class="lead">სწრაფი და გემრიელი</p>
+      <div class="rating" role="img" aria-label="Google-ის შეფასება 4.1, 208 მიმოხილვა">
+        <span class="stars" aria-hidden="true"><span class='stars'>★★★★<span class='star-off'>★</span></span></span>
+        <span><b>4.1</b> Google</span>
+        <span class="pill">208 მიმოხილვა</span>
+      </div>
+    </div>
+
+    <div class="hero__art reveal">
+      <div class="hero__stamp" aria-hidden="true"><span><small>დემო</small>ვერსია</span></div>
+      <!-- Gradient is the default; JS swaps in the real photo only when ../assets/photo1.jpg
+           resolves to a non-empty path (avoids broken/empty <img src>). -->
+      <div class="hero__frame is-empty" data-hero="../assets/photo1.jpg" role="img"
+           aria-label="სწრაფი და გემრიელი">
+        <noscript><img src="../assets/photo1.jpg" alt="" loading="eager"></noscript>
+      </div>
+      <div class="hero__chip chip-1"><span class="dot" aria-hidden="true"></span> ღია ახლა</div>
+      <div class="hero__chip chip-2"><span aria-hidden="true">✦</span> სწრაფი კვება</div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== ABOUT ===== -->
+<section class="section section--about reveal">
+  <div class="wrap">
+    <h2>ჩვენ შესახებ</h2>
+    <p class="about">Golden grill — სწრაფი კვება თბილისის ცენტრში. Google-ზე საშუალო შეფასება 4.1 ★, 208 მომხმარებლის მიხედვით.</p>
+  </div>
+</section>
+
+<!-- ===== DATA-DRIVEN SECTION BLOCKS (each is a full <section class="section">…</section>;
+         build.py wraps them with neutral classes and styles above make them playful;
+         empty tokens collapse to nothing) ===== -->
+<section class='section'><h2>გალერეა</h2><div class='gallery'><figure class='shot'><img loading='lazy' src='../assets/photo2.jpg' alt=''></figure><figure class='shot'><img loading='lazy' src='../assets/photo3.jpg' alt=''></figure><figure class='shot'><img loading='lazy' src='../assets/photo4.jpg' alt=''></figure><figure class='shot'><img loading='lazy' src='../assets/photo5.jpg' alt=''></figure><figure class='shot'><img loading='lazy' src='../assets/photo6.jpg' alt=''></figure></div></section>
+<section class='section'><h2>შეფასებები</h2><div class='reviews'><figure class='review'><div class='r-stars'><span class='stars'>★★★★★<span class='star-off'></span></span></div><blockquote>“საუკეთესო მომსახურება, უგემრიელესი კერძები,და მყუდრო გარემო 🤍”</blockquote><figcaption>— Anna Kadagidze</figcaption></figure><figure class='review'><div class='r-stars'><span class='stars'>★★★★★<span class='star-off'></span></span></div><blockquote>“ყველაზე გემრიელი ბურგერები და შაურმა.😍😍”</blockquote><figcaption>— Diko diko</figcaption></figure></div></section>
+<section class='section'><h2>სამუშაო საათები</h2><ul class='hours'><li><span>ორშაბათი: 11:00 AM – 12:00 AM</span></li><li><span>სამშაბათი: 11:00 AM – 12:00 AM</span></li><li><span>ოთხშაბათი: 11:00 AM – 12:00 AM</span></li><li><span>ხუთშაბათი: 11:00 AM – 12:00 AM</span></li><li><span>პარასკევი: 11:00 AM – 12:00 AM</span></li><li><span>შაბათი: 11:00 AM – 3:00 AM</span></li><li><span>კვირა: 11:00 AM – 12:00 AM</span></li></ul></section>
+<section class='section'><h2>დაგვიკავშირდით</h2><div class='cta'><a class='btn btn-primary' href='https://wa.me/995591076351' target='_blank' rel='noopener'><span class='ico'>💬</span> WhatsApp-ით მოწერა</a><a class='btn btn-ghost' href='tel:+995591076351'><span class='ico'>📞</span> დარეკვა</a><a class='btn btn-link' href='https://maps.google.com/?cid=5525679643857149045&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA' target='_blank' rel='noopener'>Google Maps-ზე ნახვა →</a></div><p class='phone'>591 07 63 51</p></section>
+<section class='section'><h2>მდებარეობა</h2><iframe class='map' loading='lazy' src='https://www.openstreetmap.org/export/embed.html?bbox=44.796681%2C41.701366%2C44.804681%2C41.709366&amp;layer=mapnik&amp;marker=41.705366,44.800681'></iframe><p class='addr'>📍 49-55 დავით აღმაშენებელის გამზირი, თბილისი</p></section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__brand"><span class="mark" aria-hidden="true">✦</span> Abra</div>
+    <p>ეს არის უფასო სადემონსტრაციო ვერსია. რეალურ ვებგვერდზე გამოყენებული იქნება თქვენი ფოტოები და ტექსტი.<br>
+    დამზადებულია <b style="color:var(--sun)">Abra</b>-ის მიერ თბილისში <span class="heart" aria-hidden="true">♥</span></p>
+  </div>
+</footer>
+
+<!-- ===== MANDATORY DEMO BANNER ===== -->
+<div class="demo-banner">
+  <span><b>უფასო დემო</b> — დამზადებულია Abra-ის მიერ</span>
+  <a href="https://wa.me/995557223993" target="_blank" rel="noopener">დაგაინტერესათ? მოგვწერეთ</a>
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* hero photo: swap in only when a real path exists, else keep gradient */
+  var frame = document.querySelector('.hero__frame');
+  if(frame){
+    var src = (frame.getAttribute('data-hero') || '').trim();
+    if(src){
+      var img = new Image();
+      img.alt = '';
+      img.decoding = 'async';
+      img.onload = function(){
+        frame.insertBefore(img, frame.firstChild);
+        frame.classList.remove('is-empty');
+        frame.removeAttribute('role');
+        frame.removeAttribute('aria-label');
+      };
+      img.src = src; /* on error: gradient + aria-label stay */
+    }
+  }
+
+  /* reveal on scroll */
+  var els = document.querySelectorAll('.reveal');
+  if(reduce || !('IntersectionObserver' in window)){
+    els.forEach(function(el){el.classList.add('in');});
+  }else{
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    },{threshold:.14, rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(el){io.observe(el);});
+  }
+})();
+</script>
+</body>
+</html>
