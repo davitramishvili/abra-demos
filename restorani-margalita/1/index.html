@@ -3,927 +3,1056 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>რესტორანი მარგალიტა — რესტორანი</title>
-<meta name="description" content="ელეგანტური სამზარეულო" />
+<title>რესტორანი მარგალიტა — ქართული სამზარეულო თბილისში</title>
+<meta name="description" content="რესტორანი მარგალიტა — ავთენტური ქართული სამზარეულო თბილისის გულში. თბილი ინტერიერი, ცოცხალი მუსიკა და ნამდვილი ქართული სუფრა. დაჯავშნეთ მაგიდა." />
 
-<!-- Georgian-complete fonts only -->
+<!-- Open Graph -->
+<meta property="og:type" content="restaurant" />
+<meta property="og:locale" content="ka_GE" />
+<meta property="og:title" content="რესტორანი მარგალიტა — ქართული სამზარეულო თბილისში" />
+<meta property="og:description" content="ავთენტური ქართული სუფრა თბილისის გულში. თბილი ინტერიერი და ცოცხალი მუსიკა." />
+<meta property="og:image" content="../../restorani-margalita/assets/photo1.jpg" />
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&family=Noto+Serif+Georgian:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&family=Noto+Serif+Georgian:opsz,wght@8..144,400;8..144,500;8..144,600;8..144,700;8..144,800&display=swap" rel="stylesheet" />
 
 <style>
   /* ============================================================
-     BOLD MODERN MINIMAL · editorial atelier template
-     Token-driven demo template (style 1)
+     რესტორანი მარგალიტა — Bold Modern Minimal
+     Palette derived from the venue: warm plaster cream,
+     espresso charcoal, terracotta brick, signature teal.
      ============================================================ */
-
   :root {
-    /* Palette — warm paper + espresso ink + brick clay */
-    --paper:      #F4EEE4;
-    --paper-2:    #EBE2D4;
-    --ink:        #1A1411;
-    --ink-soft:   #4A3F38;
-    --clay:       #B5532E;   /* terracotta accent */
-    --clay-deep:  #93411F;
-    --rose:       #C98B72;   /* dusty rose secondary */
-    --line:       rgba(26,20,17,0.14);
-    --line-2:     rgba(26,20,17,0.08);
-
-    /* Type */
-    --serif: "Noto Serif Georgian", Georgia, serif;
-    --sans:  "Noto Sans Georgian", system-ui, sans-serif;
-
-    /* Fluid type scale */
-    --step--1: clamp(0.80rem, 0.76rem + 0.18vw, 0.92rem);
-    --step-0:  clamp(1.00rem, 0.95rem + 0.25vw, 1.18rem);
-    --step-1:  clamp(1.30rem, 1.15rem + 0.7vw, 1.85rem);
-    --step-2:  clamp(1.70rem, 1.35rem + 1.6vw, 2.9rem);
-    --step-3:  clamp(2.40rem, 1.7rem + 3.3vw, 5.2rem);
-    --display: clamp(3.2rem, 1.6rem + 8.2vw, 12.5rem);
+    --cream:      #F4EEE1;
+    --cream-2:    #EDE4D2;
+    --paper:      #FBF8F1;
+    --ink:        #19130E;   /* near-black espresso */
+    --ink-soft:   #2A231C;
+    --muted:      #6B5F52;   /* warm grey-brown, 4.5:1 on cream */
+    --teal:       #14706B;   /* signature accent, AA on cream */
+    --teal-deep:  #0E5450;
+    --teal-bright:#2BA39A;
+    --terra:      #A8431F;   /* terracotta brick */
+    --terra-soft: #C2693F;
+    --line:       rgba(25,19,14,0.14);
+    --line-soft:  rgba(25,19,14,0.08);
 
     --maxw: 1320px;
-    --gutter: clamp(1.15rem, 4vw, 4.5rem);
+    --gut: clamp(20px, 5vw, 84px);
     --radius: 4px;
+
+    --ff-display: "Noto Serif Georgian", Georgia, serif;
+    --ff-sans: "Noto Sans Georgian", system-ui, sans-serif;
+
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
   html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
 
   body {
-    font-family: var(--sans);
-    background: var(--paper);
+    font-family: var(--ff-sans);
+    background: var(--cream);
     color: var(--ink);
-    font-size: var(--step-0);
-    line-height: 1.65;
+    line-height: 1.6;
+    font-size: clamp(16px, 1.05vw, 18px);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
   }
 
-  /* Subtle paper grain so big flats don't feel flat */
-  body::before {
-    content: "";
-    position: fixed; inset: 0;
-    pointer-events: none; z-index: 1;
-    opacity: 0.05; mix-blend-mode: multiply;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-
   img { display: block; max-width: 100%; height: auto; }
+
   a { color: inherit; text-decoration: none; }
 
-  ::selection { background: var(--clay); color: var(--paper); }
+  ::selection { background: var(--teal); color: var(--paper); }
 
   :focus-visible {
-    outline: 2.5px solid var(--clay);
+    outline: 3px solid var(--teal-bright);
     outline-offset: 3px;
     border-radius: 2px;
   }
 
-  .wrap { max-width: var(--maxw); margin-inline: auto; padding-inline: var(--gutter); }
+  .wrap {
+    width: 100%;
+    max-width: var(--maxw);
+    margin-inline: auto;
+    padding-inline: var(--gut);
+  }
 
-  /* Eyebrow / kicker — wide-tracked small caps label */
-  .kicker {
-    font-family: var(--sans);
-    font-size: var(--step--1);
+  .eyebrow {
+    font-family: var(--ff-sans);
     font-weight: 600;
-    letter-spacing: 0.34em;
+    font-size: clamp(0.7rem, 0.78vw, 0.82rem);
+    letter-spacing: 0.32em;
     text-transform: uppercase;
-    color: var(--clay);
+    color: var(--teal);
     display: inline-flex;
     align-items: center;
-    gap: 0.7em;
+    gap: 0.8em;
   }
-  .kicker::before {
+  .eyebrow::before {
     content: "";
-    width: 2.2rem; height: 1px;
-    background: currentColor;
+    width: 30px; height: 1.5px;
+    background: var(--teal);
     display: inline-block;
   }
-  .kicker.center::after {
-    content: "";
-    width: 2.2rem; height: 1px;
-    background: currentColor;
-    display: inline-block;
-  }
-  .kicker.center { justify-content: center; }
+  .eyebrow.center::before { display: none; }
 
-  h1, h2, h3 { font-family: var(--serif); font-weight: 800; line-height: 1.02; letter-spacing: -0.01em; }
+  h1, h2, h3 { font-family: var(--ff-display); font-weight: 700; line-height: 1.02; letter-spacing: -0.01em; }
 
-  .skip {
-    position: absolute; left: -999px; top: 0;
-    background: var(--ink); color: var(--paper);
-    padding: 0.8rem 1.2rem; z-index: 200; border-radius: var(--radius);
+  /* ============================ NAV ============================ */
+  .nav {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: clamp(14px, 2vw, 22px) var(--gut);
+    transition: background .5s var(--ease), backdrop-filter .5s var(--ease), box-shadow .5s var(--ease), padding .4s var(--ease);
+    color: var(--paper);
   }
-  .skip:focus { left: 1rem; top: 1rem; }
-
-  /* ---------- Buttons (44px+ tap targets) ----------
-     Neutral contract classes (.btn .btn-primary .btn-ghost .btn-link)
-     styled in this concept's language. ---------- */
-  .btn {
-    --bg: var(--ink); --fg: var(--paper);
-    display: inline-flex; align-items: center; gap: 0.6em;
-    min-height: 52px; padding: 0 1.7rem;
-    background: var(--bg); color: var(--fg);
-    font-family: var(--sans); font-weight: 600; font-size: var(--step-0);
-    letter-spacing: 0.01em;
-    border: 1.5px solid var(--bg); border-radius: 100px;
-    cursor: pointer;
-    transition: transform .4s var(--ease), background .35s var(--ease), color .35s var(--ease), box-shadow .4s var(--ease);
-    will-change: transform;
-  }
-  .btn .ico { transition: transform .4s var(--ease); }
-  .btn:hover { transform: translateY(-3px); box-shadow: 0 14px 30px -14px rgba(26,20,17,0.55); }
-  .btn:hover .ico { transform: translateX(4px); }
-
-  /* primary = clay solid */
-  .btn-primary { --bg: var(--clay); --fg: var(--paper); border-color: var(--clay); }
-
-  /* ghost = outline */
-  .btn-ghost {
-    --bg: transparent; --fg: var(--ink);
-    border-color: var(--ink);
-  }
-  .btn-ghost:hover { background: var(--ink); color: var(--paper); }
-
-  /* link = underlined inline text button */
-  .btn-link {
-    --bg: transparent; --fg: var(--ink);
-    border-color: transparent;
-    min-height: 0; padding: 0.4rem 0;
-    border-radius: 0;
-    position: relative;
-    box-shadow: none;
-  }
-  .btn-link::after {
-    content: ""; position: absolute; left: 0; bottom: 0.05rem;
-    width: 100%; height: 1.5px; background: var(--clay);
-    transform: scaleX(1); transform-origin: left; transition: transform .4s var(--ease);
-  }
-  .btn-link:hover { transform: none; box-shadow: none; color: var(--clay); }
-  .btn-link:hover::after { transform: scaleX(0); transform-origin: right; }
-
-  /* ============================================================
-     NAV
-     ============================================================ */
-  header.nav {
-    position: sticky; top: 0; z-index: 100;
-    background: color-mix(in srgb, var(--paper) 82%, transparent);
-    backdrop-filter: saturate(140%) blur(14px);
-    -webkit-backdrop-filter: saturate(140%) blur(14px);
-    border-bottom: 1px solid transparent;
-    transition: border-color .4s var(--ease), background .4s var(--ease), box-shadow .4s var(--ease);
-  }
-  header.nav.scrolled {
-    border-bottom-color: var(--line);
-    box-shadow: 0 10px 30px -22px rgba(26,20,17,0.5);
-  }
-  .nav-inner {
-    display: flex; align-items: center; justify-content: space-between;
-    height: 76px; max-width: var(--maxw); margin-inline: auto; padding-inline: var(--gutter);
+  .nav.scrolled {
+    background: rgba(20,15,11,0.82);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    backdrop-filter: blur(14px) saturate(140%);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+    padding-top: 12px; padding-bottom: 12px;
   }
   .brand {
-    font-family: var(--serif); font-weight: 900;
-    font-size: 1.35rem; letter-spacing: -0.02em;
-    display: flex; align-items: center; gap: 0.55rem;
+    font-family: var(--ff-display);
+    font-weight: 700;
+    font-size: clamp(1.1rem, 1.5vw, 1.45rem);
+    letter-spacing: 0.01em;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.5em;
+    color: var(--paper);
   }
-  .brand .dot {
-    width: 11px; height: 11px; border-radius: 50%;
-    background: var(--clay);
-    box-shadow: 0 0 0 4px color-mix(in srgb, var(--clay) 22%, transparent);
+  .brand .dot { color: var(--teal-bright); }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: clamp(22px, 2.4vw, 44px);
+    list-style: none;
   }
-  .nav-links { display: none; gap: 2.4rem; align-items: center; }
   .nav-links a {
-    font-size: var(--step--1); font-weight: 500; letter-spacing: 0.02em;
-    position: relative; padding: 0.4rem 0;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--paper);
+    opacity: 0.86;
+    position: relative;
+    padding: 6px 0;
+    transition: opacity .3s var(--ease);
   }
   .nav-links a::after {
     content: ""; position: absolute; left: 0; bottom: 0;
-    width: 100%; height: 1.5px; background: var(--clay);
-    transform: scaleX(0); transform-origin: right; transition: transform .4s var(--ease);
+    width: 100%; height: 1.5px; background: var(--teal-bright);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .4s var(--ease);
   }
-  .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
-  .nav-cta { display: none; }
-
-  .rating-pill {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    font-size: var(--step--1); font-weight: 600;
-  }
-  .rating-pill .stars { color: var(--clay); letter-spacing: 0.05em; }
-  .rating-pill .num { color: var(--ink-soft); font-weight: 500; }
-
-  @media (min-width: 940px) {
-    .nav-links { display: flex; }
-    .nav-cta { display: inline-flex; }
-  }
-
-  /* ============================================================
-     HERO
-     ============================================================ */
-  .hero { position: relative; padding-top: clamp(2rem, 5vw, 4.5rem); }
-  .hero-grid {
-    display: grid; grid-template-columns: 1fr;
-    gap: clamp(1.5rem, 4vw, 3rem);
-    align-items: end;
-  }
-  /* min-width:0 so a long headline's min-content can't blow out the fr tracks
-     and squeeze the hero image down to a sliver */
-  .hero-grid > * { min-width: 0; }
-  .hero-copy { position: relative; z-index: 3; }
-
-  .hero-title {
-    font-size: var(--display);
-    font-weight: 900;
-    line-height: 0.92;
-    letter-spacing: -0.03em;
-    margin: 1.1rem 0 0;
-    overflow-wrap: break-word;
-  }
-  .hero-title .l { display: block; overflow: hidden; }
-  .hero-title .l > span { display: block; }
-  .hero-title em {
-    font-style: normal;
-    color: var(--clay);
-    position: relative;
-  }
-  /* hand-drawn underline under the accent word */
-  .hero-title em::after {
-    content: "";
-    position: absolute; left: -1%; right: -1%; bottom: 0.04em;
-    height: 0.5em;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 40' preserveAspectRatio='none'%3E%3Cpath d='M4 28 C 70 12, 150 12, 296 24' stroke='%23B5532E' stroke-width='6' fill='none' stroke-linecap='round' opacity='0.45'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
-    z-index: -1;
-  }
-
-  .hero-sub {
-    max-width: 46ch;
-    margin-top: 1.6rem;
-    font-size: var(--step-1);
-    line-height: 1.5;
-    color: var(--ink-soft);
-    font-weight: 400;
-  }
-  .hero-actions {
-    display: flex; flex-wrap: wrap; gap: 0.9rem;
-    margin-top: 2.2rem;
-  }
-
-  .hero-media {
-    position: relative;
-    aspect-ratio: 4 / 5;
-    border-radius: var(--radius);
-    overflow: hidden;
-    background: var(--paper-2);
-  }
-  /* gradient fallback shown when there is no hero image */
-  .hero-media.no-img {
-    background:
-      radial-gradient(120% 120% at 15% 12%, color-mix(in srgb, var(--clay) 32%, transparent), transparent 55%),
-      radial-gradient(120% 120% at 85% 88%, color-mix(in srgb, var(--rose) 40%, transparent), transparent 55%),
-      linear-gradient(150deg, var(--paper-2), var(--ink) 240%);
-  }
-  .hero-media img {
-    width: 100%; height: 100%; object-fit: cover;
-    transform: scale(1.06);
-    will-change: transform;
-  }
-  .hero-media::after {
-    content: "";
-    position: absolute; inset: 0;
-    background: linear-gradient(180deg, transparent 55%, rgba(26,20,17,0.28));
-  }
-
-  /* demo ribbon on the hero */
-  .demo-ribbon {
-    position: absolute; z-index: 6;
-    top: clamp(0.7rem, 2vw, 1.2rem); left: clamp(0.7rem, 2vw, 1.2rem);
-    background: var(--clay); color: var(--paper);
-    font-family: var(--sans); font-weight: 700;
-    font-size: var(--step--1); letter-spacing: 0.18em; text-transform: uppercase;
-    padding: 0.5rem 1rem; border-radius: 100px;
-    box-shadow: 0 10px 24px -14px rgba(26,20,17,0.7);
-    display: inline-flex; align-items: center; gap: 0.5em;
-  }
-  .demo-ribbon::before {
-    content: ""; width: 8px; height: 8px; border-radius: 50%;
-    background: var(--paper); flex: none;
-  }
-
-  .hero-badge {
-    position: absolute; z-index: 4;
-    left: clamp(0.8rem, 2vw, 1.4rem); bottom: clamp(0.8rem, 2vw, 1.4rem);
-    background: color-mix(in srgb, var(--paper) 92%, transparent);
-    backdrop-filter: blur(6px);
+  .nav-links a:hover { opacity: 1; }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  .nav-links .nav-cta {
+    border: 1.5px solid rgba(255,255,255,0.5);
     border-radius: 100px;
-    padding: 0.55rem 1.05rem 0.55rem 0.6rem;
-    display: flex; align-items: center; gap: 0.7rem;
-    box-shadow: 0 12px 28px -16px rgba(26,20,17,0.6);
-    font-size: var(--step--1);
+    padding: 9px 20px;
+    opacity: 1;
+    transition: background .3s var(--ease), border-color .3s var(--ease), color .3s var(--ease);
   }
-  .hero-badge .av {
-    width: 34px; height: 34px; border-radius: 50%;
-    background: var(--clay); color: var(--paper);
-    display: grid; place-items: center; font-weight: 700; font-family: var(--serif);
-    flex: none;
-  }
-  .hero-badge .stars { color: var(--clay); letter-spacing: 0.04em; }
-  .hero-badge b { font-weight: 700; }
-  .hero-badge span { color: var(--ink-soft); }
+  .nav-links .nav-cta::after { display: none; }
+  .nav-links .nav-cta:hover { background: var(--teal-bright); border-color: var(--teal-bright); color: var(--ink); }
 
-  /* hero meta row under copy */
-  .hero-meta {
-    display: flex; flex-wrap: wrap; gap: clamp(1.4rem, 4vw, 3.4rem);
-    margin-top: 2.6rem; padding-top: 1.6rem;
-    border-top: 1px solid var(--line);
+  .nav-toggle {
+    display: none;
+    background: none; border: 0; cursor: pointer;
+    width: 44px; height: 44px;
+    flex-direction: column; justify-content: center; align-items: center; gap: 5px;
   }
-  .hero-meta .m .k { font-family: var(--serif); font-weight: 800; font-size: var(--step-2); line-height: 1; }
-  .hero-meta .m .k .stars { color: var(--clay); }
-  .hero-meta .m .v { font-size: var(--step--1); color: var(--ink-soft); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 0.4rem; }
-
-  @media (min-width: 880px) {
-    .hero-grid { grid-template-columns: 1.15fr 0.85fr; }
-  }
-  @media (min-width: 1100px) {
-    .hero-grid { grid-template-columns: 1.2fr 0.8fr; }
-    .hero-media { aspect-ratio: 3 / 4; }
+  .nav-toggle span {
+    width: 24px; height: 2px; background: var(--paper);
+    transition: transform .35s var(--ease), opacity .25s var(--ease);
   }
 
-  /* ============================================================
-     MARQUEE RIBBON
-     ============================================================ */
-  .marquee {
-    margin-top: clamp(3rem, 7vw, 6rem);
-    background: var(--ink);
+  /* ============================ HERO ============================ */
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: flex-end;
     color: var(--paper);
     overflow: hidden;
-    padding: clamp(0.9rem, 2vw, 1.3rem) 0;
-    border-block: 1px solid var(--ink);
   }
-  .marquee-track {
-    display: flex; width: max-content;
-    animation: scroll-x 32s linear infinite;
-    will-change: transform;
+  .hero__media { position: absolute; inset: 0; z-index: -2; }
+  .hero__media img {
+    width: 100%; height: 100%; object-fit: cover;
+    object-position: center 60%;
+    transform: scale(1.06);
+    animation: heroZoom 16s var(--ease) forwards;
   }
-  .marquee-track span {
-    font-family: var(--serif); font-weight: 700;
-    font-size: clamp(1.3rem, 3.5vw, 2.4rem);
-    letter-spacing: 0.01em;
-    padding-inline: clamp(1.2rem, 3vw, 2.4rem);
-    display: inline-flex; align-items: center; gap: clamp(1.2rem, 3vw, 2.4rem);
-    white-space: nowrap;
+  @keyframes heroZoom { to { transform: scale(1); } }
+  @media (prefers-reduced-motion: reduce) {
+    .hero__media img { animation: none; transform: none; }
   }
-  .marquee-track span::after {
-    content: "✸"; color: var(--clay); font-size: 0.7em;
+  .hero::after {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background:
+      linear-gradient(180deg, rgba(20,15,11,0.55) 0%, rgba(20,15,11,0.12) 32%, rgba(20,15,11,0.45) 72%, rgba(20,15,11,0.86) 100%);
   }
-  @keyframes scroll-x { to { transform: translateX(-50%); } }
-  .marquee:hover .marquee-track { animation-play-state: paused; }
-
-  /* ============================================================
-     SECTION SHELL — neutral .section + h2 styled to the concept
-     ============================================================ */
-  section { position: relative; z-index: 2; }
-  .section, .section-pad { padding-block: clamp(4.5rem, 10vw, 9rem); }
-  .section .wrap > h2,
-  .sec-head h2 {
-    font-size: var(--step-3);
-    max-width: 16ch;
+  .hero__inner {
+    width: 100%;
+    padding-bottom: clamp(48px, 8vh, 110px);
+    padding-top: 140px;
   }
-  .section .wrap > h2 {
-    margin-bottom: clamp(2.4rem, 6vw, 4.5rem);
-    position: relative;
+  .hero h1 {
+    font-size: clamp(3rem, 11.5vw, 11rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 0.92;
+    text-wrap: balance;
+    margin-top: 0.18em;
   }
-  .section .wrap > h2::before {
-    content: ""; display: block;
-    width: 2.6rem; height: 3px; background: var(--clay);
-    margin-bottom: 1.2rem; border-radius: 2px;
+  .hero h1 .accent { color: var(--teal-bright); }
+  .hero__lead {
+    max-width: 46ch;
+    font-size: clamp(1.02rem, 1.45vw, 1.32rem);
+    color: rgba(255,255,255,0.92);
+    margin-top: clamp(20px, 3vh, 34px);
+    line-height: 1.55;
   }
-
-  .sec-head {
-    display: grid; gap: 1.2rem;
-    margin-bottom: clamp(2.4rem, 6vw, 4.5rem);
-  }
-  .sec-head .lead {
-    font-size: var(--step-1); color: var(--ink-soft); max-width: 52ch; font-weight: 400;
-  }
-  @media (min-width: 900px) {
-    .sec-head.split {
-      grid-template-columns: 1fr 1fr; align-items: end; gap: clamp(2rem, 5vw, 5rem);
-    }
-    .sec-head.split .lead { justify-self: end; }
-  }
-
-  /* ============================================================
-     ABOUT — asymmetric editorial (neutral .about)
-     ============================================================ */
-  .about-grid {
-    display: grid; grid-template-columns: 1fr; gap: clamp(1.6rem, 4vw, 3rem);
+  .hero__actions {
+    display: flex; flex-wrap: wrap; gap: 16px;
+    margin-top: clamp(28px, 4vh, 44px);
     align-items: center;
   }
-  .about .about-copy,
-  .about-copy { max-width: 62ch; }
-  .about-copy p + p,
-  .about p + p { margin-top: 1.1rem; }
-  .about-copy p,
-  .about p { color: var(--ink-soft); font-size: var(--step-0); }
-  .about-copy .big {
-    font-family: var(--serif); font-weight: 700; color: var(--ink);
-    font-size: var(--step-2); line-height: 1.18; margin-bottom: 1.4rem;
-    letter-spacing: -0.01em;
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.7em;
+    font-family: var(--ff-sans);
+    font-weight: 600;
+    font-size: 0.96rem;
+    letter-spacing: 0.02em;
+    padding: 16px 30px;
+    min-height: 52px;
+    border-radius: 100px;
+    border: 1.5px solid transparent;
+    cursor: pointer;
+    transition: transform .3s var(--ease), background .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease);
+    will-change: transform;
   }
-  .sign {
-    margin-top: 1.8rem; font-family: var(--serif); font-style: italic;
-    font-weight: 600; font-size: var(--step-1); color: var(--clay);
+  .btn svg { width: 18px; height: 18px; }
+  .btn--primary { background: var(--teal-bright); color: var(--ink); box-shadow: 0 10px 30px -10px rgba(43,163,154,0.6); }
+  .btn--primary:hover { background: #36b8ae; transform: translateY(-2px); box-shadow: 0 16px 36px -12px rgba(43,163,154,0.7); }
+  .btn--ghost { border-color: rgba(255,255,255,0.55); color: var(--paper); }
+  .btn--ghost:hover { background: rgba(255,255,255,0.12); border-color: #fff; transform: translateY(-2px); }
+  .btn--ink { background: var(--ink); color: var(--paper); }
+  .btn--ink:hover { background: var(--teal-deep); transform: translateY(-2px); }
+  .btn--outline-ink { border-color: var(--ink); color: var(--ink); }
+  .btn--outline-ink:hover { background: var(--ink); color: var(--paper); transform: translateY(-2px); }
+  @media (prefers-reduced-motion: reduce) {
+    .btn:hover { transform: none; }
   }
 
-  /* ============================================================
-     GALLERY — editorial grid (neutral .gallery / .shot)
-     ============================================================ */
-  .gallery {
+  /* rating chip in hero */
+  .rating-chip {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 9px 16px 9px 14px;
+    border-radius: 100px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.22);
+    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+    font-size: 0.9rem;
+  }
+  .rating-chip .stars { color: #F2B705; letter-spacing: 1px; font-size: 0.95rem; }
+  .rating-chip strong { font-weight: 700; }
+  .rating-chip .muted-on-dark { color: rgba(255,255,255,0.7); }
+
+  .hero__scroll {
+    position: absolute;
+    left: var(--gut); bottom: clamp(20px, 3vh, 34px);
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+  }
+  .hero__scroll .line {
+    width: 1px; height: 40px; background: rgba(255,255,255,0.4);
+    position: relative; overflow: hidden;
+  }
+  .hero__scroll .line::after {
+    content: ""; position: absolute; inset: 0; background: var(--teal-bright);
+    transform: translateY(-100%); animation: scrollLine 2.4s var(--ease) infinite;
+  }
+  @keyframes scrollLine { 0%{transform:translateY(-100%)} 60%,100%{transform:translateY(100%)} }
+  @media (prefers-reduced-motion: reduce) { .hero__scroll .line::after { animation: none; } }
+  @media (max-width: 720px){ .hero__scroll { display:none; } }
+
+  /* ============================ MARQUEE STRIP ============================ */
+  .strip {
+    background: var(--ink);
+    color: var(--cream);
+    overflow: hidden;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .marquee {
+    display: flex; width: max-content;
+    animation: marquee 38s linear infinite;
+  }
+  .marquee:hover { animation-play-state: paused; }
+  .marquee span {
+    font-family: var(--ff-display);
+    font-size: clamp(1.1rem, 2vw, 1.7rem);
+    font-weight: 500;
+    padding: 18px clamp(22px, 3vw, 44px);
+    display: inline-flex; align-items: center; gap: clamp(22px,3vw,44px);
+    white-space: nowrap;
+  }
+  .marquee span i { color: var(--teal-bright); font-style: normal; }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .marquee { animation: none; } }
+
+  /* ============================ SECTION SHELL ============================ */
+  section { position: relative; }
+  .section-pad { padding-block: clamp(72px, 11vh, 150px); }
+  .section-head { max-width: 62ch; }
+  .section-head h2 {
+    font-size: clamp(2.1rem, 5.4vw, 4.4rem);
+    margin-top: 0.5em;
+    text-wrap: balance;
+  }
+  .section-head p {
+    color: var(--muted);
+    font-size: clamp(1rem, 1.2vw, 1.15rem);
+    margin-top: 1.1em;
+    max-width: 54ch;
+  }
+
+  /* ============================ ABOUT ============================ */
+  .about { background: var(--paper); }
+  .about__grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: clamp(0.6rem, 1.5vw, 1rem);
-    grid-auto-flow: dense;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: clamp(36px, 6vw, 96px);
+    align-items: center;
   }
-  .shot {
+  .about__media {
+    position: relative;
+  }
+  .about__media .frame {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    aspect-ratio: 4/5;
+  }
+  .about__media .frame img { width: 100%; height: 100%; object-fit: cover; }
+  .about__media .badge {
+    position: absolute;
+    right: clamp(-12px, -1vw, -28px); bottom: clamp(18px, 3vw, 40px);
+    background: var(--teal);
+    color: var(--paper);
+    border-radius: var(--radius);
+    padding: 20px 26px;
+    width: min(220px, 60vw);
+    box-shadow: 0 24px 50px -18px rgba(14,84,80,0.6);
+  }
+  .about__media .badge .num {
+    font-family: var(--ff-display);
+    font-size: clamp(2.4rem, 4vw, 3.2rem);
+    font-weight: 800; line-height: 1;
+    display: block;
+  }
+  .about__media .badge .lbl {
+    font-size: 0.82rem; letter-spacing: 0.04em;
+    margin-top: 8px; color: rgba(255,255,255,0.86);
+  }
+  .about__body h2 {
+    font-size: clamp(2rem, 4.6vw, 3.6rem);
+    margin-top: 0.5em;
+  }
+  .about__body p { color: var(--ink-soft); margin-top: 1.2em; }
+  .about__body p.lead { font-size: clamp(1.08rem, 1.5vw, 1.32rem); color: var(--ink); font-weight: 500; }
+  .about__stats {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 20px; margin-top: clamp(28px, 4vw, 44px);
+    border-top: 1px solid var(--line); padding-top: clamp(24px, 3vw, 34px);
+  }
+  .about__stats .stat .n {
+    font-family: var(--ff-display); font-weight: 700;
+    font-size: clamp(1.7rem, 3vw, 2.4rem); color: var(--teal); line-height: 1;
+  }
+  .about__stats .stat .t { font-size: 0.84rem; color: var(--muted); margin-top: 8px; }
+
+  /* ============================ MENU / SIGNATURE ============================ */
+  .menu { background: var(--cream); }
+  .menu__top {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    gap: 24px; flex-wrap: wrap;
+    margin-bottom: clamp(36px, 5vw, 64px);
+  }
+  .menu__list { display: grid; gap: 0; }
+  .menu-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: baseline;
+    gap: clamp(14px, 2vw, 28px);
+    padding: clamp(22px, 3vw, 30px) 0;
+    border-top: 1px solid var(--line);
+    transition: background .4s var(--ease), padding-inline .4s var(--ease);
+  }
+  .menu__list .menu-row:last-child { border-bottom: 1px solid var(--line); }
+  .menu-row:hover { background: var(--paper); padding-inline: clamp(12px, 1.5vw, 22px); }
+  .menu-row .idx {
+    font-family: var(--ff-display); font-weight: 600;
+    color: var(--teal); font-size: 0.95rem; opacity: 0.85;
+    min-width: 2.4ch;
+  }
+  .menu-row .body h3 {
+    font-size: clamp(1.3rem, 2.4vw, 1.9rem);
+    font-weight: 600; line-height: 1.12;
+  }
+  .menu-row .body p {
+    color: var(--muted); font-size: 0.96rem; margin-top: 6px; max-width: 56ch;
+  }
+  .menu-row .price {
+    font-family: var(--ff-display);
+    font-weight: 700; font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+    color: var(--ink); white-space: nowrap;
+  }
+  .menu-row .price small { font-size: 0.62em; font-weight: 500; color: var(--muted); }
+  .menu__note {
+    margin-top: clamp(28px, 4vw, 40px);
+    font-size: 0.9rem; color: var(--muted);
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  }
+
+  /* Signature feature card (the supra) */
+  .signature {
+    margin-top: clamp(56px, 8vw, 110px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: 6px;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .signature__media { position: relative; min-height: 340px; }
+  .signature__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .signature__body { padding: clamp(32px, 5vw, 72px); display: flex; flex-direction: column; justify-content: center; }
+  .signature__body .eyebrow { color: var(--teal-bright); }
+  .signature__body .eyebrow::before { background: var(--teal-bright); }
+  .signature__body h3 {
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    margin: 0.45em 0 0.5em;
+    color: var(--paper);
+  }
+  .signature__body p { color: rgba(244,238,225,0.82); max-width: 48ch; }
+  .signature__body .btn { margin-top: clamp(26px, 3.5vw, 38px); align-self: flex-start; }
+
+  /* ============================ GALLERY ============================ */
+  .gallery { background: var(--paper); }
+  .gallery__grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: clamp(120px, 16vw, 200px);
+    gap: clamp(10px, 1.4vw, 18px);
+    margin-top: clamp(36px, 5vw, 56px);
+  }
+  .g-item {
     position: relative; overflow: hidden; border-radius: var(--radius);
-    background: var(--paper-2);
-    aspect-ratio: 4 / 5;
-    margin: 0;
+    background: var(--cream-2);
   }
-  .shot img {
+  .g-item img {
     width: 100%; height: 100%; object-fit: cover;
     transition: transform .9s var(--ease);
   }
-  .shot figcaption {
-    position: absolute; left: 0; right: 0; bottom: 0;
-    padding: 1.4rem 1.1rem 0.9rem;
-    color: var(--paper);
-    font-size: var(--step--1); font-weight: 600; letter-spacing: 0.04em;
-    background: linear-gradient(transparent, rgba(26,20,17,0.7));
-    transform: translateY(8px); opacity: 0;
-    transition: transform .5s var(--ease), opacity .5s var(--ease);
+  .g-item::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 55%, rgba(20,15,11,0.35) 100%);
+    opacity: 0; transition: opacity .5s var(--ease);
   }
-  .shot:hover img { transform: scale(1.07); }
-  .shot:hover figcaption { transform: translateY(0); opacity: 1; }
-  /* editorial rhythm: every 5th/6th tile spans wider/taller */
-  @media (min-width: 760px) {
-    .gallery { grid-template-columns: repeat(4, 1fr); }
-    .shot:nth-child(6n+1) { grid-row: span 2; }
-    .shot:nth-child(6n+2) { grid-column: span 2; }
-    .shot:nth-child(6n+5) { grid-column: span 2; }
+  .g-item:hover img { transform: scale(1.07); }
+  .g-item:hover::after { opacity: 1; }
+  .g-item .cap {
+    position: absolute; left: 16px; bottom: 14px; z-index: 2;
+    color: var(--paper); font-size: 0.82rem; font-weight: 500;
+    letter-spacing: 0.06em;
+    opacity: 0; transform: translateY(8px);
+    transition: opacity .5s var(--ease), transform .5s var(--ease);
   }
+  .g-item:hover .cap { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce){ .g-item:hover img { transform: none; } }
 
-  /* ============================================================
-     REVIEWS — quote cards (neutral .reviews / .review / .r-stars)
-     ============================================================ */
-  .reviews {
-    display: grid; grid-template-columns: 1fr;
-    gap: clamp(1rem, 2.5vw, 1.6rem);
-  }
-  .review {
-    background: var(--paper-2);
-    border: 1px solid var(--line-2);
-    border-radius: var(--radius);
-    padding: clamp(1.5rem, 3vw, 2.2rem);
-    display: flex; flex-direction: column; gap: 1rem;
-    margin: 0;
-    position: relative;
-  }
-  .review::before {
-    content: "\201C";
-    font-family: var(--serif); font-weight: 900;
-    font-size: 4rem; line-height: 0.6; color: var(--clay);
-    opacity: 0.5;
-  }
-  .review blockquote {
-    font-family: var(--serif); font-weight: 600;
-    font-size: var(--step-1); line-height: 1.4; color: var(--ink);
-    margin: 0;
-  }
-  .review .r-stars { color: var(--clay); letter-spacing: 0.08em; font-size: var(--step-0); }
-  .review figcaption {
-    font-size: var(--step--1); font-weight: 600; letter-spacing: 0.04em;
-    text-transform: uppercase; color: var(--ink-soft);
-    margin-top: auto;
-  }
-  @media (min-width: 760px) {
-    .reviews { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (min-width: 1080px) {
-    .reviews { grid-template-columns: repeat(3, 1fr); }
-  }
+  .g-a { grid-column: span 7; grid-row: span 2; }
+  .g-b { grid-column: span 5; grid-row: span 1; }
+  .g-c { grid-column: span 5; grid-row: span 1; }
+  .g-d { grid-column: span 4; grid-row: span 2; }
+  .g-e { grid-column: span 4; grid-row: span 1; }
+  .g-f { grid-column: span 4; grid-row: span 1; }
 
-  /* ============================================================
-     HOURS (neutral .hours)
-     ============================================================ */
-  .hours {
-    list-style: none;
-    background: var(--paper-2); border-radius: var(--radius);
-    padding: clamp(1.4rem, 4vw, 2.4rem);
-    border: 1px solid var(--line-2);
-    display: grid; gap: 0;
-    max-width: 560px;
+  /* ============================ HOURS / VISIT ============================ */
+  .visit { background: var(--ink); color: var(--cream); }
+  .visit__grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 6vw, 96px);
+    align-items: start;
   }
+  .visit__grid .eyebrow { color: var(--teal-bright); }
+  .visit__grid .eyebrow::before { background: var(--teal-bright); }
+  .visit h2 { font-size: clamp(2rem, 4.6vw, 3.6rem); color: var(--paper); margin-top: 0.5em; }
+  .visit .lead { color: rgba(244,238,225,0.82); margin-top: 1.1em; max-width: 46ch; }
+
+  .hours { list-style: none; margin-top: 8px; }
   .hours li {
-    display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
-    padding: 0.85rem 0; border-bottom: 1px dashed var(--line);
-    font-size: var(--step-0);
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 16px; padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
   }
-  .hours li:last-child { border-bottom: 0; }
-  .hours li span:first-child { font-weight: 600; }
-  .hours li span:last-child { color: var(--ink-soft); font-variant-numeric: tabular-nums; }
-  .hours li.now,
-  .hours li.now span { color: var(--clay); font-weight: 700; }
+  .hours li:first-child { border-top: 1px solid rgba(255,255,255,0.12); }
+  .hours .day { font-weight: 500; letter-spacing: 0.02em; }
+  .hours .time { font-family: var(--ff-display); font-size: 1.05rem; color: var(--cream); }
+  .hours li.today { color: var(--teal-bright); }
+  .hours li.today .time { color: var(--teal-bright); }
+  .hours li.today .day::after {
+    content: "ახლა ღიაა"; font-family: var(--ff-sans); font-size: 0.66rem;
+    letter-spacing: 0.14em; text-transform: uppercase; margin-left: 12px;
+    background: var(--teal); color: var(--paper); padding: 3px 9px; border-radius: 100px;
+    vertical-align: middle;
+  }
 
-  /* ============================================================
-     CONTACT / CTA (neutral .cta) — closing full-bleed dark block
-     ============================================================ */
-  .cta {
-    position: relative; overflow: hidden;
-    background: var(--ink);
+  .visit__info { margin-top: clamp(28px, 4vw, 40px); display: grid; gap: 22px; }
+  .info-row { display: flex; gap: 16px; align-items: flex-start; }
+  .info-row .ico {
+    flex: none; width: 44px; height: 44px; border-radius: 50%;
+    display: grid; place-items: center;
+    background: rgba(43,163,154,0.16); color: var(--teal-bright);
+    border: 1px solid rgba(43,163,154,0.3);
+  }
+  .info-row .ico svg { width: 20px; height: 20px; }
+  .info-row .k { font-size: 0.76rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(244,238,225,0.6); }
+  .info-row .v { font-size: 1.05rem; margin-top: 3px; color: var(--cream); }
+  .info-row .v a:hover { color: var(--teal-bright); }
+
+  /* ============================ RESERVE CTA ============================ */
+  .reserve { position: relative; overflow: hidden; color: var(--paper); isolation: isolate; }
+  .reserve__media { position: absolute; inset: 0; z-index: -2; }
+  .reserve__media img { width: 100%; height: 100%; object-fit: cover; object-position: center 55%; }
+  .reserve::after {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(120deg, rgba(14,84,80,0.92) 0%, rgba(20,15,11,0.86) 60%, rgba(20,15,11,0.78) 100%);
+  }
+  .reserve__inner { text-align: center; max-width: 760px; margin-inline: auto; }
+  .reserve .eyebrow { color: var(--teal-bright); justify-content: center; }
+  .reserve .eyebrow::before { display: none; }
+  .reserve h2 {
+    font-size: clamp(2.4rem, 6.5vw, 5.4rem);
     color: var(--paper);
-    text-align: center;
-    isolation: isolate;
+    margin-top: 0.4em; text-wrap: balance;
   }
-  .cta .wrap { padding-block: clamp(5rem, 12vw, 10rem); position: relative; }
-  .cta h2 {
-    font-size: var(--step-3); line-height: 0.98; color: var(--paper);
-    max-width: 18ch; margin-inline: auto; letter-spacing: -0.02em;
-  }
-  .cta h2::before {
-    content: ""; display: block;
-    width: 2.6rem; height: 3px; background: var(--rose);
-    margin: 0 auto 1.2rem; border-radius: 2px;
-  }
-  .cta .lead,
-  .cta > .wrap > p {
-    font-size: var(--step-1); color: color-mix(in srgb, var(--paper) 78%, transparent);
-    margin: 1.6rem auto 0; max-width: 46ch;
-  }
-  .cta .contact-actions {
-    display: flex; flex-wrap: wrap; gap: 0.9rem; justify-content: center;
-    margin-top: 2.4rem;
-  }
-  .cta .phone-line {
-    margin-top: 1.6rem; font-size: var(--step--1);
-    color: color-mix(in srgb, var(--paper) 70%, transparent);
-    letter-spacing: 0.04em;
-  }
-  .cta .phone-line a { color: var(--rose); }
-  /* recolor neutral buttons inside dark cta */
-  .cta .btn-primary { --bg: var(--clay); --fg: var(--paper); border-color: var(--clay); }
-  .cta .btn-ghost { --fg: var(--paper); border-color: rgba(244,238,228,0.65); }
-  .cta .btn-ghost:hover { background: var(--paper); color: var(--ink); border-color: var(--paper); }
-  .cta .btn-link { --fg: var(--paper); }
-  .cta .btn-link::after { background: var(--rose); }
-  .cta .btn-link:hover { color: var(--rose); }
+  .reserve p { color: rgba(255,255,255,0.88); font-size: clamp(1.02rem, 1.4vw, 1.25rem); margin-top: 1.1em; }
+  .reserve__actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: clamp(30px, 4vw, 44px); }
 
-  /* ============================================================
-     MAP (neutral .map / .addr)
-     ============================================================ */
-  .map {
-    width: 100%; border: 0;
-    aspect-ratio: 16 / 9; min-height: 320px;
-    border-radius: var(--radius);
-    filter: grayscale(0.25) contrast(1.02);
-    background: var(--paper-2);
-    display: block;
+  /* ============================ FOOTER ============================ */
+  .footer { background: var(--ink); color: rgba(244,238,225,0.7); padding-block: clamp(48px, 7vw, 84px); border-top: 1px solid rgba(255,255,255,0.08); }
+  .footer__grid {
+    display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: clamp(32px, 5vw, 64px);
+    align-items: start;
   }
-  .addr {
-    margin-top: 1.2rem;
-    font-family: var(--serif); font-weight: 700;
-    font-size: var(--step-1); color: var(--ink); line-height: 1.4;
+  .footer .brand { font-size: clamp(1.4rem, 2.2vw, 2rem); margin-bottom: 14px; }
+  .footer__about { max-width: 38ch; line-height: 1.7; font-size: 0.95rem; }
+  .footer__col h4 {
+    font-family: var(--ff-sans); font-size: 0.76rem; letter-spacing: 0.18em;
+    text-transform: uppercase; color: rgba(244,238,225,0.5); margin-bottom: 18px; font-weight: 600;
+  }
+  .footer__col ul { list-style: none; display: grid; gap: 12px; }
+  .footer__col a { font-size: 0.98rem; color: var(--cream); transition: color .3s var(--ease); }
+  .footer__col a:hover { color: var(--teal-bright); }
+  .footer__bottom {
+    margin-top: clamp(40px, 5vw, 60px); padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+    font-size: 0.84rem; color: rgba(244,238,225,0.5);
   }
 
-  /* ============================================================
-     FOOTER
-     ============================================================ */
-  footer.foot {
-    background: var(--ink); color: var(--paper);
-    padding-block: clamp(3rem, 6vw, 5rem) 2rem;
-  }
-  .foot-top {
-    display: grid; grid-template-columns: 1fr; gap: 2.4rem;
-    padding-bottom: 3rem; border-bottom: 1px solid rgba(244,238,228,0.14);
-  }
-  .foot-brand .brand { font-size: 1.7rem; color: var(--paper); }
-  .foot-brand p { color: color-mix(in srgb, var(--paper) 64%, transparent); margin-top: 1rem; max-width: 34ch; font-size: var(--step--1); }
-  .foot-col h4 {
-    font-family: var(--sans); font-size: var(--step--1); font-weight: 600;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--rose); margin-bottom: 1.1rem;
-  }
-  .foot-col a, .foot-col p { display: block; color: color-mix(in srgb, var(--paper) 78%, transparent); font-size: var(--step-0); padding: 0.35rem 0; transition: color .3s var(--ease); }
-  .foot-col a:hover { color: var(--paper); }
-  .foot-col .stars { color: var(--rose); }
-  .foot-bottom {
-    display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between;
-    align-items: center; padding-top: 1.8rem;
-    font-size: var(--step--1); color: color-mix(in srgb, var(--paper) 55%, transparent);
-  }
-  @media (min-width: 760px) {
-    .foot-top { grid-template-columns: 1.6fr 1fr 1fr; gap: 3rem; }
-  }
-
-  /* ============================================================
-     DEMO BOTTOM BANNER (mandatory)
-     ============================================================ */
-  .demo-banner {
-    position: fixed; left: 0; right: 0; bottom: 0; z-index: 150;
-    background: var(--ink); color: var(--paper);
-    border-top: 1px solid color-mix(in srgb, var(--paper) 16%, transparent);
-    box-shadow: 0 -10px 30px -20px rgba(0,0,0,0.8);
-  }
-  .demo-banner .db-inner {
-    max-width: var(--maxw); margin-inline: auto;
-    padding: 0.75rem var(--gutter);
-    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
-    gap: 0.75rem 1.2rem;
-  }
-  .demo-banner .db-text {
-    font-size: var(--step--1); font-weight: 500;
-    color: color-mix(in srgb, var(--paper) 88%, transparent);
-  }
-  .demo-banner .db-text b { font-weight: 700; color: var(--paper); }
-  .demo-banner .btn {
-    min-height: 44px; padding: 0 1.3rem;
-    --bg: var(--clay); --fg: var(--paper); border-color: var(--clay);
-    font-size: var(--step--1);
-  }
-  /* keep fixed banner from covering the footer's last content */
-  body { padding-bottom: 88px; }
-  @media (min-width: 560px) { body { padding-bottom: 72px; } }
-
-  /* ============================================================
-     SCROLL REVEAL
-     ============================================================ */
+  /* ============================ SCROLL REVEAL ============================ */
   .reveal { opacity: 0; transform: translateY(26px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
   .reveal.in { opacity: 1; transform: none; }
-  .reveal[data-d="1"] { transition-delay: .08s; }
-  .reveal[data-d="2"] { transition-delay: .16s; }
-  .reveal[data-d="3"] { transition-delay: .24s; }
-  .reveal[data-d="4"] { transition-delay: .32s; }
-
-  /* hero line entrance */
-  .hero-title .l > span { transform: translateY(110%); transition: transform 1s var(--ease); }
-  .hero-title.in .l > span { transform: translateY(0); }
-  .hero-title .l:nth-child(2) > span { transition-delay: .12s; }
-  .hero-title .l:nth-child(3) > span { transition-delay: .24s; }
-
-  /* ============================================================
-     REDUCED MOTION
-     ============================================================ */
+  .reveal[data-delay="1"] { transition-delay: .08s; }
+  .reveal[data-delay="2"] { transition-delay: .16s; }
+  .reveal[data-delay="3"] { transition-delay: .24s; }
+  .reveal[data-delay="4"] { transition-delay: .32s; }
   @media (prefers-reduced-motion: reduce) {
-    * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
-    .marquee-track { animation: none; }
-    .reveal { opacity: 1; transform: none; }
-    .hero-title .l > span { transform: none; }
-    .hero-media img { transform: scale(1); }
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+
+  /* ============================ RESPONSIVE ============================ */
+  @media (max-width: 960px) {
+    .about__grid { grid-template-columns: 1fr; gap: 48px; }
+    .about__media { max-width: 460px; }
+    .signature { grid-template-columns: 1fr; }
+    .signature__media { min-height: 300px; order: -1; }
+    .visit__grid { grid-template-columns: 1fr; }
+    .footer__grid { grid-template-columns: 1fr 1fr; }
+    .footer__brand-col { grid-column: 1 / -1; }
+  }
+
+  @media (max-width: 760px) {
+    .nav-links {
+      position: fixed; inset: 0 0 0 auto;
+      width: min(82vw, 360px);
+      background: rgba(20,15,11,0.97);
+      -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
+      flex-direction: column; justify-content: center;
+      align-items: flex-start;
+      gap: 28px;
+      padding: 0 var(--gut);
+      transform: translateX(100%);
+      transition: transform .5s var(--ease);
+      box-shadow: -20px 0 60px rgba(0,0,0,0.4);
+    }
+    .nav-links.open { transform: translateX(0); }
+    .nav-links a { font-size: 1.1rem; opacity: 1; }
+    .nav-links .nav-cta { margin-top: 8px; }
+    .nav-toggle { display: flex; z-index: 110; }
+    body.menu-open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    body.menu-open .nav-toggle span:nth-child(2) { opacity: 0; }
+    body.menu-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .gallery__grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: clamp(140px, 40vw, 220px);
+    }
+    .g-a { grid-column: span 2; grid-row: span 2; }
+    .g-b, .g-c, .g-d, .g-e, .g-f { grid-column: span 1; grid-row: span 1; }
+    .g-d { grid-column: span 2; }
+
+    .menu-row { grid-template-columns: 1fr auto; }
+    .menu-row .idx { display: none; }
+    .about__stats { grid-template-columns: 1fr; gap: 14px; }
+    .about__stats .stat { display: flex; align-items: baseline; gap: 14px; }
+    .footer__grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 420px){
+    .hero h1 { font-size: clamp(2.6rem, 15vw, 4rem); }
+    .btn { width: 100%; justify-content: center; }
+    .hero__actions, .reserve__actions { width: 100%; }
+    .rating-chip { width: 100%; justify-content: center; }
   }
 </style>
 </head>
 <body>
 
-<a class="skip" href="#main">გადასვლა მთავარ კონტენტზე</a>
-
-<!-- ===================== NAV ===================== -->
+<!-- ============================ NAV ============================ -->
 <header class="nav" id="nav">
-  <div class="nav-inner">
-    <a class="brand" href="#" aria-label="რესტორანი მარგალიტა">
-      <span class="dot" aria-hidden="true"></span>
-      რესტორანი მარგალიტა
-    </a>
-
-    <nav class="nav-links" aria-label="მთავარი ნავიგაცია">
-      <a href="#about">ჩვენ შესახებ</a>
-      <a href="#gallery">გალერეა</a>
-      <a href="#reviews">შეფასებები</a>
-      <a href="#visit">საათები</a>
-      <a href="#contact">კონტაქტი</a>
-    </nav>
-
-    <a class="btn btn-primary nav-cta" href="https://wa.me/995557223993" target="_blank" rel="noopener">
-      დაგვიკავშირდით
-      <span class="ico" aria-hidden="true">→</span>
-    </a>
-  </div>
+  <a href="#top" class="brand" aria-label="რესტორანი მარგალიტა — მთავარი">
+    მარგალიტა<span class="dot">.</span>
+  </a>
+  <nav aria-label="მთავარი ნავიგაცია">
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">ჩვენ შესახებ</a></li>
+      <li><a href="#menu">მენიუ</a></li>
+      <li><a href="#gallery">გალერეა</a></li>
+      <li><a href="#visit">საათები</a></li>
+      <li><a href="https://wa.me/995574114343" class="nav-cta" target="_blank" rel="noopener">მაგიდის დაჯავშნა</a></li>
+    </ul>
+  </nav>
+  <button class="nav-toggle" id="navToggle" aria-label="მენიუს გახსნა" aria-expanded="false" aria-controls="navLinks">
+    <span></span><span></span><span></span>
+  </button>
 </header>
 
-<main id="main">
+<main id="top">
 
-  <!-- ===================== HERO ===================== -->
-  <section class="hero" aria-labelledby="hero-h">
+  <!-- ============================ HERO ============================ -->
+  <section class="hero" aria-label="მთავარი">
+    <div class="hero__media">
+      <img src="../../restorani-margalita/assets/photo1.jpg" alt="რესტორან მარგალიტას თბილი ინტერიერი აგურის კედლებით, ფირუზისფერი დეტალებითა და დეკორატიული ჭაღებით" fetchpriority="high" />
+    </div>
+    <div class="hero__inner wrap">
+      <span class="eyebrow" style="color:var(--teal-bright)"><span style="background:var(--teal-bright)"></span>ქართული სამზარეულო · თბილისი</span>
+      <h1>ნამდვილი<br><span class="accent">ქართული</span> სუფრა</h1>
+      <p class="hero__lead">
+        მარგალიტა — ადგილი, სადაც თბილისის სითბო, ოჯახური რეცეპტები და ცოცხალი მუსიკა ერთ მაგიდასთან იყრის თავს. მობრძანდით ისე, როგორც სტუმარი — წახვალთ ისე, როგორც ოჯახის წევრი.
+      </p>
+      <div class="hero__actions">
+        <a href="https://wa.me/995574114343" class="btn btn--primary" target="_blank" rel="noopener">
+          მაგიდის დაჯავშნა
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#menu" class="btn btn--ghost">მენიუს ნახვა</a>
+        <span class="rating-chip" aria-label="გუგლის შეფასება 4.6 ხუთიდან, 1456 მიმოხილვა">
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <span><strong>4.6</strong> <span class="muted-on-dark">/ 1456 მიმოხილვა</span></span>
+        </span>
+      </div>
+    </div>
+    <a href="#about" class="hero__scroll" aria-label="ქვემოთ გადახვევა">
+      <span class="line" aria-hidden="true"></span>
+      გადაახვიეთ
+    </a>
+  </section>
+
+  <!-- ============================ STRIP ============================ -->
+  <div class="strip" aria-hidden="true">
+    <div class="marquee">
+      <span>ხინკალი <i>✦</i> ხაჭაპური <i>✦</i> მწვადი <i>✦</i> ცოცხალი მუსიკა <i>✦</i> ქართული ღვინო <i>✦</i> ოჯახური სითბო <i>✦</i></span>
+      <span>ხინკალი <i>✦</i> ხაჭაპური <i>✦</i> მწვადი <i>✦</i> ცოცხალი მუსიკა <i>✦</i> ქართული ღვინო <i>✦</i> ოჯახური სითბო <i>✦</i></span>
+    </div>
+  </div>
+
+  <!-- ============================ ABOUT ============================ -->
+  <section class="about section-pad" id="about" aria-labelledby="about-title">
+    <div class="wrap about__grid">
+      <div class="about__media reveal">
+        <div class="frame">
+          <img src="../../restorani-margalita/assets/photo2.jpg" alt="მყუდრო კუთხე რესტორან მარგალიტაში — ყვავილებით მორთული სკამები და გაწყობილი მაგიდა" loading="lazy" />
+        </div>
+        <div class="badge" aria-hidden="true">
+          <span class="num">15+</span>
+          <span class="lbl">წელი თბილისის სტუმრებთან ერთად</span>
+        </div>
+      </div>
+
+      <div class="about__body">
+        <span class="eyebrow reveal">ჩვენ შესახებ</span>
+        <h2 id="about-title" class="reveal" data-delay="1">სითბო, რომელიც<br>გემოზე იგრძნობა</h2>
+        <p class="lead reveal" data-delay="1">
+          მარგალიტა დაიბადა მარტივი იდეიდან — ქართული სტუმართმოყვარეობა ისე გადმოგვეცა, როგორც სახლში.
+        </p>
+        <p class="reveal" data-delay="2">
+          ჩვენი სამზარეულო ეყრდნობა ოჯახურ რეცეპტებსა და სეზონურ, ადგილობრივ პროდუქტს. აგურის თბილი კედლები, ხელნაკეთი ჭაღები და ფირუზისფერი დეტალები ქმნის ატმოსფეროს, სადაც ყოველი სადილი დღესასწაულად იქცევა — განსაკუთრებით მაშინ, როცა ცოცხალი მუსიკა აჟღერდება.
+        </p>
+        <div class="about__stats">
+          <div class="stat reveal" data-delay="1"><div class="n">4.6★</div><div class="t">გუგლის შეფასება</div></div>
+          <div class="stat reveal" data-delay="2"><div class="n">1456</div><div class="t">სტუმრის მიმოხილვა</div></div>
+          <div class="stat reveal" data-delay="3"><div class="n">100%</div><div class="t">ხელნაკეთი კერძები</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ MENU / SIGNATURE ============================ -->
+  <section class="menu section-pad" id="menu" aria-labelledby="menu-title">
     <div class="wrap">
-      <div class="hero-grid">
-        <div class="hero-copy">
-          <span class="kicker">რესტორანი</span>
+      <div class="menu__top">
+        <div class="section-head">
+          <span class="eyebrow reveal">ჩვენი მენიუ</span>
+          <h2 id="menu-title" class="reveal" data-delay="1">სავიზიტო კერძები</h2>
+        </div>
+        <p class="reveal" data-delay="2" style="color:var(--muted); max-width:34ch;">
+          რამდენიმე საყვარელი კერძი ჩვენი სრული მენიუდან. ფასები მოცემულია ლარში.
+        </p>
+      </div>
 
-          <h1 class="hero-title" id="hero-h">
-            <span class="l"><span><em>რესტორანი მარგალიტა</em></span></span>
-          </h1>
-
-          <p class="hero-sub">ელეგანტური სამზარეულო</p>
-
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#contact">
-              დაგვიკავშირდით <span class="ico" aria-hidden="true">→</span>
-            </a>
-            <a class="btn btn-ghost" href="https://wa.me/995557223993" target="_blank" rel="noopener">
-              WhatsApp
-            </a>
+      <div class="menu__list" role="list">
+        <div class="menu-row reveal" role="listitem">
+          <span class="idx">01</span>
+          <div class="body">
+            <h3>ქართული სუფრა „მარგალიტა“</h3>
+            <p>დიდი ასორტი ცხელ-ცივი კერძებით — ოჯახისთვის და კომპანიისთვის გასაზიარებლად.</p>
           </div>
-
-          <div class="hero-meta">
-            <div class="m">
-              <div class="k">4.6 <span class="stars" aria-hidden="true">★</span></div>
-              <div class="v">Google შეფასება</div>
-            </div>
-            <div class="m">
-              <div class="k">1457</div>
-              <div class="v">მომხმარებლის შეფასება</div>
-            </div>
-          </div>
+          <span class="price">₾ 95 <small>/ 2–3 სტ.</small></span>
         </div>
 
-        <figure class="hero-media" data-parallax data-hero-img="../assets/photo1.jpg">
-          <span class="demo-ribbon" aria-label="დემო ვერსია">დემო ვერსია</span>
-          <img src="../assets/photo1.jpg"
-               alt="ელეგანტური სამზარეულო"
-               onerror="this.remove(); this.parentNode.classList.add('no-img');" />
-          <figcaption class="hero-badge">
-            <span class="stars" aria-hidden="true"><span class='stars'>★★★★★<span class='star-off'></span></span></span>
-            <span><b>4.6</b> · 1457 შეფასება</span>
-          </figcaption>
+        <div class="menu-row reveal" role="listitem">
+          <span class="idx">02</span>
+          <div class="body">
+            <h3>ხინკალი</h3>
+            <p>ხელით დაგრეხილი, ხორცის წვენით სავსე — კლასიკური ან მწვანილით.</p>
+          </div>
+          <span class="price">₾ 2.5 <small>/ ცალი</small></span>
+        </div>
+
+        <div class="menu-row reveal" role="listitem">
+          <span class="idx">03</span>
+          <div class="body">
+            <h3>აჭარული ხაჭაპური</h3>
+            <p>კარაქით, ყველითა და ცხელი კვერცხით — ნავის ფორმის, ცხელ-ცხელი.</p>
+          </div>
+          <span class="price">₾ 18</span>
+        </div>
+
+        <div class="menu-row reveal" role="listitem">
+          <span class="idx">04</span>
+          <div class="body">
+            <h3>მწვადი ღორის</h3>
+            <p>ნაკვერჩხალზე შემწვარი, ბროწეულითა და მოხალული ხახვით.</p>
+          </div>
+          <span class="price">₾ 24</span>
+        </div>
+
+        <div class="menu-row reveal" role="listitem">
+          <span class="idx">05</span>
+          <div class="body">
+            <h3>შემწვარი ბოსტნეული</h3>
+            <p>სეზონური ბოსტნეული ღუმელში, არომატული მწვანილითა და ზეთისხილის ზეთით.</p>
+          </div>
+          <span class="price">₾ 16</span>
+        </div>
+
+        <div class="menu-row reveal" role="listitem">
+          <span class="idx">06</span>
+          <div class="body">
+            <h3>სახლის ქართული ღვინო</h3>
+            <p>წითელი ან ქარვისფერი — დოქით ან ჭიქით, ქართული მარნებიდან.</p>
+          </div>
+          <span class="price">₾ 30 <small>/ დოქი</small></span>
+        </div>
+      </div>
+
+      <p class="menu__note reveal">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="var(--teal)" stroke-width="1.6"/><path d="M12 8v5M12 16h.01" stroke="var(--teal)" stroke-width="1.8" stroke-linecap="round"/></svg>
+        სრული მენიუ ხელმისაწვდომია რესტორანში. ალერგიის შესახებ გთხოვთ აცნობოთ ოფიციანტს.
+      </p>
+
+      <!-- Signature feature: the supra -->
+      <div class="signature reveal">
+        <div class="signature__media">
+          <img src="../../restorani-margalita/assets/photo3.jpg" alt="მდიდრული ქართული სუფრა — შემწვარი ხორცი, პურები, მწვანილი და საწებლები დეკორატიულ სუფრაზე" loading="lazy" />
+        </div>
+        <div class="signature__body">
+          <span class="eyebrow">შეფის რჩეული</span>
+          <h3>სუფრა, რომელიც<br>ერთიანდება</h3>
+          <p>
+            ჩვენი სავიზიტო სუფრა — ეს არ არის უბრალოდ კერძი, ეს არის ქართული ტრადიცია თეფშზე. შემწვარი ხორცი, ცხელი პურები, მწვანილი და სახლის საწებლები, რომელიც გასაზიარებლად არის შექმნილი. იდეალურია დღესასწაულისთვის.
+          </p>
+          <a href="https://wa.me/995574114343" class="btn btn--primary" target="_blank" rel="noopener">
+            მაგიდის დაჯავშნა
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ GALLERY ============================ -->
+  <section class="gallery section-pad" id="gallery" aria-labelledby="gallery-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow reveal">ატმოსფერო</span>
+        <h2 id="gallery-title" class="reveal" data-delay="1">შეხედეთ მარგალიტას</h2>
+        <p class="reveal" data-delay="2">თბილი სინათლე, ცოცხალი ფერები და კერძები, რომელიც სიყვარულით მზადდება.</p>
+      </div>
+
+      <div class="gallery__grid">
+        <figure class="g-item g-a reveal">
+          <img src="../../restorani-margalita/assets/photo6.jpg" alt="რესტორან მარგალიტას ფართო დარბაზი — ღვინის თარო, მცენარეები და გაწყობილი მაგიდები" loading="lazy" />
+          <figcaption class="cap">ჩვენი დარბაზი</figcaption>
+        </figure>
+        <figure class="g-item g-b reveal" data-delay="1">
+          <img src="../../restorani-margalita/assets/photo3.jpg" alt="ქართული სუფრის ასორტი დეკორატიულ სუფრაზე" loading="lazy" />
+          <figcaption class="cap">სუფრა „მარგალიტა“</figcaption>
+        </figure>
+        <figure class="g-item g-c reveal" data-delay="2">
+          <img src="../../restorani-margalita/assets/photo4.jpg" alt="შემწვარი სეზონური ბოსტნeული ლურჯად მოხატულ თეფშზე" loading="lazy" />
+          <figcaption class="cap">შემწვარი ბოსტნეული</figcaption>
+        </figure>
+        <figure class="g-item g-d reveal" data-delay="1">
+          <img src="../../restorani-margalita/assets/photo5.jpg" alt="საღამოს ატმოსფერო მარგალიტაში — სტუმრები და ცოცხალი მუსიკა თბილ განათებაში" loading="lazy" />
+          <figcaption class="cap">ცოცხალი მუსიკის საღამოები</figcaption>
+        </figure>
+        <figure class="g-item g-e reveal" data-delay="2">
+          <img src="../../restorani-margalita/assets/photo2.jpg" alt="მყუდრო კუთხე ყვავილებით მორთული სკამებით" loading="lazy" />
+          <figcaption class="cap">მყუდრო კუთხეები</figcaption>
+        </figure>
+        <figure class="g-item g-f reveal" data-delay="3">
+          <img src="../../restorani-margalita/assets/photo1.jpg" alt="აგურის კედლები და ფირუზისფერი დეტალები მარგალიტას ინტერიერში" loading="lazy" />
+          <figcaption class="cap">ინტერიერის დეტალები</figcaption>
         </figure>
       </div>
     </div>
   </section>
 
-  <!-- ===================== MARQUEE ===================== -->
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span>რესტორანი</span><span>Abra</span><span>რესტორანი</span><span>Abra</span><span>რესტორანი</span><span>Abra</span>
-      <span>რესტორანი</span><span>Abra</span><span>რესტორანი</span><span>Abra</span><span>რესტორანი</span><span>Abra</span>
-    </div>
-  </div>
+  <!-- ============================ VISIT / HOURS ============================ -->
+  <section class="visit section-pad" id="visit" aria-labelledby="visit-title">
+    <div class="wrap visit__grid">
+      <div>
+        <span class="eyebrow reveal">მობრძანდით სტუმრად</span>
+        <h2 id="visit-title" class="reveal" data-delay="1">სამუშაო საათები<br>და მისამართი</h2>
+        <p class="lead reveal" data-delay="2">
+          ველოდებით თქვენს ვიზიტს ყოველდღე. დიდი კომპანიისთვის გირჩევთ წინასწარ დაჯავშნას.
+        </p>
 
-  <!-- ===================== ABOUT ===================== -->
-  <section id="about" class="section about" aria-labelledby="about-h">
-    <div class="wrap">
-      <div class="about-grid">
-        <div class="about-copy">
-          <span class="kicker reveal">ჩვენ შესახებ</span>
-          <h2 id="about-h" class="reveal" data-d="1" style="font-size:var(--step-3);max-width:16ch;margin:1.2rem 0 1.4rem;">ჩვენ შესახებ</h2>
-          <p class="reveal" data-d="2">რესტორანი მარგალიტა — რესტორანი თბილისის ცენტრში. Google-ზე საშუალო შეფასება 4.6 ★, 1457 მომხმარებლის მიხედვით.</p>
+        <div class="visit__info reveal" data-delay="2">
+          <div class="info-row">
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5.3-7-11a7 7 0 1114 0c0 5.7-7 11-7 11z" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.7"/></svg>
+            </span>
+            <div>
+              <div class="k">მისამართი</div>
+              <div class="v">თბილისი, საქართველო</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 4h3l1.5 4.5L7.5 10a12 12 0 006.5 6.5l1.5-2L20 16v3a2 2 0 01-2.2 2A16 16 0 013 6.2 2 2 0 015 4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+            </span>
+            <div>
+              <div class="k">დაგვირეკეთ</div>
+              <div class="v"><a href="tel:+995574114343">+995 574 11 43 43</a></div>
+            </div>
+          </div>
+          <div class="info-row">
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 21a9 9 0 10-9-9 8.8 8.8 0 001.2 4.5L3 21l4.7-1.2A8.8 8.8 0 0012 21z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5.4 0 .8-.5.8-1s-.3-.8-.7-1l-1-.4c-.3-.1-.6 0-.8.2-.2.3-.5.4-.8.2A4 4 0 0110 11c-.2-.3 0-.6.2-.8.2-.2.3-.5.2-.8l-.4-1c-.2-.4-.5-.7-1-.7s-1 .4-1 .8z" fill="currentColor"/></svg>
+            </span>
+            <div>
+              <div class="k">ვაცაპი</div>
+              <div class="v"><a href="https://wa.me/995574114343" target="_blank" rel="noopener">მოგვწერეთ ვაცაპზე</a></div>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <div class="reveal" data-delay="1">
+        <ul class="hours" id="hoursList" aria-label="სამუშაო საათები">
+          <li data-day="1"><span class="day">ორშაბათი</span><span class="time">12:00 — 23:00</span></li>
+          <li data-day="2"><span class="day">სამშაბათი</span><span class="time">12:00 — 23:00</span></li>
+          <li data-day="3"><span class="day">ოთხშაბათი</span><span class="time">12:00 — 23:00</span></li>
+          <li data-day="4"><span class="day">ხუთშაბათი</span><span class="time">12:00 — 23:00</span></li>
+          <li data-day="5"><span class="day">პარასკევი</span><span class="time">12:00 — 00:00</span></li>
+          <li data-day="6"><span class="day">შაბათი</span><span class="time">12:00 — 00:00</span></li>
+          <li data-day="0"><span class="day">კვირა</span><span class="time">12:00 — 23:00</span></li>
+        </ul>
+        <a href="https://wa.me/995574114343" class="btn btn--primary" target="_blank" rel="noopener" style="margin-top:28px;">
+          მაგიდის დაჯავშნა ახლავე
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- ===================== GALLERY (token block) ===================== -->
-  <div id="gallery" class="reveal"><section class='section'><h2>გალერეა</h2><div class='gallery'><figure class='shot'><img loading='lazy' src='../assets/photo2.jpg' alt=''></figure><figure class='shot'><img loading='lazy' src='../assets/photo3.jpg' alt=''></figure><figure class='shot'><img loading='lazy' src='../assets/photo4.jpg' alt=''></figure><figure class='shot'><img loading='lazy' src='../assets/photo5.jpg' alt=''></figure><figure class='shot'><img loading='lazy' src='../assets/photo6.jpg' alt=''></figure></div></section></div>
-
-  <!-- ===================== REVIEWS (token block) ===================== -->
-  <div id="reviews" class="reveal"><section class='section'><h2>შეფასებები</h2><div class='reviews'><figure class='review'><div class='r-stars'><span class='stars'>★★★★★<span class='star-off'></span></span></div><blockquote>“თუ რუსთაველის ხმაურიდან გაქცევა და მყუდრო გარემოში დროის გატარება გსურთ, ეს რესტორანი იდეალური არჩევანია. ინტერიერი გემოვნებით მოწყობილი, ატმოსფერო — მშვიდი და სასიამო…”</blockquote><figcaption>— sopo pipia</figcaption></figure><figure class='review'><div class='r-stars'><span class='stars'>★★★★★<span class='star-off'></span></span></div><blockquote>“სამზარეულო აქვთ ძალიან კარგი, ყველაფერი უგემრიელესია ღვინის ფართო და კარგი არჩევანით. ატმოსფერო არის ძალიან სასიამოვნო. ცოცხალი შესრულება იდეალურ ფარემოს ქმნის სამეგობ…”</blockquote><figcaption>— george datunashvili</figcaption></figure></div></section></div>
-
-  <!-- ===================== HOURS (token block) ===================== -->
-  <div id="visit" class="reveal"><section class='section'><h2>სამუშაო საათები</h2><ul class='hours'><li><span>ორშაბათი: 11:00 AM – 11:50 PM</span></li><li><span>სამშაბათი: 11:00 AM – 11:30 PM</span></li><li><span>ოთხშაბათი: 11:00 AM – 11:30 PM</span></li><li><span>ხუთშაბათი: 11:00 AM – 11:30 PM</span></li><li><span>პარასკევი: 11:00 AM – 11:30 PM</span></li><li><span>შაბათი: 11:00 AM – 11:30 PM</span></li><li><span>კვირა: 11:00 AM – 11:50 PM</span></li></ul></section></div>
-
-  <!-- ===================== MAP (token block) ===================== -->
-  <div class="reveal"><section class='section'><h2>მდებარეობა</h2><iframe class='map' loading='lazy' src='https://www.openstreetmap.org/export/embed.html?bbox=44.791848%2C41.696021%2C44.799848%2C41.704021&amp;layer=mapnik&amp;marker=41.700021,44.795848'></iframe><p class='addr'>📍 1 მიტროფანე ლაღიძის ქუჩა, თბილისი 0108</p></section></div>
-
-  <!-- ===================== CONTACT / CTA (token block) ===================== -->
-  <div id="contact" class="reveal"><section class='section'><h2>დაგვიკავშირდით</h2><div class='cta'><a class='btn btn-primary' href='https://wa.me/995574114343' target='_blank' rel='noopener'><span class='ico'>💬</span> WhatsApp-ით მოწერა</a><a class='btn btn-ghost' href='tel:+995574114343'><span class='ico'>📞</span> დარეკვა</a><a class='btn btn-link' href='https://maps.google.com/?cid=801977521942160688&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA' target='_blank' rel='noopener'>Google Maps-ზე ნახვა →</a></div><p class='phone'>574 11 43 43</p></section></div>
+  <!-- ============================ RESERVE CTA ============================ -->
+  <section class="reserve section-pad" aria-labelledby="reserve-title">
+    <div class="reserve__media">
+      <img src="../../restorani-margalita/assets/photo5.jpg" alt="თბილი საღამო რესტორან მარგალიტაში სტუმრებითა და ცოცხალი მუსიკით" loading="lazy" />
+    </div>
+    <div class="reserve__inner wrap">
+      <span class="eyebrow center reveal">დაჯავშნა</span>
+      <h2 id="reserve-title" class="reveal" data-delay="1">მაგიდა გელოდებათ</h2>
+      <p class="reveal" data-delay="2">
+        შეკრიბეთ ოჯახი და მეგობრები. დაგვირეკეთ ან მოგვწერეთ ვაცაპზე — და დანარჩენზე ჩვენ ვიზრუნებთ.
+      </p>
+      <div class="reserve__actions reveal" data-delay="2">
+        <a href="https://wa.me/995574114343" class="btn btn--primary" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21a9 9 0 10-9-9 8.8 8.8 0 001.2 4.5L3 21l4.7-1.2A8.8 8.8 0 0012 21z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+          ვაცაპით დაჯავშნა
+        </a>
+        <a href="tel:+995574114343" class="btn btn--ghost">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h3l1.5 4.5L7.5 10a12 12 0 006.5 6.5l1.5-2L20 16v3a2 2 0 01-2.2 2A16 16 0 013 6.2 2 2 0 015 4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+          +995 574 11 43 43
+        </a>
+      </div>
+    </div>
+  </section>
 
 </main>
 
-<!-- ===================== FOOTER ===================== -->
-<footer class="foot">
+<!-- ============================ FOOTER ============================ -->
+<footer class="footer" aria-label="საიტის ქვედა ნაწილი">
   <div class="wrap">
-    <div class="foot-top">
-      <div class="foot-brand">
-        <div class="brand"><span class="dot" aria-hidden="true"></span> რესტორანი მარგალიტა</div>
-        <p>რესტორანი · რესტორანი მარგალიტა</p>
+    <div class="footer__grid">
+      <div class="footer__brand-col footer__col">
+        <div class="brand">მარგალიტა<span class="dot" style="color:var(--teal-bright)">.</span></div>
+        <p class="footer__about">
+          ავთენტური ქართული სამზარეულო თბილისის გულში. ოჯახური სითბო, ცოცხალი მუსიკა და ნამდვილი ქართული სუფრა ყოველ დღე.
+        </p>
       </div>
-
-      <div class="foot-col">
-        <h4>გვერდები</h4>
-        <a href="#about">ჩვენ შესახებ</a>
-        <a href="#gallery">გალერეა</a>
-        <a href="#reviews">შეფასებები</a>
-        <a href="#visit">საათები</a>
-        <a href="#contact">კონტაქტი</a>
+      <div class="footer__col">
+        <h4>ნავიგაცია</h4>
+        <ul>
+          <li><a href="#about">ჩვენ შესახებ</a></li>
+          <li><a href="#menu">მენიუ</a></li>
+          <li><a href="#gallery">გალერეა</a></li>
+          <li><a href="#visit">სამუშაო საათები</a></li>
+        </ul>
       </div>
-
-      <div class="foot-col">
-        <h4>შეფასება</h4>
-        <p><span class="stars" aria-hidden="true"><span class='stars'>★★★★★<span class='star-off'></span></span></span></p>
-        <p>★ 4.6 · 1457 შეფასება</p>
-        <a href="https://wa.me/995557223993" target="_blank" rel="noopener">WhatsApp</a>
+      <div class="footer__col">
+        <h4>კონტაქტი</h4>
+        <ul>
+          <li><a href="tel:+995574114343">+995 574 11 43 43</a></li>
+          <li><a href="https://wa.me/995574114343" target="_blank" rel="noopener">ვაცაპი</a></li>
+          <li><span style="color:rgba(244,238,225,0.7)">თბილისი, საქართველო</span></li>
+        </ul>
       </div>
     </div>
-
-    <div class="foot-bottom">
-      <span>© <span id="yr">2026</span> რესტორანი მარგალიტა</span>
-      <span>დამზადებულია Abra-ის მიერ</span>
+    <div class="footer__bottom">
+      <span>© <span id="year">2026</span> რესტორანი მარგალიტა. ყველა უფლება დაცულია.</span>
+      <span>ქართული სტუმართმოყვარეობით შექმნილი</span>
     </div>
   </div>
 </footer>
 
-<!-- ===================== MANDATORY DEMO BOTTOM BANNER ===================== -->
-<aside class="demo-banner" role="note" aria-label="დემო ინფორმაცია">
-  <div class="db-inner">
-    <span class="db-text">უფასო დემო — დამზადებულია <b>Abra</b>-ის მიერ</span>
-    <a class="btn btn-primary" href="https://wa.me/995557223993" target="_blank" rel="noopener">
-      დაგაინტერესათ? მოგვწერეთ <span class="ico" aria-hidden="true">→</span>
-    </a>
-  </div>
-</aside>
-
 <script>
-(function () {
-  "use strict";
-  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  (function () {
+    "use strict";
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* --- Hero image fallback (handles empty token, not just load error) --- */
-  var heroFig = document.querySelector(".hero-media");
-  if (heroFig) {
-    var src = heroFig.getAttribute("data-hero-img");
-    if (!src || !src.trim()) {
-      heroFig.classList.add("no-img");
-      var img = heroFig.querySelector("img");
-      if (img) img.remove();
-    }
-  }
+    /* Sticky nav background on scroll */
+    var nav = document.getElementById("nav");
+    var onScroll = function () {
+      if (window.scrollY > 40) nav.classList.add("scrolled");
+      else nav.classList.remove("scrolled");
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
 
-  /* --- Sticky nav shadow --- */
-  var nav = document.getElementById("nav");
-  var onScroll = function () {
-    if (window.scrollY > 12) nav.classList.add("scrolled");
-    else nav.classList.remove("scrolled");
-  };
-  onScroll();
-  window.addEventListener("scroll", onScroll, { passive: true });
-
-  /* --- Current year --- */
-  var yr = document.getElementById("yr");
-  if (yr) yr.textContent = new Date().getFullYear();
-
-  /* --- Highlight today's hours (if an hours list with data-day exists) --- */
-  try {
-    var today = new Date().getDay(); // 0=Sun
-    var row = document.querySelector('.hours li[data-day="' + today + '"]');
-    if (row) row.classList.add("now");
-  } catch (e) {}
-
-  if (reduce) {
-    document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
-    var ht = document.querySelector(".hero-title"); if (ht) ht.classList.add("in");
-    return;
-  }
-
-  /* --- Hero title entrance --- */
-  var heroTitle = document.querySelector(".hero-title");
-  if (heroTitle) {
-    requestAnimationFrame(function () {
-      setTimeout(function () { heroTitle.classList.add("in"); }, 80);
+    /* Mobile menu toggle */
+    var toggle = document.getElementById("navToggle");
+    var links = document.getElementById("navLinks");
+    var setMenu = function (open) {
+      links.classList.toggle("open", open);
+      document.body.classList.toggle("menu-open", open);
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "მენიუს დახურვა" : "მენიუს გახსნა");
+    };
+    toggle.addEventListener("click", function () {
+      setMenu(!links.classList.contains("open"));
     });
-  }
+    links.addEventListener("click", function (e) {
+      if (e.target.tagName === "A") setMenu(false);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && links.classList.contains("open")) setMenu(false);
+    });
 
-  /* --- Scroll reveal --- */
-  if ("IntersectionObserver" in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (en.isIntersecting) {
-          en.target.classList.add("in");
-          io.unobserve(en.target);
-        }
-      });
-    }, { threshold: 0.16, rootMargin: "0px 0px -8% 0px" });
-    document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
-  } else {
-    document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
-  }
+    /* Scroll reveal */
+    var reveals = document.querySelectorAll(".reveal");
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      reveals.forEach(function (el) { el.classList.add("in"); });
+    } else {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in");
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+      reveals.forEach(function (el) { io.observe(el); });
+    }
 
-  /* --- Lightweight hero parallax (only when a real image is present) --- */
-  var pim = document.querySelector(".hero-media:not(.no-img) [data-parallax] img, .hero-media[data-parallax]:not(.no-img) img");
-  if (pim && window.matchMedia("(min-width: 880px)").matches) {
-    var ticking = false;
-    window.addEventListener("scroll", function () {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(function () {
-        var y = window.scrollY;
-        var shift = Math.max(-26, Math.min(0, -y * 0.04));
-        pim.style.transform = "scale(1.08) translateY(" + shift + "px)";
-        ticking = false;
-      });
-    }, { passive: true });
-  }
-})();
+    /* Highlight today's opening hours */
+    try {
+      var today = new Date().getDay(); // 0 = Sunday
+      var li = document.querySelector('#hoursList li[data-day="' + today + '"]');
+      if (li) li.classList.add("today");
+    } catch (e) {}
+
+    /* Footer year */
+    var y = document.getElementById("year");
+    if (y) y.textContent = new Date().getFullYear();
+  })();
 </script>
-
 </body>
 </html>

@@ -1,479 +1,825 @@
-<!doctype html>
-<html lang="ka" class="nojs">
+<!DOCTYPE html>
+<html lang="ka">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex">
-<title>რესტორანი მარგალიტა — რესტორანი</title>
-<script>document.documentElement.className="js";</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>რესტორანი მარგალიტა — გემრიელი სტუმართმოყვარეობა თბილისში</title>
+<meta name="description" content="რესტორანი მარგალიტა — ცოცხალი, ოჯახური რესტორანი თბილისის გულში. ქართული სამზარეულო, თბილი ატმოსფერო და უგემრიელესი კერძები. 4.6 ★ 1456 შეფასებიდან.">
+
+<!-- Georgian-complete Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700;800;900&family=Noto+Serif+Georgian:opsz,wght@8..144,500;8..144,700;8..144,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wght@500;600;700;800;900&family=Noto+Sans+Georgian:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-  /* ============================================================
-     VIBRANT · PLAYFUL — reusable token-template (style4)
-     Self-contained palette: works for ANY business category.
-     ============================================================ */
-  :root{
-    --canvas:#FFF7F0;        /* warm neutral canvas */
-    --canvas-deep:#FCEDE2;
-    --ink:#221A2E;           /* deep plum-ink (reads as near-black) */
-    --ink-soft:#52465F;
+/* ============================================================
+   რესტორანი მარგალიტა — Vibrant Playful Bistro
+   Single-file landing page. Mobile-first.
+   ============================================================ */
 
-    --grape:#6B4CF6;         /* primary playful violet — brand-agnostic */
-    --grape-deep:#4A2FD0;    /* AA-safe on white for buttons/text */
-    --coral:#FF5B7F;         /* hot pink-coral accent (decorative) */
-    --coral-deep:#D6285A;    /* AA-safe coral for text/buttons on white */
-    --sun:#FFC93C;           /* sunny yellow */
-    --teal:#1FC2B0;          /* mint-teal (decorative) */
-    --teal-deep:#0A7567;     /* AA-safe teal: text on canvas / white on it */
-    --sky:#3DA5FF;           /* breezy blue pop */
-    --white:#FFFFFF;
+:root{
+  /* Palette pulled from the restaurant's real photos:
+     teal tablecloths, terracotta brick, golden lamps, cream walls */
+  --teal:        #0E8B86;
+  --teal-deep:   #0A5D5A;
+  --teal-soft:   #B7E4DF;
+  --coral:       #F0552F;   /* warm terracotta-coral */
+  --coral-deep:  #C63B1C;
+  --gold:        #FFB02E;
+  --gold-soft:   #FFD98A;
+  --cream:       #FFF6E9;
+  --cream-2:     #FBEAD3;
+  --plum:        #7A2E4A;
+  --ink:         #22150F;
+  --ink-soft:    #4A382E;
 
-    --radius:30px;
-    --radius-lg:48px;
-    --shadow-sm:0 6px 0 rgba(34,26,46,.14);
-    --shadow:0 18px 40px -22px rgba(34,26,46,.55);
-    --shadow-pop:0 22px 48px -20px rgba(34,26,46,.5);
-    --border:3px solid var(--ink);
-    --ease:cubic-bezier(.34,1.56,.64,1); /* springy */
+  --white:       #FFFCF6;
+  --shadow-c:    rgba(34,21,15,.16);
 
-    --maxw:1120px;
-    --sans:"Noto Sans Georgian",system-ui,sans-serif;
-    --serif:"Noto Serif Georgian",Georgia,serif;
-  }
+  --maxw: 1200px;
+  --r-lg: 36px;
+  --r-md: 24px;
+  --r-sm: 16px;
+  --r-pill: 999px;
 
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-  body{
-    font-family:var(--sans);
-    background:var(--canvas);
-    color:var(--ink);
-    line-height:1.55;
-    overflow-x:hidden;
-    font-size:17px;
-    -webkit-font-smoothing:antialiased;
-    padding-bottom:84px; /* room for fixed demo banner */
-  }
-  img{display:block;max-width:100%}
-  a{color:inherit;text-decoration:none}
-  ::selection{background:var(--grape);color:var(--white)}
+  --font-display: "Noto Serif Georgian", Georgia, serif;
+  --font-body: "Noto Sans Georgian", system-ui, sans-serif;
 
-  /* focus visibility for a11y */
-  a:focus-visible,button:focus-visible{
-    outline:3px solid var(--coral-deep);
-    outline-offset:3px;
-    border-radius:8px;
-  }
+  --ease: cubic-bezier(.22,1,.36,1);
+}
 
-  .wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:clamp(18px,5vw,40px)}
+*{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
 
-  /* ============== KINETIC MARQUEE ============== */
-  .marquee{
-    background:var(--ink);
-    color:var(--canvas);
-    border-bottom:var(--border);
-    overflow:hidden;
-    white-space:nowrap;
-    padding-block:11px;
-    position:relative;
-    z-index:5;
-  }
-  .marquee__track{
-    display:inline-flex;gap:0;
-    animation:slide 26s linear infinite;
-    will-change:transform;
-  }
-  .marquee span{
-    font-weight:800;font-size:.95rem;letter-spacing:.06em;
-    padding-inline:26px;display:inline-flex;align-items:center;gap:26px;
-  }
-  .marquee span::after{content:"✦";color:var(--sun)}
-  @keyframes slide{to{transform:translateX(-50%)}}
+body{
+  font-family:var(--font-body);
+  color:var(--ink);
+  background:var(--cream);
+  line-height:1.65;
+  font-size:clamp(16px,1.05vw + 14px,18px);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
 
-  /* ============== NAV (brand wordmark) ============== */
-  .nav{
-    position:relative;z-index:8;
-    display:flex;align-items:center;justify-content:space-between;gap:16px;
-    padding-top:clamp(18px,3vw,28px);
-  }
-  .nav__brand{
-    display:inline-flex;align-items:center;gap:11px;
-    font-weight:900;font-size:clamp(1.15rem,2.6vw,1.5rem);letter-spacing:-.01em;
-    min-width:0; /* allow truncation, never push the CTA off-screen */
-  }
-  .nav__mark{
-    width:38px;height:38px;border-radius:50% 50% 50% 14px;flex:0 0 auto;
-    background:var(--coral);border:var(--border);color:var(--white);
-    display:grid;place-items:center;font-size:1.1rem;transform:rotate(-6deg);
-  }
-  .nav__name{
-    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;
-  }
-  .nav__cta{
-    flex:0 0 auto;
-    display:inline-flex;align-items:center;justify-content:center;
-    font-weight:800;font-size:.95rem;min-height:44px;padding:10px 20px;
-    border-radius:50px;border:var(--border);background:var(--grape-deep);color:var(--white);
-    box-shadow:var(--shadow-sm);
-    transition:transform .22s var(--ease),box-shadow .22s var(--ease);
-  }
-  .nav__cta:hover{transform:translateY(-3px);box-shadow:0 10px 0 rgba(34,26,46,.16)}
-  .nav__cta:active{transform:translateY(-1px);box-shadow:0 3px 0 rgba(34,26,46,.16)}
+img{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
 
-  /* ============== HERO ============== */
-  .hero{position:relative;padding-top:clamp(20px,3vw,32px);padding-bottom:clamp(44px,7vw,92px);overflow:hidden}
-  .hero__blob{
-    position:absolute;z-index:0;border-radius:46% 54% 60% 40%/52% 44% 56% 48%;
-    filter:blur(2px);opacity:.85;pointer-events:none;
-  }
-  .blob-a{width:340px;height:340px;background:var(--sun);top:-70px;right:-90px;animation:morph 14s ease-in-out infinite}
-  .blob-b{width:260px;height:260px;background:var(--teal);bottom:-80px;left:-100px;opacity:.5;animation:morph 18s ease-in-out infinite reverse}
-  @keyframes morph{
-    0%,100%{border-radius:46% 54% 60% 40%/52% 44% 56% 48%}
-    50%{border-radius:60% 40% 42% 58%/44% 58% 42% 56%}
-  }
-  .hero__grid{position:relative;z-index:2;display:grid;gap:clamp(28px,5vw,52px);align-items:center}
-  @media(min-width:900px){.hero__grid{grid-template-columns:1.05fr .95fr}}
+h1,h2,h3,h4{ font-family:var(--font-display); line-height:1.06; letter-spacing:-.01em; }
 
-  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-weight:800;
-    color:var(--teal-deep);letter-spacing:.12em;text-transform:uppercase;font-size:.82rem;margin-bottom:18px}
-  .eyebrow::before{content:"";width:30px;height:3px;background:var(--coral);border-radius:3px}
+.wrap{ width:100%; max-width:var(--maxw); margin-inline:auto; padding-inline:clamp(18px,5vw,40px); }
 
-  .hero h1{
-    font-family:var(--serif);
-    font-weight:900;
-    font-size:clamp(2.7rem,8vw,5.2rem);
-    line-height:.98;letter-spacing:-.02em;
-    margin-bottom:22px;
-  }
-  /* decorative highlight applied to the whole headline token */
-  .hero h1 .wink{
-    color:var(--grape-deep);position:relative;display:inline;
-  }
-  .hero h1 .wink::after{
-    content:"";position:absolute;left:0;right:0;bottom:.04em;height:.16em;
-    background:var(--sun);z-index:-1;border-radius:6px;transform:rotate(-.8deg);
-  }
-  .hero p.lead{font-size:clamp(1.05rem,2.4vw,1.26rem);max-width:34ch;color:var(--ink-soft);margin-bottom:28px;font-weight:500}
+.eyebrow{
+  display:inline-flex; align-items:center; gap:.5em;
+  font-weight:800; font-size:.82rem; letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--coral-deep);
+}
+.eyebrow::before{
+  content:""; width:26px; height:3px; border-radius:2px;
+  background:var(--coral); display:inline-block;
+}
 
-  .rating{display:inline-flex;align-items:center;gap:13px;background:var(--white);
-    border:var(--border);border-radius:50px;padding:9px 9px 9px 18px;box-shadow:var(--shadow-sm);max-width:max-content}
-  .rating .stars{color:var(--sun);font-size:1.05rem;letter-spacing:1px;-webkit-text-stroke:.6px var(--ink)}
-  .rating .stars .star-off{color:var(--canvas-deep);-webkit-text-stroke:.6px var(--ink)}
-  .rating b{font-weight:900}
-  .rating .pill{background:var(--ink);color:var(--canvas);font-weight:800;font-size:.8rem;
-    padding:6px 13px;border-radius:50px}
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:.55em;
+  font-family:var(--font-body); font-weight:800; font-size:1.02rem;
+  padding:15px 28px; min-height:52px;
+  border-radius:var(--r-pill); border:none; cursor:pointer;
+  transition:transform .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease);
+  position:relative; white-space:nowrap;
+}
+.btn:focus-visible{ outline:3px solid var(--ink); outline-offset:3px; }
+.btn-primary{
+  background:var(--coral); color:var(--white);
+  box-shadow:0 10px 0 -2px var(--coral-deep), 0 18px 30px -12px var(--coral-deep);
+}
+.btn-primary:hover{ transform:translateY(-3px); box-shadow:0 13px 0 -2px var(--coral-deep), 0 26px 40px -14px var(--coral-deep); }
+.btn-primary:active{ transform:translateY(2px); box-shadow:0 5px 0 -2px var(--coral-deep), 0 12px 20px -12px var(--coral-deep); }
+.btn-dark{
+  background:var(--ink); color:var(--cream);
+  box-shadow:0 10px 0 -2px #000, 0 18px 30px -14px rgba(0,0,0,.6);
+}
+.btn-dark:hover{ transform:translateY(-3px); }
+.btn-ghost{
+  background:transparent; color:var(--ink);
+  border:2.5px solid var(--ink);
+}
+.btn-ghost:hover{ background:var(--ink); color:var(--cream); transform:translateY(-3px); }
 
-  /* hero photo cluster (organic blob frame) */
-  .hero__art{position:relative;justify-self:center;width:100%;max-width:460px}
-  .hero__frame{
-    position:relative;border:var(--border);border-radius:50% 50% 48% 52%/46% 50% 50% 54%;
-    overflow:hidden;background:var(--canvas-deep);box-shadow:var(--shadow-pop);
-    aspect-ratio:1/1;transform:rotate(-2deg);
-    transition:transform .5s var(--ease);
-  }
-  .hero__frame img{width:100%;height:100%;object-fit:cover}
-  /* gradient fallback fill when no hero photo */
-  .hero__frame.is-empty{
-    background:
-      radial-gradient(120% 120% at 18% 12%, var(--sun) 0%, transparent 46%),
-      radial-gradient(130% 120% at 88% 20%, var(--coral) 0%, transparent 50%),
-      linear-gradient(135deg,var(--grape) 0%, var(--teal) 100%);
-  }
-  .hero__frame.is-empty::after{
-    content:"✦";position:absolute;inset:0;display:grid;place-items:center;
-    font-size:5rem;color:rgba(255,255,255,.9);text-shadow:0 6px 18px rgba(34,26,46,.35);
-  }
-  .hero__art:hover .hero__frame{transform:rotate(0deg) scale(1.01)}
-  .hero__chip{
-    position:absolute;background:var(--white);border:var(--border);border-radius:20px;
-    padding:11px 15px;box-shadow:var(--shadow-pop);font-weight:800;font-size:.86rem;z-index:6;
-    display:flex;align-items:center;gap:9px;
-  }
-  .hero__chip .dot{width:11px;height:11px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px color-mix(in srgb,var(--teal) 30%,transparent)}
-  .chip-1{top:7%;left:-6%;--r:-7deg;transform:rotate(-7deg);animation:float 5s ease-in-out infinite}
-  .chip-2{bottom:9%;right:-7%;--r:6deg;transform:rotate(6deg);background:var(--sun);animation:float 6.5s ease-in-out infinite}
-  @keyframes float{0%,100%{transform:translateY(0) rotate(var(--r,-7deg))}50%{transform:translateY(-12px) rotate(var(--r,-7deg))}}
+.btn svg{ width:20px; height:20px; }
 
-  /* round wobbling demo stamp (playful "დემო ვერსია" ribbon) */
-  .hero__stamp{
-    position:absolute;top:-22px;right:5%;width:118px;height:118px;border-radius:50%;
-    background:var(--coral);border:var(--border);color:var(--white);
-    display:grid;place-content:center;text-align:center;
-    font-weight:900;font-size:.82rem;line-height:1.2;letter-spacing:.02em;
-    box-shadow:var(--shadow-pop);z-index:7;
-    animation:wobble 6s ease-in-out infinite;
-  }
-  .hero__stamp small{display:block;font-size:1.05rem;line-height:1.1}
-  @keyframes wobble{0%,100%{transform:rotate(-9deg)}50%{transform:rotate(6deg)}}
+/* ---------- Sticker / badge motifs ---------- */
+.sticker{
+  position:absolute; z-index:5;
+  font-family:var(--font-display); font-weight:800;
+  background:var(--gold); color:var(--ink);
+  border:3px solid var(--ink);
+  border-radius:var(--r-pill);
+  padding:10px 18px; font-size:.95rem;
+  box-shadow:5px 6px 0 var(--ink);
+  display:inline-flex; align-items:center; gap:.4em;
+}
+.tape{
+  position:absolute; z-index:6;
+  background:rgba(255,176,46,.85);
+  color:var(--ink); font-weight:800; font-size:.8rem;
+  letter-spacing:.1em; text-transform:uppercase;
+  padding:7px 18px;
+  box-shadow:0 6px 14px -6px rgba(0,0,0,.4);
+}
 
-  /* ============== SECTIONS (neutral .section / h2 styled playfully) ============== */
-  .section{padding-block:clamp(48px,8vw,92px);position:relative;border-bottom:3px dashed color-mix(in srgb,var(--ink) 18%,transparent)}
-  .section:last-of-type{border-bottom:0}
-  .section .wrap{position:relative;z-index:2}
-  .section h2{
-    font-family:var(--serif);font-weight:900;
-    font-size:clamp(1.9rem,5.2vw,3.1rem);line-height:1.04;letter-spacing:-.02em;
-    margin-bottom:clamp(22px,4vw,40px);position:relative;display:inline-block;
-  }
-  .section h2::after{
-    content:"";position:absolute;left:2px;right:2px;bottom:-8px;height:7px;
-    background:var(--sun);border-radius:7px;transform:rotate(-.8deg);z-index:-1;
-  }
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav{
+  position:sticky; top:0; z-index:60;
+  background:rgba(255,246,233,.82);
+  backdrop-filter:saturate(160%) blur(12px);
+  -webkit-backdrop-filter:saturate(160%) blur(12px);
+  border-bottom:2px solid rgba(34,21,15,.08);
+  transition:box-shadow .3s var(--ease);
+}
+.nav.scrolled{ box-shadow:0 10px 30px -18px var(--shadow-c); }
+.nav-inner{ display:flex; align-items:center; justify-content:space-between; gap:18px; min-height:74px; }
+.brand{ display:flex; align-items:center; gap:11px; font-family:var(--font-display); font-weight:900; font-size:1.35rem; }
+.brand-mark{
+  width:42px; height:42px; flex:none; border-radius:14px;
+  background:var(--teal); color:var(--cream);
+  display:grid; place-items:center; font-size:1.4rem; font-weight:900;
+  transform:rotate(-6deg);
+  box-shadow:3px 4px 0 var(--ink);
+  transition:transform .3s var(--ease);
+}
+.brand:hover .brand-mark{ transform:rotate(6deg) scale(1.05); }
 
-  /* ---- ABOUT ---- */
-  .about{
-    font-family:var(--serif);font-weight:500;
-    font-size:clamp(1.18rem,2.6vw,1.5rem);line-height:1.45;color:var(--ink);
-    max-width:46ch;
-  }
-  .section--about{background:var(--canvas)}
+.nav-links{ display:none; align-items:center; gap:6px; }
+.nav-links a{
+  font-weight:700; font-size:.97rem; padding:9px 15px; border-radius:var(--r-pill);
+  transition:background .2s var(--ease), color .2s var(--ease);
+}
+.nav-links a:hover{ background:var(--teal-soft); color:var(--teal-deep); }
+.nav-cta{ display:none; }
 
-  /* ---- GALLERY (blobby sticker tiles) ---- */
-  .section--gallery{background:var(--canvas-deep)}
-  .gallery{display:grid;gap:16px;grid-template-columns:repeat(2,1fr)}
-  @media(min-width:760px){.gallery{grid-template-columns:repeat(3,1fr)}}
-  .shot{
-    margin:0;border:var(--border);overflow:hidden;position:relative;
-    border-radius:42% 58% 52% 48%/55% 45% 55% 45%;
-    box-shadow:var(--shadow-sm);background:var(--canvas);aspect-ratio:1/1;
-    transition:transform .4s var(--ease),border-radius .5s var(--ease);
-  }
-  .shot:nth-child(2n){border-radius:55% 45% 48% 52%/45% 55% 45% 55%;transform:rotate(1.5deg)}
-  .shot:nth-child(3n){border-radius:48% 52% 58% 42%/52% 48% 52% 48%;transform:rotate(-1.5deg)}
-  .shot img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
-  .shot:hover{transform:translateY(-6px) rotate(0deg);border-radius:30px}
-  .shot:hover img{transform:scale(1.07)}
+/* mobile menu toggle */
+.nav-toggle{
+  display:inline-grid; place-items:center; width:48px; height:48px;
+  border:2.5px solid var(--ink); border-radius:14px; background:var(--white); cursor:pointer;
+}
+.nav-toggle span{ width:22px; height:2.6px; background:var(--ink); border-radius:2px; position:relative; transition:.3s var(--ease); }
+.nav-toggle span::before,.nav-toggle span::after{ content:""; position:absolute; left:0; width:22px; height:2.6px; background:var(--ink); border-radius:2px; transition:.3s var(--ease); }
+.nav-toggle span::before{ top:-7px; } .nav-toggle span::after{ top:7px; }
+.nav-toggle[aria-expanded="true"] span{ background:transparent; }
+.nav-toggle[aria-expanded="true"] span::before{ top:0; transform:rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span::after{ top:0; transform:rotate(-45deg); }
 
-  /* ---- REVIEWS (speech bubbles) ---- */
-  .section--reviews{background:var(--canvas)}
-  .reviews{display:grid;gap:26px}
-  @media(min-width:760px){.reviews{grid-template-columns:1fr 1fr}}
-  .review{
-    margin:0;background:var(--white);border:var(--border);border-radius:var(--radius);
-    padding:26px 26px 30px;box-shadow:var(--shadow-sm);position:relative;
-    transition:transform .3s var(--ease),box-shadow .3s var(--ease);
-  }
-  .review:nth-child(odd){background:var(--sun)}
-  .review:nth-child(even){background:var(--white)}
-  .review:hover{transform:translateY(-6px) rotate(-1deg);box-shadow:0 16px 0 rgba(34,26,46,.12)}
-  /* speech-bubble tail */
-  .review::after{
-    content:"";position:absolute;left:34px;bottom:-15px;width:26px;height:26px;
-    background:inherit;border-right:var(--border);border-bottom:var(--border);
-    transform:rotate(45deg);
-  }
-  .review .r-stars{color:var(--coral-deep);font-size:1.05rem;letter-spacing:1px;margin-bottom:.5rem}
-  .review .r-stars .star-off{color:color-mix(in srgb,var(--ink) 22%,transparent)}
-  .review blockquote{margin:0;font-family:var(--serif);font-weight:700;font-size:1.1rem;line-height:1.4}
-  .review figcaption{margin-top:.85rem;font-weight:800;font-size:.9rem;color:var(--ink)}
+.mobile-menu{
+  display:grid; gap:6px; overflow:hidden; max-height:0;
+  transition:max-height .4s var(--ease);
+  background:rgba(255,246,233,.97);
+  border-bottom:2px solid rgba(34,21,15,.08);
+}
+.mobile-menu.open{ max-height:430px; }
+.mobile-menu a{ padding:14px 6px; font-weight:700; border-bottom:1px dashed rgba(34,21,15,.16); }
+.mobile-menu .btn{ margin:14px 0 18px; }
 
-  /* ---- HOURS (chunky list) ---- */
-  .section--hours{background:var(--ink);color:var(--canvas)}
-  .section--hours h2{color:var(--white)}
-  .section--hours h2::after{background:var(--coral)}
-  .hours{list-style:none;padding:0;margin:0;display:grid;gap:12px;max-width:560px}
-  .hours li{
-    background:rgba(255,255,255,.06);border:2.5px solid rgba(255,247,240,.22);
-    border-radius:18px;overflow:hidden;font-weight:600;
-    transition:transform .25s var(--ease),background .25s ease;
-  }
-  .hours li:hover{transform:translateX(6px);background:rgba(255,255,255,.12)}
-  .hours li span{display:block;padding:14px 20px;font-size:.98rem}
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{ position:relative; padding:38px 0 56px; }
+.hero-grid{ display:grid; gap:30px; align-items:center; }
 
-  /* ---- CONTACT (buttons) ---- */
-  .section--contact{background:var(--canvas-deep)}
-  .cta{display:flex;flex-wrap:wrap;gap:14px;max-width:560px}
-  .btn{
-    display:inline-flex;align-items:center;justify-content:center;gap:10px;
-    font-weight:800;font-size:1.02rem;min-height:54px;padding:14px 26px;
-    border-radius:50px;border:var(--border);cursor:pointer;text-align:center;
-    transition:transform .22s var(--ease),box-shadow .22s var(--ease);
-    box-shadow:var(--shadow-sm);
-  }
-  .btn-primary{background:var(--grape-deep);color:var(--white)}
-  .btn-ghost{background:var(--white);color:var(--grape-deep)}
-  .btn-link{background:transparent;color:var(--coral-deep);border-color:transparent;box-shadow:none;
-    text-decoration:underline;text-underline-offset:4px;min-height:auto;padding:10px 14px}
-  .btn:hover{transform:translateY(-4px);box-shadow:0 12px 0 rgba(34,26,46,.16)}
-  .btn-link:hover{transform:translateY(-2px);box-shadow:none;text-decoration-thickness:2px}
-  .btn:active{transform:translateY(-1px);box-shadow:0 4px 0 rgba(34,26,46,.16)}
-  .phone{margin-top:18px;font-weight:700;color:var(--ink-soft)}
+.hero-copy{ position:relative; z-index:3; }
+.hero h1{
+  font-size:clamp(2.7rem,8.5vw,5.3rem);
+  font-weight:900; color:var(--ink);
+  margin:18px 0 0;
+}
+.hero h1 .hl{ color:var(--coral); position:relative; white-space:nowrap; }
+.hero h1 .hl svg{ position:absolute; left:-4%; bottom:-.18em; width:108%; height:.42em; z-index:-1; }
+.hero h1 .teal{ color:var(--teal); }
+.hero-sub{ font-size:clamp(1.05rem,2.4vw,1.28rem); color:var(--ink-soft); max-width:46ch; margin:22px 0 30px; font-weight:500; }
+.hero-cta{ display:flex; flex-wrap:wrap; gap:14px; align-items:center; }
 
-  /* ---- MAP ---- */
-  .section--map{background:var(--canvas)}
-  .map{width:100%;height:340px;border:var(--border);border-radius:var(--radius);
-    box-shadow:var(--shadow);background:var(--canvas-deep)}
-  .addr{margin-top:16px;font-weight:700;color:var(--ink-soft)}
+.hero-rating{
+  display:inline-flex; align-items:center; gap:12px; margin-top:30px;
+  background:var(--white); border:2.5px solid var(--ink);
+  border-radius:var(--r-pill); padding:9px 18px 9px 11px;
+  box-shadow:4px 5px 0 var(--ink);
+}
+.hero-rating .stars{ color:var(--gold); font-size:1.1rem; letter-spacing:1px; }
+.hero-rating b{ font-family:var(--font-display); font-size:1.15rem; }
+.hero-rating small{ color:var(--ink-soft); font-weight:600; }
+.g-dot{ width:24px;height:24px;flex:none; }
 
-  /* ============== FOOTER ============== */
-  .foot{background:var(--ink);color:var(--canvas);border-top:var(--border);
-    padding-block:44px 40px;text-align:center}
-  .foot__brand{display:inline-flex;align-items:center;gap:11px;font-weight:900;font-size:1.3rem;margin-bottom:14px}
-  .foot__brand .mark{
-    width:40px;height:40px;border-radius:50% 50% 50% 14px;
-    background:var(--coral);border:var(--border);
-    display:grid;place-items:center;color:var(--white);font-size:1.15rem;
-    transform:rotate(-6deg);flex:0 0 auto;
-  }
-  .foot p{color:color-mix(in srgb,var(--canvas) 74%,transparent);max-width:46ch;
-    margin-inline:auto;font-size:.95rem;font-weight:500}
-  .foot .heart{color:var(--coral)}
-  .foot__copy{margin-top:18px;font-size:.86rem;font-weight:700;
-    color:color-mix(in srgb,var(--canvas) 58%,transparent)}
+/* hero media collage */
+.hero-media{ position:relative; z-index:2; }
+.hero-photo{
+  position:relative; border-radius:var(--r-lg);
+  overflow:hidden; border:4px solid var(--ink);
+  box-shadow:14px 18px 0 var(--teal), 0 30px 60px -30px var(--shadow-c);
+  aspect-ratio:4/3.4;
+}
+.hero-photo img{ width:100%; height:100%; object-fit:cover; }
+.hero-blob{ position:absolute; z-index:-1; filter:blur(2px); opacity:.9; }
+.blob-1{ width:330px; height:330px; top:-60px; right:-50px; color:var(--gold-soft); }
+.blob-2{ width:260px; height:260px; bottom:-70px; left:-70px; color:var(--teal-soft); }
 
-  /* ============== DEMO BANNER (mandatory) ============== */
-  .demo-banner{
-    position:fixed;left:0;right:0;bottom:0;z-index:80;
-    background:var(--grape-deep);color:var(--white);border-top:var(--border);
-    display:flex;gap:14px;justify-content:center;align-items:center;flex-wrap:wrap;
-    padding:11px 16px;font-size:.9rem;font-weight:700;
-    box-shadow:0 -10px 30px -16px rgba(0,0,0,.6);
-  }
-  .demo-banner b{color:var(--sun)}
-  .demo-banner a{
-    background:var(--sun);color:var(--ink);border:var(--border);
-    padding:9px 18px;border-radius:50px;font-weight:800;white-space:nowrap;min-height:44px;
-    display:inline-flex;align-items:center;
-    box-shadow:0 4px 0 rgba(34,26,46,.25);transition:transform .2s var(--ease),box-shadow .2s var(--ease);
-  }
-  .demo-banner a:hover{transform:translateY(-3px);box-shadow:0 8px 0 rgba(34,26,46,.25)}
-  .demo-banner a:active{transform:translateY(-1px);box-shadow:0 2px 0 rgba(34,26,46,.25)}
+.hero .sticker-star{ top:-22px; right:-6px; transform:rotate(9deg); background:var(--teal); color:var(--cream); }
+.hero .sticker-since{ bottom:-20px; left:-14px; transform:rotate(-7deg); background:var(--coral); color:var(--white); }
 
-  /* ============== REVEAL ON SCROLL ============== */
-  .js .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s var(--ease)}
-  .js .reveal.in{opacity:1;transform:none}
+/* trust marquee */
+.marquee{
+  margin-top:46px; background:var(--ink); color:var(--cream);
+  border-radius:var(--r-pill); padding:14px 0; overflow:hidden;
+  border:3px solid var(--ink); box-shadow:6px 8px 0 var(--gold);
+  transform:rotate(-1deg);
+}
+.marquee-track{ display:flex; gap:42px; white-space:nowrap; width:max-content; animation:scroll 28s linear infinite; }
+.marquee-track span{ font-family:var(--font-display); font-weight:700; font-size:1.05rem; display:inline-flex; align-items:center; gap:42px; }
+.marquee-track span::after{ content:"✦"; color:var(--gold); }
+@keyframes scroll{ to{ transform:translateX(-50%); } }
 
-  /* ============== REDUCED MOTION ============== */
-  @media(prefers-reduced-motion:reduce){
-    *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
-      transition-duration:.001ms!important;scroll-behavior:auto!important}
-    .js .reveal{opacity:1;transform:none}
-  }
+/* ============================================================
+   ABOUT
+   ============================================================ */
+.about{ padding:70px 0 30px; position:relative; }
+.about-grid{ display:grid; gap:34px; align-items:center; }
+.about-photos{ position:relative; display:grid; grid-template-columns:1.3fr 1fr; gap:14px; }
+.about-photos img{ border-radius:var(--r-md); border:3.5px solid var(--ink); object-fit:cover; width:100%; height:100%; }
+.about-photos .ph-tall{ grid-row:span 2; aspect-ratio:3/4.4; box-shadow:8px 9px 0 var(--coral); }
+.about-photos .ph-a{ aspect-ratio:1/1; box-shadow:6px 7px 0 var(--teal); }
+.about-photos .ph-b{ aspect-ratio:1/1; box-shadow:6px 7px 0 var(--gold); }
+.about-photos .sticker{ top:-18px; left:-16px; transform:rotate(-8deg); }
+
+.section-title{ font-size:clamp(2rem,5.2vw,3.3rem); font-weight:800; margin:14px 0 0; }
+.about p{ color:var(--ink-soft); margin-top:18px; font-weight:500; max-width:52ch; }
+
+.about-stats{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:30px; }
+.stat{
+  background:var(--white); border:2.5px solid var(--ink); border-radius:var(--r-md);
+  padding:18px 14px; text-align:center; box-shadow:4px 5px 0 var(--ink);
+  transition:transform .25s var(--ease);
+}
+.stat:hover{ transform:translateY(-4px) rotate(-1.5deg); }
+.stat b{ display:block; font-family:var(--font-display); font-size:clamp(1.6rem,5vw,2.2rem); color:var(--teal); line-height:1; }
+.stat span{ font-size:.83rem; font-weight:700; color:var(--ink-soft); }
+
+/* wavy divider */
+.wave{ display:block; width:100%; height:auto; }
+
+/* ============================================================
+   MENU / SIGNATURE DISHES
+   ============================================================ */
+.menu{ background:var(--teal-deep); color:var(--cream); padding:0 0 80px; position:relative; }
+.menu-inner{ padding-top:18px; }
+.menu .eyebrow{ color:var(--gold); }
+.menu .eyebrow::before{ background:var(--gold); }
+.menu .section-title{ color:var(--cream); }
+.menu-head{ display:flex; flex-wrap:wrap; gap:18px; justify-content:space-between; align-items:flex-end; }
+.menu-head p{ color:var(--teal-soft); max-width:40ch; font-weight:500; }
+
+.menu-grid{ display:grid; gap:22px; margin-top:42px; grid-template-columns:1fr; }
+.dish{
+  background:var(--cream); color:var(--ink);
+  border-radius:var(--r-md); overflow:hidden;
+  border:3.5px solid var(--ink);
+  box-shadow:0 18px 40px -22px rgba(0,0,0,.6);
+  transition:transform .3s var(--ease), box-shadow .3s var(--ease);
+  position:relative; display:flex; flex-direction:column;
+}
+.dish:hover{ transform:translateY(-8px) rotate(-1deg); box-shadow:0 30px 50px -22px rgba(0,0,0,.7); }
+.dish-img{ aspect-ratio:16/11; overflow:hidden; position:relative; }
+.dish-img img{ width:100%; height:100%; object-fit:cover; transition:transform .6s var(--ease); }
+.dish:hover .dish-img img{ transform:scale(1.07); }
+.dish-tag{ position:absolute; top:12px; left:12px; }
+.dish-body{ padding:20px 20px 22px; display:flex; flex-direction:column; gap:8px; flex:1; }
+.dish-body h3{ font-size:1.4rem; font-weight:800; }
+.dish-body p{ color:var(--ink-soft); font-size:.95rem; font-weight:500; flex:1; }
+.dish-foot{ display:flex; align-items:center; justify-content:space-between; margin-top:6px; }
+.price{ font-family:var(--font-display); font-weight:800; font-size:1.3rem; color:var(--coral-deep); }
+.dish-foot .dot{ color:var(--teal); font-weight:700; font-size:.85rem; }
+
+.menu-note{
+  margin-top:40px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:20px;
+}
+.menu-note p{ color:var(--teal-soft); font-weight:600; }
+
+/* ============================================================
+   GALLERY
+   ============================================================ */
+.gallery{ padding:74px 0 40px; position:relative; }
+.gallery-head{ text-align:center; max-width:620px; margin-inline:auto; }
+.gallery-head p{ color:var(--ink-soft); margin-top:16px; font-weight:500; }
+.gallery-grid{
+  margin-top:42px; display:grid; gap:14px;
+  grid-template-columns:repeat(2,1fr);
+  grid-auto-rows:170px;
+}
+.gallery-grid figure{
+  position:relative; overflow:hidden; border-radius:var(--r-md);
+  border:3.5px solid var(--ink); box-shadow:5px 6px 0 var(--ink);
+}
+.gallery-grid img{ width:100%; height:100%; object-fit:cover; transition:transform .6s var(--ease); }
+.gallery-grid figure:hover img{ transform:scale(1.08); }
+.gallery-grid figure:nth-child(1){ grid-column:span 2; grid-row:span 2; }
+.gallery-grid figure:nth-child(4){ grid-row:span 2; }
+.g-cap{
+  position:absolute; inset:auto 0 0 0; padding:24px 16px 12px;
+  background:linear-gradient(to top,rgba(34,21,15,.78),transparent);
+  color:var(--cream); font-weight:700; font-size:.92rem;
+  transform:translateY(110%); transition:transform .35s var(--ease);
+}
+.gallery-grid figure:hover .g-cap, .gallery-grid figure:focus-within .g-cap{ transform:translateY(0); }
+
+/* ============================================================
+   HOURS + CONTACT / RESERVATION
+   ============================================================ */
+.visit{ padding:60px 0 30px; }
+.visit-grid{ display:grid; gap:26px; }
+
+.hours-card{
+  background:var(--coral); color:var(--white);
+  border-radius:var(--r-lg); border:4px solid var(--ink);
+  padding:30px 26px 32px; box-shadow:10px 12px 0 var(--ink);
+  position:relative; overflow:hidden;
+}
+.hours-card::after{
+  content:"🍴"; position:absolute; right:-10px; bottom:-22px; font-size:8rem; opacity:.13; transform:rotate(-12deg);
+}
+.hours-card h3{ font-size:1.7rem; font-weight:800; }
+.hours-list{ list-style:none; margin-top:18px; display:grid; gap:2px; position:relative; z-index:1; }
+.hours-list li{ display:flex; justify-content:space-between; gap:10px; padding:11px 0; border-bottom:1.5px dashed rgba(255,255,255,.35); font-weight:600; }
+.hours-list li:last-child{ border-bottom:none; }
+.hours-list .day{ font-weight:700; }
+.hours-list .open-now{ background:var(--ink); color:var(--gold); font-weight:800; font-size:.7rem; letter-spacing:.1em; padding:3px 10px; border-radius:var(--r-pill); text-transform:uppercase; align-self:center; }
+
+.contact-card{
+  background:var(--white); border-radius:var(--r-lg); border:4px solid var(--ink);
+  padding:30px 26px 32px; box-shadow:10px 12px 0 var(--teal);
+}
+.contact-card h3{ font-size:1.7rem; font-weight:800; }
+.contact-card .lead{ color:var(--ink-soft); margin-top:10px; font-weight:500; }
+.contact-rows{ margin-top:22px; display:grid; gap:14px; }
+.crow{ display:flex; align-items:center; gap:14px; }
+.crow .ic{ width:46px; height:46px; flex:none; border-radius:14px; background:var(--cream-2); display:grid; place-items:center; border:2.5px solid var(--ink); }
+.crow .ic svg{ width:22px; height:22px; }
+.crow b{ font-family:var(--font-display); font-size:1.05rem; display:block; }
+.crow span{ font-size:.88rem; color:var(--ink-soft); font-weight:600; }
+.contact-actions{ display:flex; flex-wrap:wrap; gap:12px; margin-top:24px; }
+
+.map-band{
+  margin-top:26px; border-radius:var(--r-md); border:3.5px solid var(--ink); overflow:hidden;
+  box-shadow:6px 7px 0 var(--ink); background:var(--cream-2);
+  aspect-ratio:16/6; position:relative;
+  display:grid; place-items:center; text-align:center;
+}
+.map-band .map-bg{ position:absolute; inset:0; opacity:.5; }
+.map-band .pin{ position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; gap:8px; font-weight:800; font-family:var(--font-display); }
+.map-band .pin .pindot{ width:54px; height:54px; border-radius:50% 50% 50% 6px; background:var(--coral); border:3px solid var(--ink); transform:rotate(45deg); box-shadow:4px 5px 0 var(--ink); display:grid; place-items:center; }
+.map-band .pin .pindot span{ transform:rotate(-45deg); font-size:1.4rem; }
+
+/* ============================================================
+   CTA STRIP
+   ============================================================ */
+.cta-strip{ padding:30px 0 80px; }
+.cta-box{
+  background:var(--gold); border:4px solid var(--ink);
+  border-radius:var(--r-lg); padding:clamp(34px,6vw,60px) clamp(24px,5vw,56px);
+  text-align:center; box-shadow:12px 14px 0 var(--ink);
+  position:relative; overflow:hidden;
+}
+.cta-box h2{ font-size:clamp(1.9rem,6vw,3.2rem); font-weight:900; color:var(--ink); }
+.cta-box p{ color:var(--ink-soft); font-weight:600; margin:14px auto 28px; max-width:46ch; }
+.cta-actions{ display:flex; flex-wrap:wrap; gap:14px; justify-content:center; }
+.cta-confetti{ position:absolute; font-size:1.6rem; opacity:.7; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer{ background:var(--ink); color:var(--cream); padding:54px 0 30px; }
+.footer-grid{ display:grid; gap:30px; }
+.footer .brand{ color:var(--cream); }
+.footer-about p{ color:#cbb8a8; margin-top:14px; max-width:38ch; font-weight:500; }
+.footer h4{ font-size:1.1rem; margin-bottom:14px; color:var(--gold); }
+.footer-col a, .footer-col p{ display:block; color:#d8c8ba; padding:5px 0; font-weight:500; }
+.footer-col a:hover{ color:var(--gold); }
+.socials{ display:flex; gap:10px; margin-top:8px; }
+.socials a{ width:44px; height:44px; border-radius:14px; border:2px solid rgba(255,255,255,.2); display:grid; place-items:center; transition:.25s var(--ease); }
+.socials a:hover{ background:var(--gold); color:var(--ink); border-color:var(--gold); transform:translateY(-3px); }
+.socials svg{ width:20px; height:20px; }
+.footer-bottom{ margin-top:40px; padding-top:22px; border-top:1px solid rgba(255,255,255,.13); display:flex; flex-wrap:wrap; gap:10px; justify-content:space-between; color:#a8978a; font-size:.85rem; font-weight:500; }
+
+/* floating whatsapp */
+.fab{
+  position:fixed; right:18px; bottom:18px; z-index:70;
+  width:60px; height:60px; border-radius:50%;
+  background:#25D366; color:#fff; display:grid; place-items:center;
+  border:3px solid var(--ink); box-shadow:0 10px 26px -8px rgba(0,0,0,.5);
+  transition:transform .25s var(--ease);
+  animation:pulse 2.6s ease-in-out infinite;
+}
+.fab:hover{ transform:scale(1.08); }
+.fab svg{ width:30px; height:30px; }
+@keyframes pulse{ 0%,100%{ box-shadow:0 10px 26px -8px rgba(0,0,0,.5),0 0 0 0 rgba(37,211,102,.5);} 50%{ box-shadow:0 10px 26px -8px rgba(0,0,0,.5),0 0 0 14px rgba(37,211,102,0);} }
+
+/* reveal on scroll */
+.reveal{ opacity:0; transform:translateY(28px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
+.reveal.in{ opacity:1; transform:none; }
+
+/* ============================================================
+   RESPONSIVE — tablet / desktop
+   ============================================================ */
+@media(min-width:680px){
+  .hero-grid{ grid-template-columns:1.05fr .95fr; }
+  .menu-grid{ grid-template-columns:repeat(2,1fr); }
+  .gallery-grid{ grid-template-columns:repeat(4,1fr); grid-auto-rows:190px; }
+  .visit-grid{ grid-template-columns:1fr 1.2fr; align-items:start; }
+  .footer-grid{ grid-template-columns:1.6fr 1fr 1fr; }
+  .about-grid{ grid-template-columns:1fr 1.05fr; }
+}
+@media(min-width:920px){
+  .nav-links{ display:flex; }
+  .nav-cta{ display:inline-flex; }
+  .nav-toggle{ display:none; }
+  .menu-grid{ grid-template-columns:repeat(3,1fr); }
+  .about-grid{ grid-template-columns:1.05fr 1fr; gap:54px; }
+  .hero{ padding:54px 0 60px; }
+}
+
+@media(prefers-reduced-motion:reduce){
+  *{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important; }
+  .reveal{ opacity:1; transform:none; }
+  .marquee-track{ animation:none; }
+  .fab{ animation:none; }
+}
 </style>
 </head>
 <body>
 
-<!-- ===== KINETIC MARQUEE ===== -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee__track">
-    <span>რესტორანი</span>
-    <span>★ 4.6 Google</span>
-    <span>1457 შეფასება</span>
-    <span>დაგვიკავშირდით WhatsApp-ით</span>
-    <span>რესტორანი</span>
-    <span>★ 4.6 Google</span>
-    <span>1457 შეფასება</span>
-    <span>დაგვიკავშირდით WhatsApp-ით</span>
-  </div>
-</div>
-
-<!-- ===== HERO ===== -->
-<main id="top">
-<header class="hero">
-  <span class="hero__blob blob-a" aria-hidden="true"></span>
-  <span class="hero__blob blob-b" aria-hidden="true"></span>
-  <nav class="wrap nav" aria-label="მთავარი">
-    <a class="nav__brand" href="#top">
-      <span class="nav__mark" aria-hidden="true">✦</span>
-      <span class="nav__name">რესტორანი მარგალიტა</span>
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand" aria-label="რესტორანი მარგალიტა — მთავარი">
+      <span class="brand-mark" aria-hidden="true">მ</span>
+      <span>მარგალიტა</span>
     </a>
-    <a class="nav__cta" href="https://wa.me/995557223993" target="_blank" rel="noopener">WhatsApp</a>
-  </nav>
-  <div class="wrap hero__grid">
-    <div class="hero__copy reveal">
-      <p class="eyebrow">რესტორანი</p>
-      <h1><span class="wink">რესტორანი მარგალიტა</span></h1>
-      <p class="lead">ელეგანტური სამზარეულო</p>
-      <div class="rating" role="img" aria-label="Google-ის შეფასება 4.6, 1457 მიმოხილვა">
-        <span class="stars" aria-hidden="true"><span class='stars'>★★★★★<span class='star-off'></span></span></span>
-        <span><b>4.6</b> Google</span>
-        <span class="pill">1457 მიმოხილვა</span>
-      </div>
-    </div>
-
-    <div class="hero__art reveal">
-      <div class="hero__stamp" aria-hidden="true"><span><small>დემო</small>ვერსია</span></div>
-      <!-- Gradient is the default; JS swaps in the real photo only when ../assets/photo1.jpg
-           resolves to a non-empty path (avoids broken/empty <img src>). -->
-      <div class="hero__frame is-empty" data-hero="../assets/photo1.jpg" role="img"
-           aria-label="ელეგანტური სამზარეულო">
-        <noscript><img src="../assets/photo1.jpg" alt="" loading="eager"></noscript>
-      </div>
-      <div class="hero__chip chip-1"><span class="dot" aria-hidden="true"></span> ღია ახლა</div>
-      <div class="hero__chip chip-2"><span aria-hidden="true">✦</span> რესტორანი</div>
-    </div>
+    <nav class="nav-links" aria-label="მთავარი ნავიგაცია">
+      <a href="#about">ჩვენ შესახებ</a>
+      <a href="#menu">მენიუ</a>
+      <a href="#gallery">გალერეა</a>
+      <a href="#visit">საათები</a>
+      <a href="#contact">კონტაქტი</a>
+    </nav>
+    <a href="#contact" class="btn btn-primary nav-cta">დაჯავშნა</a>
+    <button class="nav-toggle" id="navToggle" aria-label="მენიუს გახსნა" aria-expanded="false" aria-controls="mobileMenu">
+      <span aria-hidden="true"></span>
+    </button>
+  </div>
+  <div class="wrap mobile-menu" id="mobileMenu">
+    <a href="#about">ჩვენ შესახებ</a>
+    <a href="#menu">მენიუ</a>
+    <a href="#gallery">გალერეა</a>
+    <a href="#visit">სამუშაო საათები</a>
+    <a href="#contact">კონტაქტი</a>
+    <a href="#contact" class="btn btn-primary">მაგიდის დაჯავშნა</a>
   </div>
 </header>
 
-<!-- ===== ABOUT ===== -->
-<section class="section section--about reveal">
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">ცოცხალი ბისტრო თბილისში</span>
+      <h1>
+        <span class="hl">გემრიელი<svg viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 70 4, 150 4, 297 12" stroke="var(--gold)" stroke-width="9" fill="none" stroke-linecap="round"/></svg></span>
+        <br>სტუმართმოყვა&shy;რეობა <span class="teal">ყოველ დღე</span>
+      </h1>
+      <p class="hero-sub">მარგალიტა არის ადგილი, სადაც ქართული გემოები, თბილი ფერები და ხალისიანი ატმოსფერო ერთ მაგიდასთან იყრის თავს. მოდი ოჯახით, მეგობრებით — ან უბრალოდ კარგი ხასიათით.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 2v3M16 2v3M3 9h18M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          მაგიდის დაჯავშნა
+        </a>
+        <a href="#menu" class="btn btn-ghost">მენიუს ნახვა</a>
+      </div>
+
+      <div class="hero-rating" role="img" aria-label="Google შეფასება 4.6 ვარსკვლავი 1456 მიმოხილვიდან">
+        <svg class="g-dot" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.5 12.2c0-.7-.1-1.4-.2-2H12v3.9h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2.1-2 3.2-4.9 3.2-7.9z"/><path fill="#34A853" d="M12 23c2.9 0 5.4-1 7.2-2.6l-3.6-2.7c-1 .7-2.3 1.1-3.6 1.1-2.8 0-5.1-1.9-6-4.4H2.3v2.8A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M6 14.4a6.6 6.6 0 0 1 0-4.2V7.4H2.3a11 11 0 0 0 0 9.8L6 14.4z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .5 4.1 1.6l3.1-3.1A11 11 0 0 0 12 1 11 11 0 0 0 2.3 7.4L6 10.2c.9-2.6 3.2-4.8 6-4.8z"/></svg>
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <span><b>4.6</b> <small>/ 1456 შეფასება</small></span>
+      </div>
+    </div>
+
+    <div class="hero-media">
+      <svg class="hero-blob blob-1" viewBox="0 0 200 200" aria-hidden="true"><path fill="currentColor" d="M44.8-65.6C57.4-56.7 66-42.4 70.6-27.2 75.2-12 75.8 4.1 71-18.2 66.2 32.6 56 46.1 42.4 56.4 28.8 66.7 11.9 73.8-4.9 79.9-21.7 86-38.5 91.1-50.9 83.4-63.3 75.7-71.3 55.1-75.9 35.4-80.5 15.7-81.7 -3.1-77.4-20.2-73.1-37.3-63.3-52.7-49.5-61.6-35.7-70.5-17.8-72.9 0.3-73.4 18.4-73.9 36.8-69.6 44.8-65.6Z" transform="translate(100 100)"/></svg>
+      <svg class="hero-blob blob-2" viewBox="0 0 200 200" aria-hidden="true"><path fill="currentColor" d="M44.8-65.6C57.4-56.7 66-42.4 70.6-27.2 75.2-12 75.8 4.1 71 18.2 66.2 32.6 56 46.1 42.4 56.4 28.8 66.7 11.9 73.8-4.9 79.9-21.7 86-38.5 91.1-50.9 83.4-63.3 75.7-71.3 55.1-75.9 35.4-80.5 15.7-81.7-3.1-77.4-20.2-73.1-37.3-63.3-52.7-49.5-61.6-35.7-70.5-17.8-72.9 0.3-73.4 18.4-73.9 36.8-69.6 44.8-65.6Z" transform="translate(100 100)"/></svg>
+
+      <div class="hero-photo">
+        <img src="../../restorani-margalita/assets/photo1.jpg" alt="რესტორან მარგალიტას მყუდრო დარბაზი ფირუზისფერი მაგიდებით, აგურის კედლებითა და ვინტაჟური სანათებით" width="800" height="680" fetchpriority="high">
+      </div>
+      <span class="sticker sticker-star" aria-hidden="true">★ ფავორიტი თბილისში</span>
+      <span class="sticker sticker-since" aria-hidden="true">გახსნილია ყოველ დღე</span>
+    </div>
+  </div>
+
   <div class="wrap">
-    <h2>ჩვენ შესახებ</h2>
-    <p class="about">რესტორანი მარგალიტა — რესტორანი თბილისის ცენტრში. Google-ზე საშუალო შეფასება 4.6 ★, 1457 მომხმარებლის მიხედვით.</p>
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>ქართული სამზარეულო<span></span></span>
+        <span>ცოცხალი მუსიკა<span></span></span>
+        <span>ოჯახური ატმოსფერო<span></span></span>
+        <span>ადგილობრივი ღვინო<span></span></span>
+        <span>ახალი პროდუქტი<span></span></span>
+        <span>ქართული სამზარეულო<span></span></span>
+        <span>ცოცხალი მუსიკა<span></span></span>
+        <span>ოჯახური ატმოსფერო<span></span></span>
+        <span>ადგილობრივი ღვინო<span></span></span>
+        <span>ახალი პროდუქტი<span></span></span>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ===== DATA-DRIVEN SECTION BLOCKS (each is a full <section class="section">…</section>;
-         build.py wraps them with neutral classes and styles above make them playful;
-         empty tokens collapse to nothing) ===== -->
-<section class='section'><h2>გალერეა</h2><div class='gallery'><figure class='shot'><img loading='lazy' src='../assets/photo2.jpg' alt=''></figure><figure class='shot'><img loading='lazy' src='../assets/photo3.jpg' alt=''></figure><figure class='shot'><img loading='lazy' src='../assets/photo4.jpg' alt=''></figure><figure class='shot'><img loading='lazy' src='../assets/photo5.jpg' alt=''></figure><figure class='shot'><img loading='lazy' src='../assets/photo6.jpg' alt=''></figure></div></section>
-<section class='section'><h2>შეფასებები</h2><div class='reviews'><figure class='review'><div class='r-stars'><span class='stars'>★★★★★<span class='star-off'></span></span></div><blockquote>“თუ რუსთაველის ხმაურიდან გაქცევა და მყუდრო გარემოში დროის გატარება გსურთ, ეს რესტორანი იდეალური არჩევანია. ინტერიერი გემოვნებით მოწყობილი, ატმოსფერო — მშვიდი და სასიამო…”</blockquote><figcaption>— sopo pipia</figcaption></figure><figure class='review'><div class='r-stars'><span class='stars'>★★★★★<span class='star-off'></span></span></div><blockquote>“სამზარეულო აქვთ ძალიან კარგი, ყველაფერი უგემრიელესია ღვინის ფართო და კარგი არჩევანით. ატმოსფერო არის ძალიან სასიამოვნო. ცოცხალი შესრულება იდეალურ ფარემოს ქმნის სამეგობ…”</blockquote><figcaption>— george datunashvili</figcaption></figure></div></section>
-<section class='section'><h2>სამუშაო საათები</h2><ul class='hours'><li><span>ორშაბათი: 11:00 AM – 11:50 PM</span></li><li><span>სამშაბათი: 11:00 AM – 11:30 PM</span></li><li><span>ოთხშაბათი: 11:00 AM – 11:30 PM</span></li><li><span>ხუთშაბათი: 11:00 AM – 11:30 PM</span></li><li><span>პარასკევი: 11:00 AM – 11:30 PM</span></li><li><span>შაბათი: 11:00 AM – 11:30 PM</span></li><li><span>კვირა: 11:00 AM – 11:50 PM</span></li></ul></section>
-<section class='section'><h2>დაგვიკავშირდით</h2><div class='cta'><a class='btn btn-primary' href='https://wa.me/995574114343' target='_blank' rel='noopener'><span class='ico'>💬</span> WhatsApp-ით მოწერა</a><a class='btn btn-ghost' href='tel:+995574114343'><span class='ico'>📞</span> დარეკვა</a><a class='btn btn-link' href='https://maps.google.com/?cid=801977521942160688&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA' target='_blank' rel='noopener'>Google Maps-ზე ნახვა →</a></div><p class='phone'>574 11 43 43</p></section>
-<section class='section'><h2>მდებარეობა</h2><iframe class='map' loading='lazy' src='https://www.openstreetmap.org/export/embed.html?bbox=44.791848%2C41.696021%2C44.799848%2C41.704021&amp;layer=mapnik&amp;marker=41.700021,44.795848'></iframe><p class='addr'>📍 1 მიტროფანე ლაღიძის ქუჩა, თბილისი 0108</p></section>
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-photos reveal">
+      <img class="ph-tall" src="../../restorani-margalita/assets/photo2.jpg" alt="მყუდრო კუთხე ყვავილოვანი სავარძლებითა და გაწყობილი მაგიდით რესტორან მარგალიტაში" width="400" height="586" loading="lazy">
+      <img class="ph-a" src="../../restorani-margalita/assets/photo6.jpg" alt="ფართო დარბაზი ღვინის სტელაჟითა და ვინტაჟური ინტერიერით" width="300" height="300" loading="lazy">
+      <img class="ph-b" src="../../restorani-margalita/assets/photo5.jpg" alt="ხალხით სავსე ცოცხალი დარბაზი საღამოს ატმოსფეროში" width="300" height="300" loading="lazy">
+      <span class="sticker" aria-hidden="true">❤ ოჯახური</span>
+    </div>
+    <div class="about-copy reveal">
+      <span class="eyebrow">ჩვენ შესახებ</span>
+      <h2 class="section-title">ერთი მაგიდა, <br>ათასი თბილი ისტორია</h2>
+      <p>მარგალიტაში ყველაფერი იწყება მასპინძლობით. ჩვენი სამზარეულო პატივს მიაგებს ქართულ ტრადიციებს — ნამდვილი გემოები, ახალი ადგილობრივი პროდუქტი და კერძები, რომლებიც გულითა და სიყვარულით მზადდება.</p>
+      <p>ვინტაჟური სანათები, ფირუზისფერი მაგიდები და ცოცხალი მუსიკა ქმნის ატმოსფეროს, სადაც ყოველი ვიზიტი დღესასწაულად იქცევა.</p>
+      <div class="about-stats">
+        <div class="stat"><b>4.6★</b><span>Google შეფასება</span></div>
+        <div class="stat"><b>1456</b><span>ბედნიერი სტუმარი</span></div>
+        <div class="stat"><b>100%</b><span>ახალი პროდუქტი</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- wavy divider into menu -->
+<svg class="wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true" style="margin-top:30px;"><path fill="var(--teal-deep)" d="M0 40 C 240 90, 480 0, 720 30 C 960 60, 1200 10, 1440 44 L1440 80 L0 80 Z"/></svg>
+
+<!-- ============ MENU ============ -->
+<section class="menu" id="menu">
+  <div class="wrap menu-inner">
+    <div class="menu-head reveal">
+      <div>
+        <span class="eyebrow">ფირმური კერძები</span>
+        <h2 class="section-title">ჩვენი მაგიდის <br>ვარსკვლავები</h2>
+      </div>
+      <p>თითოეული კერძი — პატარა ზეიმია. აი, რას ირჩევენ ჩვენი სტუმრები ყველაზე ხშირად.</p>
+    </div>
+
+    <div class="menu-grid">
+      <article class="dish reveal">
+        <div class="dish-img">
+          <img src="../../restorani-margalita/assets/photo3.jpg" alt="ქართული ხორცეულის დიდი ასორტი — შემწვარი ხორცი, კუპატი, ბოსტნეული და თონის პური ნახატებიან სუფრაზე" width="520" height="358" loading="lazy">
+          <span class="sticker dish-tag" aria-hidden="true">★ ჰიტი</span>
+        </div>
+        <div class="dish-body">
+          <h3>მარგალიტას ასორტი</h3>
+          <p>გულუხვი სამეფო ასორტი მთელი ოჯახისთვის — შემწვარი ხორცეული, კუპატი, ბოსტნეული და ცხელი თონის პური.</p>
+          <div class="dish-foot"><span class="price">68 ₾</span><span class="dot">● 2–3 პერსონა</span></div>
+        </div>
+      </article>
+
+      <article class="dish reveal">
+        <div class="dish-img">
+          <img src="../../restorani-margalita/assets/photo4.jpg" alt="ფერადი შემწვარი ბოსტნეული — სტაფილო, მწვანე ლობიო, ბრიუსელის კომბოსტო და პომიდორი თეფშზე" width="520" height="358" loading="lazy">
+          <span class="sticker dish-tag" aria-hidden="true" style="background:var(--teal); color:var(--cream);">🌿 ვეგი</span>
+        </div>
+        <div class="dish-body">
+          <h3>შემწვარი ბოსტნეული</h3>
+          <p>სეზონური ბოსტნეული, ნაზად შემწვარი არომატულ მწვანილებში — მსუბუქი, ფერადი და ნამდვილად გემრიელი.</p>
+          <div class="dish-foot"><span class="price">19 ₾</span><span class="dot">● ვეგეტარიანული</span></div>
+        </div>
+      </article>
+
+      <article class="dish reveal">
+        <div class="dish-img">
+          <img src="../../restorani-margalita/assets/photo1.jpg" alt="რესტორნის თბილი დარბაზი — იდეალური ადგილი სადილისთვის" width="520" height="358" loading="lazy">
+          <span class="sticker dish-tag" aria-hidden="true" style="background:var(--coral); color:var(--white);">🍷 ღვინო</span>
+        </div>
+        <div class="dish-body">
+          <h3>ქვევრის ღვინო</h3>
+          <p>ადგილობრივი მეღვინეების შერჩეული ღვინოები — ქარვისფერი და წითელი, ქართული ტრადიციით დაყენებული.</p>
+          <div class="dish-foot"><span class="price">12 ₾</span><span class="dot">● ჭიქა</span></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="menu-note reveal">
+      <p>სრული მენიუ მოიცავს ცხელ კერძებს, სალათებს, საუზმესა და დესერტებს.</p>
+      <a href="https://wa.me/995574114343" class="btn btn-primary" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.7.9-.1.2-.3.2-.5.1-.7-.4-1.5-.7-2.2-1.6-.2-.3.2-.3.5-.9.1-.1 0-.3 0-.4 0-.1-.5-1.3-.7-1.7-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9 0 1.1.8 2.2.9 2.4.1.2 1.6 2.5 3.9 3.4 1.5.6 2 .7 2.7.5.4-.1 1.4-.5 1.5-1 .2-.5.2-.9.1-1-.1-.1-.2-.1-.4-.2z"/></svg>
+        მენიუ WhatsApp-ში
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- wavy divider out of menu -->
+<svg class="wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path fill="var(--teal-deep)" d="M0 0 L1440 0 L1440 40 C 1200 0, 960 70, 720 44 C 480 18, 240 70, 0 36 Z"/></svg>
+
+<!-- ============ GALLERY ============ -->
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="gallery-head reveal">
+      <span class="eyebrow" style="justify-content:center;">ატმოსფერო</span>
+      <h2 class="section-title">შემოიხედე ჩვენთან</h2>
+      <p>ფირუზისფერი მაგიდები, თბილი შუქი და ცოცხალი საღამოები — აი, როგორ გამოიყურება ერთი ვახშამი მარგალიტაში.</p>
+    </div>
+    <div class="gallery-grid reveal">
+      <figure>
+        <img src="../../restorani-margalita/assets/photo1.jpg" alt="რესტორნის მთავარი დარბაზი ფირუზისფერი მაგიდებითა და აგურის კედლებით" width="600" height="400" loading="lazy">
+        <figcaption class="g-cap">მთავარი დარბაზი</figcaption>
+      </figure>
+      <figure>
+        <img src="../../restorani-margalita/assets/photo3.jpg" alt="ქართული კერძების გულუხვი ასორტი ნახატებიან სუფრაზე" width="300" height="200" loading="lazy">
+        <figcaption class="g-cap">ფირმური ასორტი</figcaption>
+      </figure>
+      <figure>
+        <img src="../../restorani-margalita/assets/photo6.jpg" alt="ღვინის სტელაჟი და მყუდრო კუთხეები დარბაზში" width="300" height="200" loading="lazy">
+        <figcaption class="g-cap">ღვინის კუთხე</figcaption>
+      </figure>
+      <figure>
+        <img src="../../restorani-margalita/assets/photo5.jpg" alt="ცოცხალი საღამო — ხალხით სავსე დარბაზი მუსიკის თანხლებით" width="300" height="400" loading="lazy">
+        <figcaption class="g-cap">ცოცხალი საღამოები</figcaption>
+      </figure>
+      <figure>
+        <img src="../../restorani-margalita/assets/photo2.jpg" alt="ყვავილოვანი სავარძლები და დახვეწილად გაწყობილი მაგიდა" width="300" height="200" loading="lazy">
+        <figcaption class="g-cap">მყუდრო კუთხეები</figcaption>
+      </figure>
+      <figure>
+        <img src="../../restorani-margalita/assets/photo4.jpg" alt="ფერადი შემწვარი ბოსტნეული თეფშზე" width="300" height="200" loading="lazy">
+        <figcaption class="g-cap">ახალი გემოები</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISIT (HOURS + CONTACT) ============ -->
+<section class="visit" id="visit">
+  <div class="wrap visit-grid">
+    <div class="hours-card reveal">
+      <span class="eyebrow" style="color:var(--white);">სამუშაო საათები</span>
+      <h3>გელოდებით ყოველ დღე</h3>
+      <ul class="hours-list">
+        <li><span class="day">ორშაბათი – ხუთშაბათი</span> <span>12:00 – 23:00</span></li>
+        <li><span class="day">პარასკევი</span> <span>12:00 – 00:00</span></li>
+        <li><span class="day">შაბათი</span> <span>11:00 – 00:00 <span class="open-now">ახლა ღიაა</span></span></li>
+        <li><span class="day">კვირა</span> <span>11:00 – 23:00</span></li>
+      </ul>
+    </div>
+
+    <div class="contact-card reveal" id="contact">
+      <span class="eyebrow">დაჯავშნა და კონტაქტი</span>
+      <h3>დაჯავშნე მაგიდა წუთებში</h3>
+      <p class="lead">დაგვირეკე ან მოგვწერე WhatsApp-ში — სიამოვნებით დაგხვდებით ნებისმიერ დროს. დიდი კომპანია? გვაცნობე წინასწარ და მოვამზადებთ თქვენს მაგიდას.</p>
+
+      <div class="contact-rows">
+        <a class="crow" href="tel:+995574114343">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span><b>+995 574 11 43 43</b><span>დარეკვა</span></span>
+        </a>
+        <a class="crow" href="https://wa.me/995574114343" target="_blank" rel="noopener">
+          <span class="ic" aria-hidden="true" style="background:#dcf8e8;"><svg viewBox="0 0 24 24" fill="#128C4B"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2zm4.4 12c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.7.9-.1.2-.3.2-.5.1-.7-.4-1.5-.7-2.2-1.6-.2-.3.2-.3.5-.9.1-.1 0-.3 0-.4 0-.1-.5-1.3-.7-1.7-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9 0 1.1.8 2.2.9 2.4.1.2 1.6 2.5 3.9 3.4 1.5.6 2 .7 2.7.5.4-.1 1.4-.5 1.5-1 .2-.5.2-.9.1-1-.1-.1-.2-.1-.4-.2z"/></svg></span>
+          <span><b>WhatsApp</b><span>სწრაფი დაჯავშნა</span></span>
+        </a>
+        <div class="crow">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.6" stroke="var(--ink)" stroke-width="2"/></svg></span>
+          <span><b>თბილისი, საქართველო</b><span>ქალაქის ცენტრში</span></span>
+        </div>
+      </div>
+
+      <div class="contact-actions">
+        <a href="https://wa.me/995574114343" class="btn btn-primary" target="_blank" rel="noopener">WhatsApp-ით დაჯავშნა</a>
+        <a href="tel:+995574114343" class="btn btn-ghost">დარეკვა</a>
+      </div>
+
+      <div class="map-band" role="img" aria-label="რესტორან მარგალიტას მდებარეობა თბილისის ცენტრში">
+        <svg class="map-bg" viewBox="0 0 400 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="400" height="150" fill="#EBD9BE"/>
+          <path d="M0 40 H400 M0 95 H400 M70 0 V150 M210 0 V150 M320 0 V150" stroke="#D8BE97" stroke-width="6"/>
+          <path d="M0 65 C 120 50, 260 90, 400 70" stroke="#9ED0CA" stroke-width="10" fill="none"/>
+        </svg>
+        <span class="pin"><span class="pindot" aria-hidden="true"><span>🍴</span></span> მარგალიტა</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA STRIP ============ -->
+<section class="cta-strip">
+  <div class="wrap">
+    <div class="cta-box reveal">
+      <span class="cta-confetti" style="top:18px; left:8%;" aria-hidden="true">✦</span>
+      <span class="cta-confetti" style="top:30px; right:12%; font-size:2.2rem;" aria-hidden="true">🍷</span>
+      <span class="cta-confetti" style="bottom:24px; left:16%; font-size:2rem;" aria-hidden="true">🌶</span>
+      <span class="cta-confetti" style="bottom:18px; right:9%;" aria-hidden="true">✦</span>
+      <h2>მზად ხარ ნამდვილი გემოებისთვის?</h2>
+      <p>დაჯავშნე მაგიდა დღესვე და მოდი მარგალიტაში — სადაც ყოველი ვახშამი დღესასწაულია.</p>
+      <div class="cta-actions">
+        <a href="https://wa.me/995574114343" class="btn btn-dark" target="_blank" rel="noopener">WhatsApp-ით დაჯავშნა</a>
+        <a href="tel:+995574114343" class="btn btn-ghost">+995 574 11 43 43</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 </main>
 
-<!-- ===== FOOTER ===== -->
-<footer class="foot">
-  <div class="wrap">
-    <div class="foot__brand"><span class="mark" aria-hidden="true">✦</span> რესტორანი მარგალიტა</div>
-    <p>ეს არის უფასო სადემონსტრაციო ვერსია. რეალურ ვებგვერდზე გამოყენებული იქნება თქვენი ფოტოები და ტექსტი.<br>
-    დამზადებულია <b style="color:var(--sun)">Abra</b>-ის მიერ თბილისში <span class="heart" aria-hidden="true">♥</span></p>
-    <p class="foot__copy">© <span id="yr">2026</span> რესტორანი მარგალიტა</p>
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <a href="#top" class="brand">
+        <span class="brand-mark" aria-hidden="true">მ</span>
+        <span>მარგალიტა</span>
+      </a>
+      <p>ცოცხალი, ოჯახური რესტორანი თბილისის გულში. ქართული გემოები, თბილი ფერები და ხალისიანი ატმოსფერო — ყოველ დღე.</p>
+      <div class="socials">
+        <a href="https://wa.me/995574114343" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2zm4.4 12c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.7.9-.1.2-.3.2-.5.1-.7-.4-1.5-.7-2.2-1.6-.2-.3.2-.3.5-.9.1-.1 0-.3 0-.4 0-.1-.5-1.3-.7-1.7-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9 0 1.1.8 2.2.9 2.4.1.2 1.6 2.5 3.9 3.4 1.5.6 2 .7 2.7.5.4-.1 1.4-.5 1.5-1 .2-.5.2-.9.1-1-.1-.1-.2-.1-.4-.2z"/></svg></a>
+        <a href="tel:+995574114343" aria-label="დარეკვა"><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="#contact" aria-label="მისამართი"><svg viewBox="0 0 24 24" fill="none"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="2"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>ნავიგაცია</h4>
+      <a href="#about">ჩვენ შესახებ</a>
+      <a href="#menu">მენიუ</a>
+      <a href="#gallery">გალერეა</a>
+      <a href="#visit">სამუშაო საათები</a>
+      <a href="#contact">დაჯავშნა</a>
+    </div>
+    <div class="footer-col">
+      <h4>კონტაქტი</h4>
+      <a href="tel:+995574114343">+995 574 11 43 43</a>
+      <a href="https://wa.me/995574114343" target="_blank" rel="noopener">WhatsApp</a>
+      <p>თბილისი, საქართველო</p>
+      <p>ორშ – კვ: 11:00 – 00:00</p>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 რესტორანი მარგალიტა. ყველა უფლება დაცულია.</span>
+    <span>დამზადებულია სიყვარულით თბილისში ❤</span>
   </div>
 </footer>
 
-<!-- ===== MANDATORY DEMO BANNER ===== -->
-<div class="demo-banner">
-  <span><b>უფასო დემო</b> — დამზადებულია Abra-ის მიერ</span>
-  <a href="https://wa.me/995557223993" target="_blank" rel="noopener">დაგაინტერესათ? მოგვწერეთ</a>
-</div>
+<!-- floating whatsapp -->
+<a class="fab" href="https://wa.me/995574114343" target="_blank" rel="noopener" aria-label="დაგვიკავშირდი WhatsApp-ით">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.7.9-.1.2-.3.2-.5.1-.7-.4-1.5-.7-2.2-1.6-.2-.3.2-.3.5-.9.1-.1 0-.3 0-.4 0-.1-.5-1.3-.7-1.7-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9 0 1.1.8 2.2.9 2.4.1.2 1.6 2.5 3.9 3.4 1.5.6 2 .7 2.7.5.4-.1 1.4-.5 1.5-1 .2-.5.2-.9.1-1-.1-.1-.2-.1-.4-.2z"/></svg>
+</a>
 
 <script>
 (function(){
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* hero photo: swap in only when a real path exists, else keep gradient */
-  var frame = document.querySelector('.hero__frame');
-  if(frame){
-    var src = (frame.getAttribute('data-hero') || '').trim();
-    if(src){
-      var img = new Image();
-      img.alt = '';
-      img.decoding = 'async';
-      img.onload = function(){
-        frame.insertBefore(img, frame.firstChild);
-        frame.classList.remove('is-empty');
-        frame.removeAttribute('role');
-        frame.removeAttribute('aria-label');
-      };
-      img.src = src; /* on error: gradient + aria-label stay */
-    }
+  // Mobile menu
+  var toggle = document.getElementById('navToggle');
+  var menu = document.getElementById('mobileMenu');
+  if(toggle && menu){
+    toggle.addEventListener('click', function(){
+      var open = menu.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'მენიუს დახურვა' : 'მენიუს გახსნა');
+    });
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        menu.classList.remove('open');
+        toggle.setAttribute('aria-expanded','false');
+      });
+    });
   }
 
-  /* reveal on scroll */
-  var els = document.querySelectorAll('.reveal');
+  // Nav shadow on scroll
+  var nav = document.getElementById('nav');
+  var onScroll = function(){
+    if(window.scrollY > 12){ nav.classList.add('scrolled'); }
+    else{ nav.classList.remove('scrolled'); }
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, {passive:true});
+
+  // Reveal on scroll (respects reduced motion)
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var reveals = document.querySelectorAll('.reveal');
   if(reduce || !('IntersectionObserver' in window)){
-    els.forEach(function(el){el.classList.add('in');});
-  }else{
+    reveals.forEach(function(el){ el.classList.add('in'); });
+  } else {
     var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
       });
-    },{threshold:.14, rootMargin:'0px 0px -8% 0px'});
-    els.forEach(function(el){io.observe(el);});
+    }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+    reveals.forEach(function(el){ io.observe(el); });
   }
 })();
 </script>

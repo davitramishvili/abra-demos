@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ყავა და სითბო ქალაქის ცენტრში — კაფე</title>
-<meta name="description" content="Kvarts Coffee · 2100-ზე მეტი შეფასება, საშუალო 4.5 ★" />
+<title>Kvarts Coffee — ხელოვნება ჭიქაზე | თბილისი</title>
+<meta name="description" content="Kvarts Coffee — სპეციალური ყავა და ხელით ნახატი ჭიქები თბილისის გულში. Coffee with Art." />
 
 <!-- Georgian-complete fonts only -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -13,8 +13,8 @@
 
 <style>
   /* ============================================================
-     BOLD MODERN MINIMAL · editorial atelier template
-     Token-driven demo template (style 1)
+     KVARTS COFFEE — "ხელოვნება ჭიქაზე"
+     Bold Modern Minimal · editorial coffee-atelier concept
      ============================================================ */
 
   :root {
@@ -23,7 +23,7 @@
     --paper-2:    #EBE2D4;
     --ink:        #1A1411;
     --ink-soft:   #4A3F38;
-    --clay:       #B5532E;   /* terracotta accent */
+    --clay:       #B5532E;   /* terracotta accent from the brick */
     --clay-deep:  #93411F;
     --rose:       #C98B72;   /* dusty rose secondary */
     --line:       rgba(26,20,17,0.14);
@@ -119,9 +119,7 @@
   }
   .skip:focus { left: 1rem; top: 1rem; }
 
-  /* ---------- Buttons (44px+ tap targets) ----------
-     Neutral contract classes (.btn .btn-primary .btn-ghost .btn-link)
-     styled in this concept's language. ---------- */
+  /* ---------- Buttons (44px+ tap targets) ---------- */
   .btn {
     --bg: var(--ink); --fg: var(--paper);
     display: inline-flex; align-items: center; gap: 0.6em;
@@ -137,33 +135,12 @@
   .btn .ico { transition: transform .4s var(--ease); }
   .btn:hover { transform: translateY(-3px); box-shadow: 0 14px 30px -14px rgba(26,20,17,0.55); }
   .btn:hover .ico { transform: translateX(4px); }
-
-  /* primary = clay solid */
-  .btn-primary { --bg: var(--clay); --fg: var(--paper); border-color: var(--clay); }
-
-  /* ghost = outline */
-  .btn-ghost {
+  .btn.clay { --bg: var(--clay); --fg: var(--paper); border-color: var(--clay); }
+  .btn.ghost {
     --bg: transparent; --fg: var(--ink);
     border-color: var(--ink);
   }
-  .btn-ghost:hover { background: var(--ink); color: var(--paper); }
-
-  /* link = underlined inline text button */
-  .btn-link {
-    --bg: transparent; --fg: var(--ink);
-    border-color: transparent;
-    min-height: 0; padding: 0.4rem 0;
-    border-radius: 0;
-    position: relative;
-    box-shadow: none;
-  }
-  .btn-link::after {
-    content: ""; position: absolute; left: 0; bottom: 0.05rem;
-    width: 100%; height: 1.5px; background: var(--clay);
-    transform: scaleX(1); transform-origin: left; transition: transform .4s var(--ease);
-  }
-  .btn-link:hover { transform: none; box-shadow: none; color: var(--clay); }
-  .btn-link:hover::after { transform: scaleX(0); transform-origin: right; }
+  .btn.ghost:hover { background: var(--ink); color: var(--paper); }
 
   /* ============================================================
      NAV
@@ -228,9 +205,6 @@
     gap: clamp(1.5rem, 4vw, 3rem);
     align-items: end;
   }
-  /* min-width:0 so a long headline's min-content can't blow out the fr tracks
-     and squeeze the hero image down to a sliver */
-  .hero-grid > * { min-width: 0; }
   .hero-copy { position: relative; z-index: 3; }
 
   .hero-title {
@@ -239,7 +213,6 @@
     line-height: 0.92;
     letter-spacing: -0.03em;
     margin: 1.1rem 0 0;
-    overflow-wrap: break-word;
   }
   .hero-title .l { display: block; overflow: hidden; }
   .hero-title .l > span { display: block; }
@@ -277,13 +250,6 @@
     overflow: hidden;
     background: var(--paper-2);
   }
-  /* gradient fallback shown when there is no hero image */
-  .hero-media.no-img {
-    background:
-      radial-gradient(120% 120% at 15% 12%, color-mix(in srgb, var(--clay) 32%, transparent), transparent 55%),
-      radial-gradient(120% 120% at 85% 88%, color-mix(in srgb, var(--rose) 40%, transparent), transparent 55%),
-      linear-gradient(150deg, var(--paper-2), var(--ink) 240%);
-  }
   .hero-media img {
     width: 100%; height: 100%; object-fit: cover;
     transform: scale(1.06);
@@ -294,23 +260,6 @@
     position: absolute; inset: 0;
     background: linear-gradient(180deg, transparent 55%, rgba(26,20,17,0.28));
   }
-
-  /* demo ribbon on the hero */
-  .demo-ribbon {
-    position: absolute; z-index: 6;
-    top: clamp(0.7rem, 2vw, 1.2rem); left: clamp(0.7rem, 2vw, 1.2rem);
-    background: var(--clay); color: var(--paper);
-    font-family: var(--sans); font-weight: 700;
-    font-size: var(--step--1); letter-spacing: 0.18em; text-transform: uppercase;
-    padding: 0.5rem 1rem; border-radius: 100px;
-    box-shadow: 0 10px 24px -14px rgba(26,20,17,0.7);
-    display: inline-flex; align-items: center; gap: 0.5em;
-  }
-  .demo-ribbon::before {
-    content: ""; width: 8px; height: 8px; border-radius: 50%;
-    background: var(--paper); flex: none;
-  }
-
   .hero-badge {
     position: absolute; z-index: 4;
     left: clamp(0.8rem, 2vw, 1.4rem); bottom: clamp(0.8rem, 2vw, 1.4rem);
@@ -328,7 +277,6 @@
     display: grid; place-items: center; font-weight: 700; font-family: var(--serif);
     flex: none;
   }
-  .hero-badge .stars { color: var(--clay); letter-spacing: 0.04em; }
   .hero-badge b { font-weight: 700; }
   .hero-badge span { color: var(--ink-soft); }
 
@@ -339,7 +287,6 @@
     border-top: 1px solid var(--line);
   }
   .hero-meta .m .k { font-family: var(--serif); font-weight: 800; font-size: var(--step-2); line-height: 1; }
-  .hero-meta .m .k .stars { color: var(--clay); }
   .hero-meta .m .v { font-size: var(--step--1); color: var(--ink-soft); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 0.4rem; }
 
   @media (min-width: 880px) {
@@ -381,28 +328,18 @@
   .marquee:hover .marquee-track { animation-play-state: paused; }
 
   /* ============================================================
-     SECTION SHELL — neutral .section + h2 styled to the concept
+     SECTION SHELL
      ============================================================ */
   section { position: relative; z-index: 2; }
-  .section, .section-pad { padding-block: clamp(4.5rem, 10vw, 9rem); }
-  .section .wrap > h2,
-  .sec-head h2 {
-    font-size: var(--step-3);
-    max-width: 16ch;
-  }
-  .section .wrap > h2 {
-    margin-bottom: clamp(2.4rem, 6vw, 4.5rem);
-    position: relative;
-  }
-  .section .wrap > h2::before {
-    content: ""; display: block;
-    width: 2.6rem; height: 3px; background: var(--clay);
-    margin-bottom: 1.2rem; border-radius: 2px;
-  }
+  .section-pad { padding-block: clamp(4.5rem, 10vw, 9rem); }
 
   .sec-head {
     display: grid; gap: 1.2rem;
     margin-bottom: clamp(2.4rem, 6vw, 4.5rem);
+  }
+  .sec-head h2 {
+    font-size: var(--step-3);
+    max-width: 16ch;
   }
   .sec-head .lead {
     font-size: var(--step-1); color: var(--ink-soft); max-width: 52ch; font-weight: 400;
@@ -415,18 +352,19 @@
   }
 
   /* ============================================================
-     ABOUT — asymmetric editorial (neutral .about)
+     ABOUT — asymmetric editorial
      ============================================================ */
   .about-grid {
     display: grid; grid-template-columns: 1fr; gap: clamp(1.6rem, 4vw, 3rem);
     align-items: center;
   }
-  .about .about-copy,
-  .about-copy { max-width: 62ch; }
-  .about-copy p + p,
-  .about p + p { margin-top: 1.1rem; }
-  .about-copy p,
-  .about p { color: var(--ink-soft); font-size: var(--step-0); }
+  .about-media {
+    position: relative; border-radius: var(--radius); overflow: hidden;
+    aspect-ratio: 5 / 6;
+  }
+  .about-media img { width: 100%; height: 100%; object-fit: cover; }
+  .about-copy p + p { margin-top: 1.1rem; }
+  .about-copy p { color: var(--ink-soft); font-size: var(--step-0); }
   .about-copy .big {
     font-family: var(--serif); font-weight: 700; color: var(--ink);
     font-size: var(--step-2); line-height: 1.18; margin-bottom: 1.4rem;
@@ -436,27 +374,102 @@
     margin-top: 1.8rem; font-family: var(--serif); font-style: italic;
     font-weight: 600; font-size: var(--step-1); color: var(--clay);
   }
+  @media (min-width: 900px) {
+    .about-grid { grid-template-columns: 0.9fr 1.1fr; gap: clamp(3rem, 6vw, 6rem); }
+    .about-media { aspect-ratio: 4 / 5; }
+  }
 
   /* ============================================================
-     GALLERY — editorial grid (neutral .gallery / .shot)
+     FEATURE — "Coffee with Art" (the painted cups)
+     full-bleed dark block, the brand's soul
      ============================================================ */
-  .gallery {
+  .feature {
+    background: var(--ink);
+    color: var(--paper);
+    overflow: hidden;
+  }
+  .feature .wrap { position: relative; }
+  .feature .kicker { color: var(--rose); }
+  .feature-grid {
+    display: grid; grid-template-columns: 1fr; gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+  .feature-media {
+    position: relative; border-radius: var(--radius); overflow: hidden;
+    aspect-ratio: 4 / 5; max-width: 460px; margin-inline: auto;
+  }
+  .feature-media img { width: 100%; height: 100%; object-fit: cover; }
+  .feature h2 {
+    font-size: var(--step-3); color: var(--paper); max-width: 14ch;
+  }
+  .feature h2 em { font-style: normal; color: var(--rose); }
+  .feature p {
+    color: color-mix(in srgb, var(--paper) 72%, transparent);
+    font-size: var(--step-1); max-width: 46ch; margin-top: 1.5rem; line-height: 1.55;
+  }
+  .feature .btn.ghost { --fg: var(--paper); border-color: color-mix(in srgb, var(--paper) 60%, transparent); }
+  .feature .btn.ghost:hover { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+  .feature-actions { margin-top: 2rem; }
+  @media (min-width: 900px) {
+    .feature-grid { grid-template-columns: 0.85fr 1.15fr; gap: clamp(3rem, 6vw, 6rem); }
+    .feature-media { margin-inline: 0; }
+  }
+
+  /* ============================================================
+     MENU HIGHLIGHTS
+     ============================================================ */
+  .menu-list { display: grid; gap: 0; border-top: 1px solid var(--line); }
+  .menu-row {
+    display: grid; grid-template-columns: 1fr auto;
+    align-items: baseline; gap: 1rem;
+    padding: clamp(1.3rem, 3vw, 2rem) 0;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    transition: padding-left .45s var(--ease);
+  }
+  .menu-row .row-main { display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+  .menu-row h3 {
+    font-size: var(--step-2); font-weight: 700; letter-spacing: -0.01em;
+    transition: color .35s var(--ease);
+  }
+  .menu-row .tag {
+    font-family: var(--sans); font-size: var(--step--1); font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--clay);
+  }
+  .menu-row .desc { color: var(--ink-soft); font-size: var(--step-0); margin-top: 0.45rem; max-width: 54ch; }
+  .menu-row .price {
+    font-family: var(--serif); font-weight: 700; font-size: var(--step-1);
+    white-space: nowrap;
+  }
+  .menu-row::before {
+    content: "→"; position: absolute; left: -1.6rem; top: clamp(1.3rem, 3vw, 2rem);
+    color: var(--clay); opacity: 0; transform: translateX(-6px);
+    transition: opacity .4s var(--ease), transform .4s var(--ease);
+    font-size: var(--step-1);
+  }
+  @media (hover:hover) {
+    .menu-row:hover { padding-left: 1.8rem; }
+    .menu-row:hover h3 { color: var(--clay); }
+    .menu-row:hover::before { opacity: 1; transform: translateX(0); }
+  }
+
+  /* ============================================================
+     GALLERY — editorial masonry-ish grid
+     ============================================================ */
+  .gallery-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: clamp(0.6rem, 1.5vw, 1rem);
-    grid-auto-flow: dense;
   }
-  .shot {
+  .g-item {
     position: relative; overflow: hidden; border-radius: var(--radius);
     background: var(--paper-2);
-    aspect-ratio: 4 / 5;
-    margin: 0;
   }
-  .shot img {
+  .g-item img {
     width: 100%; height: 100%; object-fit: cover;
     transition: transform .9s var(--ease);
   }
-  .shot figcaption {
+  .g-item figcaption {
     position: absolute; left: 0; right: 0; bottom: 0;
     padding: 1.4rem 1.1rem 0.9rem;
     color: var(--paper);
@@ -465,137 +478,73 @@
     transform: translateY(8px); opacity: 0;
     transition: transform .5s var(--ease), opacity .5s var(--ease);
   }
-  .shot:hover img { transform: scale(1.07); }
-  .shot:hover figcaption { transform: translateY(0); opacity: 1; }
-  /* editorial rhythm: every 5th/6th tile spans wider/taller */
+  .g-item:hover img { transform: scale(1.07); }
+  .g-item:hover figcaption { transform: translateY(0); opacity: 1; }
+  .g-item.tall { grid-row: span 2; }
   @media (min-width: 760px) {
-    .gallery { grid-template-columns: repeat(4, 1fr); }
-    .shot:nth-child(6n+1) { grid-row: span 2; }
-    .shot:nth-child(6n+2) { grid-column: span 2; }
-    .shot:nth-child(6n+5) { grid-column: span 2; }
+    .gallery-grid { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 1fr; }
+    .g-item.wide { grid-column: span 2; }
   }
 
   /* ============================================================
-     REVIEWS — quote cards (neutral .reviews / .review / .r-stars)
+     VISIT — hours + map-ish card
      ============================================================ */
-  .reviews {
-    display: grid; grid-template-columns: 1fr;
-    gap: clamp(1rem, 2.5vw, 1.6rem);
-  }
-  .review {
-    background: var(--paper-2);
-    border: 1px solid var(--line-2);
-    border-radius: var(--radius);
-    padding: clamp(1.5rem, 3vw, 2.2rem);
-    display: flex; flex-direction: column; gap: 1rem;
-    margin: 0;
-    position: relative;
-  }
-  .review::before {
-    content: "\201C";
-    font-family: var(--serif); font-weight: 900;
-    font-size: 4rem; line-height: 0.6; color: var(--clay);
-    opacity: 0.5;
-  }
-  .review blockquote {
-    font-family: var(--serif); font-weight: 600;
-    font-size: var(--step-1); line-height: 1.4; color: var(--ink);
-    margin: 0;
-  }
-  .review .r-stars { color: var(--clay); letter-spacing: 0.08em; font-size: var(--step-0); }
-  .review figcaption {
-    font-size: var(--step--1); font-weight: 600; letter-spacing: 0.04em;
-    text-transform: uppercase; color: var(--ink-soft);
-    margin-top: auto;
-  }
-  @media (min-width: 760px) {
-    .reviews { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (min-width: 1080px) {
-    .reviews { grid-template-columns: repeat(3, 1fr); }
-  }
-
-  /* ============================================================
-     HOURS (neutral .hours)
-     ============================================================ */
-  .hours {
-    list-style: none;
+  .visit-grid { display: grid; grid-template-columns: 1fr; gap: clamp(1.6rem, 4vw, 3rem); }
+  .hours-card {
     background: var(--paper-2); border-radius: var(--radius);
-    padding: clamp(1.4rem, 4vw, 2.4rem);
+    padding: clamp(1.6rem, 4vw, 2.6rem);
     border: 1px solid var(--line-2);
-    display: grid; gap: 0;
-    max-width: 560px;
   }
-  .hours li {
-    display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
+  .hours-card h3 { font-size: var(--step-2); margin-bottom: 1.4rem; }
+  .hours-list { display: grid; gap: 0; }
+  .hours-list .h-row {
+    display: flex; justify-content: space-between; align-items: baseline;
     padding: 0.85rem 0; border-bottom: 1px dashed var(--line);
     font-size: var(--step-0);
   }
-  .hours li:last-child { border-bottom: 0; }
-  .hours li span:first-child { font-weight: 600; }
-  .hours li span:last-child { color: var(--ink-soft); font-variant-numeric: tabular-nums; }
-  .hours li.now,
-  .hours li.now span { color: var(--clay); font-weight: 700; }
+  .hours-list .h-row:last-child { border-bottom: 0; }
+  .hours-list .day { font-weight: 600; }
+  .hours-list .time { color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .hours-list .h-row.now { color: var(--clay); }
+  .hours-list .h-row.now .time, .hours-list .h-row.now .day { color: var(--clay); font-weight: 700; }
+
+  .visit-info { display: grid; gap: 1.6rem; align-content: start; }
+  .info-block .label {
+    font-size: var(--step--1); letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--clay); font-weight: 600; margin-bottom: 0.5rem;
+  }
+  .info-block .val { font-family: var(--serif); font-weight: 700; font-size: var(--step-1); line-height: 1.3; }
+  .info-block .val a { transition: color .3s var(--ease); }
+  .info-block .val a:hover { color: var(--clay); }
+  @media (min-width: 860px) {
+    .visit-grid { grid-template-columns: 1.1fr 0.9fr; gap: clamp(2.5rem, 5vw, 5rem); align-items: start; }
+  }
 
   /* ============================================================
-     CONTACT / CTA (neutral .cta) — closing full-bleed dark block
+     CTA — closing full-bleed
      ============================================================ */
   .cta {
     position: relative; overflow: hidden;
-    background: var(--ink);
     color: var(--paper);
     text-align: center;
     isolation: isolate;
   }
-  .cta .wrap { padding-block: clamp(5rem, 12vw, 10rem); position: relative; }
+  .cta-bg { position: absolute; inset: 0; z-index: -2; }
+  .cta-bg img { width: 100%; height: 100%; object-fit: cover; }
+  .cta::after {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(180deg, rgba(26,20,17,0.78), rgba(26,20,17,0.68));
+  }
+  .cta .inner { padding-block: clamp(5rem, 12vw, 10rem); }
   .cta h2 {
-    font-size: var(--step-3); line-height: 0.98; color: var(--paper);
-    max-width: 18ch; margin-inline: auto; letter-spacing: -0.02em;
+    font-size: var(--display); line-height: 0.94; color: var(--paper);
+    max-width: 16ch; margin-inline: auto; letter-spacing: -0.03em;
   }
-  .cta h2::before {
-    content: ""; display: block;
-    width: 2.6rem; height: 3px; background: var(--rose);
-    margin: 0 auto 1.2rem; border-radius: 2px;
-  }
-  .cta .lead,
-  .cta > .wrap > p {
-    font-size: var(--step-1); color: color-mix(in srgb, var(--paper) 78%, transparent);
-    margin: 1.6rem auto 0; max-width: 46ch;
-  }
-  .cta .contact-actions {
-    display: flex; flex-wrap: wrap; gap: 0.9rem; justify-content: center;
-    margin-top: 2.4rem;
-  }
-  .cta .phone-line {
-    margin-top: 1.6rem; font-size: var(--step--1);
-    color: color-mix(in srgb, var(--paper) 70%, transparent);
-    letter-spacing: 0.04em;
-  }
-  .cta .phone-line a { color: var(--rose); }
-  /* recolor neutral buttons inside dark cta */
-  .cta .btn-primary { --bg: var(--clay); --fg: var(--paper); border-color: var(--clay); }
-  .cta .btn-ghost { --fg: var(--paper); border-color: rgba(244,238,228,0.65); }
-  .cta .btn-ghost:hover { background: var(--paper); color: var(--ink); border-color: var(--paper); }
-  .cta .btn-link { --fg: var(--paper); }
-  .cta .btn-link::after { background: var(--rose); }
-  .cta .btn-link:hover { color: var(--rose); }
-
-  /* ============================================================
-     MAP (neutral .map / .addr)
-     ============================================================ */
-  .map {
-    width: 100%; border: 0;
-    aspect-ratio: 16 / 9; min-height: 320px;
-    border-radius: var(--radius);
-    filter: grayscale(0.25) contrast(1.02);
-    background: var(--paper-2);
-    display: block;
-  }
-  .addr {
-    margin-top: 1.2rem;
-    font-family: var(--serif); font-weight: 700;
-    font-size: var(--step-1); color: var(--ink); line-height: 1.4;
-  }
+  .cta h2 em { font-style: normal; color: var(--rose); }
+  .cta p { font-size: var(--step-1); color: color-mix(in srgb, var(--paper) 78%, transparent); margin: 1.6rem auto 0; max-width: 44ch; }
+  .cta .hero-actions { justify-content: center; margin-top: 2.4rem; }
+  .cta .btn.ghost { --fg: var(--paper); border-color: rgba(244,238,228,0.65); }
+  .cta .btn.ghost:hover { background: var(--paper); color: var(--ink); border-color: var(--paper); }
 
   /* ============================================================
      FOOTER
@@ -617,7 +566,6 @@
   }
   .foot-col a, .foot-col p { display: block; color: color-mix(in srgb, var(--paper) 78%, transparent); font-size: var(--step-0); padding: 0.35rem 0; transition: color .3s var(--ease); }
   .foot-col a:hover { color: var(--paper); }
-  .foot-col .stars { color: var(--rose); }
   .foot-bottom {
     display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between;
     align-items: center; padding-top: 1.8rem;
@@ -626,35 +574,6 @@
   @media (min-width: 760px) {
     .foot-top { grid-template-columns: 1.6fr 1fr 1fr; gap: 3rem; }
   }
-
-  /* ============================================================
-     DEMO BOTTOM BANNER (mandatory)
-     ============================================================ */
-  .demo-banner {
-    position: fixed; left: 0; right: 0; bottom: 0; z-index: 150;
-    background: var(--ink); color: var(--paper);
-    border-top: 1px solid color-mix(in srgb, var(--paper) 16%, transparent);
-    box-shadow: 0 -10px 30px -20px rgba(0,0,0,0.8);
-  }
-  .demo-banner .db-inner {
-    max-width: var(--maxw); margin-inline: auto;
-    padding: 0.75rem var(--gutter);
-    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
-    gap: 0.75rem 1.2rem;
-  }
-  .demo-banner .db-text {
-    font-size: var(--step--1); font-weight: 500;
-    color: color-mix(in srgb, var(--paper) 88%, transparent);
-  }
-  .demo-banner .db-text b { font-weight: 700; color: var(--paper); }
-  .demo-banner .btn {
-    min-height: 44px; padding: 0 1.3rem;
-    --bg: var(--clay); --fg: var(--paper); border-color: var(--clay);
-    font-size: var(--step--1);
-  }
-  /* keep fixed banner from covering the footer's last content */
-  body { padding-bottom: 88px; }
-  @media (min-width: 560px) { body { padding-bottom: 72px; } }
 
   /* ============================================================
      SCROLL REVEAL
@@ -691,21 +610,21 @@
 <!-- ===================== NAV ===================== -->
 <header class="nav" id="nav">
   <div class="nav-inner">
-    <a class="brand" href="#" aria-label="Kvarts coffee">
+    <a class="brand" href="#" aria-label="Kvarts Coffee, მთავარი">
       <span class="dot" aria-hidden="true"></span>
-      Kvarts coffee
+      Kvarts Coffee
     </a>
 
     <nav class="nav-links" aria-label="მთავარი ნავიგაცია">
       <a href="#about">ჩვენ შესახებ</a>
+      <a href="#art">ხელოვნება</a>
+      <a href="#menu">მენიუ</a>
       <a href="#gallery">გალერეა</a>
-      <a href="#reviews">შეფასებები</a>
-      <a href="#visit">საათები</a>
-      <a href="#contact">კონტაქტი</a>
+      <a href="#visit">მისამართი</a>
     </nav>
 
-    <a class="btn btn-primary nav-cta" href="https://wa.me/995557223993" target="_blank" rel="noopener">
-      დაგვიკავშირდით
+    <a class="btn clay nav-cta" href="https://wa.me/995571150715" target="_blank" rel="noopener">
+      დაჯავშნა
       <span class="ico" aria-hidden="true">→</span>
     </a>
   </div>
@@ -718,43 +637,51 @@
     <div class="wrap">
       <div class="hero-grid">
         <div class="hero-copy">
-          <span class="kicker">კაფე</span>
+          <span class="kicker">სპეციალური ყავა · თბილისი</span>
 
           <h1 class="hero-title" id="hero-h">
-            <span class="l"><span><em>ყავა და სითბო ქალაქის ცენტრში</em></span></span>
+            <span class="l"><span>ყავა,</span></span>
+            <span class="l"><span>რომელიც</span></span>
+            <span class="l"><span><em>ხელოვნებაა</em></span></span>
           </h1>
 
-          <p class="hero-sub">Kvarts Coffee · 2100-ზე მეტი შეფასება, საშუალო 4.5 ★</p>
+          <p class="hero-sub">
+            ყოველი ჭიქა ხელით იხატება — შენი სახე, შენი განწყობა, შენი დღე.
+            თბილისის გულში, აგურის თაღების ქვეშ მოხალული მარცვლები და
+            ნამდვილი ხელოვნება ერთ ფინჯანში.
+          </p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#contact">
-              დაგვიკავშირდით <span class="ico" aria-hidden="true">→</span>
+            <a class="btn clay" href="#menu">
+              ნახე მენიუ <span class="ico" aria-hidden="true">→</span>
             </a>
-            <a class="btn btn-ghost" href="https://wa.me/995557223993" target="_blank" rel="noopener">
-              WhatsApp
+            <a class="btn ghost" href="https://wa.me/995571150715" target="_blank" rel="noopener">
+              WhatsApp-ით დაკავშირება
             </a>
           </div>
 
           <div class="hero-meta">
             <div class="m">
-              <div class="k">4.5 <span class="stars" aria-hidden="true">★</span></div>
+              <div class="k">4.5★</div>
               <div class="v">Google შეფასება</div>
             </div>
             <div class="m">
-              <div class="k">2150</div>
+              <div class="k">2,149</div>
               <div class="v">მომხმარებლის შეფასება</div>
+            </div>
+            <div class="m">
+              <div class="k">№1</div>
+              <div class="v">ხელნახატი ჭიქები</div>
             </div>
           </div>
         </div>
 
-        <figure class="hero-media" data-parallax data-hero-img="../assets/photo1.jpg">
-          <span class="demo-ribbon" aria-label="დემო ვერსია">დემო ვერსია</span>
-          <img src="../assets/photo1.jpg"
-               alt="Kvarts Coffee · 2100-ზე მეტი შეფასება, საშუალო 4.5 ★"
-               onerror="this.remove(); this.parentNode.classList.add('no-img');" />
+        <figure class="hero-media" data-parallax>
+          <img src="../../kvarts-coffee/assets/photo1.jpg"
+               alt="Kvarts Coffee-ის დახლი — ორი ბარისტა, ხელით ნახატი ჭიქების თარო და აგურის თაღი, წარწერით „Coffee with Art“" />
           <figcaption class="hero-badge">
-            <span class="stars" aria-hidden="true"><span class='stars'>★★★★<span class='star-off'>★</span></span></span>
-            <span><b>4.5</b> · 2150 შეფასება</span>
+            <span class="av" aria-hidden="true">K</span>
+            <span><b>Coffee with Art</b><br>ხელნახატი ფინჯნები ყოველდღე</span>
           </figcaption>
         </figure>
       </div>
@@ -764,38 +691,246 @@
   <!-- ===================== MARQUEE ===================== -->
   <div class="marquee" aria-hidden="true">
     <div class="marquee-track">
-      <span>კაფე</span><span>Abra</span><span>კაფე</span><span>Abra</span><span>კაფე</span><span>Abra</span>
-      <span>კაფე</span><span>Abra</span><span>კაფე</span><span>Abra</span><span>კაფე</span><span>Abra</span>
+      <span>ფლეთ უაიტი</span><span>კაპუჩინო</span><span>ხელნახატი ჭიქა</span><span>სტაფილოს ტორტი</span><span>ფილტრი</span><span>ესპრესო</span>
+      <span>ფლეთ უაიტი</span><span>კაპუჩინო</span><span>ხელნახატი ჭიქა</span><span>სტაფილოს ტორტი</span><span>ფილტრი</span><span>ესპრესო</span>
     </div>
   </div>
 
   <!-- ===================== ABOUT ===================== -->
-  <section id="about" class="section about" aria-labelledby="about-h">
+  <section id="about" class="section-pad" aria-labelledby="about-h">
     <div class="wrap">
       <div class="about-grid">
+        <figure class="about-media reveal">
+          <img src="../../kvarts-coffee/assets/photo2.jpg"
+               alt="Kvarts Coffee-ის ინტერიერი — ცარცის მენიუ, ესპრესოს მანქანა, ნაქსოვი სანათები და აგურის თაღი" />
+        </figure>
+
         <div class="about-copy">
           <span class="kicker reveal">ჩვენ შესახებ</span>
-          <h2 id="about-h" class="reveal" data-d="1" style="font-size:var(--step-3);max-width:16ch;margin:1.2rem 0 1.4rem;">ჩვენ შესახებ</h2>
-          <p class="reveal" data-d="2">Kvarts Coffee არის ყავის სივრცე თბილისის ცენტრში, სადაც ხარისხიანი ყავა და მყუდრო ატმოსფერო ერთმანეთს ხვდება. Google-ზე 2100-ზე მეტმა ვიზიტორმა დაგვიტოვა შეფასება — საშუალოდ 4.5 ვარსკვლავი.</p>
+          <p class="big reveal" data-d="1">
+            პატარა ადგილი დიდი ხასიათით — სადაც ყავა საუბრის საბაბია,
+            ჭიქა კი ტილო.
+          </p>
+          <p class="reveal" data-d="2">
+            Kvarts Coffee დაიბადა მარტივი იდეით: დილა უკეთესი ხდება, როცა მას
+            გემრიელი ყავა და ცოტა ხელოვნება ამშვენებს. ჩვენი ბარისტები
+            ფრთხილად ხალავენ მარცვლებს და ისევე ფრთხილად ხატავენ შენს
+            პორტრეტს ფინჯანზე.
+          </p>
+          <p class="reveal" data-d="3">
+            აგურის ისტორიული თაღების ქვეშ, ძველი თბილისის რიტმში, ვქმნით
+            ადგილს, სადაც დაბრუნება გინდება — არა მხოლოდ ყავისთვის,
+            არამედ განცდისთვის.
+          </p>
+          <p class="sign reveal" data-d="3">— Kvarts Coffee, ძველი თბილისი</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===================== GALLERY (token block) ===================== -->
-  <div id="gallery" class="reveal"><section class='section'><h2>გალერეა</h2><div class='gallery'><figure class='shot'><img loading='lazy' src='../assets/photo2.jpg' alt=''></figure><figure class='shot'><img loading='lazy' src='../assets/photo3.jpg' alt=''></figure><figure class='shot'><img loading='lazy' src='../assets/photo4.jpg' alt=''></figure><figure class='shot'><img loading='lazy' src='../assets/photo5.jpg' alt=''></figure><figure class='shot'><img loading='lazy' src='../assets/photo6.jpg' alt=''></figure></div></section></div>
+  <!-- ===================== FEATURE: COFFEE WITH ART ===================== -->
+  <section id="art" class="feature section-pad" aria-labelledby="art-h">
+    <div class="wrap">
+      <div class="feature-grid">
+        <figure class="feature-media reveal">
+          <img src="../../kvarts-coffee/assets/photo4.jpg"
+               alt="ხელით დაჭერილი ქაღალდის ფინჯანი Kvarts Coffee-დან, რომელზეც ფანქრით დახატულია ორი ადამიანის პორტრეტი, ფონზე მაღაზიის ნიშანი" />
+        </figure>
 
-  <!-- ===================== REVIEWS (token block) ===================== -->
-  <div id="reviews" class="reveal"><section class='section'><h2>შეფასებები</h2><div class='reviews'><figure class='review'><div class='r-stars'><span class='stars'>★★★★★<span class='star-off'></span></span></div><blockquote>“საინტერესო და ლამაზია ნახატი ჭიქაზე და ყავასაც კარგად აკეთებენ , ხშირად ვსვამ 😍”</blockquote><figcaption>— Lizi Asakashvili</figcaption></figure><figure class='review'><div class='r-stars'><span class='stars'>★★★★★<span class='star-off'></span></span></div><blockquote>“ძალიან თბილი და სასიამოვნო ხალხია, ყავა მართლაც ძალიან გემრიელია. გოგონა, რომელიც მუშაობის დროს მუსიკას თან სდევს და თან აჰყვება – საოცარი მუსიკალური გემოვნება აქვს, მ…”</blockquote><figcaption>— F97</figcaption></figure></div></section></div>
+        <div class="feature-copy">
+          <span class="kicker">Coffee with Art</span>
+          <h2 id="art-h">ჭიქა, რომელსაც <em>შენახვა</em> მოგინდება</h2>
+          <p>
+            ჩვენი ხელმოწერა — პორტრეტი ფინჯანზე. მოგვიყევი ვინ ხარ ან ვის
+            უმასპინძლდები, და სანამ ყავა მზადდება, შენი ჭიქა პატარა ნამუშევრად
+            გადაიქცევა. სუვენირი, რომელიც სახლში მიგაქვს.
+          </p>
+          <div class="feature-actions">
+            <a class="btn clay" href="https://wa.me/995571150715" target="_blank" rel="noopener">
+              შეუკვეთე ხელნახატი ჭიქა <span class="ico" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- ===================== HOURS (token block) ===================== -->
-  <div id="visit" class="reveal"><section class='section'><h2>სამუშაო საათები</h2><ul class='hours'><li><span>ორშაბათი: 9:00 AM – 10:00 PM</span></li><li><span>სამშაბათი: 9:00 AM – 10:00 PM</span></li><li><span>ოთხშაბათი: 9:00 AM – 10:00 PM</span></li><li><span>ხუთშაბათი: 9:00 AM – 10:00 PM</span></li><li><span>პარასკევი: 9:00 AM – 10:00 PM</span></li><li><span>შაბათი: 9:00 AM – 10:00 PM</span></li><li><span>კვირა: 9:00 AM – 10:00 PM</span></li></ul></section></div>
+  <!-- ===================== MENU ===================== -->
+  <section id="menu" class="section-pad" aria-labelledby="menu-h">
+    <div class="wrap">
+      <div class="sec-head split">
+        <div>
+          <span class="kicker reveal">მენიუ</span>
+          <h2 id="menu-h" class="reveal" data-d="1">რჩეული გემო</h2>
+        </div>
+        <p class="lead reveal" data-d="2">
+          მცირე, მაგრამ გააზრებული რჩევანი. ყველა სასმელი ხელმისაწვდომია
+          ალტერნატიულ რძეზეც. ფასები ლარშია.
+        </p>
+      </div>
 
-  <!-- ===================== MAP (token block) ===================== -->
-  <div class="reveal"><section class='section'><h2>მდებარეობა</h2><iframe class='map' loading='lazy' src='https://www.openstreetmap.org/export/embed.html?bbox=44.791476%2C41.696505%2C44.799476%2C41.704505&amp;layer=mapnik&amp;marker=41.700505,44.795476'></iframe><p class='addr'>📍 26 შოთა რუსთაველის გამზირი, თბილისი 0108</p></section></div>
+      <div class="menu-list">
+        <div class="menu-row reveal">
+          <div class="row-main-wrap">
+            <div class="row-main">
+              <h3>ფლეთ უაიტი</h3>
+              <span class="tag">ფავორიტი</span>
+            </div>
+            <p class="desc">ხავერდოვანი ორმაგი შოტი და დახვეწილად აორთქლებული რძე — ბალანსი, რომელსაც ვამაყობთ.</p>
+          </div>
+          <div class="price">8.5₾</div>
+        </div>
 
-  <!-- ===================== CONTACT / CTA (token block) ===================== -->
-  <div id="contact" class="reveal"><section class='section'><h2>დაგვიკავშირდით</h2><div class='cta'><a class='btn btn-primary' href='https://wa.me/995571150715' target='_blank' rel='noopener'><span class='ico'>💬</span> WhatsApp-ით მოწერა</a><a class='btn btn-ghost' href='tel:+995571150715'><span class='ico'>📞</span> დარეკვა</a><a class='btn btn-link' href='https://maps.google.com/?cid=7333983901403083616&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA' target='_blank' rel='noopener'>Google Maps-ზე ნახვა →</a></div><p class='phone'>571 15 07 15</p></section></div>
+        <div class="menu-row reveal">
+          <div class="row-main-wrap">
+            <div class="row-main">
+              <h3>კაპუჩინო</h3>
+            </div>
+            <p class="desc">სქელი, თბილი ქაფი და მდიდარი არომატი — კლასიკა ხელნახატ ჭიქაში.</p>
+          </div>
+          <div class="price">7.5₾</div>
+        </div>
+
+        <div class="menu-row reveal">
+          <div class="row-main-wrap">
+            <div class="row-main">
+              <h3>ფილტრის ყავა</h3>
+              <span class="tag">სეზონური</span>
+            </div>
+            <p class="desc">ნელა დაყენებული, ნათელი და სუფთა პროფილით — ერთ-სათავიანი მარცვლები.</p>
+          </div>
+          <div class="price">9₾</div>
+        </div>
+
+        <div class="menu-row reveal">
+          <div class="row-main-wrap">
+            <div class="row-main">
+              <h3>სტაფილოს ტორტი</h3>
+              <span class="tag">სახლის</span>
+            </div>
+            <p class="desc">ნოტიო, სანელებლებით სავსე და შაქრის პუდრით მოფენილი — სახლში გამომცხვარი.</p>
+          </div>
+          <div class="price">11₾</div>
+        </div>
+
+        <div class="menu-row reveal">
+          <div class="row-main-wrap">
+            <div class="row-main">
+              <h3>ცივი ბრიუ</h3>
+            </div>
+            <p class="desc">16 საათი ცივად დაყენებული — რბილი, ტკბილი და გამამხნევებელი ზაფხულის სასმელი.</p>
+          </div>
+          <div class="price">10₾</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== GALLERY ===================== -->
+  <section id="gallery" class="section-pad" aria-labelledby="gallery-h">
+    <div class="wrap">
+      <div class="sec-head split">
+        <div>
+          <span class="kicker reveal">გალერეა</span>
+          <h2 id="gallery-h" class="reveal" data-d="1">ერთი შეხედვით</h2>
+        </div>
+        <p class="lead reveal" data-d="2">
+          ატმოსფერო, გემო და დეტალები — ისეთი, როგორიც ადგილზე დაგხვდება.
+        </p>
+      </div>
+
+      <div class="gallery-grid">
+        <figure class="g-item tall reveal">
+          <img src="../../kvarts-coffee/assets/photo1.jpg" alt="Kvarts Coffee-ის დახლი ბარისტებითა და ხელნახატი ჭიქების თაროთი" loading="lazy" />
+          <figcaption>დახლი &amp; ხელოვნება</figcaption>
+        </figure>
+        <figure class="g-item wide reveal" data-d="1">
+          <img src="../../kvarts-coffee/assets/photo3.jpg" alt="სტაფილოს ტორტი ხის დაფაზე, შაქრის პუდრით მოფენილი, გვერდით ახალი სტაფილო" loading="lazy" />
+          <figcaption>სახლის სტაფილოს ტორტი</figcaption>
+        </figure>
+        <figure class="g-item reveal" data-d="2">
+          <img src="../../kvarts-coffee/assets/photo5.jpg" alt="Kvarts Coffee-ის შესასვლელი — ხის კარი მოჩუქურთმებული მინით და ნიშანი" loading="lazy" />
+          <figcaption>შესასვლელი</figcaption>
+        </figure>
+        <figure class="g-item reveal" data-d="3">
+          <img src="../../kvarts-coffee/assets/photo2.jpg" alt="ინტერიერი — ცარცის მენიუ, ესპრესოს მანქანა და ნაქსოვი სანათები" loading="lazy" />
+          <figcaption>ინტერიერი</figcaption>
+        </figure>
+        <figure class="g-item wide reveal" data-d="1">
+          <img src="../../kvarts-coffee/assets/photo6.jpg" alt="Kvarts Coffee-ის ფასადი თბილისის ქუჩიდან" loading="lazy" />
+          <figcaption>ძველ თბილისში</figcaption>
+        </figure>
+        <figure class="g-item tall reveal" data-d="2">
+          <img src="../../kvarts-coffee/assets/photo4.jpg" alt="ხელნახატი ფინჯანი ორი პორტრეტით, ფონზე მაღაზიის ნიშანი" loading="lazy" />
+          <figcaption>ხელნახატი ჭიქა</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== VISIT ===================== -->
+  <section id="visit" class="section-pad" aria-labelledby="visit-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker reveal">მისამართი &amp; საათები</span>
+        <h2 id="visit-h" class="reveal" data-d="1">გვესტუმრე</h2>
+      </div>
+
+      <div class="visit-grid">
+        <div class="hours-card reveal">
+          <h3>სამუშაო საათები</h3>
+          <div class="hours-list" id="hours">
+            <div class="h-row" data-day="1"><span class="day">ორშაბათი</span><span class="time">09:00 — 22:00</span></div>
+            <div class="h-row" data-day="2"><span class="day">სამშაბათი</span><span class="time">09:00 — 22:00</span></div>
+            <div class="h-row" data-day="3"><span class="day">ოთხშაბათი</span><span class="time">09:00 — 22:00</span></div>
+            <div class="h-row" data-day="4"><span class="day">ხუთშაბათი</span><span class="time">09:00 — 22:00</span></div>
+            <div class="h-row" data-day="5"><span class="day">პარასკევი</span><span class="time">09:00 — 23:00</span></div>
+            <div class="h-row" data-day="6"><span class="day">შაბათი</span><span class="time">10:00 — 23:00</span></div>
+            <div class="h-row" data-day="0"><span class="day">კვირა</span><span class="time">10:00 — 21:00</span></div>
+          </div>
+        </div>
+
+        <div class="visit-info">
+          <div class="info-block reveal" data-d="1">
+            <div class="label">დაგვირეკე</div>
+            <div class="val"><a href="tel:+995571150715">+995 571 150 715</a></div>
+          </div>
+          <div class="info-block reveal" data-d="2">
+            <div class="label">WhatsApp</div>
+            <div class="val"><a href="https://wa.me/995571150715" target="_blank" rel="noopener">დაწერე შეტყობინება →</a></div>
+          </div>
+          <div class="info-block reveal" data-d="3">
+            <div class="label">სად ვართ</div>
+            <div class="val">ძველი თბილისი, საქართველო</div>
+          </div>
+          <div class="hero-actions reveal" data-d="3" style="margin-top:.6rem;">
+            <a class="btn clay" href="https://wa.me/995571150715" target="_blank" rel="noopener">
+              დაჯავშნე მაგიდა <span class="ico" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CTA ===================== -->
+  <section class="cta" aria-labelledby="cta-h">
+    <div class="cta-bg" aria-hidden="true">
+      <img src="../../kvarts-coffee/assets/photo1.jpg" alt="" />
+    </div>
+    <div class="wrap">
+      <div class="inner">
+        <h2 id="cta-h">შენი ფინჯანი უკვე <em>გელოდება</em></h2>
+        <p>გამოიარე ერთ ყავაზე — დანარჩენს ჩვენ მოვხატავთ.</p>
+        <div class="hero-actions">
+          <a class="btn clay" href="https://wa.me/995571150715" target="_blank" rel="noopener">
+            WhatsApp <span class="ico" aria-hidden="true">→</span>
+          </a>
+          <a class="btn ghost" href="tel:+995571150715">დარეკვა: +995 571 150 715</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
 </main>
 
@@ -804,59 +939,39 @@
   <div class="wrap">
     <div class="foot-top">
       <div class="foot-brand">
-        <div class="brand"><span class="dot" aria-hidden="true"></span> Kvarts coffee</div>
-        <p>კაფე · ყავა და სითბო ქალაქის ცენტრში</p>
+        <div class="brand"><span class="dot" aria-hidden="true"></span> Kvarts Coffee</div>
+        <p>სპეციალური ყავა და ხელნახატი ჭიქები ძველი თბილისის გულში. Coffee with Art.</p>
       </div>
 
       <div class="foot-col">
         <h4>გვერდები</h4>
         <a href="#about">ჩვენ შესახებ</a>
+        <a href="#art">ხელოვნება</a>
+        <a href="#menu">მენიუ</a>
         <a href="#gallery">გალერეა</a>
-        <a href="#reviews">შეფასებები</a>
-        <a href="#visit">საათები</a>
-        <a href="#contact">კონტაქტი</a>
+        <a href="#visit">მისამართი</a>
       </div>
 
       <div class="foot-col">
-        <h4>შეფასება</h4>
-        <p><span class="stars" aria-hidden="true"><span class='stars'>★★★★<span class='star-off'>★</span></span></span></p>
-        <p>★ 4.5 · 2150 შეფასება</p>
-        <a href="https://wa.me/995557223993" target="_blank" rel="noopener">WhatsApp</a>
+        <h4>კონტაქტი</h4>
+        <a href="tel:+995571150715">+995 571 150 715</a>
+        <a href="https://wa.me/995571150715" target="_blank" rel="noopener">WhatsApp</a>
+        <p>ძველი თბილისი, საქართველო</p>
+        <p>★ 4.5 · 2,149 შეფასება</p>
       </div>
     </div>
 
     <div class="foot-bottom">
-      <span>© <span id="yr">2026</span> Kvarts coffee</span>
-      <span>დამზადებულია Abra-ის მიერ</span>
+      <span>© <span id="yr">2026</span> Kvarts Coffee. ყველა უფლება დაცულია.</span>
+      <span>დამზადებულია სიყვარულითა და კოფეინით ☕</span>
     </div>
   </div>
 </footer>
-
-<!-- ===================== MANDATORY DEMO BOTTOM BANNER ===================== -->
-<aside class="demo-banner" role="note" aria-label="დემო ინფორმაცია">
-  <div class="db-inner">
-    <span class="db-text">უფასო დემო — დამზადებულია <b>Abra</b>-ის მიერ</span>
-    <a class="btn btn-primary" href="https://wa.me/995557223993" target="_blank" rel="noopener">
-      დაგაინტერესათ? მოგვწერეთ <span class="ico" aria-hidden="true">→</span>
-    </a>
-  </div>
-</aside>
 
 <script>
 (function () {
   "use strict";
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  /* --- Hero image fallback (handles empty token, not just load error) --- */
-  var heroFig = document.querySelector(".hero-media");
-  if (heroFig) {
-    var src = heroFig.getAttribute("data-hero-img");
-    if (!src || !src.trim()) {
-      heroFig.classList.add("no-img");
-      var img = heroFig.querySelector("img");
-      if (img) img.remove();
-    }
-  }
 
   /* --- Sticky nav shadow --- */
   var nav = document.getElementById("nav");
@@ -868,17 +983,21 @@
   window.addEventListener("scroll", onScroll, { passive: true });
 
   /* --- Current year --- */
-  var yr = document.getElementById("yr");
-  if (yr) yr.textContent = new Date().getFullYear();
+  document.getElementById("yr").textContent = new Date().getFullYear();
 
-  /* --- Highlight today's hours (if an hours list with data-day exists) --- */
+  /* --- Highlight today's hours --- */
   try {
     var today = new Date().getDay(); // 0=Sun
-    var row = document.querySelector('.hours li[data-day="' + today + '"]');
-    if (row) row.classList.add("now");
+    var row = document.querySelector('#hours .h-row[data-day="' + today + '"]');
+    if (row) {
+      row.classList.add("now");
+      var t = document.createElement("span");
+      // keep markup simple; just mark visually
+    }
   } catch (e) {}
 
   if (reduce) {
+    // Make sure everything is visible without motion
     document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
     var ht = document.querySelector(".hero-title"); if (ht) ht.classList.add("in");
     return;
@@ -907,8 +1026,8 @@
     document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
   }
 
-  /* --- Lightweight hero parallax (only when a real image is present) --- */
-  var pim = document.querySelector(".hero-media:not(.no-img) [data-parallax] img, .hero-media[data-parallax]:not(.no-img) img");
+  /* --- Lightweight hero parallax --- */
+  var pim = document.querySelector("[data-parallax] img");
   if (pim && window.matchMedia("(min-width: 880px)").matches) {
     var ticking = false;
     window.addEventListener("scroll", function () {
