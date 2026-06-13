@@ -91,8 +91,38 @@
   .marquee span::after{content:"✦";color:var(--sun)}
   @keyframes slide{to{transform:translateX(-50%)}}
 
+  /* ============== NAV (brand wordmark) ============== */
+  .nav{
+    position:relative;z-index:8;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    padding-top:clamp(18px,3vw,28px);
+  }
+  .nav__brand{
+    display:inline-flex;align-items:center;gap:11px;
+    font-weight:900;font-size:clamp(1.15rem,2.6vw,1.5rem);letter-spacing:-.01em;
+    min-width:0; /* allow truncation, never push the CTA off-screen */
+  }
+  .nav__mark{
+    width:38px;height:38px;border-radius:50% 50% 50% 14px;flex:0 0 auto;
+    background:var(--coral);border:var(--border);color:var(--white);
+    display:grid;place-items:center;font-size:1.1rem;transform:rotate(-6deg);
+  }
+  .nav__name{
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;
+  }
+  .nav__cta{
+    flex:0 0 auto;
+    display:inline-flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:.95rem;min-height:44px;padding:10px 20px;
+    border-radius:50px;border:var(--border);background:var(--grape-deep);color:var(--white);
+    box-shadow:var(--shadow-sm);
+    transition:transform .22s var(--ease),box-shadow .22s var(--ease);
+  }
+  .nav__cta:hover{transform:translateY(-3px);box-shadow:0 10px 0 rgba(34,26,46,.16)}
+  .nav__cta:active{transform:translateY(-1px);box-shadow:0 3px 0 rgba(34,26,46,.16)}
+
   /* ============== HERO ============== */
-  .hero{position:relative;padding-top:clamp(36px,6vw,72px);padding-bottom:clamp(44px,7vw,92px);overflow:hidden}
+  .hero{position:relative;padding-top:clamp(20px,3vw,32px);padding-bottom:clamp(44px,7vw,92px);overflow:hidden}
   .hero__blob{
     position:absolute;z-index:0;border-radius:46% 54% 60% 40%/52% 44% 56% 48%;
     filter:blur(2px);opacity:.85;pointer-events:none;
@@ -290,6 +320,8 @@
   .foot p{color:color-mix(in srgb,var(--canvas) 74%,transparent);max-width:46ch;
     margin-inline:auto;font-size:.95rem;font-weight:500}
   .foot .heart{color:var(--coral)}
+  .foot__copy{margin-top:18px;font-size:.86rem;font-weight:700;
+    color:color-mix(in srgb,var(--canvas) 58%,transparent)}
 
   /* ============== DEMO BANNER (mandatory) ============== */
   .demo-banner{
@@ -342,6 +374,13 @@
 <header class="hero">
   <span class="hero__blob blob-a" aria-hidden="true"></span>
   <span class="hero__blob blob-b" aria-hidden="true"></span>
+  <nav class="wrap nav" aria-label="მთავარი">
+    <a class="nav__brand" href="#top">
+      <span class="nav__mark" aria-hidden="true">✦</span>
+      <span class="nav__name">Coffee Place</span>
+    </a>
+    <a class="nav__cta" href="https://wa.me/995557223993" target="_blank" rel="noopener">WhatsApp</a>
+  </nav>
   <div class="wrap hero__grid">
     <div class="hero__copy reveal">
       <p class="eyebrow">კაფე</p>
@@ -389,9 +428,10 @@
 <!-- ===== FOOTER ===== -->
 <footer class="foot">
   <div class="wrap">
-    <div class="foot__brand"><span class="mark" aria-hidden="true">✦</span> Abra</div>
+    <div class="foot__brand"><span class="mark" aria-hidden="true">✦</span> Coffee Place</div>
     <p>ეს არის უფასო სადემონსტრაციო ვერსია. რეალურ ვებგვერდზე გამოყენებული იქნება თქვენი ფოტოები და ტექსტი.<br>
     დამზადებულია <b style="color:var(--sun)">Abra</b>-ის მიერ თბილისში <span class="heart" aria-hidden="true">♥</span></p>
+    <p class="foot__copy">© <span id="yr">2026</span> Coffee Place</p>
   </div>
 </footer>
 

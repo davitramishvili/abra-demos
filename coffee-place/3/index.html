@@ -564,6 +564,70 @@
     background:no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d8b878' stroke-width='1.6'%3E%3Cpath d='M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z'/%3E%3Ccircle cx='12' cy='10' r='3'/%3E%3C/svg%3E");
   }
 
+  /* ============================================================
+     INJECTED SECTIONS NORMALIZATION
+     The generator injects bare <section class="section"><h2>…</h2>…</section>
+     (no inner .wrap) into the .gallery / .reviews-wrap / .hours-wrap /
+     .map-wrap containers, and a full CONTACT <section> inside .cta-actions.
+     These rules constrain width, add gutters, and style the headings so
+     nothing renders edge-to-edge, unstyled, or with double padding.
+     ============================================================ */
+
+  /* center + gutter the injected section's content (substitute for .wrap) */
+  .gallery > .section,
+  .reviews-wrap > .section,
+  .hours-wrap > .section,
+  .map-wrap > .section{
+    padding-inline:var(--gut);
+  }
+  .gallery > .section > *,
+  .reviews-wrap > .section > *,
+  .hours-wrap > .section > *,
+  .map-wrap > .section > *{
+    max-width:var(--maxw); margin-inline:auto;
+  }
+  /* style the injected section heading (mirrors .section > .wrap > h2) */
+  .gallery > .section > h2,
+  .reviews-wrap > .section > h2,
+  .hours-wrap > .section > h2,
+  .map-wrap > .section > h2{
+    margin-bottom:clamp(32px,5vh,56px);
+  }
+  .reviews-wrap > .section > h2::before,
+  .hours-wrap > .section > h2::before,
+  .map-wrap > .section > h2::before{
+    content:""; display:block; width:46px; height:1px;
+    background:linear-gradient(90deg,var(--gold),transparent);
+    margin-bottom:1.1rem;
+  }
+  /* gallery heading is centered (matches existing .gallery h2 intent) */
+  .gallery > .section > h2{ text-align:center; }
+  .gallery > .section > h2::before{
+    content:""; display:block; width:46px; height:1px;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+    margin:0 auto 1.1rem;
+  }
+  /* hours card stays left-aligned within the centered column */
+  .hours-wrap > .section > .hours{ max-width:640px; margin-inline:0; }
+
+  /* ---- CONTACT block injected inside the CTA's .cta-actions ---- */
+  /* it arrives as a nested <section class="section"> with its own <h2>;
+     strip the extra band padding and the duplicate heading, and stop the
+     inner <div class="cta"> from painting a full gradient box. */
+  .cta-actions > .section{
+    padding:0; background:none; text-align:center; overflow:visible;
+  }
+  .cta-actions > .section > h2{ display:none; }      /* dup of CTA heading */
+  .cta-actions > .section > .cta{
+    background:none; overflow:visible; position:static;
+    display:flex; flex-wrap:wrap; gap:14px; justify-content:center;
+  }
+  .cta-actions > .section > .phone{
+    margin-top:2.2rem; font-family:var(--serif);
+    font-size:clamp(1.3rem,3vw,1.9rem); color:var(--cream); letter-spacing:.02em;
+  }
+  .cta-actions > .section > .phone:empty{ display:none; }
+
   /* ============================ FOOTER ============================ */
   footer{ background:var(--ink); border-top:1px solid var(--line); padding:clamp(48px,7vh,80px) 0 32px; }
   .foot-grid{
@@ -653,9 +717,9 @@
 <!-- ============================ NAV ============================ -->
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
-    <a class="brand" href="#top" aria-label="მყუდრო · ხელნაკეთი ყავა — მთავარი">
+    <a class="brand" href="#top" aria-label="Coffee Place — მთავარი">
       <span class="mark" aria-hidden="true">★</span>
-      <span>Abra<small>კაფე</small></span>
+      <span>Coffee Place<small>კაფე</small></span>
     </a>
 
     <nav aria-label="მთავარი ნავიგაცია">
@@ -739,10 +803,10 @@
     </div>
 
     <div class="about-copy reveal d1">
-      <span class="kicker">ჩვენ შესახებ</span>
-      <h2>მყუდრო · ხელნაკეთი ყავა</h2>
+      <span class="kicker">კაფე</span>
+      <h2>ჩვენ შესახებ</h2>
       <p>Coffee Place — კაფე თბილისის ცენტრში. Google-ზე საშუალო შეფასება 4.6 ★, 363 მომხმარებლის მიხედვით.</p>
-      <div class="sig">— Abra</div>
+      <div class="sig">— Coffee Place</div>
     </div>
   </div>
 </section>
@@ -778,9 +842,9 @@
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <a class="brand" href="#top" aria-label="Abra">
+        <a class="brand" href="#top" aria-label="Coffee Place">
           <span class="mark" aria-hidden="true">★</span>
-          <span>Abra<small>კაფე</small></span>
+          <span>Coffee Place<small>კაფე</small></span>
         </a>
         <p>Coffee Place — კაფე თბილისის ცენტრში. Google-ზე საშუალო შეფასება 4.6 ★, 363 მომხმარებლის მიხედვით.</p>
       </div>
@@ -798,7 +862,7 @@
     </div>
 
     <div class="foot-bottom">
-      <p>© <span id="year">2026</span> Abra · ყველა უფლება დაცულია</p>
+      <p>© <span id="year">2026</span> Coffee Place · ყველა უფლება დაცულია</p>
       <p class="rating" style="gap:8px;">
         <span class='stars'>★★★★★<span class='star-off'></span></span>
         <span style="color:var(--cream-dim); font-size:.82rem;">4.6 / 363 შეფასება Google-ზე</span>

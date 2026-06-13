@@ -228,6 +228,9 @@
     gap: clamp(1.5rem, 4vw, 3rem);
     align-items: end;
   }
+  /* min-width:0 so a long headline's min-content can't blow out the fr tracks
+     and squeeze the hero image down to a sliver */
+  .hero-grid > * { min-width: 0; }
   .hero-copy { position: relative; z-index: 3; }
 
   .hero-title {
@@ -236,6 +239,7 @@
     line-height: 0.92;
     letter-spacing: -0.03em;
     margin: 1.1rem 0 0;
+    overflow-wrap: break-word;
   }
   .hero-title .l { display: block; overflow: hidden; }
   .hero-title .l > span { display: block; }
@@ -687,9 +691,9 @@
 <!-- ===================== NAV ===================== -->
 <header class="nav" id="nav">
   <div class="nav-inner">
-    <a class="brand" href="#" aria-label="ელეგანტური სამზარეულო">
+    <a class="brand" href="#" aria-label="ნიკოლოზი">
       <span class="dot" aria-hidden="true"></span>
-      ელეგანტური სამზარეულო
+      ნიკოლოზი
     </a>
 
     <nav class="nav-links" aria-label="მთავარი ნავიგაცია">
@@ -771,7 +775,7 @@
       <div class="about-grid">
         <div class="about-copy">
           <span class="kicker reveal">ჩვენ შესახებ</span>
-          <h2 id="about-h" class="reveal" data-d="1" style="font-size:var(--step-3);max-width:16ch;margin:1.2rem 0 1.4rem;">ელეგანტური სამზარეულო</h2>
+          <h2 id="about-h" class="reveal" data-d="1" style="font-size:var(--step-3);max-width:16ch;margin:1.2rem 0 1.4rem;">ჩვენ შესახებ</h2>
           <p class="reveal" data-d="2">ნიკოლოზი — რესტორანი თბილისის ცენტრში. Google-ზე საშუალო შეფასება 4.6 ★, 1376 მომხმარებლის მიხედვით.</p>
         </div>
       </div>
@@ -800,7 +804,7 @@
   <div class="wrap">
     <div class="foot-top">
       <div class="foot-brand">
-        <div class="brand"><span class="dot" aria-hidden="true"></span> ელეგანტური სამზარეულო</div>
+        <div class="brand"><span class="dot" aria-hidden="true"></span> ნიკოლოზი</div>
         <p>რესტორანი · ნიკოლოზი</p>
       </div>
 
@@ -822,7 +826,7 @@
     </div>
 
     <div class="foot-bottom">
-      <span>© <span id="yr">2026</span> ელეგანტური სამზარეულო</span>
+      <span>© <span id="yr">2026</span> ნიკოლოზი</span>
       <span>დამზადებულია Abra-ის მიერ</span>
     </div>
   </div>
