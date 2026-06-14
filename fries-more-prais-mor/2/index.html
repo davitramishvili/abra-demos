@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Fries&More — ფრაის&მორ · ხრაშუნა ფრი და ბურგერი თბილისში</title>
+<meta name="description" content="Fries&More — ხელით ჭრილი ფრი, წვნიანი ბურგერები და სახლის სოუსები თბილისში. სწრაფი, ცხელი და გემრიელი სტრიტ-ფუდი. შეუკვეთე WhatsApp-ით.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wght@400;500;600;700;800;900&family=Noto+Sans+Georgian:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f4ecdd;          /* warm cream */
+    --paper-2:#ecdfc6;        /* deeper cream panel */
+    --ink:#241a12;            /* near-black warm brown */
+    --ink-soft:#4c3a2c;       /* body text */
+    --rust:#c8401b;           /* ketchup red */
+    --rust-deep:#9c2e12;
+    --teal:#3a7d56;           /* fresh herb green accent */
+    --gold:#c47e2c;           /* golden-fry brass */
+    --gold-soft:#dca65a;
+    --line:#d4bf95;           /* hairline rule on paper */
+    --line-soft:rgba(36,26,18,.14);
+    --shadow:28px 34px 70px -34px rgba(36,26,18,.55);
+    --shadow-soft:14px 18px 40px -22px rgba(36,26,18,.45);
+    --serif:"Noto Serif Georgian",Georgia,serif;
+    --sans:"Noto Sans Georgian",system-ui,sans-serif;
+    --maxw:1240px;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:var(--sans);
+    background:var(--paper);
+    color:var(--ink-soft);
+    line-height:1.7;
+    font-weight:400;
+    overflow-x:hidden;
+    /* subtle paper grain */
+    background-image:
+      radial-gradient(circle at 20% 12%,rgba(196,126,44,.06),transparent 42%),
+      radial-gradient(circle at 85% 78%,rgba(200,64,27,.05),transparent 46%);
+  }
+  ::selection{background:var(--rust);color:var(--paper)}
+  img{display:block;max-width:100%;height:auto}
+  a{color:inherit;text-decoration:none}
+
+  h1,h2,h3,.serif{font-family:var(--serif)}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* generic eyebrow / numbered tag */
+  .eyebrow{
+    font-family:var(--sans);
+    font-size:.72rem;
+    letter-spacing:.34em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--rust);
+    display:inline-flex;
+    align-items:center;
+    gap:.7em;
+  }
+  .eyebrow::before{
+    content:"";
+    width:34px;height:1px;background:var(--rust);display:inline-block;
+  }
+  .num{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:500;
+    color:var(--gold);
+    font-size:.95rem;
+    letter-spacing:.05em;
+  }
+
+  /* ---------- top utility bar ---------- */
+  .topbar{
+    border-bottom:1px solid var(--line-soft);
+    font-size:.74rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--ink);
+    font-weight:500;
+    position:relative;z-index:30;
+  }
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:46px;gap:16px}
+  .topbar .star{color:var(--gold);letter-spacing:0}
+  .topbar .right{display:flex;gap:22px;align-items:center}
+  .topbar .right span:not(.star-row){display:none}
+  .star-row{display:inline-flex;align-items:center;gap:.4em;white-space:nowrap}
+
+  /* ---------- nav ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:40;
+    background:rgba(244,236,221,.86);
+    backdrop-filter:blur(10px) saturate(120%);
+    -webkit-backdrop-filter:blur(10px) saturate(120%);
+    border-bottom:1px solid var(--line-soft);
+    transition:box-shadow .4s var(--ease);
+  }
+  header.nav.scrolled{box-shadow:0 14px 40px -28px rgba(36,26,18,.5)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{
+    font-family:var(--serif);
+    font-weight:800;
+    font-size:1.32rem;
+    color:var(--ink);
+    letter-spacing:.01em;
+    line-height:1;
+    display:flex;flex-direction:column;
+  }
+  .brand small{
+    font-family:var(--sans);
+    font-size:.56rem;
+    letter-spacing:.42em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:600;
+    margin-top:5px;
+    padding-left:2px;
+  }
+  .nav-links{display:none;gap:30px;align-items:center}
+  .nav-links a{
+    font-size:.82rem;letter-spacing:.06em;font-weight:500;color:var(--ink);
+    position:relative;padding:6px 0;transition:color .3s var(--ease);
+  }
+  .nav-links a .idx{font-family:var(--serif);font-style:italic;color:var(--gold);font-size:.7rem;margin-right:.45em}
+  .nav-links a::after{
+    content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--rust);transition:width .35s var(--ease);
+  }
+  .nav-links a:hover{color:var(--rust)}
+  .nav-links a:hover::after{width:100%}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:.6em;
+    font-family:var(--sans);font-weight:600;font-size:.82rem;letter-spacing:.04em;
+    padding:13px 24px;border-radius:2px;cursor:pointer;border:1px solid transparent;
+    transition:transform .3s var(--ease),background .3s var(--ease),color .3s var(--ease),box-shadow .3s var(--ease);
+    min-height:44px;
+  }
+  .btn-primary{background:var(--rust);color:var(--paper);box-shadow:0 10px 26px -14px rgba(200,64,27,.8)}
+  .btn-primary:hover{background:var(--rust-deep);transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper)}
+  .nav .btn{display:none}
+
+  /* mobile menu toggle */
+  .menu-btn{
+    display:inline-flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:10px;min-height:44px;min-width:44px;align-items:center;justify-content:center;
+  }
+  .menu-btn span{width:24px;height:2px;background:var(--ink);transition:transform .35s var(--ease),opacity .25s var(--ease)}
+  .menu-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .menu-btn.open span:nth-child(2){opacity:0}
+  .menu-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+  .mobile-menu{
+    position:fixed;inset:0 0 0 auto;width:min(86vw,360px);z-index:60;
+    background:var(--ink);color:var(--paper);
+    transform:translateX(100%);transition:transform .5s var(--ease);
+    padding:96px 36px 40px;display:flex;flex-direction:column;gap:6px;
+  }
+  .mobile-menu.open{transform:translateX(0)}
+  .mobile-menu a{
+    font-family:var(--serif);font-size:1.5rem;font-weight:600;color:var(--paper);
+    padding:14px 0;border-bottom:1px solid rgba(244,236,221,.14);display:flex;align-items:baseline;gap:.6em;
+  }
+  .mobile-menu a .idx{font-size:.8rem;font-style:italic;color:var(--gold-soft)}
+  .mobile-menu .btn{margin-top:24px}
+  .menu-overlay{position:fixed;inset:0;background:rgba(36,26,18,.5);opacity:0;pointer-events:none;transition:opacity .4s;z-index:55}
+  .menu-overlay.open{opacity:1;pointer-events:auto}
+  .mclose{position:absolute;top:24px;right:24px;background:none;border:none;color:var(--paper);font-size:1.6rem;cursor:pointer;line-height:1;min-height:44px;min-width:44px}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;padding:54px 0 0}
+  .hero .wrap{position:relative}
+  .hero-head{
+    display:grid;grid-template-columns:1fr;gap:18px;align-items:end;
+    padding-bottom:30px;border-bottom:1px solid var(--line);
+  }
+  .hero-kicker{display:flex;flex-direction:column;gap:18px}
+  .hero h1{
+    font-weight:800;
+    color:var(--ink);
+    font-size:clamp(3rem,13vw,8.2rem);
+    line-height:.92;
+    letter-spacing:-.01em;
+  }
+  .hero h1 em{
+    font-style:italic;font-weight:500;color:var(--rust);
+    display:block;font-size:.62em;letter-spacing:0;
+  }
+  .hero-meta{
+    display:flex;flex-direction:column;gap:14px;
+    font-size:.9rem;color:var(--ink-soft);max-width:38ch;
+  }
+  .hero-meta .lead{font-family:var(--serif);font-size:1.08rem;color:var(--ink);line-height:1.55}
+
+  .hero-figure{
+    position:relative;margin-top:30px;
+  }
+  .hero-figure .main{
+    position:relative;border-radius:3px;overflow:hidden;box-shadow:var(--shadow);
+    aspect-ratio:16/10;
+  }
+  .hero-figure .main img{width:100%;height:100%;object-fit:cover}
+  .hero-figure figcaption{
+    margin-top:14px;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);
+    display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
+  }
+  .hero-figure figcaption .est{font-family:var(--serif);font-style:italic;text-transform:none;letter-spacing:.02em;color:var(--ink-soft);font-size:.95rem}
+  /* overlapping badge */
+  .stamp{
+    position:absolute;z-index:3;
+    width:118px;height:118px;border-radius:50%;
+    background:var(--ink);color:var(--paper);
+    display:grid;place-items:center;text-align:center;
+    top:-26px;right:14px;
+    box-shadow:var(--shadow-soft);
+    animation:spin 26s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .stamp .inner{font-family:var(--serif);font-style:italic;line-height:1.15;font-size:.78rem}
+  .stamp .big{display:block;font-style:normal;font-weight:800;font-size:1.5rem;color:var(--gold-soft)}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:6px}
+
+  /* marquee strip */
+  .strip{
+    margin-top:46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    overflow:hidden;white-space:nowrap;padding:16px 0;
+  }
+  .strip .track{display:inline-flex;gap:48px;animation:scroll 32s linear infinite;will-change:transform}
+  .strip span{
+    font-family:var(--serif);font-style:italic;font-size:1.15rem;color:var(--ink);display:inline-flex;align-items:center;gap:48px;
+  }
+  .strip span::after{content:"✦";color:var(--rust);font-style:normal;font-size:.8rem}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ---------- section scaffolding ---------- */
+  section{padding:84px 0}
+  .sec-head{display:flex;flex-direction:column;gap:18px;margin-bottom:46px}
+  .sec-head .row{display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .sec-title{
+    font-weight:700;color:var(--ink);font-size:clamp(2.1rem,6vw,3.6rem);line-height:1.02;letter-spacing:-.005em;
+  }
+  .sec-title em{font-style:italic;font-weight:500;color:var(--rust)}
+  .sec-lead{font-size:.98rem;max-width:46ch;color:var(--ink-soft)}
+
+  /* ---------- ABOUT / STORY ---------- */
+  .about{position:relative}
+  .about-grid{display:grid;grid-template-columns:1fr;gap:40px;align-items:start}
+  .about-copy .dropcap::first-letter{
+    font-family:var(--serif);
+    float:left;font-size:5.4rem;line-height:.78;font-weight:800;color:var(--rust);
+    margin:.04em .14em 0 0;
+  }
+  .about-copy p{margin-bottom:20px;font-size:1.02rem}
+  .about-copy p.intro{font-family:var(--serif);font-size:1.18rem;color:var(--ink);line-height:1.6}
+  .about-figs{position:relative;display:grid;gap:20px}
+  .about-figs figure{position:relative;border-radius:3px;overflow:hidden;box-shadow:var(--shadow-soft)}
+  .about-figs img{width:100%;height:100%;object-fit:cover}
+  .about-figs .f1{aspect-ratio:4/5}
+  .about-figs .f2{aspect-ratio:5/4}
+  .about-cap{
+    font-family:var(--serif);font-style:italic;color:var(--ink-soft);font-size:.92rem;
+    border-left:2px solid var(--gold);padding-left:14px;
+  }
+  .signature{
+    font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--ink);margin-top:8px;
+    transform:rotate(-3deg);transform-origin:left;
+  }
+  .signature small{display:block;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);transform:rotate(3deg);font-style:normal;margin-top:6px;font-family:var(--sans)}
+
+  /* stats ribbon */
+  .stats{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line-soft);
+    border:1px solid var(--line-soft);margin-top:48px;border-radius:3px;overflow:hidden;
+  }
+  .stats div{background:var(--paper);padding:26px 20px;text-align:center}
+  .stats .n{font-family:var(--serif);font-weight:800;font-size:2.2rem;color:var(--rust);line-height:1;display:block}
+  .stats .l{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-top:10px}
+
+  /* ---------- MENU ---------- */
+  .menu{background:var(--ink);color:var(--paper);position:relative}
+  .menu .eyebrow,.menu .eyebrow::before{color:var(--gold-soft);background-color:var(--gold-soft)}
+  .menu .eyebrow{background:none}
+  .menu .eyebrow::before{background:var(--gold-soft)}
+  .menu .sec-title{color:var(--paper)}
+  .menu .sec-title em{color:var(--gold-soft)}
+  .menu .sec-lead{color:rgba(244,236,221,.7)}
+  .menu .num{color:var(--gold-soft)}
+  .menu-grid{display:grid;grid-template-columns:1fr;gap:0}
+  .dish{
+    display:grid;grid-template-columns:1fr;gap:6px;
+    padding:26px 0;border-top:1px solid rgba(244,236,221,.16);
+    transition:padding-left .4s var(--ease);
+  }
+  .dish:last-child{border-bottom:1px solid rgba(244,236,221,.16)}
+  .dish:hover{padding-left:14px}
+  .dish .top{display:flex;align-items:baseline;gap:14px;justify-content:space-between}
+  .dish h3{
+    font-weight:600;font-size:1.5rem;color:var(--paper);display:flex;align-items:baseline;gap:.6em;line-height:1.1;
+  }
+  .dish h3 .di{font-family:var(--serif);font-style:italic;font-size:.8rem;color:var(--gold-soft);font-weight:500}
+  .dotfill{flex:1;border-bottom:1px dotted rgba(244,236,221,.4);transform:translateY(-5px);min-width:24px}
+  .dish .price{font-family:var(--serif);font-weight:700;font-size:1.35rem;color:var(--gold-soft);white-space:nowrap}
+  .dish p{font-size:.92rem;color:rgba(244,236,221,.66);max-width:60ch}
+  .dish .tag{font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--rust);font-weight:600;background:rgba(200,64,27,.18);padding:3px 8px;border-radius:2px;align-self:center}
+
+  .menu-feature{
+    margin-top:54px;display:grid;grid-template-columns:1fr;gap:28px;align-items:center;
+    background:rgba(244,236,221,.05);border:1px solid rgba(244,236,221,.14);border-radius:4px;padding:24px;
+  }
+  .menu-feature figure{border-radius:3px;overflow:hidden;aspect-ratio:5/4;box-shadow:var(--shadow)}
+  .menu-feature img{width:100%;height:100%;object-fit:cover}
+  .menu-feature .fc h3{font-family:var(--serif);font-size:2rem;color:var(--paper);font-weight:600;margin-bottom:8px}
+  .menu-feature .fc .di{font-family:var(--serif);font-style:italic;color:var(--gold-soft);font-size:.85rem;display:block;margin-bottom:14px}
+  .menu-feature .fc p{color:rgba(244,236,221,.72);font-size:.98rem;margin-bottom:18px}
+  .menu-note{margin-top:30px;font-size:.8rem;color:rgba(244,236,221,.55);font-style:italic;font-family:var(--serif);text-align:center}
+
+  /* ---------- GALLERY ---------- */
+  .gallery{position:relative}
+  .g-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;grid-auto-flow:dense}
+  .g-grid figure{position:relative;overflow:hidden;border-radius:3px;box-shadow:var(--shadow-soft)}
+  .g-grid img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
+  .g-grid figure:hover img{transform:scale(1.06)}
+  .g-grid .tall{grid-row:span 2;aspect-ratio:3/4}
+  .g-grid .wide{grid-column:span 2;aspect-ratio:16/9}
+  .g-grid .sq{aspect-ratio:1/1}
+  .g-grid figcaption{
+    position:absolute;left:12px;bottom:12px;
+    font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--paper);
+    background:rgba(36,26,18,.55);backdrop-filter:blur(4px);padding:6px 10px;border-radius:2px;
+    opacity:0;transform:translateY(8px);transition:.4s var(--ease);
+  }
+  .g-grid figure:hover figcaption{opacity:1;transform:translateY(0)}
+
+  /* ---------- HOURS / VISIT ---------- */
+  .visit{background:var(--paper-2);position:relative}
+  .visit-grid{display:grid;grid-template-columns:1fr;gap:44px}
+  .hours-list{margin-top:8px}
+  .hours-list .row{
+    display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+    padding:15px 0;border-bottom:1px solid var(--line);
+  }
+  .hours-list .row:first-child{border-top:1px solid var(--line)}
+  .hours-list .day{font-family:var(--serif);font-size:1.12rem;color:var(--ink);font-weight:500}
+  .hours-list .dots{flex:1;border-bottom:1px dotted var(--line);transform:translateY(-5px);min-width:20px}
+  .hours-list .time{font-size:.92rem;color:var(--ink-soft);font-weight:500;white-space:nowrap}
+  .hours-list .row.today .day{color:var(--rust)}
+  .hours-list .row.today .time{color:var(--rust);font-weight:600}
+  .badge-open{display:inline-flex;align-items:center;gap:.5em;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);font-weight:600;margin-top:18px}
+  .badge-open .dot{width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 0 rgba(58,125,86,.5);animation:pulse 2.4s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(58,125,86,.5)}70%{box-shadow:0 0 0 10px rgba(58,125,86,0)}100%{box-shadow:0 0 0 0 rgba(58,125,86,0)}}
+
+  .visit-card{
+    background:var(--ink);color:var(--paper);border-radius:4px;padding:34px 28px;box-shadow:var(--shadow);
+  }
+  .visit-card h3{font-family:var(--serif);font-size:1.7rem;color:var(--paper);margin-bottom:6px;font-weight:600}
+  .visit-card .sub{color:rgba(244,236,221,.6);font-size:.9rem;margin-bottom:24px}
+  .info-row{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-top:1px solid rgba(244,236,221,.14)}
+  .info-row .ic{color:var(--gold-soft);flex:0 0 auto;margin-top:2px}
+  .info-row .k{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:3px}
+  .info-row .v{color:var(--paper);font-size:1rem;line-height:1.45}
+  .info-row a.v:hover{color:var(--gold-soft)}
+  .visit-card .btn{width:100%;margin-top:24px}
+
+  /* ---------- RESERVE CTA ---------- */
+  .reserve{position:relative;text-align:center;padding:96px 0;overflow:hidden}
+  .reserve::before{
+    content:"";position:absolute;inset:0;z-index:0;
+    background:linear-gradient(rgba(36,26,18,.78),rgba(36,26,18,.82)),url("../assets/photo5.jpg") center/cover no-repeat;
+    background-attachment:fixed;
+  }
+  .reserve .wrap{position:relative;z-index:1}
+  .reserve .eyebrow{color:var(--gold-soft)}
+  .reserve .eyebrow::before{background:var(--gold-soft)}
+  .reserve h2{
+    font-family:var(--serif);color:var(--paper);font-weight:700;
+    font-size:clamp(2.3rem,7vw,4.6rem);line-height:1.02;margin:20px auto 18px;max-width:16ch;
+  }
+  .reserve h2 em{font-style:italic;color:var(--gold-soft);font-weight:500}
+  .reserve p{color:rgba(244,236,221,.8);max-width:46ch;margin:0 auto 32px;font-size:1.02rem}
+  .reserve .hero-cta{justify-content:center}
+  .reserve .btn-ghost{color:var(--paper);border-color:var(--paper)}
+  .reserve .btn-ghost:hover{background:var(--paper);color:var(--ink)}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:rgba(244,236,221,.7);padding:64px 0 30px}
+  .foot-grid{display:grid;grid-template-columns:1fr;gap:36px;padding-bottom:40px;border-bottom:1px solid rgba(244,236,221,.14)}
+  footer .brand{color:var(--paper)}
+  footer .brand small{color:var(--gold-soft)}
+  .foot-desc{margin-top:18px;max-width:40ch;font-size:.92rem;line-height:1.7}
+  .foot-col h4{font-family:var(--serif);color:var(--paper);font-size:1.05rem;margin-bottom:16px;font-weight:600}
+  .foot-col a,.foot-col p{display:block;font-size:.9rem;padding:5px 0;transition:color .3s var(--ease)}
+  .foot-col a:hover{color:var(--gold-soft)}
+  .foot-bottom{display:flex;flex-direction:column;gap:12px;justify-content:space-between;align-items:flex-start;padding-top:24px;font-size:.78rem;letter-spacing:.04em}
+  .foot-bottom .stars{color:var(--gold-soft)}
+
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- DEMO WATERMARK ---------- */
+  .demo-pill{
+    position:fixed;right:clamp(12px,2vw,22px);bottom:clamp(12px,2vw,22px);z-index:9999;
+    opacity:.7;font-family:var(--sans);font-size:.7rem;font-weight:600;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--paper);background:rgba(36,26,18,.85);
+    border:1px solid rgba(244,236,221,.2);
+    -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+    padding:7px 14px;border-radius:100px;pointer-events:none;
+    box-shadow:0 8px 24px -10px rgba(0,0,0,.5);
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(min-width:680px){
+    .topbar .right span:not(.star-row){display:inline}
+    .stats{grid-template-columns:repeat(4,1fr)}
+    .hero-meta{flex-direction:row;gap:28px;max-width:none;align-items:flex-start}
+    .hero-head{grid-template-columns:1.5fr 1fr;gap:30px}
+    .about-figs{grid-template-columns:1fr 1fr;align-items:start}
+    .about-figs .f1{margin-top:40px}
+    .visit-grid{grid-template-columns:1.1fr .9fr}
+    .menu-feature{grid-template-columns:1fr 1.1fr;padding:28px}
+    .foot-grid{grid-template-columns:1.6fr 1fr 1fr}
+    .foot-bottom{flex-direction:row;align-items:center}
+  }
+  @media(min-width:920px){
+    .wrap{padding:0 40px}
+    .nav-links{display:flex}
+    .nav .btn{display:inline-flex}
+    .menu-btn{display:none}
+    section{padding:108px 0}
+    .hero{padding:64px 0 0}
+    .hero-figure .main{aspect-ratio:21/9}
+    .stamp{width:148px;height:148px;top:-40px;right:40px}
+    .about-grid{grid-template-columns:1.05fr .95fr;gap:64px}
+    .about-figs{position:sticky;top:96px}
+    .dish{grid-template-columns:1fr;gap:6px}
+    .g-grid{grid-template-columns:repeat(4,1fr);gap:16px}
+    .menu-feature{grid-template-columns:.9fr 1.1fr}
+  }
+  @media(min-width:1200px){
+    .hero h1{font-size:8.6rem}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+    .reveal{opacity:1;transform:none}
+    .reserve::before{background-attachment:scroll}
+  }
+</style>
+</head>
+<body>
+
+<!-- ====== TOP UTILITY BAR ====== -->
+<div class="topbar">
+  <div class="wrap">
+    <span class="star-row"><span class="star">★</span> 4.6 — 337 შეფასება Google-ზე</span>
+    <div class="right">
+      <span>თბილისი, საქართველო</span>
+      <span class="star-row">ყოველდღე · 11:00–23:00</span>
+    </div>
+  </div>
+</div>
+
+<!-- ====== NAV ====== -->
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="brand" aria-label="Fries&More, მთავარი">
+      Fries&More
+      <small>ფრი · ბურგერი · თბილისი</small>
+    </a>
+    <nav class="nav-links" aria-label="მთავარი ნავიგაცია">
+      <a href="#story"><span class="idx">01</span>ჩვენი ამბავი</a>
+      <a href="#menu"><span class="idx">02</span>მენიუ</a>
+      <a href="#gallery"><span class="idx">03</span>გალერეა</a>
+      <a href="#visit"><span class="idx">04</span>ვიზიტი</a>
+    </nav>
+    <a href="https://wa.me/995322011222" target="_blank" rel="noopener" class="btn btn-primary">შეკვეთა WhatsApp-ით</a>
+    <button class="menu-btn" id="menuBtn" aria-label="მენიუს გახსნა" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- mobile menu -->
+<div class="menu-overlay" id="menuOverlay"></div>
+<nav class="mobile-menu" id="mobileMenu" aria-label="მობილური ნავიგაცია" aria-hidden="true">
+  <button class="mclose" id="menuClose" aria-label="მენიუს დახურვა">✕</button>
+  <a href="#story"><span class="idx">№01</span> ჩვენი ამბავი</a>
+  <a href="#menu"><span class="idx">№02</span> მენიუ</a>
+  <a href="#gallery"><span class="idx">№03</span> გალერეა</a>
+  <a href="#visit"><span class="idx">№04</span> ვიზიტი &amp; საათები</a>
+  <a href="https://wa.me/995322011222" target="_blank" rel="noopener" class="btn btn-primary">შეკვეთა WhatsApp-ით</a>
+</nav>
+
+<main id="top">
+
+  <!-- ====== HERO ====== -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <div class="hero-head">
+        <div class="hero-kicker">
+          <span class="eyebrow">ფრი · ბურგერი · სტრიტ-ფუდი თბილისში</span>
+          <h1 id="hero-title">Fries&More<em>ხრაშუნა ფრი, წვნიანი ბურგერი</em></h1>
+        </div>
+        <div class="hero-meta">
+          <p class="lead">ხელით ჭრილი ფრი, ცხელ-ცხელი ბურგერები და სახლის სოუსები — სწრაფად, უშურველი პორციით, ისე, როგორც გიყვარს.</p>
+        </div>
+      </div>
+
+      <figure class="hero-figure reveal">
+        <div class="stamp" aria-hidden="true">
+          <span class="inner">— ცხელი —<span class="big">★ 4.6</span>Google</span>
+        </div>
+        <div class="main">
+          <img src="../assets/photo1.jpg" alt="Fries&More-ის ხრაშუნა ოქროსფერი ფრი და წვნიანი ბურგერი — ცხელ-ცხელი სტრიტ-ფუდი" loading="eager" width="1600" height="686">
+        </div>
+        <figcaption>
+          <span class="est">ცხელი ფრი და წვნიანი ბურგერი, რომელიც სწრაფად მზადდება</span>
+          <span>№ 001 — ჩვენი მაგიდა</span>
+        </figcaption>
+      </figure>
+
+      <div class="hero-cta reveal" style="margin-top:28px">
+        <a href="https://wa.me/995322011222" target="_blank" rel="noopener" class="btn btn-primary">შეუკვეთე WhatsApp-ით</a>
+        <a href="#menu" class="btn btn-ghost">მენიუს ნახვა</a>
+      </div>
+    </div>
+
+    <div class="strip" aria-hidden="true">
+      <div class="track">
+        <span>ხრაშუნა ფრი<span></span>წვნიანი ბურგერი<span></span>ცხელი ქათმის ფინგერსი<span></span>სახლის სოუსები<span></span>ცივი ლიმონათი<span></span>სწრაფი მიტანა</span>
+        <span>ხრაშუნა ფრი<span></span>წვნიანი ბურგერი<span></span>ცხელი ქათმის ფინგერსი<span></span>სახლის სოუსები<span></span>ცივი ლიმონათი<span></span>სწრაფი მიტანა</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== ABOUT / STORY ====== -->
+  <section class="about" id="story" aria-labelledby="story-title">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">№ 01 — ჩვენი ამბავი</span>
+        <div class="row">
+          <h2 class="sec-title" id="story-title">გემო, რომელიც<em> ფრიდან იწყება</em></h2>
+          <p class="sec-lead">Fries&More უბრალო სწრაფი კვების ადგილი არ არის — აქ ყოველი პორცია შეკვეთისთანავე, ცხელ-ცხელი მზადდება.</p>
+        </div>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-copy reveal">
+          <p class="intro dropcap">ყველაფერი მარტივი იდეიდან დაიწყო — სტრიტ-ფუდი, რომელსაც ნამდვილად გემო აქვს. ფრი, რომელიც ხელით იჭრება და შეკვეთისთანავე იწვება; ბურგერი, რომელშიც ხორცი ახალია და ბულკა — რბილი.</p>
+          <p>ჩვენ არ გვჯერა გრძელი ლოდინისა და გართულებული მენიუს. გვჯერა ცხელი, ხრაშუნა ფრის, წვნიანი ბურგერისა და სოუსების, რომლებსაც თვითონ ვამზადებთ. პროდუქტი ყოველდღე ახალია, პორცია — უშურველი, ფასი კი ისეთი, რომ ისევ დაბრუნდე.</p>
+          <p>ჩვენი სივრცე მარტივი და მყუდროა — ადგილი, სადაც სწრაფად შემოივლი, ცხელ-ცხელს აიღებ გზაში ან მეგობართან ერთად მოისვენებ. სწორედ ამიტომ ბრუნდებიან ჩვენთან თბილისელები ისევ და ისევ.</p>
+          <p class="signature">Fries&More<small>ხრაშუნა ფრი · წვნიანი ბურგერი</small></p>
+        </div>
+
+        <div class="about-figs reveal">
+          <figure class="f1">
+            <img src="../assets/photo2.jpg" alt="Fries&More-ის სავსე ბურგერი ხრაშუნა ფრის გვერდით, ცხელ-ცხელი მირთმევისთვის" loading="lazy" width="700" height="875">
+          </figure>
+          <figure class="f2">
+            <img src="../assets/photo6.jpg" alt="Fries&More-ის მყუდრო სივრცე და ცხელი სტრიტ-ფუდი მაგიდაზე" loading="lazy" width="800" height="640">
+          </figure>
+          <p class="about-cap">„ცხელი ფრი და წვნიანი ბურგერი — სხვა საიდუმლო არ გვაქვს.“</p>
+        </div>
+      </div>
+
+      <div class="stats reveal" role="list" aria-label="ჩვენი მაჩვენებლები">
+        <div role="listitem"><span class="n">4.6★</span><span class="l">Google შეფასება</span></div>
+        <div role="listitem"><span class="n">337</span><span class="l">სტუმრის შეფასება</span></div>
+        <div role="listitem"><span class="n">100%</span><span class="l">ხელით ჭრილი ფრი</span></div>
+        <div role="listitem"><span class="n">10<span style="font-size:1.2rem"> წთ</span></span><span class="l">საშუალო მომზადება</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== MENU ====== -->
+  <section class="menu" id="menu" aria-labelledby="menu-title">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">№ 02 — სამზარეულო</span>
+        <div class="row">
+          <h2 class="sec-title" id="menu-title">სავიზიტო<em> კერძები</em></h2>
+          <p class="sec-lead">ხრაშუნა ფრი, წვნიანი ბურგერები და სახლის სოუსები, მომზადებული ხარისხიანი პროდუქტით. ფასები ლარშია.</p>
+        </div>
+      </div>
+
+      <div class="menu-grid">
+        <article class="dish reveal">
+          <div class="top">
+            <h3><span class="di">01</span> Loaded ფრი „Fries&More“</h3>
+            <span class="dotfill" aria-hidden="true"></span>
+            <span class="price">14 ₾</span>
+          </div>
+          <p>ხრაშუნა ფრი დნობილი ჩედარით, ცხელი ხორცით, მწვანე ხახვითა და სახლის სოუსით.</p>
+        </article>
+
+        <article class="dish reveal">
+          <div class="top">
+            <h3><span class="di">02</span> კლასიკური ფრი</h3>
+            <span class="dotfill" aria-hidden="true"></span>
+            <span class="price">7 ₾</span>
+          </div>
+          <p>ხელით ჭრილი კარტოფილი, ხრაშუნა გარედან და რბილი შიგნიდან — მარილითა და სოუსით.</p>
+        </article>
+
+        <article class="dish reveal">
+          <div class="top">
+            <h3><span class="di">03</span> საფირმო ბურგერი</h3>
+            <span class="dotfill" aria-hidden="true"></span>
+            <span class="price">16 ₾</span>
+          </div>
+          <p>წვნიანი ხორცის კოტლეტი, ჩედარი, მწნილი და სახლის სოუსი ფუმფულა ბულკაში.</p>
+        </article>
+
+        <article class="dish reveal">
+          <div class="top">
+            <h3><span class="di">04</span> ცხელი ქათმის ბურგერი</h3>
+            <span class="tag">ცხარე</span>
+            <span class="dotfill" aria-hidden="true"></span>
+            <span class="price">15 ₾</span>
+          </div>
+          <p>ხრაშუნა ქათმის ფილე, ცხარე სოუსი და სალათის ფოთოლი — ცეცხლოვანი გემოსთვის.</p>
+        </article>
+
+        <article class="dish reveal">
+          <div class="top">
+            <h3><span class="di">05</span> ქათმის ნაგეტსები</h3>
+            <span class="dotfill" aria-hidden="true"></span>
+            <span class="price">11 ₾ / 6 ც</span>
+          </div>
+          <p>ექვსი ცალი ხრაშუნა ნაგეტსი, შენი არჩევანის სოუსით — იდეალური გასაზიარებლად.</p>
+        </article>
+
+        <article class="dish reveal">
+          <div class="top">
+            <h3><span class="di">06</span> ლიმონათი / ცივი სასმელი</h3>
+            <span class="dotfill" aria-hidden="true"></span>
+            <span class="price">5 ₾</span>
+          </div>
+          <p>სახლის ლიმონათი ან გამაგრილებელი სასმელი — ცივ-ცივი, ყინულით.</p>
+        </article>
+      </div>
+
+      <!-- feature dish -->
+      <div class="menu-feature reveal">
+        <figure>
+          <img src="../assets/photo3.jpg" alt="Fries&More-ის კომბო — საფირმო ბურგერი, ხრაშუნა ფრი და ცივი სასმელი ერთად" loading="lazy" width="900" height="720">
+        </figure>
+        <div class="fc">
+          <span class="eyebrow">ფავორიტი კომბო</span>
+          <h3>ბურგერი + ფრი + სასმელი</h3>
+          <span class="di">საფირმო ბურგერი · დიდი ფრი · ცივი სასმელი — ერთ ფასად</span>
+          <p>ჩვენი ყველაზე მოთხოვნადი კომბო — საფირმო ბურგერი, დიდი პორცია ხრაშუნა ფრი და ცივი სასმელი. იდეალურია მშიერი დღისთვის ან მეგობართან გასაზიარებლად. სწრაფად მზადდება, დიდხანს გძღება.</p>
+          <a href="https://wa.me/995322011222" target="_blank" rel="noopener" class="btn btn-primary">კომბოს შეკვეთა</a>
+        </div>
+      </div>
+
+      <p class="menu-note">სრული მენიუ — ფრის ვარიაციები, ბურგერები, ქათმის კერძები, სოუსები და სასმელები — ხელმისაწვდომია ადგილზე.</p>
+    </div>
+  </section>
+
+  <!-- ====== GALLERY ====== -->
+  <section class="gallery" id="gallery" aria-labelledby="gallery-title">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">№ 03 — ატმოსფერო</span>
+        <div class="row">
+          <h2 class="sec-title" id="gallery-title">ერთი <em>შეხედვით</em></h2>
+          <p class="sec-lead">ცხელი ფრი, წვნიანი ბურგერები და განწყობა — მცირე ჩანახატი Fries&More-ის ყოველდღიურობიდან.</p>
+        </div>
+      </div>
+
+      <div class="g-grid">
+        <figure class="tall reveal">
+          <img src="../assets/photo5.jpg" alt="Fries&More-ის ცხელი საფირმო ბურგერი ახლო ხედით, წვნიანი და მაცდური" loading="lazy" width="600" height="800">
+          <figcaption>საფირმო ბურგერი</figcaption>
+        </figure>
+        <figure class="sq reveal">
+          <img src="../assets/photo4.jpg" alt="ხრაშუნა ოქროსფერი ფრის ახლო ხედი სოუსით" loading="lazy" width="500" height="500">
+          <figcaption>ხრაშუნა ფრი</figcaption>
+        </figure>
+        <figure class="sq reveal">
+          <img src="../assets/photo3.jpg" alt="ბურგერის, ფრისა და სასმელის კომბო ერთად" loading="lazy" width="500" height="500">
+          <figcaption>ფავორიტი კომბო</figcaption>
+        </figure>
+        <figure class="wide reveal">
+          <img src="../assets/photo1.jpg" alt="Fries&More-ის ცხელი ფრი და ბურგერი მაგიდაზე, სტრიტ-ფუდის განწყობა" loading="lazy" width="1280" height="720">
+          <figcaption>ცხელი და ხრაშუნა</figcaption>
+        </figure>
+        <figure class="sq reveal">
+          <img src="../assets/photo2.jpg" alt="ბურგერი და ფრი ერთ თეფშზე, გასაზიარებლად მზად" loading="lazy" width="500" height="500">
+          <figcaption>პორცია ორზე</figcaption>
+        </figure>
+        <figure class="sq reveal">
+          <img src="../assets/photo6.jpg" alt="Fries&More-ის მყუდრო სივრცე და ცხელი სტრიტ-ფუდი" loading="lazy" width="500" height="500">
+          <figcaption>ჩვენი სივრცე</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== VISIT / HOURS ====== -->
+  <section class="visit" id="visit" aria-labelledby="visit-title">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">№ 04 — ვიზიტი</span>
+        <div class="row">
+          <h2 class="sec-title" id="visit-title">მოგვაკითხე <em>Fries&More-ში</em></h2>
+          <p class="sec-lead">ჩვენი კარი ყოველდღე ღიაა. დაგვირეკე ან მოგვწერე WhatsApp-ზე და ცხელ-ცხელს დაგიხვედრებთ.</p>
+        </div>
+      </div>
+
+      <div class="visit-grid">
+        <div class="reveal">
+          <h3 class="serif" style="font-size:1.4rem;color:var(--ink);margin-bottom:6px;font-weight:600">სამუშაო საათები</h3>
+          <div class="hours-list">
+            <div class="row"><span class="day">ორშაბათი</span><span class="dots" aria-hidden="true"></span><span class="time">11:00 — 23:00</span></div>
+            <div class="row"><span class="day">სამშაბათი</span><span class="dots" aria-hidden="true"></span><span class="time">11:00 — 23:00</span></div>
+            <div class="row"><span class="day">ოთხშაბათი</span><span class="dots" aria-hidden="true"></span><span class="time">11:00 — 23:00</span></div>
+            <div class="row"><span class="day">ხუთშაბათი</span><span class="dots" aria-hidden="true"></span><span class="time">11:00 — 23:00</span></div>
+            <div class="row"><span class="day">პარასკევი</span><span class="dots" aria-hidden="true"></span><span class="time">11:00 — 01:00</span></div>
+            <div class="row"><span class="day">შაბათი</span><span class="dots" aria-hidden="true"></span><span class="time">11:00 — 01:00</span></div>
+            <div class="row today"><span class="day">კვირა <span style="font-size:.7rem;letter-spacing:.1em">(დღეს)</span></span><span class="dots" aria-hidden="true"></span><span class="time">12:00 — 23:00</span></div>
+          </div>
+          <span class="badge-open"><span class="dot" aria-hidden="true"></span> ახლა ღიაა — გელოდები</span>
+        </div>
+
+        <div class="visit-card reveal">
+          <h3>შეკვეთა &amp; კონტაქტი</h3>
+          <p class="sub">შესაკვეთად ან დიდი პორციისთვის</p>
+
+          <div class="info-row">
+            <span class="ic" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <div>
+              <div class="k">მისამართი</div>
+              <div class="v">თბილისი, საქართველო</div>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <span class="ic" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+            </span>
+            <div>
+              <div class="k">ტელეფონი</div>
+              <a class="v" href="tel:+995322011222">+995 322 01 12 22</a>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <span class="ic" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg>
+            </span>
+            <div>
+              <div class="k">WhatsApp</div>
+              <a class="v" href="https://wa.me/995322011222" target="_blank" rel="noopener">+995 322 01 12 22</a>
+            </div>
+          </div>
+
+          <a href="https://wa.me/995322011222" target="_blank" rel="noopener" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg>
+            WhatsApp-ით შეკვეთა
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== RESERVE CTA ====== -->
+  <section class="reserve" id="reserve" aria-labelledby="reserve-title">
+    <div class="wrap">
+      <span class="eyebrow">შეკვეთა</span>
+      <h2 id="reserve-title">დაე, შემდეგი <em>პორცია</em> ჩვენი იყოს</h2>
+      <p>დაგვირეკე ან მოგვწერე WhatsApp-ზე — შეკვეთას სწრაფად მივიღებთ და ცხელ-ცხელ ფრისა და ბურგერს დაგიხვედრებთ.</p>
+      <div class="hero-cta">
+        <a href="https://wa.me/995322011222" target="_blank" rel="noopener" class="btn btn-primary">WhatsApp-ით შეკვეთა</a>
+        <a href="tel:+995322011222" class="btn btn-ghost">დარეკვა: +995 322 01 12 22</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ====== FOOTER ====== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand">Fries&More<small>ფრი · ბურგერი · თბილისი</small></div>
+        <p class="foot-desc">ხელით ჭრილი ფრი, წვნიანი ბურგერები და სახლის სოუსები თბილისში. სწრაფი, ცხელი და გემრიელი სტრიტ-ფუდი ყოველ დღე.</p>
+      </div>
+      <div class="foot-col">
+        <h4>ნავიგაცია</h4>
+        <a href="#story">ჩვენი ამბავი</a>
+        <a href="#menu">მენიუ</a>
+        <a href="#gallery">გალერეა</a>
+        <a href="#visit">ვიზიტი &amp; საათები</a>
+        <a href="https://wa.me/995322011222" target="_blank" rel="noopener">შეკვეთა</a>
+      </div>
+      <div class="foot-col">
+        <h4>კონტაქტი</h4>
+        <a href="tel:+995322011222">+995 322 01 12 22</a>
+        <a href="https://wa.me/995322011222" target="_blank" rel="noopener">WhatsApp</a>
+        <p>თბილისი, საქართველო</p>
+        <p>ყოველდღე · 11:00–23:00</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Fries&More. ყველა უფლება დაცულია.</span>
+      <span class="stars">★ 4.6 — 337 შეფასება Google-ზე</span>
+    </div>
+  </div>
+</footer>
+
+<!-- demo watermark -->
+<div class="demo-pill" aria-hidden="true">დემო ვერსია</div>
+
+<script>
+  (function(){
+    "use strict";
+    // sticky nav shadow
+    var nav=document.getElementById('nav');
+    var onScroll=function(){ if(window.scrollY>10){nav.classList.add('scrolled')}else{nav.classList.remove('scrolled')} };
+    window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+    // mobile menu
+    var btn=document.getElementById('menuBtn'),
+        menu=document.getElementById('mobileMenu'),
+        overlay=document.getElementById('menuOverlay'),
+        close=document.getElementById('menuClose');
+    function setMenu(open){
+      menu.classList.toggle('open',open);
+      overlay.classList.toggle('open',open);
+      btn.classList.toggle('open',open);
+      btn.setAttribute('aria-expanded',open?'true':'false');
+      menu.setAttribute('aria-hidden',open?'false':'true');
+      document.body.style.overflow=open?'hidden':'';
+    }
+    btn.addEventListener('click',function(){setMenu(!menu.classList.contains('open'))});
+    close.addEventListener('click',function(){setMenu(false)});
+    overlay.addEventListener('click',function(){setMenu(false)});
+    menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false)})});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false)});
+
+    // reveal on scroll
+    var els=document.querySelectorAll('.reveal');
+    if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      var io=new IntersectionObserver(function(entries){
+        entries.forEach(function(en){ if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)} });
+      },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+      els.forEach(function(el){io.observe(el)});
+    } else {
+      els.forEach(function(el){el.classList.add('in')});
+    }
+  })();
+</script>
+</body>
+</html>

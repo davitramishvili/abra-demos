@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Lady Space — ფრჩხილი &amp; სილამაზე თბილისში</title>
+<meta name="description" content="Lady Space — ფრჩხილისა და სილამაზის სტუდია თბილისში. მანიკიური, პედიკიური, გელ-ლაქი, ნაშენი ფრჩხილები და ნეილ-არტი. ✦ სილამაზე, რომელიც გიხდება.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700;800;900&family=Noto+Serif+Georgian:opsz,wght@8..144,500;8..144,700;8..144,900&display=swap" rel="stylesheet">
+<style>
+  /* ============== TOKENS ============== */
+  :root{
+    --cream:#FFF3F6;        /* soft rosy canvas */
+    --cream-deep:#FBE3EA;
+    --ink:#2A1620;          /* deep plum ink */
+    --ink-soft:#574350;
+    --tomato:#FF5B86;       /* hot pink accent — decorative fills only */
+    --tomato-deep:#E83A6B;
+    --tomato-btn:#D62661;   /* AA-safe pink-red for white text */
+    --tomato-text:#C61F58;  /* AA-safe pink-red for text on white */
+    --sun:#FFC93C;          /* sunny gold */
+    --teal:#22B6C6;         /* aqua — decorative fills only */
+    --teal-deep:#0A6F7A;    /* AA-safe teal: text on cream / white on it */
+    --grape:#7A5CFF;        /* playful violet pop */
+    --pink:#FF8FB1;
+    --white:#FFFFFF;
+
+    --radius:34px;
+    --radius-lg:54px;
+    --shadow-sm:0 6px 0 rgba(42,22,32,.14);
+    --shadow:0 18px 40px -22px rgba(42,22,32,.55);
+    --shadow-pop:0 22px 48px -20px rgba(42,22,32,.5);
+    --border:3px solid var(--ink);
+    --ease:cubic-bezier(.34,1.56,.64,1); /* springy */
+
+    --maxw:1200px;
+    --sans:"Noto Sans Georgian",system-ui,sans-serif;
+    --serif:"Noto Serif Georgian",Georgia,serif;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:var(--sans);
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.55;
+    overflow-x:hidden;
+    font-size:17px;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--tomato);color:var(--white)}
+
+  /* focus visibility for a11y */
+  a:focus-visible,button:focus-visible{
+    outline:3px solid var(--grape);
+    outline-offset:3px;
+    border-radius:8px;
+  }
+
+  .wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:clamp(18px,5vw,40px)}
+
+  /* demo watermark pill */
+  .demo-pill{
+    position:fixed;right:16px;bottom:16px;z-index:9999;
+    background:var(--ink);color:var(--cream);
+    border:2.5px solid var(--sun);
+    padding:7px 16px;border-radius:50px;
+    font-weight:800;font-size:.74rem;letter-spacing:.06em;
+    opacity:.7;pointer-events:none;user-select:none;
+    box-shadow:var(--shadow-sm);
+  }
+  @media(max-width:560px){.demo-pill{right:12px;bottom:12px;font-size:.68rem;padding:6px 13px}}
+
+  /* ============== KINETIC MARQUEE ============== */
+  .marquee{
+    background:var(--ink);
+    color:var(--cream);
+    border-bottom:var(--border);
+    overflow:hidden;
+    white-space:nowrap;
+    padding-block:11px;
+    position:relative;
+    z-index:60;
+  }
+  .marquee__track{
+    display:inline-flex;gap:0;
+    animation:slide 26s linear infinite;
+    will-change:transform;
+  }
+  .marquee span{
+    font-weight:800;font-size:.95rem;letter-spacing:.06em;
+    padding-inline:26px;display:inline-flex;align-items:center;gap:26px;
+  }
+  .marquee span::after{content:"✦";color:var(--sun)}
+  @keyframes slide{to{transform:translateX(-50%)}}
+  @media(prefers-reduced-motion:reduce){.marquee__track{animation:none}}
+
+  /* ============== NAV ============== */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:color-mix(in srgb,var(--cream) 86%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:var(--border);
+  }
+  .nav__bar{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-block:13px}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:900;font-size:1.28rem;letter-spacing:-.01em}
+  .brand .mark{
+    width:42px;height:42px;border-radius:50% 50% 50% 14px;
+    background:var(--tomato);border:var(--border);
+    display:grid;place-items:center;color:var(--white);font-size:1.1rem;font-family:var(--serif);font-weight:900;
+    transform:rotate(-6deg);transition:transform .35s var(--ease);
+    flex:0 0 auto;
+  }
+  .brand:hover .mark{transform:rotate(8deg) scale(1.08)}
+  .nav__links{display:none;gap:30px;font-weight:600}
+  .nav__links a{position:relative;padding-block:4px}
+  .nav__links a::after{
+    content:"";position:absolute;left:0;right:100%;bottom:-2px;height:3px;
+    background:var(--tomato);border-radius:3px;transition:right .3s var(--ease);
+  }
+  .nav__links a:hover::after{right:0}
+  .nav__cta{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--ink);color:var(--cream);
+    padding:11px 20px;border-radius:50px;border:var(--border);
+    font-weight:800;font-size:.95rem;min-height:44px;
+    box-shadow:var(--shadow-sm);transition:transform .25s var(--ease),box-shadow .25s var(--ease);
+  }
+  .nav__cta:hover{transform:translateY(-3px);box-shadow:0 11px 0 rgba(42,22,32,.16)}
+  .nav__cta:active{transform:translateY(0);box-shadow:0 3px 0 rgba(42,22,32,.16)}
+  @media(min-width:920px){.nav__links{display:flex}}
+
+  /* ============== BUTTONS ============== */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    font-weight:800;font-size:1.02rem;min-height:52px;padding:14px 28px;
+    border-radius:50px;border:var(--border);cursor:pointer;
+    transition:transform .22s var(--ease),box-shadow .22s var(--ease);
+    box-shadow:var(--shadow-sm);
+  }
+  .btn--primary{background:var(--tomato-btn);color:var(--white)}
+  .btn--sun{background:var(--sun);color:var(--ink)}
+  .btn--ink{background:var(--ink);color:var(--cream)}
+  .btn--ghost{background:var(--white);color:var(--ink)}
+  .btn:hover{transform:translateY(-4px);box-shadow:0 12px 0 rgba(42,22,32,.16)}
+  .btn:active{transform:translateY(-1px);box-shadow:0 4px 0 rgba(42,22,32,.16)}
+
+  /* ============== STICKER BADGE ============== */
+  .sticker{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--white);border:var(--border);border-radius:50px;
+    padding:8px 16px;font-weight:800;font-size:.85rem;
+    box-shadow:var(--shadow-sm);
+  }
+  .sticker--sun{background:var(--sun)}
+  .sticker--teal{background:var(--teal-deep);color:var(--white)}
+
+  /* round wobbling stamp */
+  .stamp{
+    position:absolute;width:128px;height:128px;border-radius:50%;
+    background:var(--sun);border:var(--border);color:var(--ink);
+    display:grid;place-content:center;text-align:center;
+    font-weight:900;font-size:.78rem;line-height:1.25;letter-spacing:.02em;
+    box-shadow:var(--shadow-pop);z-index:5;
+    animation:wobble 6s ease-in-out infinite;
+  }
+  .stamp small{display:block;font-size:1.45rem;line-height:1}
+  @keyframes wobble{0%,100%{transform:rotate(-9deg)}50%{transform:rotate(6deg)}}
+  @media(prefers-reduced-motion:reduce){.stamp{animation:none}}
+
+  /* ============== HERO ============== */
+  .hero{position:relative;padding-top:clamp(34px,6vw,70px);padding-bottom:clamp(40px,7vw,90px)}
+  .hero__blob{
+    position:absolute;z-index:0;border-radius:46% 54% 60% 40%/52% 44% 56% 48%;
+    filter:blur(2px);opacity:.85;pointer-events:none;
+  }
+  .blob-a{width:340px;height:340px;background:var(--sun);top:-60px;right:-90px;animation:morph 14s ease-in-out infinite}
+  .blob-b{width:260px;height:260px;background:var(--teal);bottom:-70px;left:-100px;opacity:.5;animation:morph 18s ease-in-out infinite reverse}
+  @keyframes morph{
+    0%,100%{border-radius:46% 54% 60% 40%/52% 44% 56% 48%}
+    50%{border-radius:60% 40% 42% 58%/44% 58% 42% 56%}
+  }
+  @media(prefers-reduced-motion:reduce){.hero__blob{animation:none}}
+  .hero__grid{position:relative;z-index:2;display:grid;gap:clamp(28px,5vw,52px);align-items:center}
+  @media(min-width:900px){.hero__grid{grid-template-columns:1.05fr .95fr}}
+
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-weight:800;
+    color:var(--teal-deep);letter-spacing:.12em;text-transform:uppercase;font-size:.82rem;margin-bottom:18px}
+  .eyebrow::before{content:"";width:30px;height:3px;background:var(--tomato);border-radius:3px}
+
+  .hero h1{
+    font-family:var(--serif);
+    font-weight:900;
+    font-size:clamp(2.9rem,8.4vw,5.6rem);
+    line-height:.96;letter-spacing:-.02em;
+    margin-bottom:22px;
+  }
+  .hero h1 .wink{
+    color:var(--tomato);position:relative;display:inline-block;
+    transition:transform .4s var(--ease);
+  }
+  .hero h1 .wink:hover{transform:rotate(-3deg) scale(1.04)}
+  .hero h1 .wink::after{
+    content:"";position:absolute;left:2%;right:2%;bottom:.07em;height:.16em;
+    background:var(--sun);z-index:-1;border-radius:6px;transform:rotate(-1.2deg);
+  }
+  .hero h1 .draw{color:var(--teal-deep);font-style:italic}
+  .hero p.lead{font-size:clamp(1.05rem,2.4vw,1.28rem);max-width:34ch;color:var(--ink-soft);margin-bottom:30px;font-weight:500}
+  .hero__cta{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:30px}
+
+  .rating{display:inline-flex;align-items:center;gap:13px;background:var(--white);
+    border:var(--border);border-radius:50px;padding:9px 9px 9px 18px;box-shadow:var(--shadow-sm);max-width:max-content}
+  .rating .stars{color:var(--sun);font-size:1.05rem;letter-spacing:1px;-webkit-text-stroke:.6px var(--ink)}
+  .rating b{font-weight:900}
+  .rating .pill{background:var(--ink);color:var(--cream);font-weight:800;font-size:.8rem;
+    padding:6px 13px;border-radius:50px}
+
+  /* hero photo cluster */
+  .hero__art{position:relative;justify-self:center;width:100%;max-width:480px}
+  .hero__frame{
+    position:relative;border:var(--border);border-radius:50% 50% 48% 52%/46% 50% 50% 54%;
+    overflow:hidden;background:var(--cream-deep);box-shadow:var(--shadow-pop);
+    aspect-ratio:1/1;transform:rotate(-2deg);
+    transition:transform .5s var(--ease);
+  }
+  .hero__frame img{width:100%;height:100%;object-fit:cover}
+  .hero__art:hover .hero__frame{transform:rotate(0deg) scale(1.01)}
+  .hero__chip{
+    position:absolute;background:var(--white);border:var(--border);border-radius:20px;
+    padding:11px 15px;box-shadow:var(--shadow-pop);font-weight:800;font-size:.86rem;z-index:6;
+    display:flex;align-items:center;gap:9px;
+  }
+  .hero__chip .dot{width:11px;height:11px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px color-mix(in srgb,var(--teal) 30%,transparent)}
+  .chip-1{top:7%;left:-6%;transform:rotate(-7deg);animation:float 5s ease-in-out infinite}
+  .chip-2{bottom:9%;right:-7%;transform:rotate(6deg);background:var(--sun);animation:float 6.5s ease-in-out infinite}
+  @keyframes float{0%,100%{transform:translateY(0) rotate(var(--r,-7deg))}50%{transform:translateY(-12px) rotate(var(--r,-7deg))}}
+  .chip-1{--r:-7deg}.chip-2{--r:6deg}
+  @media(prefers-reduced-motion:reduce){.hero__chip{animation:none}}
+  .hero__stamp{top:-26px;right:6%}
+
+  /* ============== VALUE STRIP ============== */
+  .strip{background:var(--ink);color:var(--cream);border-block:var(--border);padding-block:clamp(34px,5vw,52px)}
+  .strip__grid{display:grid;gap:26px;grid-template-columns:repeat(2,1fr);text-align:center}
+  @media(min-width:760px){.strip__grid{grid-template-columns:repeat(4,1fr)}}
+  .stat .n{font-family:var(--serif);font-weight:900;font-size:clamp(2.1rem,5vw,3rem);color:var(--sun);line-height:1}
+  .stat .l{font-weight:600;font-size:.92rem;color:color-mix(in srgb,var(--cream) 80%,transparent);margin-top:6px}
+  .stat:nth-child(2) .n{color:var(--tomato)}
+  .stat:nth-child(3) .n{color:var(--teal)}
+  .stat:nth-child(4) .n{color:var(--pink)}
+
+  /* ============== SECTION HEADERS ============== */
+  .sec{padding-block:clamp(56px,9vw,110px);position:relative}
+  .sec__head{max-width:640px;margin-bottom:clamp(34px,5vw,56px)}
+  .sec__head.center{margin-inline:auto;text-align:center}
+  .sec h2{font-family:var(--serif);font-weight:900;font-size:clamp(2.1rem,5.5vw,3.5rem);line-height:1.02;letter-spacing:-.02em;margin-block:14px}
+  .sec h2 em{font-style:normal;color:var(--tomato)}
+  .sec__head p{color:var(--ink-soft);font-size:1.08rem;font-weight:500}
+
+  /* ============== ABOUT ============== */
+  .about__grid{display:grid;gap:clamp(30px,5vw,60px);align-items:center}
+  @media(min-width:880px){.about__grid{grid-template-columns:1fr 1fr}}
+  .about__media{position:relative}
+  .about__media .photo{
+    border:var(--border);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);
+    aspect-ratio:4/5;transform:rotate(1.5deg);transition:transform .5s var(--ease);
+  }
+  .about__media .photo img{width:100%;height:100%;object-fit:cover}
+  .about__media:hover .photo{transform:rotate(0)}
+  .about__media .mini{
+    position:absolute;bottom:-22px;left:-22px;width:46%;aspect-ratio:1/1;
+    border:var(--border);border-radius:30px;overflow:hidden;box-shadow:var(--shadow-pop);
+    transform:rotate(-5deg);background:var(--cream);
+  }
+  .about__media .mini img{width:100%;height:100%;object-fit:cover}
+  .about__copy .lede{font-family:var(--serif);font-weight:700;font-size:clamp(1.3rem,3vw,1.7rem);line-height:1.3;margin-bottom:18px}
+  .about__copy p{color:var(--ink-soft);margin-bottom:16px}
+  .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+
+  /* ============== SERVICES / HIGHLIGHTS ============== */
+  .menu{background:var(--cream-deep);border-block:var(--border)}
+  .menu__grid{display:grid;gap:20px}
+  @media(min-width:680px){.menu__grid{grid-template-columns:repeat(2,1fr)}}
+  @media(min-width:1000px){.menu__grid{grid-template-columns:repeat(3,1fr)}}
+  .card{
+    background:var(--white);border:var(--border);border-radius:var(--radius);
+    padding:26px 24px;box-shadow:var(--shadow-sm);position:relative;
+    transition:transform .3s var(--ease),box-shadow .3s var(--ease);
+    will-change:transform;overflow:hidden;
+  }
+  .card:hover{transform:translateY(-8px) rotate(-1deg);box-shadow:0 16px 0 rgba(42,22,32,.12)}
+  .card__ico{
+    width:62px;height:62px;border-radius:50% 50% 50% 16px;display:grid;place-items:center;
+    border:var(--border);margin-bottom:18px;transition:transform .4s var(--ease);
+  }
+  .card__ico svg{width:30px;height:30px;stroke:currentColor;fill:none;stroke-width:1.7}
+  .card:hover .card__ico{transform:rotate(-10deg) scale(1.08)}
+  .card:nth-child(1) .card__ico{background:var(--sun);color:var(--ink)}
+  .card:nth-child(2) .card__ico{background:var(--tomato);color:var(--white)}
+  .card:nth-child(3) .card__ico{background:var(--teal);color:var(--white)}
+  .card:nth-child(4) .card__ico{background:var(--grape);color:var(--white)}
+  .card:nth-child(5) .card__ico{background:var(--pink);color:var(--ink)}
+  .card:nth-child(6) .card__ico{background:var(--sun);color:var(--ink)}
+  .card h3{font-size:1.22rem;font-weight:800;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .card h3 .price{font-family:var(--serif);font-weight:900;color:var(--tomato-text);font-size:1.1rem;white-space:nowrap}
+  .card p{color:var(--ink-soft);font-size:.97rem}
+  .menu__note{margin-top:30px;text-align:center;font-weight:600;color:var(--ink-soft)}
+  .menu__note b{color:var(--ink)}
+
+  /* ============== SIGNATURE BANNER (nail-art) ============== */
+  .feature{position:relative;overflow:hidden}
+  .feature__inner{
+    background:var(--tomato-btn);border:var(--border);border-radius:var(--radius-lg);
+    color:var(--white);padding:clamp(34px,6vw,68px);box-shadow:var(--shadow);
+    display:grid;gap:34px;align-items:center;position:relative;overflow:hidden;
+  }
+  @media(min-width:900px){.feature__inner{grid-template-columns:1.1fr .9fr}}
+  .feature__inner::before{
+    content:"";position:absolute;width:380px;height:380px;border-radius:50%;
+    background:rgba(255,255,255,.12);top:-140px;right:-90px;
+  }
+  .feature h2{color:var(--white);position:relative}
+  .feature h2 em{color:var(--sun)}
+  .feature p{color:var(--cream);font-size:1.1rem;font-weight:500;margin-block:16px 26px;max-width:42ch;position:relative}
+  .feature__media{position:relative;z-index:2}
+  .feature__media .ph{
+    border:var(--border);border-radius:38px;overflow:hidden;box-shadow:var(--shadow-pop);
+    aspect-ratio:3/4;transform:rotate(2.5deg);background:var(--cream);
+    transition:transform .5s var(--ease);
+  }
+  .feature__media:hover .ph{transform:rotate(-1deg) scale(1.02)}
+  .feature__media .ph img{width:100%;height:100%;object-fit:cover}
+  .feature__media .stamp{bottom:-22px;left:-18px;top:auto;background:var(--ink);color:var(--sun)}
+
+  /* ============== GALLERY ============== */
+  .gallery__grid{display:grid;gap:14px;grid-template-columns:repeat(2,1fr)}
+  @media(min-width:760px){.gallery__grid{grid-template-columns:repeat(4,1fr);grid-auto-rows:160px}}
+  .gallery__grid figure{
+    border:var(--border);border-radius:26px;overflow:hidden;position:relative;
+    box-shadow:var(--shadow-sm);background:var(--cream-deep);min-height:170px;
+  }
+  .gallery__grid img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+  .gallery__grid figure:hover img{transform:scale(1.08)}
+  .gallery__grid figcaption{
+    position:absolute;left:12px;bottom:12px;background:var(--white);border:2.5px solid var(--ink);
+    border-radius:50px;padding:5px 13px;font-weight:800;font-size:.78rem;
+    transform:translateY(120%);transition:transform .35s var(--ease);
+  }
+  .gallery__grid figure:hover figcaption{transform:translateY(0)}
+  @media(min-width:760px){
+    .g-tall{grid-row:span 2}
+    .g-wide{grid-column:span 2}
+  }
+
+  /* ============== HOURS + CONTACT ============== */
+  .visit{background:var(--ink);color:var(--cream);border-block:var(--border)}
+  .visit__grid{display:grid;gap:clamp(30px,5vw,56px)}
+  @media(min-width:900px){.visit__grid{grid-template-columns:1fr 1fr}}
+  .visit h2{color:var(--cream)}
+  .visit h2 em{color:var(--sun)}
+  .hours{background:rgba(255,255,255,.05);border:2.5px solid rgba(255,243,246,.25);border-radius:var(--radius);overflow:hidden}
+  .hours__row{display:flex;align-items:center;justify-content:space-between;gap:16px;
+    padding:15px 22px;border-bottom:2px solid rgba(255,243,246,.12);font-weight:600}
+  .hours__row:last-child{border-bottom:0}
+  .hours__row.today{background:var(--sun);color:var(--ink);font-weight:800}
+  .hours__row .day{display:flex;align-items:center;gap:10px}
+  .hours__row.today .badge-now{background:var(--ink);color:var(--sun);font-size:.7rem;padding:3px 9px;border-radius:50px;font-weight:800}
+  .hours__row .time{font-variant-numeric:tabular-nums}
+
+  .contact__card{background:var(--cream);color:var(--ink);border:var(--border);border-radius:var(--radius);
+    padding:clamp(26px,4vw,38px);box-shadow:var(--shadow)}
+  .contact__card h3{font-family:var(--serif);font-weight:900;font-size:1.5rem;margin-bottom:6px}
+  .contact__card .sub{color:var(--ink-soft);margin-bottom:24px;font-weight:500}
+  .contact__list{display:grid;gap:14px;margin-bottom:26px}
+  .contact__item{display:flex;align-items:center;gap:14px;font-weight:600}
+  .contact__item .ci{width:46px;height:46px;border:var(--border);border-radius:14px;display:grid;place-items:center;flex:0 0 auto}
+  .contact__item .ci svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8}
+  .contact__item:nth-child(1) .ci{background:var(--teal);color:#fff}
+  .contact__item:nth-child(2) .ci{background:var(--sun);color:var(--ink)}
+  .contact__item:nth-child(3) .ci{background:var(--tomato);color:#fff}
+  .contact__item small{display:block;font-weight:600;color:var(--ink-soft);font-size:.82rem}
+  .contact__cta{display:flex;flex-wrap:wrap;gap:12px}
+
+  /* ============== CTA STRIP ============== */
+  .bigcta{padding-block:clamp(56px,9vw,110px);text-align:center;position:relative;overflow:hidden}
+  .bigcta h2{font-family:var(--serif);font-weight:900;font-size:clamp(2.3rem,7vw,4.4rem);line-height:1;letter-spacing:-.02em;margin-bottom:22px}
+  .bigcta h2 .u{color:var(--tomato)}
+  .bigcta p{max-width:36ch;margin-inline:auto;color:var(--ink-soft);font-size:1.12rem;font-weight:500;margin-bottom:30px}
+  .bigcta__cta{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+  .bigcta__blob{position:absolute;width:300px;height:300px;border-radius:50%;background:var(--sun);opacity:.35;filter:blur(8px);z-index:-1}
+  .bigcta__blob.l{left:-120px;top:20%}
+  .bigcta__blob.r{right:-120px;bottom:10%;background:var(--teal)}
+
+  /* ============== FOOTER ============== */
+  footer.foot{background:var(--ink);color:var(--cream);border-top:var(--border);padding-block:46px 30px}
+  .foot__grid{display:grid;gap:30px;grid-template-columns:1fr}
+  @media(min-width:720px){.foot__grid{grid-template-columns:1.4fr 1fr 1fr}}
+  .foot .brand{color:var(--cream);margin-bottom:14px}
+  .foot__about{color:color-mix(in srgb,var(--cream) 72%,transparent);max-width:34ch;font-size:.95rem}
+  .foot h4{font-weight:800;font-size:.95rem;margin-bottom:14px;color:var(--sun);letter-spacing:.04em}
+  .foot ul{list-style:none;display:grid;gap:2px}
+  .foot ul a{display:inline-flex;align-items:center;min-height:44px;
+    color:color-mix(in srgb,var(--cream) 80%,transparent);font-weight:500;transition:color .2s,padding-left .2s}
+  .foot ul a:hover{color:var(--sun);padding-left:5px}
+  .foot__bottom{margin-top:36px;padding-top:22px;border-top:2px solid rgba(255,243,246,.14);
+    display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;
+    color:color-mix(in srgb,var(--cream) 60%,transparent);font-size:.85rem;font-weight:500}
+  .foot__bottom .heart{color:var(--tomato)}
+
+  /* reveal-on-scroll */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ============== REDUCED MOTION ============== */
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
+      transition-duration:.001ms!important;scroll-behavior:auto!important}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== KINETIC MARQUEE ===== -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>სილამაზე, რომელიც გიხდება</span>
+    <span>გელ-ლაქი &amp; ნეილ-არტი</span>
+    <span>სტერილური ინსტრუმენტი</span>
+    <span>თბილისის გული</span>
+    <span>მანიკიური &amp; პედიკიური</span>
+    <span>სილამაზე, რომელიც გიხდება</span>
+    <span>გელ-ლაქი &amp; ნეილ-არტი</span>
+    <span>სტერილური ინსტრუმენტი</span>
+    <span>თბილისის გული</span>
+    <span>მანიკიური &amp; პედიკიური</span>
+  </div>
+</div>
+
+<!-- ===== NAV ===== -->
+<header class="nav">
+  <div class="wrap nav__bar">
+    <a href="#top" class="brand" aria-label="Lady Space — მთავარი">
+      <span class="mark" aria-hidden="true">L</span>
+      Lady Space<span style="color:var(--tomato)">.</span>
+    </a>
+    <nav class="nav__links" aria-label="მთავარი ნავიგაცია">
+      <a href="#about">ჩვენ შესახებ</a>
+      <a href="#menu">მომსახურება</a>
+      <a href="#gallery">გალერეა</a>
+      <a href="#visit">მისამართი</a>
+    </nav>
+    <a class="nav__cta" href="https://wa.me/995555170270" target="_blank" rel="noopener">
+      <span aria-hidden="true">✦</span> დაჯავშნა
+    </a>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<main id="top">
+<section class="hero">
+  <span class="hero__blob blob-a" aria-hidden="true"></span>
+  <span class="hero__blob blob-b" aria-hidden="true"></span>
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <span class="eyebrow">ფრჩხილი &amp; სილამაზე · თბილისი</span>
+      <h1>
+        <span class="wink">სილამაზე</span>,<br>
+        რომელიც <span class="draw">გიხდება</span>.
+      </h1>
+      <p class="lead">Lady Space — სტუდია, სადაც ყოველი დეტალი შენთვისაა გათვლილი. შემოდი ერთ ვიზიტზე, წადი მოვლილი და თავდაჯერებული.</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="https://wa.me/995555170270" target="_blank" rel="noopener"><span aria-hidden="true">✦</span> დაჯავშნე WhatsApp-ით</a>
+        <a class="btn btn--ghost" href="#menu"><span aria-hidden="true">♡</span> ნახე მომსახურება</a>
+      </div>
+      <div class="rating" role="img" aria-label="გუგლის შეფასება 4.2 ვარსკვლავი 93 მიმოხილვიდან">
+        <span class="stars" aria-hidden="true">★★★★½</span>
+        <span><b>4.2</b> Google</span>
+        <span class="pill">93 მიმოხილვა</span>
+      </div>
+    </div>
+
+    <div class="hero__art">
+      <div class="stamp hero__stamp" aria-hidden="true">
+        <span><small>100%</small>ხელით<br>მოვლილი</span>
+      </div>
+      <div class="hero__frame">
+        <img src="../assets/photo1.jpg" alt="Lady Space-ის სალონის სამუშაო სივრცე მანიკიურის მაგიდებითა და თბილი განათებით" loading="eager" fetchpriority="high" decoding="async" width="900" height="900">
+      </div>
+      <div class="hero__chip chip-1"><span class="dot" aria-hidden="true"></span> ღია ახლა</div>
+      <div class="hero__chip chip-2"><span aria-hidden="true">♡</span> Nail &amp; Beauty</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STAT STRIP ===== -->
+<section class="strip" aria-label="ფაქტები">
+  <div class="wrap strip__grid">
+    <div class="stat reveal"><div class="n">4.2★</div><div class="l">Google შეფასება</div></div>
+    <div class="stat reveal"><div class="n">93</div><div class="l">ნამდვილი მიმოხილვა</div></div>
+    <div class="stat reveal"><div class="n">100%</div><div class="l">სტერილური ინსტრუმენტი</div></div>
+    <div class="stat reveal"><div class="n">1</div><div class="l">ნაზი კუთხე თბილისში</div></div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="sec" id="about">
+  <div class="wrap about__grid">
+    <div class="about__media reveal">
+      <div class="photo">
+        <img src="../assets/photo2.jpg" alt="Lady Space-ის ინტერიერი — მოწესრიგებული სამუშაო ადგილი, ნაზი განათება და კომფორტული სავარძლები" loading="lazy" width="900" height="1100">
+      </div>
+      <div class="mini">
+        <img src="../assets/photo4.jpg" alt="ახლო კადრი მოვლილ მანიკიურზე დახვეწილი ნეილ-არტით" loading="lazy" width="500" height="500">
+      </div>
+    </div>
+    <div class="about__copy">
+      <span class="eyebrow">ჩვენი ამბავი</span>
+      <h2>პატარა სტუდია <em>დიდი</em> ზრუნვით</h2>
+      <p class="lede">ჩვენ გვჯერა, რომ სილამაზეზე ზრუნვა მხოლოდ პროცედურა არ არის — ეს პატარა რიტუალია, რომელსაც იმსახურებ ღიმილით.</p>
+      <p>Lady Space დაიბადა მარტივი იდეით: ხარისხიანი მომსახურება და ნაზი ატმოსფერო ერთ სივრცეში. ჩვენი ოსტატები ყოველ ფრჩხილს ისე ეპყრობიან, თითქოს პატარა ნამუშევარია — ზუსტად და გულით.</p>
+      <p>სტერილური ინსტრუმენტი, თბილი შუქი და კომფორტული სავარძელი — შემოდი და მიეცი თავი დასვენებას.</p>
+      <div class="tags">
+        <span class="sticker">♡ ხარისხიანი მასალა</span>
+        <span class="sticker sticker--sun">✦ ნეილ-არტი</span>
+        <span class="sticker sticker--teal">✿ სტერილური ინსტრუმენტი</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES / HIGHLIGHTS ===== -->
+<section class="sec menu" id="menu">
+  <div class="wrap">
+    <div class="sec__head center">
+      <span class="eyebrow" style="justify-content:center">რას გთავაზობთ</span>
+      <h2>ფავორიტი <em>მომსახურება</em></h2>
+      <p>თითო ვიზიტი სიფაქიზით სრულდება. ფასები — ლარებში, სავარაუდო.</p>
+    </div>
+    <div class="menu__grid">
+      <article class="card reveal">
+        <div class="card__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 13c0-4 1.5-8 5-8s5 4 5 8"/><path d="M7 13h10v4a4 4 0 0 1-4 4h-2a4 4 0 0 1-4-4v-4Z"/></svg></div>
+        <h3>მანიკიური <span class="price">25₾</span></h3>
+        <p>ფორმის მოცემა, კუტიკულის მოვლა და სუფთა, მოწესრიგებული ფრჩხილი — კლასიკა, რომელიც ყოველთვის გიხდება.</p>
+      </article>
+      <article class="card reveal">
+        <div class="card__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 14c2 1 14 1 16 0"/><path d="M5 14l1-7a6 6 0 0 1 12 0l1 7"/><path d="M9 14v3M12 14v3M15 14v3"/></svg></div>
+        <h3>გელ-ლაქი <span class="price">45₾</span></h3>
+        <p>გამძლე, მბზინავი დაფარვა, რომელიც 2–3 კვირას ინარჩუნებს სიახლეს. ფერების ფართო არჩევანი.</p>
+      </article>
+      <article class="card reveal">
+        <div class="card__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3c0 4-3 6-3 10a3 3 0 0 0 6 0c0-4-3-6-3-10Z"/><path d="M9.5 12.5l5-1.5"/></svg></div>
+        <h3>ნაშენი ფრჩხილები <span class="price">70₾</span></h3>
+        <p>გელით აგებული ფორმა სასურველი სიგრძით — გამძლე, ბუნებრივი და ლამაზად მოვლილი.</p>
+      </article>
+      <article class="card reveal">
+        <div class="card__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 5c-1 3-1.5 6-1.5 8.5 0 4 3.5 6.5 7.5 6.5s7.5-2.5 7.5-6.5C19.5 11 19 8 18 5"/><path d="M8 11c2 1 6 1 8 0"/></svg></div>
+        <h3>პედიკიური <span class="price">40₾</span></h3>
+        <p>ფეხის სრული მოვლა, ქუსლის დამუშავება და ფრჩხილის ფორმირება — სისუფთავე და კომფორტი.</p>
+      </article>
+      <article class="card reveal">
+        <div class="card__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12c2-2.5 5.5-4 9-4s7 1.5 9 4c-2 2.5-5.5 4-9 4s-7-1.5-9-4Z"/><circle cx="12" cy="12" r="2"/></svg></div>
+        <h3>წარბები &amp; წამწამები <span class="price">30₾</span></h3>
+        <p>კორექცია, შეღებვა და ფორმა, რომელიც სახეს ბუნებრივად ხაზს უსვამს და მზერას ხსნის.</p>
+      </article>
+      <article class="card reveal">
+        <div class="card__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l2.2 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.8-.5L12 3Z"/></svg></div>
+        <h3>ნეილ-არტი &amp; დიზაინი <span class="price">10₾-დან</span></h3>
+        <p>მინიმალური ხაზებიდან დახვეწილ ნახატებამდე — დიზაინი, რომელიც სწორედ შენ გიხდება.</p>
+      </article>
+    </div>
+    <p class="menu__note">ფასი დამოკიდებულია სიგრძესა და დიზაინზე — <b>ზუსტ ღირებულებას ჯავშნისას გეტყვით.</b></p>
+  </div>
+</section>
+
+<!-- ===== SIGNATURE FEATURE ===== -->
+<section class="sec feature">
+  <div class="wrap">
+    <div class="feature__inner reveal">
+      <div class="feature__copy">
+        <span class="sticker sticker--sun" style="margin-bottom:18px">✦ ხელით შესრულებული</span>
+        <h2>შენი <em>დიზაინი</em> ფრჩხილზე</h2>
+        <p>ეს ის რაღაცაა, რაც Lady Space-ს განსაკუთრებულს ხდის. აირჩიე ფერი, მოგვიყევი იდეა და დაუთმე საკუთარ თავს დრო, სანამ ოსტატი ფრჩხილს პატარა ნამუშევრად აქცევს. ზუსტად ისე, როგორც შენ გინდა.</p>
+        <a class="btn btn--ink" href="https://wa.me/995555170270" target="_blank" rel="noopener"><span aria-hidden="true">✦</span> დაჯავშნე ვიზიტი</a>
+      </div>
+      <div class="feature__media">
+        <div class="stamp" aria-hidden="true"><span><small>NEW</small>nail<br>art</span></div>
+        <div class="ph">
+          <img src="../assets/photo4.jpg" alt="Lady Space-ში შესრულებული მოვლილი მანიკიური დახვეწილი ნეილ-არტით" loading="lazy" width="600" height="800">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section class="sec" id="gallery">
+  <div class="wrap">
+    <div class="sec__head center">
+      <span class="eyebrow" style="justify-content:center">ერთი შეხედვით</span>
+      <h2>Lady Space-ის <em>კადრები</em></h2>
+      <p>ატმოსფერო, რომელიც ფოტოზეც კი იგრძნობა.</p>
+    </div>
+    <div class="gallery__grid">
+      <figure class="g-tall">
+        <img src="../assets/photo1.jpg" alt="სალონის სამუშაო სივრცე მანიკიურის მაგიდებითა და თბილი განათებით" loading="lazy" width="600" height="800">
+        <figcaption>ჩვენი სივრცე</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/photo3.jpg" alt="ახლო კადრი მოვლილ მანიკიურზე გელ-ლაქის დაფარვით" loading="lazy" width="400" height="300">
+        <figcaption>გელ-ლაქი</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/photo5.jpg" alt="Lady Space-ის სტუდიის კუთხე მოწესრიგებული სამუშაო ადგილით" loading="lazy" width="400" height="300">
+        <figcaption>დეტალები</figcaption>
+      </figure>
+      <figure class="g-wide">
+        <img src="../assets/photo2.jpg" alt="სალონის ინტერიერი ნაზი განათებითა და კომფორტული სავარძლებით" loading="lazy" width="800" height="400">
+        <figcaption>ინტერიერი</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/photo4.jpg" alt="დახვეწილი ნეილ-არტი მოვლილ ფრჩხილებზე" loading="lazy" width="400" height="300">
+        <figcaption>ნეილ-არტი</figcaption>
+      </figure>
+      <figure class="g-wide">
+        <img src="../assets/photo6.jpg" alt="Lady Space-ის სილამაზის სტუდია თბილისში" loading="lazy" width="800" height="400">
+        <figcaption>გვიპოვე აქ</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VISIT (HOURS + CONTACT) ===== -->
+<section class="sec visit" id="visit">
+  <div class="wrap visit__grid">
+    <div>
+      <span class="eyebrow" style="color:var(--sun)">სამუშაო საათები</span>
+      <h2>გვესტუმრე <em>ჯავშნით</em></h2>
+      <p style="color:color-mix(in srgb,var(--cream) 78%,transparent);margin-bottom:26px;font-weight:500">საათები სავარაუდოა — ზუსტი თავისუფალი დროისთვის უბრალოდ მოგვწერე.</p>
+      <div class="hours" id="hours">
+        <div class="hours__row" data-day="1"><span class="day">ორშაბათი</span><span class="time">10:00 – 20:00</span></div>
+        <div class="hours__row" data-day="2"><span class="day">სამშაბათი</span><span class="time">10:00 – 20:00</span></div>
+        <div class="hours__row" data-day="3"><span class="day">ოთხშაბათი</span><span class="time">10:00 – 20:00</span></div>
+        <div class="hours__row" data-day="4"><span class="day">ხუთშაბათი</span><span class="time">10:00 – 20:00</span></div>
+        <div class="hours__row" data-day="5"><span class="day">პარასკევი</span><span class="time">10:00 – 21:00</span></div>
+        <div class="hours__row" data-day="6"><span class="day">შაბათი</span><span class="time">10:00 – 19:00</span></div>
+        <div class="hours__row" data-day="0"><span class="day">კვირა</span><span class="time">11:00 – 17:00</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="contact__card reveal">
+        <h3>დაგვიკავშირდი ♡</h3>
+        <p class="sub">გაქვს შეკითხვა ან გინდა ვიზიტის დაჯავშნა? ერთ შეტყობინებაშია.</p>
+        <div class="contact__list">
+          <a class="contact__item" href="https://wa.me/995555170270" target="_blank" rel="noopener">
+            <span class="ci" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-11.6 7.1L4 20l1.4-4.3A8 8 0 1 1 20 11.5Z" stroke-linejoin="round"/></svg></span>
+            <span>WhatsApp<small>დაგვწერე — სწრაფად ვპასუხობთ</small></span>
+          </a>
+          <a class="contact__item" href="tel:+995555170270">
+            <span class="ci" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" stroke-linejoin="round"/></svg></span>
+            <span>+995 555 17 02 70<small>დაგვირეკე პირდაპირ</small></span>
+          </a>
+          <div class="contact__item">
+            <span class="ci" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span>თბილისი<small>გვიპოვე საქართველოს დედაქალაქში</small></span>
+          </div>
+        </div>
+        <div class="contact__cta">
+          <a class="btn btn--primary" href="https://wa.me/995555170270" target="_blank" rel="noopener"><span aria-hidden="true">✦</span> WhatsApp</a>
+          <a class="btn btn--sun" href="tel:+995555170270"><span aria-hidden="true">☎</span> დარეკვა</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BIG CTA ===== -->
+<section class="bigcta">
+  <span class="bigcta__blob l" aria-hidden="true"></span>
+  <span class="bigcta__blob r" aria-hidden="true"></span>
+  <div class="wrap">
+    <h2>მზად ხარ <span class="u">ახალი ვიზიტისთვის?</span></h2>
+    <p>დაჯავშნე Lady Space-ში, აირჩიე შენი დიზაინი და გახადე დღე ცოტა ლამაზი.</p>
+    <div class="bigcta__cta">
+      <a class="btn btn--primary" href="https://wa.me/995555170270" target="_blank" rel="noopener"><span aria-hidden="true">✦</span> მოგვწერე WhatsApp-ზე</a>
+      <a class="btn btn--ink" href="tel:+995555170270"><span aria-hidden="true">☎</span> +995 555 17 02 70</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div>
+        <a href="#top" class="brand"><span class="mark" aria-hidden="true">L</span> Lady Space<span style="color:var(--tomato)">.</span></a>
+        <p class="foot__about">ფრჩხილისა და სილამაზის სტუდია თბილისში. გვესტუმრე და მიეცი თავს დასვენება — მანიკიური, პედიკიური და ნეილ-არტი ნაზ სივრცეში.</p>
+        <div class="rating" style="margin-top:18px" role="img" aria-label="გუგლის შეფასება 4.2 ვარსკვლავი 93 მიმოხილვიდან">
+          <span class="stars" aria-hidden="true">★★★★½</span>
+          <span><b>4.2</b></span>
+          <span class="pill">93 მიმოხილვა</span>
+        </div>
+      </div>
+      <div>
+        <h4>ნავიგაცია</h4>
+        <ul>
+          <li><a href="#about">ჩვენ შესახებ</a></li>
+          <li><a href="#menu">მომსახურება</a></li>
+          <li><a href="#gallery">გალერეა</a></li>
+          <li><a href="#visit">მისამართი &amp; საათები</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>კონტაქტი</h4>
+        <ul>
+          <li><a href="https://wa.me/995555170270" target="_blank" rel="noopener">WhatsApp ჩატი</a></li>
+          <li><a href="tel:+995555170270">+995 555 17 02 70</a></li>
+          <li><a href="#visit">სამუშაო საათები</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <span>© 2026 Lady Space · ყველა უფლება დაცულია</span>
+      <span>შექმნილია <span class="heart" aria-hidden="true">♥</span>-ით თბილისში</span>
+    </div>
+  </div>
+</footer>
+
+<!-- demo watermark -->
+<div class="demo-pill" aria-hidden="true">დემო ვერსია</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ----- highlight today's hours ----- */
+  try{
+    var today = new Date().getDay(); // 0=Sun..6=Sat
+    var row = document.querySelector('.hours__row[data-day="'+today+'"]');
+    if(row){
+      row.classList.add('today');
+      var badge = document.createElement('span');
+      badge.className='badge-now';
+      badge.textContent='დღეს';
+      row.querySelector('.day').appendChild(badge);
+    }
+  }catch(e){}
+
+  /* ----- reveal on scroll ----- */
+  var els = document.querySelectorAll('.reveal');
+  if(reduce || !('IntersectionObserver' in window)){
+    els.forEach(function(el){el.classList.add('in');});
+  }else{
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    },{threshold:.16, rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(el){io.observe(el);});
+  }
+
+  /* ----- gentle parallax tilt on hero frame (pointer, desktop only) ----- */
+  if(!reduce && window.matchMedia('(pointer:fine)').matches){
+    var frame = document.querySelector('.hero__frame');
+    var art = document.querySelector('.hero__art');
+    if(frame && art){
+      art.addEventListener('mousemove', function(e){
+        var r = art.getBoundingClientRect();
+        var x = (e.clientX - r.left)/r.width - .5;
+        var y = (e.clientY - r.top)/r.height - .5;
+        frame.style.transform = 'rotate(0deg) scale(1.01) rotateY('+(x*7)+'deg) rotateX('+(-y*7)+'deg)';
+      });
+      art.addEventListener('mouseleave', function(){
+        frame.style.transform = '';
+      });
+    }
+  }
+})();
+</script>
+</body>
+</html>

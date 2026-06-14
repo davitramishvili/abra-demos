@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Volkan Turk Barbershop — თურქული ხელოსნობა თბილისში</title>
+<meta name="description" content="Volkan Turk Barbershop — თურქული ბარბერშოპი თბილისში. მამაკაცის ვარცხნილობა, წვერის მოვლა და ცხელი პირსახოცით პარსვა. დაჯავშნე ვიზიტი ერთ შეხებაში.">
+<meta name="theme-color" content="#0C0A08">
+<meta property="og:title" content="Volkan Turk Barbershop — თურქული ხელოსნობა თბილისში">
+<meta property="og:description" content="თურქული ბარბერშოპი თბილისში. 4.9★ · 92 შეფასება.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700;800&family=Noto+Serif+Georgian:opsz,wght@8..144,600;8..144,700;8..144,900&display=swap" rel="stylesheet">
+<style>
+  /* ====================== TOKENS ====================== */
+  :root{
+    --bg:#0C0A08;            /* near-black canvas */
+    --bg-2:#131009;          /* raised panels */
+    --bg-3:#1A150D;          /* cards */
+    --line:#2A2316;          /* hairlines */
+    --line-soft:#211B12;
+    --ink:#F4ECDD;           /* warm off-white text */
+    --ink-dim:#B9AE97;       /* secondary text (AA on dark) */
+    --ink-faint:#8A8068;     /* tertiary / labels */
+    --brass:#C9A24B;         /* signature gold from the lantern light */
+    --brass-soft:#E2C079;
+    --brass-deep:#9C7A2E;
+    --on-brass:#120D04;      /* text on gold (AA) */
+
+    --maxw:1240px;
+    --gutter:clamp(20px,5vw,72px);
+    --radius:4px;            /* crisp, architectural */
+
+    --f-display:"Noto Serif Georgian",Georgia,serif;
+    --f-sans:"Noto Sans Georgian",system-ui,sans-serif;
+
+    --ease:cubic-bezier(.22,.61,.36,1);
+    --rev-dur:.9s;
+  }
+
+  /* ====================== RESET ====================== */
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--f-sans);
+    font-size:clamp(15.5px,1.05vw,17px);
+    line-height:1.72;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%;height:auto}
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+  ::selection{background:var(--brass);color:var(--on-brass)}
+  :focus-visible{outline:2px solid var(--brass-soft);outline-offset:3px;border-radius:2px}
+
+  /* ====================== LAYOUT ====================== */
+  .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+  section{position:relative}
+  .eyebrow{
+    font-family:var(--f-sans);
+    font-size:.74rem;font-weight:700;
+    letter-spacing:.32em;text-transform:uppercase;
+    color:var(--brass);
+    display:inline-flex;align-items:center;gap:.7em;
+  }
+  .eyebrow::before{content:"";width:30px;height:1px;background:var(--brass);opacity:.7;display:inline-block}
+
+  h1,h2,h3{font-family:var(--f-display);font-weight:900;line-height:.98;letter-spacing:-.015em}
+  .display{
+    font-size:clamp(3.1rem,12vw,9.5rem);
+    line-height:.9;letter-spacing:-.03em;
+  }
+  .h-sec{font-size:clamp(2.3rem,6.2vw,4.6rem);letter-spacing:-.025em;line-height:.96}
+  .lead{font-size:clamp(1.05rem,1.6vw,1.28rem);color:var(--ink-dim);max-width:46ch;line-height:1.6}
+
+  /* ====================== BUTTONS ====================== */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:.6em;
+    min-height:54px;padding:0 1.7rem;
+    font-family:var(--f-sans);font-weight:700;font-size:.96rem;letter-spacing:.01em;
+    border-radius:var(--radius);
+    transition:transform .35s var(--ease),background .35s var(--ease),color .35s var(--ease),box-shadow .35s var(--ease);
+    will-change:transform;
+  }
+  .btn svg{width:1.05em;height:1.05em;flex:none}
+  .btn-primary{background:var(--brass);color:var(--on-brass);box-shadow:0 0 0 0 rgba(201,162,75,.5)}
+  .btn-primary:hover{background:var(--brass-soft);transform:translateY(-3px);box-shadow:0 14px 34px -10px rgba(201,162,75,.55)}
+  .btn-ghost{border:1px solid var(--line);color:var(--ink);background:rgba(255,255,255,.015)}
+  .btn-ghost:hover{border-color:var(--brass);color:var(--brass-soft);transform:translateY(-3px)}
+  .btn-block{width:100%}
+
+  /* ====================== NAV ====================== */
+  .nav{
+    position:fixed;inset:0 0 auto 0;z-index:60;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:1.1rem var(--gutter);
+    transition:background .4s var(--ease),padding .4s var(--ease),border-color .4s var(--ease),backdrop-filter .4s var(--ease);
+    border-bottom:1px solid transparent;
+  }
+  .nav.scrolled{
+    background:rgba(12,10,8,.82);
+    backdrop-filter:blur(14px) saturate(1.2);
+    -webkit-backdrop-filter:blur(14px) saturate(1.2);
+    border-bottom-color:var(--line-soft);
+    padding-top:.8rem;padding-bottom:.8rem;
+  }
+  .brand{display:flex;align-items:center;gap:.65rem;font-family:var(--f-display);font-weight:900;font-size:1.18rem;letter-spacing:.02em}
+  .brand .mark{
+    width:34px;height:34px;border:1.5px solid var(--brass);border-radius:50%;
+    display:grid;place-items:center;color:var(--brass);font-size:.92rem;flex:none;
+    font-weight:900;letter-spacing:0;
+  }
+  .brand small{display:block;font-family:var(--f-sans);font-size:.56rem;font-weight:700;letter-spacing:.34em;color:var(--ink-faint);text-transform:uppercase;margin-top:2px}
+  .nav-links{display:none;align-items:center;gap:2.2rem}
+  .nav-links a{
+    font-size:.86rem;font-weight:600;color:var(--ink-dim);letter-spacing:.04em;
+    position:relative;padding:.4rem 0;transition:color .3s var(--ease);
+  }
+  .nav-links a::after{
+    content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--brass);
+    transition:right .35s var(--ease);
+  }
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a:hover::after{right:0}
+  .nav-cta{display:none}
+  @media(min-width:920px){
+    .nav-links{display:flex}
+    .nav-cta{display:inline-flex}
+  }
+
+  /* ====================== HERO ====================== */
+  .hero{
+    min-height:100svh;min-height:100vh;
+    display:flex;align-items:flex-end;
+    position:relative;overflow:hidden;
+    padding-bottom:clamp(2.4rem,6vh,4.5rem);
+  }
+  .hero-bg{position:absolute;inset:0;z-index:0}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 38%;
+    transform:scale(1.06);will-change:transform}
+  .hero-bg::after{
+    content:"";position:absolute;inset:0;
+    background:
+      linear-gradient(180deg,rgba(12,10,8,.62) 0%,rgba(12,10,8,.28) 30%,rgba(12,10,8,.55) 64%,rgba(12,10,8,.96) 100%),
+      radial-gradient(120% 80% at 18% 90%,rgba(12,10,8,.7),transparent 60%);
+  }
+  .hero-inner{position:relative;z-index:2;width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+  .hero h1{margin:.5rem 0 1.5rem;text-wrap:balance}
+  .hero h1 .accent{color:var(--brass);display:inline-block}
+  .hero h1 .out{
+    color:transparent;-webkit-text-stroke:1.4px var(--brass-soft);
+    text-stroke:1.4px var(--brass-soft);display:inline-block;
+  }
+  .hero-row{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1.8rem}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:.9rem}
+  .hero-meta{display:flex;align-items:center;gap:1rem;color:var(--ink-dim);font-size:.92rem}
+  .stars{color:var(--brass);letter-spacing:.12em;font-size:1rem}
+  .hero-meta b{color:var(--ink);font-weight:700}
+  .scroll-cue{
+    position:absolute;left:var(--gutter);bottom:1.4rem;z-index:2;
+    display:none;align-items:center;gap:.6rem;color:var(--ink-faint);
+    font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;font-weight:700;
+  }
+  .scroll-cue .line{width:1px;height:42px;background:linear-gradient(var(--brass),transparent);animation:cue 2.2s var(--ease) infinite}
+  @keyframes cue{0%,100%{transform:scaleY(.4);opacity:.4;transform-origin:top}50%{transform:scaleY(1);opacity:1;transform-origin:top}}
+  @media(min-width:920px){.scroll-cue{display:flex}}
+
+  /* marquee ticker under hero */
+  .ticker{
+    border-block:1px solid var(--line-soft);
+    background:var(--bg-2);
+    overflow:hidden;white-space:nowrap;
+  }
+  .ticker-track{display:inline-flex;align-items:center;gap:2.4rem;padding:.85rem 0;animation:scrollx 32s linear infinite}
+  .ticker:hover .ticker-track{animation-play-state:paused}
+  .ticker span{font-family:var(--f-display);font-weight:700;font-size:1.05rem;color:var(--ink-dim);letter-spacing:.02em}
+  .ticker .dot{width:6px;height:6px;border-radius:50%;background:var(--brass);flex:none}
+  @keyframes scrollx{to{transform:translateX(-50%)}}
+
+  /* ====================== SECTION SHELL ====================== */
+  .pad{padding-block:clamp(4.5rem,10vw,8.5rem)}
+  .sec-head{max-width:54ch}
+  .sec-head .h-sec{margin:1rem 0 0}
+
+  /* ====================== ABOUT ====================== */
+  .about-grid{display:grid;gap:clamp(2rem,5vw,4.5rem);align-items:center;grid-template-columns:1fr}
+  @media(min-width:880px){.about-grid{grid-template-columns:1.05fr .95fr}}
+  .about-copy p+p{margin-top:1.1rem}
+  .about-figure{position:relative}
+  .about-figure img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--radius);filter:saturate(1.02)}
+  .about-figure .frame{position:absolute;inset:14px;border:1px solid rgba(226,192,121,.35);border-radius:var(--radius);pointer-events:none}
+  .stat-row{display:flex;gap:clamp(1.5rem,4vw,3rem);margin-top:2.4rem;flex-wrap:wrap}
+  .stat{display:flex;flex-direction:column}
+  .stat b{font-family:var(--f-display);font-weight:900;font-size:clamp(2.2rem,4vw,3.1rem);color:var(--brass);line-height:1}
+  .stat span{font-size:.82rem;color:var(--ink-faint);letter-spacing:.06em;margin-top:.5rem;text-transform:uppercase;font-weight:600}
+
+  /* ====================== SERVICES ====================== */
+  .svc-list{margin-top:clamp(2rem,4vw,3.4rem);border-top:1px solid var(--line)}
+  .svc{
+    display:grid;grid-template-columns:auto 1fr auto;align-items:baseline;gap:1rem clamp(1rem,3vw,2.5rem);
+    padding:clamp(1.4rem,3vw,2.1rem) 0;border-bottom:1px solid var(--line);
+    position:relative;transition:padding-left .4s var(--ease);
+  }
+  .svc::before{
+    content:"";position:absolute;left:-1.5rem;top:0;bottom:0;width:2px;background:var(--brass);
+    transform:scaleY(0);transform-origin:top;transition:transform .4s var(--ease);
+  }
+  .svc:hover{padding-left:1.4rem}
+  .svc:hover::before{transform:scaleY(1)}
+  .svc-num{font-family:var(--f-display);font-weight:700;color:var(--ink-faint);font-size:.95rem;font-variant-numeric:tabular-nums}
+  .svc-main{min-width:0}
+  .svc-name{font-family:var(--f-display);font-weight:700;font-size:clamp(1.35rem,2.8vw,1.95rem);letter-spacing:-.01em;line-height:1.1;transition:color .3s var(--ease)}
+  .svc:hover .svc-name{color:var(--brass-soft)}
+  .svc-desc{color:var(--ink-dim);font-size:.92rem;margin-top:.45rem;max-width:48ch}
+  .svc-meta{text-align:right;white-space:nowrap;display:flex;flex-direction:column;align-items:flex-end;gap:.2rem}
+  .svc-price{font-family:var(--f-display);font-weight:900;font-size:clamp(1.2rem,2.4vw,1.6rem);color:var(--ink)}
+  .svc-dur{font-size:.76rem;color:var(--ink-faint);letter-spacing:.04em}
+  @media(max-width:560px){
+    .svc{grid-template-columns:auto 1fr;grid-template-areas:"num main" ". meta"}
+    .svc-num{grid-area:num}.svc-main{grid-area:main}.svc-meta{grid-area:meta;align-items:flex-start;text-align:left;margin-top:.3rem}
+    .svc-meta{flex-direction:row;gap:.8rem;align-items:baseline}
+  }
+
+  /* ====================== GALLERY ====================== */
+  .gallery{display:grid;gap:clamp(.6rem,1.4vw,1rem);grid-template-columns:repeat(2,1fr);margin-top:clamp(2rem,4vw,3.4rem)}
+  @media(min-width:760px){.gallery{grid-template-columns:repeat(4,1fr);grid-auto-rows:1fr}}
+  .g-item{position:relative;overflow:hidden;border-radius:var(--radius);background:var(--bg-3)}
+  .g-item img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease),filter .6s var(--ease);filter:grayscale(.18) contrast(1.02)}
+  .g-item::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(12,10,8,.55));opacity:0;transition:opacity .5s var(--ease)}
+  .g-item:hover img{transform:scale(1.07);filter:grayscale(0) contrast(1.05)}
+  .g-item:hover::after{opacity:1}
+  .g-item .tag{position:absolute;left:12px;bottom:10px;z-index:2;font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);opacity:0;transform:translateY(6px);transition:.5s var(--ease)}
+  .g-item:hover .tag{opacity:1;transform:none}
+  .g-tall{grid-row:span 2}
+  .g-wide{grid-column:span 2}
+  @media(max-width:759px){.g-tall,.g-wide{grid-row:auto;grid-column:auto}}
+
+  /* ====================== HOURS + CONTACT ====================== */
+  .split{display:grid;gap:clamp(2rem,5vw,4rem);grid-template-columns:1fr}
+  @media(min-width:900px){.split{grid-template-columns:1fr 1fr}}
+  .panel{background:var(--bg-2);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(1.8rem,4vw,3rem)}
+  .hours-list{margin-top:1.8rem;display:flex;flex-direction:column}
+  .hours-list .row{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.95rem 0;border-bottom:1px dashed var(--line)}
+  .hours-list .row:last-child{border-bottom:none}
+  .hours-list .day{font-weight:600;color:var(--ink)}
+  .hours-list .time{color:var(--ink-dim);font-variant-numeric:tabular-nums;letter-spacing:.02em}
+  .hours-list .row.now{color:var(--brass)}
+  .hours-list .row.now .day,.hours-list .row.now .time{color:var(--brass-soft)}
+  .badge-open{display:inline-flex;align-items:center;gap:.5rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;color:var(--brass-soft);margin-top:1.2rem}
+  .badge-open .pulse{width:9px;height:9px;border-radius:50%;background:var(--brass);position:relative}
+  .badge-open .pulse::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:1px solid var(--brass);animation:pulse 2s var(--ease) infinite}
+  @keyframes pulse{0%{transform:scale(.6);opacity:.9}100%{transform:scale(1.6);opacity:0}}
+
+  .contact-actions{display:flex;flex-direction:column;gap:.8rem;margin-top:1.8rem}
+  .info-row{display:flex;align-items:flex-start;gap:.85rem;padding:1rem 0;border-bottom:1px solid var(--line-soft);color:var(--ink-dim)}
+  .info-row:last-of-type{border-bottom:none}
+  .info-row svg{width:20px;height:20px;color:var(--brass);flex:none;margin-top:2px}
+  .info-row b{display:block;color:var(--ink);font-weight:600;font-size:.95rem}
+  .info-row span{font-size:.88rem}
+
+  /* ====================== FINAL CTA ====================== */
+  .cta-final{position:relative;overflow:hidden;text-align:center;border-block:1px solid var(--line)}
+  .cta-final .bg{position:absolute;inset:0;z-index:0}
+  .cta-final .bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%}
+  .cta-final .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(12,10,8,.86),rgba(12,10,8,.93))}
+  .cta-final .inner{position:relative;z-index:2}
+  .cta-final .lead{margin:1.3rem auto 2.2rem}
+  .cta-final .hero-ctas{justify-content:center}
+
+  /* ====================== FOOTER ====================== */
+  footer{background:var(--bg);border-top:1px solid var(--line);padding-block:clamp(3rem,6vw,4.5rem) 2.2rem}
+  .foot-grid{display:grid;gap:2.4rem;grid-template-columns:1fr;align-items:start}
+  @media(min-width:780px){.foot-grid{grid-template-columns:1.5fr 1fr 1fr}}
+  .foot-grid p{color:var(--ink-dim);font-size:.92rem;max-width:38ch;margin-top:1rem}
+  .foot-col h4{font-family:var(--f-sans);font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;margin-bottom:1.1rem}
+  .foot-col a,.foot-col li{display:block;color:var(--ink-dim);font-size:.92rem;padding:.32rem 0;transition:color .3s var(--ease);list-style:none}
+  .foot-col a:hover{color:var(--brass-soft)}
+  .foot-bottom{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center;margin-top:clamp(2.4rem,5vw,3.6rem);padding-top:1.6rem;border-top:1px solid var(--line-soft);color:var(--ink-faint);font-size:.82rem}
+
+  /* ====================== DEMO WATERMARK ====================== */
+  .demo-pill{
+    position:fixed;right:14px;bottom:14px;z-index:9999;
+    display:inline-flex;align-items:center;gap:.5em;
+    padding:.45rem .85rem;border-radius:999px;
+    background:rgba(12,10,8,.82);border:1px solid var(--brass-deep);
+    color:var(--brass-soft);font-family:var(--f-sans);font-weight:700;
+    font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;
+    opacity:.7;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  }
+  .demo-pill .d-dot{width:7px;height:7px;border-radius:50%;background:var(--brass);flex:none}
+
+  /* ====================== SCROLL REVEAL ====================== */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity var(--rev-dur) var(--ease),transform var(--rev-dur) var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal[data-d="1"]{transition-delay:.08s}
+  .reveal[data-d="2"]{transition-delay:.16s}
+  .reveal[data-d="3"]{transition-delay:.24s}
+  .reveal[data-d="4"]{transition-delay:.32s}
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+    .reveal{opacity:1!important;transform:none!important}
+    .hero-bg img{transform:none!important}
+  }
+</style>
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <header class="nav" id="nav">
+    <a class="brand" href="#top" aria-label="Volkan Turk Barbershop — მთავარი">
+      <span class="mark" aria-hidden="true">V</span>
+      <span>VOLKAN TURK<small>Barbershop · Tbilisi</small></span>
+    </a>
+    <nav class="nav-links" aria-label="მთავარი ნავიგაცია">
+      <a href="#about">ჩვენ შესახებ</a>
+      <a href="#services">მომსახურება</a>
+      <a href="#gallery">გალერეა</a>
+      <a href="#hours">საათები</a>
+      <a href="#contact">კონტაქტი</a>
+    </nav>
+    <a class="btn btn-primary nav-cta" href="https://wa.me/995558178268" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.319zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+      დაჯავშნა
+    </a>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="top">
+    <div class="hero-bg">
+      <img src="../assets/photo4.jpg" alt="Volkan Turk Barbershop-ის ინტერიერი — ბარბერის სავარძლები, სარკეები და თბილი განათება თბილისში" fetchpriority="high">
+    </div>
+    <div class="hero-inner">
+      <span class="eyebrow reveal in">ბარბერშოპი · თბილისი</span>
+      <h1 class="display reveal in" data-d="1">
+        <span class="accent">თურქული</span> ხელი —<br>
+        <span class="out">უნაკლო</span> სტილი.
+      </h1>
+      <div class="hero-row">
+        <div class="hero-ctas reveal in" data-d="2">
+          <a class="btn btn-primary" href="https://wa.me/995558178268" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.319z"/></svg>
+            WhatsApp-ით დაჯავშნა
+          </a>
+          <a class="btn btn-ghost" href="tel:+995558178268">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            დარეკვა
+          </a>
+        </div>
+        <div class="hero-meta reveal in" data-d="3">
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <span><b>4.9</b> / 5 · <b>92</b> შეფასება Google-ზე</span>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-cue" aria-hidden="true"><span class="line"></span>გადააფურცლე</div>
+  </section>
+
+  <!-- ===== TICKER ===== -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>მამაკაცის ვარცხნილობა</span><i class="dot"></i>
+      <span>წვერის მოვლა</span><i class="dot"></i>
+      <span>ცხელი პირსახოცით პარსვა</span><i class="dot"></i>
+      <span>თურქული პარსვა</span><i class="dot"></i>
+      <span>ბავშვის ვარცხნილობა</span><i class="dot"></i>
+      <span>სტაილინგი</span><i class="dot"></i>
+      <!-- duplicate for seamless loop -->
+      <span>მამაკაცის ვარცხნილობა</span><i class="dot"></i>
+      <span>წვერის მოვლა</span><i class="dot"></i>
+      <span>ცხელი პირსახოცით პარსვა</span><i class="dot"></i>
+      <span>თურქული პარსვა</span><i class="dot"></i>
+      <span>ბავშვის ვარცხნილობა</span><i class="dot"></i>
+      <span>სტაილინგი</span><i class="dot"></i>
+    </div>
+  </div>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="pad" id="about">
+    <div class="wrap about-grid">
+      <div class="about-copy">
+        <span class="eyebrow reveal">ჩვენ შესახებ</span>
+        <h2 class="h-sec reveal" data-d="1" style="margin:1.1rem 0 1.6rem">ადგილი, სადაც<br>დეტალი მთავარია.</h2>
+        <p class="lead reveal" data-d="2">Volkan Turk Barbershop არ არის უბრალოდ სავარძელი და მაკრატელი. ეს არის ნამდვილი თურქული რიტუალი — სადაც ყოველი ვიზიტი მთავრდება განცდით, რომ დრო შენთვის დახარჯეს.</p>
+        <p class="reveal" data-d="2" style="color:var(--ink-dim);margin-top:1.2rem">თბილი განათება, ხელოსნის მტკიცე ხელი და თაობებზე გადაცემული თურქული ტრადიცია — ჩვენ ვაერთიანებთ ძველი სკოლის ბარბერინგს თანამედროვე სტილთან. სუფთა ხაზები, ზუსტი ფეიდები და ფინიში, რომელიც დღეებს უძლებს.</p>
+        <div class="stat-row reveal" data-d="3">
+          <div class="stat"><b>4.9★</b><span>Google შეფასება</span></div>
+          <div class="stat"><b>92</b><span>შეფასება</span></div>
+          <div class="stat"><b>7/7</b><span>ღია კვირაში</span></div>
+        </div>
+      </div>
+      <figure class="about-figure reveal" data-d="2">
+        <img src="../assets/photo1.jpg" alt="ბარბერი მუშაობს კლიენტზე Volkan Turk Barbershop-ის სავარძელთან, სარკეებითა და ხელსაწყოებით">
+        <span class="frame" aria-hidden="true"></span>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="pad" id="services" style="background:var(--bg-2);border-block:1px solid var(--line-soft)">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">მომსახურება</span>
+        <h2 class="h-sec">მომსახურება &<br>ფასები.</h2>
+      </div>
+      <div class="svc-list">
+        <article class="svc reveal" data-d="1">
+          <div class="svc-num">01</div>
+          <div class="svc-main">
+            <h3 class="svc-name">მამაკაცის ვარცხნილობა</h3>
+            <p class="svc-desc">კონსულტაცია, შამპუნი და ზუსტი მოჭრა შენი ფორმის მიხედვით — სტაილინგით.</p>
+          </div>
+          <div class="svc-meta"><span class="svc-price">₾35</span><span class="svc-dur">≈ 40 წთ</span></div>
+        </article>
+
+        <article class="svc reveal" data-d="1">
+          <div class="svc-num">02</div>
+          <div class="svc-main">
+            <h3 class="svc-name">ფეიდი & სკინ ფეიდი</h3>
+            <p class="svc-desc">გრადიენტული გადასვლა მანქანითა და სამართებლით — სუფთა, მკვეთრი კონტური.</p>
+          </div>
+          <div class="svc-meta"><span class="svc-price">₾40</span><span class="svc-dur">≈ 45 წთ</span></div>
+        </article>
+
+        <article class="svc reveal" data-d="2">
+          <div class="svc-num">03</div>
+          <div class="svc-main">
+            <h3 class="svc-name">წვერის მოვლა & ფორმა</h3>
+            <p class="svc-desc">წვერის მოდელირება, კონტურის გამოყვანა და დატენიანება ზეთებით.</p>
+          </div>
+          <div class="svc-meta"><span class="svc-price">₾25</span><span class="svc-dur">≈ 30 წთ</span></div>
+        </article>
+
+        <article class="svc reveal" data-d="2">
+          <div class="svc-num">04</div>
+          <div class="svc-main">
+            <h3 class="svc-name">ცხელი პირსახოცით პარსვა</h3>
+            <p class="svc-desc">ტრადიციული თურქული რიტუალი — ცხელი პირსახოცი, სამართებელი და დამამშვიდებელი ფინიში.</p>
+          </div>
+          <div class="svc-meta"><span class="svc-price">₾30</span><span class="svc-dur">≈ 35 წთ</span></div>
+        </article>
+
+        <article class="svc reveal" data-d="3">
+          <div class="svc-num">05</div>
+          <div class="svc-main">
+            <h3 class="svc-name">სრული პაკეტი — თმა & წვერი</h3>
+            <p class="svc-desc">ვარცხნილობა და წვერის სრული მოვლა ერთ ვიზიტში. სრული ტრანსფორმაცია.</p>
+          </div>
+          <div class="svc-meta"><span class="svc-price">₾55</span><span class="svc-dur">≈ 70 წთ</span></div>
+        </article>
+
+        <article class="svc reveal" data-d="3">
+          <div class="svc-num">06</div>
+          <div class="svc-main">
+            <h3 class="svc-name">ბავშვის ვარცხნილობა</h3>
+            <p class="svc-desc">მოთმინება, კომფორტი და სტილი პატარა ჯენტლმენებისთვის (12 წლამდე).</p>
+          </div>
+          <div class="svc-meta"><span class="svc-price">₾25</span><span class="svc-dur">≈ 30 წთ</span></div>
+        </article>
+      </div>
+      <p class="reveal" data-d="1" style="margin-top:2rem;color:var(--ink-faint);font-size:.86rem">* ფასები ორიენტირებულია და შეიძლება დააზუსტოთ ვიზიტისას ან დაჯავშნისას.</p>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY ===== -->
+  <section class="pad" id="gallery">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">გალერეა</span>
+        <h2 class="h-sec">ატმოსფერო.</h2>
+        <p class="lead" style="margin-top:1.1rem">თბილი შუქი, სუფთა ხაზები და ხელოსნური დეტალი — შემოგვიხედე, სანამ მოხვალ.</p>
+      </div>
+      <div class="gallery">
+        <a class="g-item g-tall reveal" data-d="1" href="#contact" aria-label="ბარბერშოპის ინტერიერი">
+          <img src="../assets/photo4.jpg" alt="Volkan Turk Barbershop-ის ინტერიერი — ბარბერის სავარძლები და თბილი განათება" loading="lazy">
+          <span class="tag">ინტერიერი</span>
+        </a>
+        <a class="g-item reveal" data-d="2" href="#contact" aria-label="ბარბერის სამუშაო ადგილი">
+          <img src="../assets/photo2.jpg" alt="Volkan Turk Barbershop-ის სამუშაო ზონა სარკეებითა და ხელსაწყოებით" loading="lazy">
+          <span class="tag">სამუშაო ზონა</span>
+        </a>
+        <a class="g-item reveal" data-d="3" href="#contact" aria-label="ბარბერშოპის დეტალი">
+          <img src="../assets/photo3.jpg" alt="Volkan Turk Barbershop-ის ინტერიერის დეტალი — განათება და დიზაინი" loading="lazy">
+          <span class="tag">დეტალები</span>
+        </a>
+        <a class="g-item g-wide reveal" data-d="2" href="#contact" aria-label="ბარბერი მუშაობს">
+          <img src="../assets/photo1.jpg" alt="ბარბერი ვარცხნის კლიენტს Volkan Turk Barbershop-ში" loading="lazy">
+          <span class="tag">პროცესი</span>
+        </a>
+        <a class="g-item reveal" data-d="3" href="#contact" aria-label="ბარბერშოპის სივრცე">
+          <img src="../assets/photo5.jpg" alt="Volkan Turk Barbershop-ის ინტერიერის კუთხე და ავეჯი" loading="lazy">
+          <span class="tag">სივრცე</span>
+        </a>
+        <a class="g-item reveal" data-d="4" href="#contact" aria-label="ბარბერშოპის ინტერიერი">
+          <img src="../assets/photo6.jpg" alt="Volkan Turk Barbershop-ის ინტერიერი — განათება და ტექსტურები" loading="lazy">
+          <span class="tag">სტილი</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOURS + CONTACT ===== -->
+  <section class="pad" id="hours" style="background:var(--bg-2);border-block:1px solid var(--line-soft)">
+    <div class="wrap split">
+      <!-- HOURS -->
+      <div class="panel reveal" data-d="1">
+        <span class="eyebrow">სამუშაო საათები</span>
+        <h2 class="h-sec" style="font-size:clamp(1.9rem,4vw,2.8rem);margin-top:.9rem">როდის ვართ ღია</h2>
+        <div class="hours-list" id="hoursList">
+          <div class="row" data-day="1"><span class="day">ორშაბათი</span><span class="time">10:00 — 21:00</span></div>
+          <div class="row" data-day="2"><span class="day">სამშაბათი</span><span class="time">10:00 — 21:00</span></div>
+          <div class="row" data-day="3"><span class="day">ოთხშაბათი</span><span class="time">10:00 — 21:00</span></div>
+          <div class="row" data-day="4"><span class="day">ხუთშაბათი</span><span class="time">10:00 — 21:00</span></div>
+          <div class="row" data-day="5"><span class="day">პარასკევი</span><span class="time">10:00 — 22:00</span></div>
+          <div class="row" data-day="6"><span class="day">შაბათი</span><span class="time">10:00 — 22:00</span></div>
+          <div class="row" data-day="0"><span class="day">კვირა</span><span class="time">11:00 — 20:00</span></div>
+        </div>
+        <div class="badge-open" id="openBadge"><span class="pulse" aria-hidden="true"></span><span>ახლა ღიაა · მობრძანდი</span></div>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="panel reveal" data-d="2" id="contact">
+        <span class="eyebrow">კონტაქტი</span>
+        <h2 class="h-sec" style="font-size:clamp(1.9rem,4vw,2.8rem);margin-top:.9rem">დაგვიკავშირდი</h2>
+        <div style="margin-top:1.4rem">
+          <div class="info-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div><b>მისამართი</b><span>თბილისი, საქართველო</span></div>
+          </div>
+          <div class="info-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div><b>ტელეფონი</b><span>+995 558 17 82 68</span></div>
+          </div>
+          <div class="info-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <div><b>ჯავშანი</b><span>გირჩევთ წინასწარ დაჯავშნას — განსაკუთრებით შაბათ-კვირას.</span></div>
+          </div>
+        </div>
+        <div class="contact-actions">
+          <a class="btn btn-primary btn-block" href="https://wa.me/995558178268" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.319z"/></svg>
+            WhatsApp-ით დაჯავშნა
+          </a>
+          <a class="btn btn-ghost btn-block" href="tel:+995558178268">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +995 558 17 82 68
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FINAL CTA ===== -->
+  <section class="cta-final pad">
+    <div class="bg" aria-hidden="true"><img src="../assets/photo3.jpg" alt=""></div>
+    <div class="inner wrap">
+      <span class="eyebrow reveal" style="justify-content:center">მზად ხარ?</span>
+      <h2 class="display reveal" data-d="1" style="font-size:clamp(2.6rem,9vw,6.5rem);margin-top:1rem">სავარძელი<br>გელოდება.</h2>
+      <p class="lead reveal" data-d="2" style="text-align:center">ერთი შეტყობინება გვაშორებს. დაჯავშნე შენი დრო და გამოდი ისე, როგორც იმსახურებ.</p>
+      <div class="hero-ctas reveal" data-d="3">
+        <a class="btn btn-primary" href="https://wa.me/995558178268" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.319z"/></svg>
+          WhatsApp-ით დაჯავშნა
+        </a>
+        <a class="btn btn-ghost" href="tel:+995558178268">დარეკე ახლავე</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="wrap foot-grid">
+      <div class="foot-col">
+        <a class="brand" href="#top" aria-label="Volkan Turk Barbershop">
+          <span class="mark" aria-hidden="true">V</span>
+          <span>VOLKAN TURK<small>Barbershop · Tbilisi</small></span>
+        </a>
+        <p>თურქული ბარბერინგი თანამედროვე სტილით — თბილისის გულში. სუფთა ხაზები, მტკიცე ხელი, უნაკლო ფინიში.</p>
+        <div class="badge-open" style="margin-top:1.4rem"><span class="stars" aria-hidden="true">★★★★★</span><span style="color:var(--ink-dim)">4.9 · 92 შეფასება</span></div>
+      </div>
+      <div class="foot-col">
+        <h4>ნავიგაცია</h4>
+        <a href="#about">ჩვენ შესახებ</a>
+        <a href="#services">მომსახურება</a>
+        <a href="#gallery">გალერეა</a>
+        <a href="#hours">სამუშაო საათები</a>
+        <a href="#contact">კონტაქტი</a>
+      </div>
+      <div class="foot-col">
+        <h4>დაჯავშნა</h4>
+        <a href="https://wa.me/995558178268" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="tel:+995558178268">+995 558 17 82 68</a>
+        <ul><li>ორშ — კვი</li><li>10:00 — 22:00</li></ul>
+      </div>
+    </div>
+    <div class="wrap foot-bottom">
+      <span>© 2026 Volkan Turk Barbershop · თბილისი</span>
+      <span>დამზადებულია სიყვარულით ❦</span>
+    </div>
+  </footer>
+
+  <!-- ===== DEMO WATERMARK ===== -->
+  <div class="demo-pill" aria-hidden="true"><span class="d-dot"></span>დემო ვერსია</div>
+
+  <script>
+    (function(){
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // --- sticky nav state ---
+      var nav = document.getElementById('nav');
+      var onScroll = function(){
+        if(window.scrollY > 24){ nav.classList.add('scrolled'); }
+        else{ nav.classList.remove('scrolled'); }
+      };
+      onScroll();
+      window.addEventListener('scroll', onScroll, {passive:true});
+
+      // --- scroll reveal ---
+      var items = document.querySelectorAll('.reveal:not(.in)');
+      if(reduce || !('IntersectionObserver' in window)){
+        items.forEach(function(el){ el.classList.add('in'); });
+      } else {
+        var io = new IntersectionObserver(function(entries){
+          entries.forEach(function(e){
+            if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+          });
+        }, {threshold:0.14, rootMargin:'0px 0px -8% 0px'});
+        items.forEach(function(el){ io.observe(el); });
+      }
+
+      // --- subtle hero parallax ---
+      if(!reduce){
+        var heroImg = document.querySelector('.hero-bg img');
+        if(heroImg){
+          var ticking = false;
+          window.addEventListener('scroll', function(){
+            if(ticking) return;
+            ticking = true;
+            requestAnimationFrame(function(){
+              var y = Math.min(window.scrollY, window.innerHeight);
+              heroImg.style.transform = 'scale(1.06) translateY(' + (y*0.12) + 'px)';
+              ticking = false;
+            });
+          }, {passive:true});
+        }
+      }
+
+      // --- live "open now" indicator ---
+      try{
+        var hours = {1:[10,21],2:[10,21],3:[10,21],4:[10,21],5:[10,22],6:[10,22],0:[11,20]};
+        var now = new Date();
+        var d = now.getDay(), h = now.getHours();
+        var today = hours[d];
+        var isOpen = today && h >= today[0] && h < today[1];
+        var badge = document.getElementById('openBadge');
+        var row = document.querySelector('#hoursList .row[data-day="'+d+'"]');
+        if(row){ row.classList.add('now'); }
+        if(badge){
+          if(isOpen){
+            badge.querySelector('span:last-child').textContent = 'ახლა ღიაა · მობრძანდი';
+          } else {
+            badge.querySelector('span:last-child').textContent = 'ამჟამად დაკეტილია · დაგვიტოვე შეტყობინება';
+            badge.style.color = 'var(--ink-dim)';
+            var p = badge.querySelector('.pulse'); if(p){ p.style.background='var(--ink-faint)'; p.style.opacity='.6'; }
+          }
+        }
+      }catch(e){ /* fail silent */ }
+    })();
+  </script>
+</body>
+</html>
