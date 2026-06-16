@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex" />
+<title>Sisters Beauty — სილამაზის სალონი · თბილისი</title>
+<meta name="description" content="Sisters Beauty — სილამაზის სალონი თბილისში. თმა, ფრჩხილები, წამწამები, მაკიაჟი და მოვლა. ★ 4.4 · 26 შეფასება." />
+<meta name="theme-color" content="#0d0a0f" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@300;400;500;600;700&family=Noto+Serif+Georgian:opsz,wght@8..144,400;8..144,500;8..144,600;8..144,700&display=swap" rel="stylesheet" />
+
+<style>
+  /* ============================================================
+     SISTERS BEAUTY — Variant 3 · Luxe Dark Elegant
+     Deep plum-charcoal night, champagne gold accents.
+     Single-file static page. All visible text Georgian.
+     ============================================================ */
+
+  :root{
+    --ink:        #0d0a0f;   /* near-black plum night */
+    --ink-2:      #141017;   /* raised surface */
+    --ink-3:      #1c1622;   /* card / elevated */
+    --line:       rgba(214,180,130,.16);
+    --line-soft:  rgba(214,180,130,.09);
+
+    --cream:      #f4ecdf;   /* primary light text */
+    --cream-dim:  #d2c6b3;   /* secondary text */
+    --muted:      #9b8e7c;   /* tertiary / captions */
+
+    --gold:       #d8b878;   /* primary accent */
+    --gold-soft:  #ecd6a4;
+    --gold-deep:  #a9854a;
+    --rose:       #c98b8b;   /* soft rose secondary accent */
+    --rose-soft:  #e2afae;
+
+    --maxw: 1240px;
+    --gut: clamp(20px, 5vw, 64px);
+
+    --serif: "Noto Serif Georgian", Georgia, serif;
+    --sans:  "Noto Sans Georgian", system-ui, -apple-system, sans-serif;
+
+    --ease: cubic-bezier(.22,.61,.36,1);
+    --ease-out: cubic-bezier(.16,1,.3,1);
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--cream);
+    font-family:var(--sans);
+    font-weight:400;
+    line-height:1.65;
+    font-size:clamp(15px,1.05vw,17px);
+    letter-spacing:.005em;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+
+  /* atmospheric film grain */
+  body::after{
+    content:""; position:fixed; inset:0;
+    pointer-events:none; z-index:9;
+    opacity:.045; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  a{ color:inherit; text-decoration:none; }
+  img{ display:block; max-width:100%; }
+  button{ font-family:inherit; cursor:pointer; }
+  h1,h2,h3,h4{ margin:0; font-weight:600; line-height:1.08; }
+
+  ::selection{ background:var(--gold); color:var(--ink); }
+
+  :focus-visible{ outline:2px solid var(--gold); outline-offset:3px; border-radius:3px; }
+
+  .wrap{ width:100%; max-width:var(--maxw); margin-inline:auto; padding-inline:var(--gut); }
+
+  .skip{
+    position:absolute; left:14px; top:-60px; z-index:200;
+    background:var(--gold); color:var(--ink);
+    padding:12px 18px; border-radius:8px; font-weight:600;
+    transition:top .2s var(--ease);
+  }
+  .skip:focus{ top:14px; }
+
+  /* ---- demo badge (fixed, always visible) ---- */
+  .demo-badge{
+    position:fixed; left:14px; bottom:14px; z-index:160;
+    background:var(--gold); color:var(--ink);
+    font-weight:700; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase;
+    padding:9px 15px; border-radius:999px;
+    box-shadow:0 10px 30px -10px rgba(0,0,0,.7);
+    border:1px solid var(--gold-soft);
+  }
+
+  /* eyebrow / kicker */
+  .kicker{
+    display:inline-flex; align-items:center; gap:.6em;
+    font-size:.74rem; font-weight:600;
+    letter-spacing:.32em; text-transform:uppercase;
+    color:var(--gold);
+  }
+  .kicker::before{ content:""; width:34px; height:1px; background:linear-gradient(90deg,transparent,var(--gold)); }
+  .kicker.center::before{ background:linear-gradient(90deg,var(--gold),transparent); }
+  .kicker.center::after{ content:""; width:34px; height:1px; background:linear-gradient(90deg,var(--gold),transparent); }
+
+  /* ============================== NAV ============================== */
+  header.nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    transition:background .4s var(--ease), border-color .4s var(--ease), backdrop-filter .4s var(--ease);
+    border-bottom:1px solid transparent;
+  }
+  header.nav.scrolled{
+    background:rgba(10,8,12,.74);
+    backdrop-filter:blur(14px) saturate(120%);
+    -webkit-backdrop-filter:blur(14px) saturate(120%);
+    border-bottom-color:var(--line);
+  }
+  .nav-inner{ display:flex; align-items:center; justify-content:space-between; height:74px; gap:24px; }
+  .brand{
+    display:flex; align-items:center; gap:12px;
+    font-family:var(--serif); font-weight:700;
+    font-size:1.2rem; letter-spacing:.01em; color:var(--cream);
+  }
+  .brand .mark{
+    width:40px; height:40px; flex:none;
+    border:1px solid var(--gold); border-radius:50%;
+    display:grid; place-items:center;
+    color:var(--gold); font-family:var(--serif);
+    font-size:1.05rem; font-weight:700; position:relative;
+  }
+  .brand .mark::after{ content:""; position:absolute; inset:4px; border:1px solid var(--line); border-radius:50%; }
+  .brand small{
+    display:block; font-family:var(--sans);
+    font-size:.56rem; font-weight:500; letter-spacing:.3em;
+    text-transform:uppercase; color:var(--gold); margin-top:1px;
+  }
+
+  .nav-links{ display:flex; align-items:center; gap:32px; list-style:none; margin:0; padding:0; }
+  .nav-links a{
+    font-size:.82rem; font-weight:500; letter-spacing:.04em;
+    color:var(--cream-dim); position:relative; padding:6px 0;
+    transition:color .25s var(--ease);
+  }
+  .nav-links a::after{
+    content:""; position:absolute; left:0; bottom:0;
+    width:0; height:1px; background:var(--gold); transition:width .3s var(--ease);
+  }
+  .nav-links a:hover{ color:var(--cream); }
+  .nav-links a:hover::after{ width:100%; }
+
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:.55em;
+    font-weight:600; font-size:.84rem; letter-spacing:.02em;
+    padding:13px 24px; border-radius:999px;
+    min-height:46px; border:1px solid transparent;
+    transition:transform .25s var(--ease), background .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease);
+    white-space:nowrap;
+  }
+  .btn-gold{ background:var(--gold); color:var(--ink); box-shadow:0 8px 30px -10px rgba(216,184,120,.5); }
+  .btn-gold:hover{ background:var(--gold-soft); transform:translateY(-2px); box-shadow:0 14px 38px -10px rgba(216,184,120,.6); }
+  .btn-ghost{ background:transparent; color:var(--cream); border-color:var(--line); }
+  .btn-ghost:hover{ border-color:var(--gold); color:var(--gold-soft); transform:translateY(-2px); }
+  @media (prefers-reduced-motion: reduce){ .btn:hover{ transform:none; } }
+
+  .nav-cta{ display:flex; align-items:center; gap:14px; }
+
+  .burger{
+    display:none; width:46px; height:46px;
+    background:transparent; border:1px solid var(--line);
+    border-radius:10px; padding:0; align-items:center; justify-content:center;
+    flex-direction:column; gap:5px;
+  }
+  .burger span{ width:20px; height:1.5px; background:var(--cream); transition:.3s var(--ease); }
+  .burger[aria-expanded="true"] span:nth-child(1){ transform:translateY(6.5px) rotate(45deg); }
+  .burger[aria-expanded="true"] span:nth-child(2){ opacity:0; }
+  .burger[aria-expanded="true"] span:nth-child(3){ transform:translateY(-6.5px) rotate(-45deg); }
+
+  .mobile-menu{
+    position:fixed; inset:0 0 0 auto; width:min(82vw,360px);
+    background:var(--ink-2); z-index:99;
+    border-left:1px solid var(--line);
+    transform:translateX(100%); transition:transform .45s var(--ease-out);
+    padding:104px var(--gut) 40px;
+    display:flex; flex-direction:column; gap:6px;
+  }
+  .mobile-menu.open{ transform:translateX(0); }
+  .mobile-menu a{
+    font-family:var(--serif); font-size:1.5rem; font-weight:500;
+    color:var(--cream); padding:14px 0; border-bottom:1px solid var(--line-soft);
+  }
+  .mobile-menu a:hover{ color:var(--gold); }
+  .mobile-menu .btn{ margin-top:22px; }
+  .scrim{
+    position:fixed; inset:0; background:rgba(0,0,0,.6); z-index:98;
+    opacity:0; visibility:hidden; transition:.4s var(--ease); backdrop-filter:blur(2px);
+  }
+  .scrim.show{ opacity:1; visibility:visible; }
+
+  /* ============================== HERO ============================== */
+  .hero{
+    position:relative; min-height:100svh;
+    display:flex; align-items:flex-end;
+    padding-bottom:clamp(48px,8vh,96px); padding-top:120px; overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute; inset:0; z-index:0;
+    background:url("../assets/photo1.jpg") center 28%/cover no-repeat;
+    transform:scale(1.08);
+    animation:slowZoom 22s var(--ease) infinite alternate;
+    will-change:transform;
+  }
+  @keyframes slowZoom{ from{ transform:scale(1.04); } to{ transform:scale(1.14); } }
+  @media (prefers-reduced-motion: reduce){ .hero-bg{ animation:none; transform:scale(1.04); } }
+  .hero-bg::after{
+    content:""; position:absolute; inset:0;
+    background:
+      radial-gradient(120% 90% at 72% 16%, rgba(13,10,15,0) 0%, rgba(13,10,15,.4) 55%, rgba(13,10,15,.84) 100%),
+      linear-gradient(180deg, rgba(13,10,15,.6) 0%, rgba(13,10,15,.2) 30%, rgba(13,10,15,.66) 72%, rgba(13,10,15,.97) 100%);
+  }
+  .hero-grain{ position:absolute; inset:0; z-index:1; box-shadow:inset 0 0 220px 40px rgba(0,0,0,.7); pointer-events:none; }
+
+  .hero .wrap{ position:relative; z-index:2; width:100%; }
+  .hero-content{ max-width:840px; }
+  .hero h1{
+    font-family:var(--serif); font-weight:700;
+    font-size:clamp(2.8rem,8.2vw,6.4rem);
+    line-height:.99; letter-spacing:-.015em;
+    color:var(--cream);
+    text-shadow:0 2px 40px rgba(0,0,0,.5);
+    margin:.32em 0 0;
+  }
+  .hero h1 .em{ font-style:italic; color:var(--gold-soft); display:block; }
+  .hero-lead{
+    margin:1.4rem 0 0; max-width:48ch;
+    font-size:clamp(1rem,1.4vw,1.18rem);
+    color:var(--cream-dim); line-height:1.7;
+  }
+  .hero-actions{ display:flex; flex-wrap:wrap; gap:14px; margin-top:2.2rem; }
+  .hero-meta{
+    display:flex; flex-wrap:wrap; align-items:center; gap:14px 30px;
+    margin-top:2.6rem; padding-top:2.1rem; border-top:1px solid var(--line);
+  }
+  .rating{ display:flex; align-items:center; gap:12px; }
+  .stars{ display:inline-flex; gap:3px; color:var(--gold); font-size:1.05rem; letter-spacing:1px; }
+  .stars .half{ position:relative; color:var(--line); }
+  .stars .half::before{ content:"★"; position:absolute; left:0; top:0; width:40%; overflow:hidden; color:var(--gold); }
+  .rating b{ font-weight:700; color:var(--cream); font-size:1.05rem; }
+  .rating span{ color:var(--cream-dim); font-size:.86rem; }
+  .meta-dot{ width:4px; height:4px; border-radius:50%; background:var(--gold-deep); }
+  .hero-tag{ font-size:.84rem; color:var(--cream-dim); display:inline-flex; align-items:center; gap:9px; }
+  .hero-tag svg{ width:17px; height:17px; stroke:var(--gold); fill:none; }
+
+  .scroll-cue{
+    position:absolute; left:50%; bottom:26px; z-index:3;
+    transform:translateX(-50%);
+    display:flex; flex-direction:column; align-items:center; gap:9px;
+    color:var(--cream-dim); font-size:.62rem; letter-spacing:.3em; text-transform:uppercase;
+  }
+  .scroll-cue .line{ width:1px; height:46px; background:linear-gradient(var(--gold),transparent); position:relative; overflow:hidden; }
+  .scroll-cue .line::after{
+    content:""; position:absolute; top:-50%; left:0; width:100%; height:50%;
+    background:var(--cream); animation:cueDrop 2.1s var(--ease) infinite;
+  }
+  @keyframes cueDrop{ 0%{ top:-50%; } 60%,100%{ top:100%; } }
+  @media (prefers-reduced-motion: reduce){ .scroll-cue .line::after{ animation:none; } }
+
+  /* marquee strip */
+  .marquee{
+    background:var(--ink-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    overflow:hidden; padding:18px 0; position:relative; z-index:5;
+  }
+  .marquee-track{ display:flex; gap:0; width:max-content; animation:scrollX 36s linear infinite; }
+  .marquee:hover .marquee-track{ animation-play-state:paused; }
+  @keyframes scrollX{ to{ transform:translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce){ .marquee-track{ animation:none; } }
+  .marquee-item{
+    display:inline-flex; align-items:center; gap:18px;
+    padding:0 28px; font-family:var(--serif); font-weight:500;
+    font-size:1.02rem; color:var(--cream-dim); white-space:nowrap;
+  }
+  .marquee-item .sep{ color:var(--gold); font-size:.7rem; }
+
+  /* ============================ SECTIONS ============================ */
+  section{ position:relative; }
+  .section{ padding:clamp(72px,11vh,140px) 0; }
+  .section-head{ max-width:760px; margin-bottom:clamp(40px,6vh,72px); }
+  .section-head.center{ margin-inline:auto; text-align:center; }
+  .section-head h2{
+    font-family:var(--serif); font-weight:600;
+    font-size:clamp(2rem,4.6vw,3.5rem);
+    letter-spacing:-.01em; line-height:1.04; margin-top:1rem; color:var(--cream);
+  }
+  .section-head h2 em{ font-style:italic; color:var(--gold-soft); }
+  .section-head p{
+    margin:1.2rem 0 0; color:var(--cream-dim);
+    font-size:clamp(1rem,1.3vw,1.12rem); max-width:56ch;
+  }
+  .section-head.center p{ margin-inline:auto; }
+
+  /* ----- ABOUT ----- */
+  .about{ background:linear-gradient(180deg,var(--ink) 0%, var(--ink-2) 100%); }
+  .about-grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(36px,6vw,84px); align-items:center; }
+  .about-media{ position:relative; }
+  .about-media .frame{
+    position:relative; border-radius:14px; overflow:hidden;
+    aspect-ratio:4/5; box-shadow:0 40px 80px -30px rgba(0,0,0,.8);
+  }
+  .about-media .frame img{
+    width:100%; height:100%; object-fit:cover;
+    filter:saturate(.96) contrast(1.03) brightness(.96);
+    transition:transform 1.1s var(--ease);
+  }
+  .about-media:hover .frame img{ transform:scale(1.05); }
+  .about-media .frame::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg,transparent 55%, rgba(13,10,15,.5)); }
+  .about-media .badge{
+    position:absolute; bottom:-26px; left:-26px;
+    background:var(--ink-3); border:1px solid var(--line);
+    border-radius:14px; padding:22px 26px; max-width:240px;
+    box-shadow:0 24px 50px -22px rgba(0,0,0,.9);
+  }
+  .about-media .badge .num{ font-family:var(--serif); font-weight:700; font-size:2.6rem; color:var(--gold); line-height:1; }
+  .about-media .badge .lbl{ font-size:.82rem; color:var(--cream-dim); margin-top:8px; }
+  .about-media .deco{ position:absolute; top:-22px; right:-18px; z-index:-1; width:120px; height:120px; border:1px solid var(--line); border-radius:14px; }
+
+  .about-copy h2{
+    font-family:var(--serif); font-weight:600;
+    font-size:clamp(1.9rem,4.2vw,3.2rem); line-height:1.05;
+    letter-spacing:-.01em; margin:1rem 0 0; color:var(--cream);
+  }
+  .about-copy h2 em{ font-style:italic; color:var(--gold-soft); }
+  .about-copy p{ margin:1.3rem 0 0; color:var(--cream-dim); }
+  .about-copy .sig{ margin-top:1.8rem; font-family:var(--serif); font-style:italic; font-size:1.35rem; color:var(--gold-soft); }
+  .about-stats{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:18px;
+    margin-top:2.4rem; padding-top:2.2rem; border-top:1px solid var(--line);
+  }
+  .about-stats .stat .n{ font-family:var(--serif); font-weight:700; font-size:1.7rem; color:var(--cream); }
+  .about-stats .stat .t{ font-size:.78rem; color:var(--muted); margin-top:4px; letter-spacing:.02em; }
+
+  /* ----- SERVICES / MENU ----- */
+  .menu{ background:var(--ink-2); }
+  .menu-top{ display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; }
+  .menu-grid{ margin-top:clamp(36px,5vh,60px); display:grid; grid-template-columns:repeat(2,1fr); gap:0 clamp(40px,6vw,90px); }
+  .menu-col h3{
+    font-family:var(--serif); font-weight:600; font-size:1.15rem;
+    color:var(--gold); letter-spacing:.02em;
+    padding-bottom:16px; margin-bottom:6px;
+    border-bottom:1px solid var(--line);
+    display:flex; align-items:center; gap:10px;
+  }
+  .menu-item{
+    display:grid; grid-template-columns:1fr; align-items:baseline;
+    gap:6px 14px; padding:20px 0; border-bottom:1px solid var(--line-soft);
+    transition:padding-left .35s var(--ease);
+  }
+  .menu-item:hover{ padding-left:10px; }
+  .menu-item .mi-name{ font-family:var(--serif); font-weight:600; font-size:1.12rem; color:var(--cream); }
+  .menu-item .mi-desc{ color:var(--muted); font-size:.86rem; margin-top:2px; max-width:44ch; }
+  .menu-note{
+    margin-top:clamp(40px,5vh,56px); padding:24px clamp(22px,3vw,34px);
+    border:1px solid var(--line); border-radius:14px;
+    background:linear-gradient(120deg, rgba(216,184,120,.06), transparent 60%);
+    display:flex; align-items:center; gap:18px 26px; flex-wrap:wrap; justify-content:space-between;
+  }
+  .menu-note p{ margin:0; color:var(--cream-dim); max-width:60ch; }
+  .menu-note b{ color:var(--gold-soft); }
+
+  /* ----- SIGNATURE FEATURE ----- */
+  .feature{ position:relative; overflow:hidden; background:var(--ink); }
+  .feature-grid{ display:grid; grid-template-columns:.95fr 1.05fr; gap:clamp(32px,5vw,72px); align-items:center; }
+  .feature-media{
+    position:relative; border-radius:16px; overflow:hidden;
+    aspect-ratio:4/5; max-height:640px; box-shadow:0 50px 90px -40px rgba(0,0,0,.9);
+  }
+  .feature-media img{
+    width:100%; height:100%; object-fit:cover; object-position:center 35%;
+    filter:saturate(.97) contrast(1.04) brightness(.97);
+    transition:transform 1.2s var(--ease);
+  }
+  .feature-media:hover img{ transform:scale(1.04); }
+  .feature-media::after{ content:""; position:absolute; inset:0; background:linear-gradient(200deg, transparent 50%, rgba(13,10,15,.55)); }
+  .feature-copy .kicker{ margin-bottom:1rem; }
+  .feature-copy h2{
+    font-family:var(--serif); font-weight:600;
+    font-size:clamp(2rem,4.4vw,3.4rem); line-height:1.04; letter-spacing:-.01em; color:var(--cream);
+  }
+  .feature-copy h2 em{ font-style:italic; color:var(--gold-soft); }
+  .feature-copy > p{ margin:1.4rem 0 0; color:var(--cream-dim); max-width:50ch; }
+  .feature-steps{ margin-top:2.2rem; display:flex; flex-direction:column; gap:4px; }
+  .fstep{ display:flex; gap:20px; padding:18px 0; border-top:1px solid var(--line-soft); }
+  .fstep:first-child{ border-top:0; }
+  .fstep .fnum{
+    font-family:var(--serif); font-weight:700; font-size:1rem; color:var(--gold);
+    border:1px solid var(--line); border-radius:50%;
+    width:42px; height:42px; flex:none; display:grid; place-items:center;
+  }
+  .fstep h4{ font-family:var(--serif); font-weight:600; font-size:1.12rem; color:var(--cream); }
+  .fstep p{ margin:.35rem 0 0; color:var(--cream-dim); font-size:.92rem; }
+
+  /* ----- GALLERY ----- */
+  .gallery{ background:linear-gradient(180deg,var(--ink-2),var(--ink)); }
+  .gal-grid{ display:grid; gap:14px; grid-template-columns:repeat(12,1fr); grid-auto-rows:170px; }
+  .gal-item{ position:relative; overflow:hidden; border-radius:12px; border:1px solid var(--line-soft); }
+  .gal-item img{
+    width:100%; height:100%; object-fit:cover;
+    filter:saturate(.94) contrast(1.03) brightness(.92);
+    transition:transform 1s var(--ease), filter .6s var(--ease);
+  }
+  .gal-item::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg,transparent 50%, rgba(13,10,15,.7));
+    opacity:.8; transition:opacity .5s var(--ease);
+  }
+  .gal-item:hover img{ transform:scale(1.07); filter:saturate(1.02) contrast(1.05) brightness(1); }
+  .gal-item:hover::after{ opacity:.45; }
+  .gal-item .cap{
+    position:absolute; left:18px; bottom:14px; z-index:2;
+    font-family:var(--serif); font-style:italic; font-size:1.02rem; color:var(--cream);
+    opacity:0; transform:translateY(8px); transition:.45s var(--ease);
+    text-shadow:0 2px 14px rgba(0,0,0,.7);
+  }
+  .gal-item:hover .cap{ opacity:1; transform:translateY(0); }
+  .g-a{ grid-column:span 7; grid-row:span 2; }
+  .g-b{ grid-column:span 5; grid-row:span 2; }
+  .g-c{ grid-column:span 4; grid-row:span 2; }
+  .g-d{ grid-column:span 4; grid-row:span 2; }
+  .g-e{ grid-column:span 4; grid-row:span 2; }
+
+  /* ----- HOURS / VISIT ----- */
+  .hours{ background:var(--ink); }
+  .hours-grid{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(34px,5vw,70px); align-items:stretch; }
+  .hours-card{
+    background:var(--ink-3); border:1px solid var(--line);
+    border-radius:16px; padding:clamp(28px,4vw,44px); position:relative; overflow:hidden;
+  }
+  .hours-card::before{ content:""; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,var(--gold),transparent); }
+  .hours-card h3{
+    font-family:var(--serif); font-weight:600; font-size:1.5rem; color:var(--cream);
+    display:flex; align-items:center; gap:12px; margin-bottom:1.4rem;
+  }
+  .hours-card h3 svg{ width:24px; height:24px; stroke:var(--gold); fill:none; }
+  .hrow{ display:flex; justify-content:space-between; align-items:baseline; padding:14px 0; border-bottom:1px solid var(--line-soft); gap:16px; }
+  .hrow:last-child{ border-bottom:0; }
+  .hrow .d{ color:var(--cream-dim); }
+  .hrow .t{ font-weight:600; color:var(--cream); font-variant-numeric:tabular-nums; }
+  .hrow.now .d{ color:var(--cream); font-weight:600; }
+  .hrow .pill{
+    font-size:.64rem; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--gold); border:1px solid var(--line); border-radius:999px; padding:3px 10px; margin-left:10px;
+  }
+  .visit-list{ list-style:none; margin:1.2rem 0 0; padding:0; display:flex; flex-direction:column; gap:2px; }
+  .visit-list li{ display:flex; gap:16px; padding:16px 0; border-bottom:1px solid var(--line-soft); align-items:flex-start; }
+  .visit-list li:last-child{ border-bottom:0; }
+  .visit-list svg{ width:22px; height:22px; stroke:var(--gold); fill:none; flex:none; margin-top:2px; }
+  .visit-list .vt{ font-weight:600; color:var(--cream); display:block; }
+  .visit-list .vd{ color:var(--cream-dim); font-size:.9rem; }
+  .visit-list a.vd:hover{ color:var(--gold-soft); }
+  .visit-actions{ display:flex; flex-wrap:wrap; gap:12px; margin-top:1.8rem; }
+
+  /* ----- CONTACT / CTA ----- */
+  .contact{ position:relative; overflow:hidden; background:var(--ink-2); }
+  .contact-bg{ position:absolute; inset:0; z-index:0; background:url("../assets/photo2.jpg") center/cover no-repeat; filter:brightness(.4) saturate(.9); }
+  .contact-bg::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(13,10,15,.86), rgba(13,10,15,.93)),
+               radial-gradient(80% 80% at 50% 0%, rgba(201,139,139,.16), transparent 60%);
+  }
+  .contact .wrap{ position:relative; z-index:2; text-align:center; }
+  .contact .kicker{ margin-bottom:1.2rem; }
+  .contact h2{
+    font-family:var(--serif); font-weight:600;
+    font-size:clamp(2.2rem,6vw,4.6rem); line-height:1.02; letter-spacing:-.015em;
+    color:var(--cream); max-width:18ch; margin-inline:auto;
+  }
+  .contact h2 em{ font-style:italic; color:var(--gold-soft); }
+  .contact p{ margin:1.4rem auto 0; max-width:54ch; color:var(--cream-dim); font-size:1.08rem; }
+  .contact-actions{ display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:2.4rem; }
+  .btn-lg{ padding:17px 34px; min-height:56px; font-size:.92rem; }
+  .contact-phone{ margin-top:2.4rem; font-family:var(--serif); font-size:clamp(1.4rem,3vw,2rem); color:var(--cream); letter-spacing:.02em; }
+  .contact-phone a:hover{ color:var(--gold-soft); }
+
+  /* ----- FOOTER ----- */
+  footer{ background:var(--ink); border-top:1px solid var(--line); padding:clamp(48px,7vh,80px) 0 32px; }
+  .foot-grid{ display:grid; grid-template-columns:1.6fr 1fr 1fr; gap:clamp(30px,5vw,64px); padding-bottom:48px; border-bottom:1px solid var(--line-soft); }
+  .foot-brand .brand{ margin-bottom:1.2rem; }
+  .foot-brand p{ color:var(--cream-dim); max-width:40ch; font-size:.94rem; }
+  .foot-social{ display:flex; gap:12px; margin-top:1.6rem; }
+  .foot-social a{
+    width:44px; height:44px; border:1px solid var(--line); border-radius:50%;
+    display:grid; place-items:center; color:var(--cream-dim); transition:.3s var(--ease);
+  }
+  .foot-social a:hover{ border-color:var(--gold); color:var(--gold); transform:translateY(-3px); }
+  .foot-social svg{ width:19px; height:19px; stroke:currentColor; fill:none; }
+  .foot-col h4{ font-size:.74rem; letter-spacing:.24em; text-transform:uppercase; color:var(--gold); font-weight:600; margin-bottom:1.2rem; }
+  .foot-col ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px; }
+  .foot-col a, .foot-col li{ color:var(--cream-dim); font-size:.92rem; transition:color .25s var(--ease); }
+  .foot-col a:hover{ color:var(--gold-soft); }
+  .foot-bottom{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; padding-top:28px; }
+  .foot-bottom p{ margin:0; color:var(--muted); font-size:.82rem; }
+  .foot-bottom .stars{ font-size:.9rem; }
+
+  /* ============================ REVEAL ANIM ============================ */
+  .reveal{ opacity:0; transform:translateY(34px); transition:opacity .9s var(--ease-out), transform .9s var(--ease-out); }
+  .reveal.in{ opacity:1; transform:none; }
+  .reveal.d1{ transition-delay:.08s; }
+  .reveal.d2{ transition-delay:.16s; }
+  .reveal.d3{ transition-delay:.24s; }
+  .reveal.d4{ transition-delay:.32s; }
+  @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1 !important; transform:none !important; transition:none !important; } }
+
+  /* ============================ RESPONSIVE ============================ */
+  @media (max-width:1080px){
+    .about-grid, .feature-grid, .hours-grid{ grid-template-columns:1fr; }
+    .feature-media{ aspect-ratio:16/12; max-height:520px; order:-1; }
+    .about-media{ max-width:480px; }
+  }
+  @media (max-width:860px){
+    .nav-links, .nav-cta .btn{ display:none; }
+    .burger{ display:flex; }
+    .nav-cta{ gap:10px; }
+    .menu-grid{ grid-template-columns:1fr; gap:0; }
+    .menu-col + .menu-col{ margin-top:8px; }
+    .gal-grid{ grid-auto-rows:140px; }
+    .g-a,.g-b,.g-c,.g-d,.g-e{ grid-column:span 6; grid-row:span 2; }
+    .g-a{ grid-column:span 12; }
+    .foot-grid{ grid-template-columns:1fr 1fr; }
+    .foot-brand{ grid-column:1/-1; }
+  }
+  @media (max-width:560px){
+    .about-stats{ grid-template-columns:1fr 1fr; gap:18px 14px; }
+    .about-media .badge{ left:0; bottom:-20px; padding:18px 20px; }
+    .gal-grid{ grid-auto-rows:120px; }
+    .g-a,.g-b,.g-c,.g-d,.g-e{ grid-column:span 12; }
+    .menu-note{ flex-direction:column; align-items:flex-start; }
+    .foot-grid{ grid-template-columns:1fr; }
+    .hero-meta{ gap:12px 18px; }
+  }
+</style>
+<script src="/abra-demos/analytics.js" defer></script>
+</head>
+<body>
+
+<a class="skip" href="#main">გადასვლა მთავარ კონტენტზე</a>
+<div class="demo-badge" aria-label="დემო ვერსია">დემო ვერსია</div>
+
+<!-- ============================ NAV ============================ -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top" aria-label="Sisters Beauty — მთავარი">
+      <span class="mark" aria-hidden="true">S</span>
+      <span>Sisters Beauty<small>სილამაზის სალონი</small></span>
+    </a>
+
+    <nav aria-label="მთავარი ნავიგაცია">
+      <ul class="nav-links">
+        <li><a href="#about">ჩვენ შესახებ</a></li>
+        <li><a href="#services">სერვისები</a></li>
+        <li><a href="#experience">გამოცდილება</a></li>
+        <li><a href="#gallery">გალერეა</a></li>
+        <li><a href="#visit">ვიზიტი</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-cta">
+      <a class="btn btn-ghost" href="tel:+995551467711" aria-label="დარეკეთ Sisters Beauty-ში">დარეკვა</a>
+      <a class="btn btn-gold" href="https://wa.me/995551467711" target="_blank" rel="noopener">WhatsApp</a>
+      <button class="burger" id="burger" aria-label="მენიუს გახსნა" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- mobile menu -->
+<div class="scrim" id="scrim"></div>
+<aside class="mobile-menu" id="mobileMenu" aria-label="მობილური მენიუ">
+  <a href="#about">ჩვენ შესახებ</a>
+  <a href="#services">სერვისები</a>
+  <a href="#experience">გამოცდილება</a>
+  <a href="#gallery">გალერეა</a>
+  <a href="#visit">ვიზიტი</a>
+  <a class="btn btn-gold" href="https://wa.me/995551467711" target="_blank" rel="noopener">ჩაწერა WhatsApp-ით</a>
+</aside>
+
+<main id="main">
+
+<!-- ============================ HERO ============================ -->
+<section class="hero" id="top">
+  <div class="hero-bg" role="img" aria-label="Sisters Beauty-ის სალონის ინტერიერი"></div>
+  <div class="hero-grain" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <div class="hero-content">
+      <span class="kicker reveal in">სილამაზის სალონი · თბილისი</span>
+      <h1 class="reveal in d1">
+        სილამაზე, რომელიც
+        <span class="em">თქვენ გიხდებათ</span>
+      </h1>
+      <p class="hero-lead reveal in d2">
+        Sisters Beauty — ადგილი, სადაც მოვლა ხელოვნებად იქცევა. თმა, ფრჩხილები,
+        წამწამები და მაკიაჟი — ერთ სივრცეში, გულდასმით და სიყვარულით.
+      </p>
+      <div class="hero-actions reveal in d3">
+        <a class="btn btn-gold" href="https://wa.me/995551467711" target="_blank" rel="noopener">ჩაწერა WhatsApp-ით</a>
+        <a class="btn btn-ghost" href="#services">სერვისების ნახვა</a>
+      </div>
+
+      <div class="hero-meta reveal in d4">
+        <div class="rating">
+          <span class="stars" aria-hidden="true">★★★★<span class="half">★</span></span>
+          <span><b>4.4</b> &nbsp;/&nbsp; <span>Google · 26 შეფასება</span></span>
+        </div>
+        <span class="meta-dot" aria-hidden="true"></span>
+        <span class="hero-tag">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z" stroke-width="1.6"/><circle cx="12" cy="10" r="3" stroke-width="1.6"/></svg>
+          თბილისი, საქართველო
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-cue" aria-hidden="true">
+    <span>ქვემოთ</span>
+    <span class="line"></span>
+  </div>
+</section>
+
+<!-- marquee strip -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">თმის შეჭრა &amp; სტაილინგი <span class="sep">✦</span></span>
+    <span class="marquee-item">მანიკიური &amp; პედიკიური <span class="sep">✦</span></span>
+    <span class="marquee-item">წამწამების დაგრძელება <span class="sep">✦</span></span>
+    <span class="marquee-item">მაკიაჟი ნებისმიერ შემთხვევაზე <span class="sep">✦</span></span>
+    <span class="marquee-item">სახის მოვლა <span class="sep">✦</span></span>
+    <span class="marquee-item">Sisters Beauty <span class="sep">✦</span></span>
+    <span class="marquee-item">თმის შეჭრა &amp; სტაილინგი <span class="sep">✦</span></span>
+    <span class="marquee-item">მანიკიური &amp; პედიკიური <span class="sep">✦</span></span>
+    <span class="marquee-item">წამწამების დაგრძელება <span class="sep">✦</span></span>
+    <span class="marquee-item">მაკიაჟი ნებისმიერ შემთხვევაზე <span class="sep">✦</span></span>
+    <span class="marquee-item">სახის მოვლა <span class="sep">✦</span></span>
+    <span class="marquee-item">Sisters Beauty <span class="sep">✦</span></span>
+  </div>
+</div>
+
+<!-- ============================ ABOUT ============================ -->
+<section class="section about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-media reveal">
+      <div class="deco" aria-hidden="true"></div>
+      <div class="frame">
+        <img src="../assets/photo2.jpg" alt="Sisters Beauty-ის სალონის ინტერიერი" loading="lazy" />
+      </div>
+      <div class="badge">
+        <div class="num">4.4<span style="font-size:1.2rem; color:var(--gold-soft);">★</span></div>
+        <div class="lbl">საშუალო შეფასება 26 რეალური შეფასების მიხედვით</div>
+      </div>
+    </div>
+
+    <div class="about-copy reveal d1">
+      <span class="kicker">ჩვენ შესახებ</span>
+      <h2>თქვენი სილამაზე, <em>ჩვენი ზრუნვა</em></h2>
+      <p>
+        Sisters Beauty არის სილამაზის სალონი თბილისში, სადაც თითოეულ სტუმარს
+        ვხვდებით ყურადღებითა და სითბოთი. ჩვენთვის სილამაზე მხოლოდ შედეგი არ არის —
+        ეს არის განცდა, რომელიც სარკესთან იწყება და დღის ბოლომდე გრძელდება.
+      </p>
+      <p>
+        ერთ სივრცეში ვაერთიანებთ თმის, ფრჩხილების, წამწამებისა და სახის მოვლის
+        სერვისებს. ვმუშაობთ მოწესრიგებულ, სუფთა და მყუდრო გარემოში, რათა ყოველი
+        ვიზიტი მოსვენებისა და განახლების მომენტი იყოს.
+      </p>
+      <div class="sig">— Sisters Beauty, თბილისი</div>
+
+      <div class="about-stats">
+        <div class="stat"><div class="n">4.4★</div><div class="t">საშუალო შეფასება</div></div>
+        <div class="stat"><div class="n">26</div><div class="t">სტუმრის შეფასება</div></div>
+        <div class="stat"><div class="n">სრული</div><div class="t">სილამაზის მოვლა</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ SERVICES ============================ -->
+<section class="section menu" id="services">
+  <div class="wrap">
+    <div class="menu-top">
+      <div class="section-head" style="margin-bottom:0;">
+        <span class="kicker reveal">სერვისები</span>
+        <h2 class="reveal d1">რას <em>გთავაზობთ</em></h2>
+      </div>
+      <p class="reveal d2" style="color:var(--cream-dim); max-width:36ch; margin:0;">
+        სრული სია და ფასები — სალონში. დღევანდელი თავისუფალი დროისთვის უბრალოდ მოგვწერეთ.
+      </p>
+    </div>
+
+    <div class="menu-grid">
+      <div class="menu-col reveal d1">
+        <h3>
+          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" aria-hidden="true"><path d="M12 3a6 6 0 0 0-6 6c0 3 2 5 2 8h8c0-3 2-5 2-8a6 6 0 0 0-6-6Z" stroke-width="1.5"/><path d="M9 21h6" stroke-width="1.5"/></svg>
+          თმა
+        </h3>
+        <div class="menu-item">
+          <span class="mi-name">შეჭრა &amp; ფორმის მიცემა</span>
+          <span class="mi-desc">თმის შეჭრა და სტილისტის რჩევა, რომელიც თქვენს სახეს უხდება.</span>
+        </div>
+        <div class="menu-item">
+          <span class="mi-name">დაბანა &amp; სტაილინგი</span>
+          <span class="mi-desc">ფენი, დახვევა ან გასწორება — სუფთა, მოვლილი შედეგისთვის.</span>
+        </div>
+        <div class="menu-item">
+          <span class="mi-name">შეღებვა &amp; ტონირება</span>
+          <span class="mi-desc">ფერის შერჩევა და დატანა გულდასმით, თმის სიჯანსაღის გათვალისწინებით.</span>
+        </div>
+        <div class="menu-item">
+          <span class="mi-name">მოვლითი პროცედურები</span>
+          <span class="mi-desc">დამატენიანებელი და აღმდგენი მკურნალობა მშრალი თმისთვის.</span>
+        </div>
+      </div>
+
+      <div class="menu-col reveal d2">
+        <h3>
+          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" aria-hidden="true"><path d="M7 4c0-1 1-1 2-1s2 0 2 1v9a4 4 0 1 1-6 0V8" stroke-width="1.5"/></svg>
+          ფრჩხილები, წამწამები &amp; მაკიაჟი
+        </h3>
+        <div class="menu-item">
+          <span class="mi-name">მანიკიური &amp; პედიკიური</span>
+          <span class="mi-desc">მოვლა, ფორმა და ფერი — გელ-ლაქის ჩათვლით, სუფთად შესრულებული.</span>
+        </div>
+        <div class="menu-item">
+          <span class="mi-name">წამწამების დაგრძელება</span>
+          <span class="mi-desc">ბუნებრივი ან გამოკვეთილი მზერა, თქვენი სურვილისამებრ.</span>
+        </div>
+        <div class="menu-item">
+          <span class="mi-name">წარბების კორექცია</span>
+          <span class="mi-desc">ფორმის მიცემა და შეფერადება სახის ხაზების ჰარმონიისთვის.</span>
+        </div>
+        <div class="menu-item">
+          <span class="mi-name">მაკიაჟი &amp; სახის მოვლა</span>
+          <span class="mi-desc">დღის ან საღამოს მაკიაჟი და დამატენიანებელი სახის პროცედურები.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-note reveal">
+      <p>
+        ზუსტი ფასები და თავისუფალი საათები განსხვავდება სერვისის მიხედვით.
+        <b>მოგვწერეთ WhatsApp-ზე</b> — სიამოვნებით შეგირჩევთ თქვენთვის მოსახერხებელ დროს.
+      </p>
+      <a class="btn btn-ghost" href="https://wa.me/995551467711" target="_blank" rel="noopener">დროის შეთანხმება</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ SIGNATURE FEATURE ============================ -->
+<section class="section feature" id="experience">
+  <div class="wrap feature-grid">
+    <div class="feature-media reveal">
+      <img src="../assets/photo3.jpg" alt="Sisters Beauty-ში მოვლის პროცესი" loading="lazy" />
+    </div>
+
+    <div class="feature-copy reveal d1">
+      <span class="kicker">ვიზიტის გამოცდილება</span>
+      <h2>მშვიდი რიტუალი, <em>დახვეწილი შედეგი</em></h2>
+      <p>
+        ჩვენთან ვიზიტი არ არის ჩქარობა. ჯერ მოგისმენთ, შემდეგ შემოგთავაზებთ
+        გადაწყვეტას, რომელიც თქვენ გიხდებათ — და ბოლოს ვზრუნავთ ყოველ დეტალზე.
+      </p>
+
+      <div class="feature-steps">
+        <div class="fstep">
+          <span class="fnum" aria-hidden="true">1</span>
+          <div>
+            <h4>კონსულტაცია</h4>
+            <p>გესაუბრებით თქვენს სურვილებზე და ვირჩევთ თქვენთვის სწორ მიდგომას.</p>
+          </div>
+        </div>
+        <div class="fstep">
+          <span class="fnum" aria-hidden="true">2</span>
+          <div>
+            <h4>მოვლა</h4>
+            <p>პროცედურა მშვიდ, სუფთა გარემოში — ხარისხიან მასალებზე დაყრდნობით.</p>
+          </div>
+        </div>
+        <div class="fstep">
+          <span class="fnum" aria-hidden="true">3</span>
+          <div>
+            <h4>შედეგი &amp; რჩევა</h4>
+            <p>დასასრულს გაგიზიარებთ რჩევებს, როგორ შეინარჩუნოთ შედეგი სახლშიც.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-actions" style="margin-top:2.2rem;">
+        <a class="btn btn-gold" href="https://wa.me/995551467711" target="_blank" rel="noopener">დაჯავშნეთ ვიზიტი</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ GALLERY ============================ -->
+<section class="section gallery" id="gallery">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="kicker center">გალერეა</span>
+      <h2>ერთი შეხედვა <em>ჩვენს სივრცეზე</em></h2>
+      <p>ინტერიერი, დეტალები და ატმოსფერო, რომელიც Sisters Beauty-ს გამოარჩევს.</p>
+    </div>
+
+    <div class="gal-grid">
+      <figure class="gal-item g-a reveal" style="margin:0;">
+        <img src="../assets/photo1.jpg" alt="Sisters Beauty-ის სალონის ინტერიერი" loading="lazy" />
+        <figcaption class="cap">ჩვენი სალონი</figcaption>
+      </figure>
+      <figure class="gal-item g-b reveal d1" style="margin:0;">
+        <img src="../assets/photo4.jpg" alt="სამუშაო სივრცე Sisters Beauty-ში" loading="lazy" />
+        <figcaption class="cap">მყუდრო დეტალები</figcaption>
+      </figure>
+      <figure class="gal-item g-c reveal" style="margin:0;">
+        <img src="../assets/photo5.jpg" alt="Sisters Beauty-ის სილამაზის სალონის კუთხე" loading="lazy" />
+        <figcaption class="cap">სუფთა გარემო</figcaption>
+      </figure>
+      <figure class="gal-item g-d reveal d1" style="margin:0;">
+        <img src="../assets/photo6.jpg" alt="Sisters Beauty-ის ინტერიერის დეტალი" loading="lazy" />
+        <figcaption class="cap">ყურადღება დეტალზე</figcaption>
+      </figure>
+      <figure class="gal-item g-e reveal d2" style="margin:0;">
+        <img src="../assets/photo2.jpg" alt="Sisters Beauty-ის სამუშაო ადგილი" loading="lazy" />
+        <figcaption class="cap">სადაც ვმუშაობთ</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ HOURS / VISIT ============================ -->
+<section class="section hours" id="visit">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">ვიზიტი</span>
+      <h2>გვესტუმრეთ <em>თბილისში</em></h2>
+      <p>დაგვირეკეთ ან მოგვწერეთ — დაგეგმავთ თქვენთვის მოსახერხებელ დროს და სიამოვნებით დაგხვდებით.</p>
+    </div>
+
+    <div class="hours-grid">
+      <div class="hours-card reveal">
+        <h3>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke-width="1.6"/><path d="M12 7v5l3 2" stroke-width="1.6" stroke-linecap="round"/></svg>
+          სამუშაო საათები
+        </h3>
+        <div class="hrow"><span class="d">ორშაბათი — პარასკევი</span><span class="t">10:00 — 20:00</span></div>
+        <div class="hrow now"><span class="d">შაბათი <span class="pill">დღეს</span></span><span class="t">10:00 — 20:00</span></div>
+        <div class="hrow"><span class="d">კვირა</span><span class="t">შეთანხმებით</span></div>
+        <p style="margin-top:1.6rem; color:var(--muted); font-size:.86rem;">
+          საათები მითითებულია ზოგადად — ვიზიტამდე გთხოვთ დაგვირეკოთ ან მოგვწეროთ ზუსტი დროისთვის.
+        </p>
+      </div>
+
+      <div class="hours-card reveal d1">
+        <h3>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z" stroke-width="1.6"/><circle cx="12" cy="10" r="3" stroke-width="1.6"/></svg>
+          კონტაქტი
+        </h3>
+        <ul class="visit-list">
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z" stroke-width="1.6"/><circle cx="12" cy="10" r="3" stroke-width="1.6"/></svg>
+            <span><span class="vt">მდებარეობა</span><span class="vd">თბილისი, საქართველო</span></span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            <span><span class="vt">ტელეფონი</span><a class="vd" href="tel:+995551467711">551 46 77 11</a></span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.6 7.1L4 20l1.4-4.3A8 8 0 1 1 20 11.5Z" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            <span><span class="vt">WhatsApp</span><a class="vd" href="https://wa.me/995551467711" target="_blank" rel="noopener">551 46 77 11</a></span>
+          </li>
+        </ul>
+        <div class="visit-actions">
+          <a class="btn btn-gold" href="https://wa.me/995551467711" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.6 7.1L4 20l1.4-4.3A8 8 0 1 1 20 11.5Z" stroke-width="1.7" stroke-linejoin="round"/></svg>
+            მოგვწერეთ
+          </a>
+          <a class="btn btn-ghost" href="tel:+995551467711">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" aria-hidden="true"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" stroke-width="1.7" stroke-linejoin="round"/></svg>
+            დარეკვა
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CONTACT / CTA ============================ -->
+<section class="contact section" id="contact">
+  <div class="contact-bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="kicker center reveal">დაგვიკავშირდით</span>
+    <h2 class="reveal d1">დაჯავშნეთ თქვენი <em>შემდეგი</em> ვიზიტი</h2>
+    <p class="reveal d2">
+      ერთი შეტყობინება გვაშორებს თქვენი სასურველი დღისგან. დაგვირეკეთ ან მოგვწერეთ —
+      Sisters Beauty სიამოვნებით დაგეგმავს თქვენთვის მოსახერხებელ დროს.
+    </p>
+    <div class="contact-actions reveal d3">
+      <a class="btn btn-gold btn-lg" href="https://wa.me/995551467711" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.6 7.1L4 20l1.4-4.3A8 8 0 1 1 20 11.5Z" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        WhatsApp-ით ჩაწერა
+      </a>
+      <a class="btn btn-ghost btn-lg" href="tel:+995551467711">დარეკეთ ახლავე</a>
+    </div>
+    <div class="contact-phone reveal d3">
+      <a href="tel:+995551467711">551 46 77 11</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="#top" aria-label="Sisters Beauty">
+          <span class="mark" aria-hidden="true">S</span>
+          <span>Sisters Beauty<small>სილამაზის სალონი</small></span>
+        </a>
+        <p>სილამაზის სალონი თბილისში — თმა, ფრჩხილები, წამწამები და მაკიაჟი ერთ მყუდრო სივრცეში.</p>
+        <div class="foot-social">
+          <a href="https://wa.me/995551467711" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.6 7.1L4 20l1.4-4.3A8 8 0 1 1 20 11.5Z" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="tel:+995551467711" aria-label="დარეკვა">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#visit" aria-label="მდებარეობა">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z" stroke-width="1.6"/><circle cx="12" cy="10" r="3" stroke-width="1.6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="foot-col">
+        <h4>ნავიგაცია</h4>
+        <ul>
+          <li><a href="#about">ჩვენ შესახებ</a></li>
+          <li><a href="#services">სერვისები</a></li>
+          <li><a href="#experience">გამოცდილება</a></li>
+          <li><a href="#gallery">გალერეა</a></li>
+          <li><a href="#visit">ვიზიტი</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h4>საათები</h4>
+        <ul>
+          <li>ორშ — პარ · 10:00 — 20:00</li>
+          <li>შაბ · 10:00 — 20:00</li>
+          <li>კვი · შეთანხმებით</li>
+          <li><a href="tel:+995551467711">551 46 77 11</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <p>© <span id="year">2026</span> Sisters Beauty · ყველა უფლება დაცულია</p>
+      <p class="rating" style="gap:8px;">
+        <span class="stars" aria-hidden="true">★★★★<span class="half">★</span></span>
+        <span style="color:var(--cream-dim); font-size:.82rem;">4.4 / 26 შეფასება Google-ზე</span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ---- year ---- */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ---- nav scrolled state ---- */
+  var nav = document.getElementById('nav');
+  var onScroll = function(){
+    if(window.scrollY > 28){ nav.classList.add('scrolled'); }
+    else{ nav.classList.remove('scrolled'); }
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive:true });
+
+  /* ---- mobile menu ---- */
+  var burger = document.getElementById('burger');
+  var menu = document.getElementById('mobileMenu');
+  var scrim = document.getElementById('scrim');
+  function setMenu(open){
+    menu.classList.toggle('open', open);
+    scrim.classList.toggle('show', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? 'მენიუს დახურვა' : 'მენიუს გახსნა');
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  burger.addEventListener('click', function(){ setMenu(!menu.classList.contains('open')); });
+  scrim.addEventListener('click', function(){ setMenu(false); });
+  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setMenu(false); }); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') setMenu(false); });
+
+  /* ---- scroll reveal (respects reduced motion) ---- */
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var reveals = document.querySelectorAll('.reveal:not(.in)');
+  if(reduce || !('IntersectionObserver' in window)){
+    reveals.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold:0.12, rootMargin:'0px 0px -8% 0px' });
+    reveals.forEach(function(el){ io.observe(el); });
+  }
+</script>
+
+</body>
+</html>

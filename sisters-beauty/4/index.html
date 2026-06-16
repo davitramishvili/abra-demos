@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Sisters Beauty — სილამაზის სალონი თბილისში</title>
+<meta name="description" content="Sisters Beauty — თბილისის სილამაზის სალონი. თმა, ფრჩხილები, წამწამები და მაკიაჟი ერთ ადგილას. ★ 4.4 · 26 შეფასება.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700;800;900&family=Noto+Serif+Georgian:opsz,wght@8..144,500;8..144,700;8..144,900&display=swap" rel="stylesheet">
+<style>
+  /* ============== SISTERS BEAUTY — Variant 4 · Fresh Modern Bright ==============
+     Light blush canvas, coral + mint + violet pops. Springy, playful.
+     Single-file static page. All visible text Georgian. */
+  :root{
+    --cream:#FFF4F2;        /* warm blush canvas */
+    --cream-deep:#FCE7E4;
+    --ink:#2A1822;          /* deep plum ink */
+    --ink-soft:#5C4350;
+
+    --coral:#FF6B6B;        /* hot accent — decorative fills */
+    --coral-btn:#E63E5C;    /* AA-safe coral for white text */
+    --coral-text:#D5314F;   /* AA-safe coral for text on light */
+    --blush:#FFB3C1;        /* soft pink */
+    --gold:#FFC93C;         /* sunny accent */
+    --mint:#34D8C4;         /* fresh mint — decorative fills */
+    --mint-deep:#0B7E72;    /* AA-safe mint: text/white on it */
+    --violet:#8A6BFF;       /* playful violet pop */
+    --white:#FFFFFF;
+
+    --radius:30px;
+    --radius-lg:50px;
+    --shadow-sm:0 6px 0 rgba(42,24,34,.12);
+    --shadow:0 18px 40px -22px rgba(42,24,34,.5);
+    --shadow-pop:0 22px 48px -20px rgba(42,24,34,.45);
+    --border:3px solid var(--ink);
+    --ease:cubic-bezier(.34,1.56,.64,1); /* springy */
+
+    --maxw:1200px;
+    --sans:"Noto Sans Georgian",system-ui,sans-serif;
+    --serif:"Noto Serif Georgian",Georgia,serif;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:var(--sans);
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.55;
+    overflow-x:hidden;
+    font-size:17px;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3,h4{line-height:1.05}
+  ::selection{background:var(--coral);color:var(--white)}
+
+  a:focus-visible,button:focus-visible{outline:3px solid var(--violet);outline-offset:3px;border-radius:8px}
+
+  .wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:clamp(18px,5vw,40px)}
+
+  /* skip link */
+  .skip{position:absolute;left:14px;top:-60px;z-index:200;background:var(--ink);color:var(--cream);
+    padding:12px 18px;border-radius:10px;font-weight:800;transition:top .2s}
+  .skip:focus{top:14px}
+
+  /* demo badge (fixed, always visible) */
+  .demo-badge{
+    position:fixed;left:14px;bottom:14px;z-index:160;
+    background:var(--gold);color:var(--ink);border:2.5px solid var(--ink);
+    font-weight:900;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;
+    padding:9px 15px;border-radius:50px;box-shadow:var(--shadow-sm);
+  }
+
+  /* ============== KINETIC MARQUEE ============== */
+  .marquee{
+    background:var(--ink);color:var(--cream);border-bottom:var(--border);
+    overflow:hidden;white-space:nowrap;padding-block:11px;position:relative;z-index:60;
+  }
+  .marquee__track{display:inline-flex;gap:0;animation:slide 28s linear infinite;will-change:transform}
+  .marquee span{font-weight:800;font-size:.95rem;letter-spacing:.05em;
+    padding-inline:26px;display:inline-flex;align-items:center;gap:26px}
+  .marquee span::after{content:"✦";color:var(--gold)}
+  @keyframes slide{to{transform:translateX(-50%)}}
+
+  /* ============== NAV ============== */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:color-mix(in srgb,var(--cream) 86%, transparent);
+    backdrop-filter:blur(10px);border-bottom:var(--border);
+  }
+  .nav__bar{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-block:13px}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:900;font-size:1.26rem;letter-spacing:-.01em}
+  .brand .mark{
+    width:42px;height:42px;border-radius:50% 50% 50% 14px;
+    background:var(--coral);border:var(--border);
+    display:grid;place-items:center;color:var(--white);font-size:1.2rem;font-weight:900;
+    transform:rotate(-6deg);transition:transform .35s var(--ease);flex:0 0 auto;
+  }
+  .brand:hover .mark{transform:rotate(8deg) scale(1.08)}
+  .nav__links{display:none;gap:30px;font-weight:600}
+  .nav__links a{position:relative;padding-block:4px}
+  .nav__links a::after{
+    content:"";position:absolute;left:0;right:100%;bottom:-2px;height:3px;
+    background:var(--coral);border-radius:3px;transition:right .3s var(--ease);
+  }
+  .nav__links a:hover::after{right:0}
+  .nav__cta{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--ink);color:var(--cream);
+    padding:11px 20px;border-radius:50px;border:var(--border);
+    font-weight:800;font-size:.95rem;min-height:44px;
+    box-shadow:var(--shadow-sm);transition:transform .25s var(--ease),box-shadow .25s var(--ease);
+  }
+  .nav__cta:hover{transform:translateY(-3px);box-shadow:0 11px 0 rgba(42,24,34,.14)}
+  .nav__cta:active{transform:translateY(0);box-shadow:0 3px 0 rgba(42,24,34,.14)}
+  @media(min-width:920px){.nav__links{display:flex}}
+
+  /* ============== BUTTONS ============== */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    font-weight:800;font-size:1.02rem;min-height:52px;padding:14px 28px;
+    border-radius:50px;border:var(--border);cursor:pointer;
+    transition:transform .22s var(--ease),box-shadow .22s var(--ease);box-shadow:var(--shadow-sm);
+  }
+  .btn--primary{background:var(--coral-btn);color:var(--white)}
+  .btn--sun{background:var(--gold);color:var(--ink)}
+  .btn--ink{background:var(--ink);color:var(--cream)}
+  .btn--ghost{background:var(--white);color:var(--ink)}
+  .btn:hover{transform:translateY(-4px);box-shadow:0 12px 0 rgba(42,24,34,.14)}
+  .btn:active{transform:translateY(-1px);box-shadow:0 4px 0 rgba(42,24,34,.14)}
+
+  /* ============== STICKER BADGE ============== */
+  .sticker{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--white);border:var(--border);border-radius:50px;
+    padding:8px 16px;font-weight:800;font-size:.85rem;box-shadow:var(--shadow-sm);
+  }
+  .sticker--sun{background:var(--gold)}
+  .sticker--mint{background:var(--mint-deep);color:var(--white)}
+  .sticker--blush{background:var(--blush)}
+
+  /* wobbling round stamp */
+  .stamp{
+    position:absolute;width:124px;height:124px;border-radius:50%;
+    background:var(--gold);border:var(--border);color:var(--ink);
+    display:grid;place-content:center;text-align:center;
+    font-weight:900;font-size:.76rem;line-height:1.25;letter-spacing:.02em;
+    box-shadow:var(--shadow-pop);z-index:5;animation:wobble 6s ease-in-out infinite;
+  }
+  .stamp small{display:block;font-size:1.5rem;line-height:1}
+  @keyframes wobble{0%,100%{transform:rotate(-9deg)}50%{transform:rotate(6deg)}}
+
+  /* ============== HERO ============== */
+  .hero{position:relative;padding-top:clamp(34px,6vw,70px);padding-bottom:clamp(40px,7vw,90px)}
+  .hero__blob{position:absolute;z-index:0;border-radius:46% 54% 60% 40%/52% 44% 56% 48%;filter:blur(2px);opacity:.85;pointer-events:none}
+  .blob-a{width:340px;height:340px;background:var(--blush);top:-60px;right:-90px;animation:morph 14s ease-in-out infinite}
+  .blob-b{width:260px;height:260px;background:var(--mint);bottom:-70px;left:-100px;opacity:.45;animation:morph 18s ease-in-out infinite reverse}
+  @keyframes morph{0%,100%{border-radius:46% 54% 60% 40%/52% 44% 56% 48%}50%{border-radius:60% 40% 42% 58%/44% 58% 42% 56%}}
+  .hero__grid{position:relative;z-index:2;display:grid;gap:clamp(28px,5vw,52px);align-items:center}
+  @media(min-width:900px){.hero__grid{grid-template-columns:1.05fr .95fr}}
+
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-weight:800;
+    color:var(--mint-deep);letter-spacing:.12em;text-transform:uppercase;font-size:.82rem;margin-bottom:18px}
+  .eyebrow::before{content:"";width:30px;height:3px;background:var(--coral);border-radius:3px}
+
+  .hero h1{font-family:var(--serif);font-weight:900;font-size:clamp(2.8rem,8.2vw,5.4rem);line-height:.98;letter-spacing:-.02em;margin-bottom:22px}
+  .hero h1 .wink{color:var(--coral-text);position:relative;display:inline-block;transition:transform .4s var(--ease)}
+  .hero h1 .wink:hover{transform:rotate(-3deg) scale(1.04)}
+  .hero h1 .wink::after{content:"";position:absolute;left:2%;right:2%;bottom:.07em;height:.16em;background:var(--gold);z-index:-1;border-radius:6px;transform:rotate(-1.2deg)}
+  .hero h1 .draw{color:var(--mint-deep);font-style:italic}
+  .hero p.lead{font-size:clamp(1.05rem,2.4vw,1.26rem);max-width:34ch;color:var(--ink-soft);margin-bottom:30px;font-weight:500}
+  .hero__cta{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:30px}
+
+  .rating{display:inline-flex;align-items:center;gap:13px;background:var(--white);
+    border:var(--border);border-radius:50px;padding:9px 9px 9px 18px;box-shadow:var(--shadow-sm);max-width:max-content}
+  .rating .stars{color:var(--gold);font-size:1.05rem;letter-spacing:1px;-webkit-text-stroke:.6px var(--ink)}
+  .rating b{font-weight:900}
+  .rating .pill{background:var(--ink);color:var(--cream);font-weight:800;font-size:.8rem;padding:6px 13px;border-radius:50px}
+
+  /* hero photo cluster */
+  .hero__art{position:relative;justify-self:center;width:100%;max-width:480px}
+  .hero__frame{
+    position:relative;border:var(--border);border-radius:50% 50% 48% 52%/46% 50% 50% 54%;
+    overflow:hidden;background:var(--cream-deep);box-shadow:var(--shadow-pop);
+    aspect-ratio:1/1;transform:rotate(-2deg);transition:transform .5s var(--ease);
+  }
+  .hero__frame img{width:100%;height:100%;object-fit:cover}
+  .hero__art:hover .hero__frame{transform:rotate(0deg) scale(1.01)}
+  .hero__chip{
+    position:absolute;background:var(--white);border:var(--border);border-radius:20px;
+    padding:11px 15px;box-shadow:var(--shadow-pop);font-weight:800;font-size:.86rem;z-index:6;
+    display:flex;align-items:center;gap:9px;
+  }
+  .hero__chip .dot{width:11px;height:11px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 4px color-mix(in srgb,var(--mint) 30%,transparent)}
+  .chip-1{top:7%;left:-6%;transform:rotate(-7deg);animation:float 5s ease-in-out infinite;--r:-7deg}
+  .chip-2{bottom:9%;right:-7%;transform:rotate(6deg);background:var(--blush);animation:float 6.5s ease-in-out infinite;--r:6deg}
+  @keyframes float{0%,100%{transform:translateY(0) rotate(var(--r,-7deg))}50%{transform:translateY(-12px) rotate(var(--r,-7deg))}}
+  .hero__stamp{top:-26px;right:6%}
+
+  /* ============== STAT STRIP ============== */
+  .strip{background:var(--ink);color:var(--cream);border-block:var(--border);padding-block:clamp(34px,5vw,52px)}
+  .strip__grid{display:grid;gap:26px;grid-template-columns:repeat(2,1fr);text-align:center}
+  @media(min-width:760px){.strip__grid{grid-template-columns:repeat(4,1fr)}}
+  .stat .n{font-family:var(--serif);font-weight:900;font-size:clamp(2rem,5vw,2.9rem);color:var(--gold);line-height:1}
+  .stat .l{font-weight:600;font-size:.92rem;color:color-mix(in srgb,var(--cream) 80%,transparent);margin-top:6px}
+  .stat:nth-child(2) .n{color:var(--coral)}
+  .stat:nth-child(3) .n{color:var(--mint)}
+  .stat:nth-child(4) .n{color:var(--blush)}
+
+  /* ============== SECTION HEADERS ============== */
+  .sec{padding-block:clamp(56px,9vw,110px);position:relative}
+  .sec__head{max-width:640px;margin-bottom:clamp(34px,5vw,56px)}
+  .sec__head.center{margin-inline:auto;text-align:center}
+  .sec h2{font-family:var(--serif);font-weight:900;font-size:clamp(2.1rem,5.5vw,3.5rem);line-height:1.02;letter-spacing:-.02em;margin-block:14px}
+  .sec h2 em{font-style:normal;color:var(--coral-text)}
+  .sec__head p{color:var(--ink-soft);font-size:1.08rem;font-weight:500}
+
+  /* ============== ABOUT ============== */
+  .about__grid{display:grid;gap:clamp(30px,5vw,60px);align-items:center}
+  @media(min-width:880px){.about__grid{grid-template-columns:1fr 1fr}}
+  .about__media{position:relative}
+  .about__media .photo{
+    border:var(--border);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);
+    aspect-ratio:4/5;transform:rotate(1.5deg);transition:transform .5s var(--ease);
+  }
+  .about__media .photo img{width:100%;height:100%;object-fit:cover}
+  .about__media:hover .photo{transform:rotate(0)}
+  .about__media .mini{
+    position:absolute;bottom:-22px;left:-22px;width:46%;aspect-ratio:1/1;
+    border:var(--border);border-radius:28px;overflow:hidden;box-shadow:var(--shadow-pop);
+    transform:rotate(-5deg);background:var(--cream);
+  }
+  .about__media .mini img{width:100%;height:100%;object-fit:cover}
+  .about__copy .lede{font-family:var(--serif);font-weight:700;font-size:clamp(1.3rem,3vw,1.7rem);line-height:1.3;margin-bottom:18px}
+  .about__copy p{color:var(--ink-soft);margin-bottom:16px}
+  .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+
+  /* ============== SERVICES ============== */
+  .services{background:var(--cream-deep);border-block:var(--border)}
+  .services__grid{display:grid;gap:20px}
+  @media(min-width:680px){.services__grid{grid-template-columns:repeat(2,1fr)}}
+  @media(min-width:1000px){.services__grid{grid-template-columns:repeat(3,1fr)}}
+  .card{
+    background:var(--white);border:var(--border);border-radius:var(--radius);
+    padding:26px 24px;box-shadow:var(--shadow-sm);position:relative;
+    transition:transform .3s var(--ease),box-shadow .3s var(--ease);will-change:transform;overflow:hidden;
+  }
+  .card:hover{transform:translateY(-8px) rotate(-1deg);box-shadow:0 16px 0 rgba(42,24,34,.1)}
+  .card__ico{
+    width:62px;height:62px;border-radius:50% 50% 50% 16px;display:grid;place-items:center;
+    border:var(--border);margin-bottom:18px;transition:transform .4s var(--ease);
+  }
+  .card__ico svg{width:30px;height:30px;stroke:currentColor;fill:none;stroke-width:1.7}
+  .card:hover .card__ico{transform:rotate(-10deg) scale(1.08)}
+  .card:nth-child(1) .card__ico{background:var(--gold);color:var(--ink)}
+  .card:nth-child(2) .card__ico{background:var(--coral);color:var(--white)}
+  .card:nth-child(3) .card__ico{background:var(--mint);color:var(--white)}
+  .card:nth-child(4) .card__ico{background:var(--violet);color:var(--white)}
+  .card:nth-child(5) .card__ico{background:var(--blush);color:var(--ink)}
+  .card:nth-child(6) .card__ico{background:var(--gold);color:var(--ink)}
+  .card h3{font-size:1.22rem;font-weight:800;margin-bottom:8px}
+  .card p{color:var(--ink-soft);font-size:.97rem}
+  .services__note{margin-top:30px;text-align:center;font-weight:600;color:var(--ink-soft)}
+  .services__note b{color:var(--ink)}
+
+  /* ============== SIGNATURE BANNER ============== */
+  .feature{position:relative;overflow:hidden}
+  .feature__inner{
+    background:var(--coral-btn);border:var(--border);border-radius:var(--radius-lg);
+    color:var(--white);padding:clamp(34px,6vw,68px);box-shadow:var(--shadow);
+    display:grid;gap:34px;align-items:center;position:relative;overflow:hidden;
+  }
+  @media(min-width:900px){.feature__inner{grid-template-columns:1.1fr .9fr}}
+  .feature__inner::before{content:"";position:absolute;width:380px;height:380px;border-radius:50%;background:rgba(255,255,255,.12);top:-140px;right:-90px}
+  .feature h2{color:var(--white);position:relative}
+  .feature h2 em{color:var(--gold)}
+  .feature p{color:var(--cream);font-size:1.1rem;font-weight:500;margin-block:16px 26px;max-width:42ch;position:relative}
+  .feature__media{position:relative;z-index:2}
+  .feature__media .ph{
+    border:var(--border);border-radius:36px;overflow:hidden;box-shadow:var(--shadow-pop);
+    aspect-ratio:3/4;transform:rotate(2.5deg);background:var(--cream);transition:transform .5s var(--ease);
+  }
+  .feature__media:hover .ph{transform:rotate(-1deg) scale(1.02)}
+  .feature__media .ph img{width:100%;height:100%;object-fit:cover}
+  .feature__media .stamp{bottom:-22px;left:-18px;top:auto;background:var(--ink);color:var(--gold)}
+
+  /* ============== GALLERY ============== */
+  .gallery__grid{display:grid;gap:14px;grid-template-columns:repeat(2,1fr)}
+  @media(min-width:760px){.gallery__grid{grid-template-columns:repeat(4,1fr);grid-auto-rows:160px}}
+  .gallery__grid figure{
+    border:var(--border);border-radius:24px;overflow:hidden;position:relative;
+    box-shadow:var(--shadow-sm);background:var(--cream-deep);min-height:170px;
+  }
+  .gallery__grid img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+  .gallery__grid figure:hover img{transform:scale(1.08)}
+  .gallery__grid figcaption{
+    position:absolute;left:12px;bottom:12px;background:var(--white);border:2.5px solid var(--ink);
+    border-radius:50px;padding:5px 13px;font-weight:800;font-size:.78rem;
+    transform:translateY(120%);transition:transform .35s var(--ease);
+  }
+  .gallery__grid figure:hover figcaption{transform:translateY(0)}
+  @media(min-width:760px){.g-tall{grid-row:span 2}.g-wide{grid-column:span 2}}
+
+  /* ============== VISIT (HOURS + CONTACT) ============== */
+  .visit{background:var(--ink);color:var(--cream);border-block:var(--border)}
+  .visit__grid{display:grid;gap:clamp(30px,5vw,56px)}
+  @media(min-width:900px){.visit__grid{grid-template-columns:1fr 1fr}}
+  .visit h2{color:var(--cream)}
+  .visit h2 em{color:var(--gold)}
+  .hours{background:rgba(255,255,255,.05);border:2.5px solid rgba(255,244,242,.25);border-radius:var(--radius);overflow:hidden}
+  .hours__row{display:flex;align-items:center;justify-content:space-between;gap:16px;
+    padding:15px 22px;border-bottom:2px solid rgba(255,244,242,.12);font-weight:600}
+  .hours__row:last-child{border-bottom:0}
+  .hours__row.today{background:var(--gold);color:var(--ink);font-weight:800}
+  .hours__row .day{display:flex;align-items:center;gap:10px}
+  .hours__row.today .badge-now{background:var(--ink);color:var(--gold);font-size:.7rem;padding:3px 9px;border-radius:50px;font-weight:800}
+  .hours__row .time{font-variant-numeric:tabular-nums}
+
+  .contact__card{background:var(--cream);color:var(--ink);border:var(--border);border-radius:var(--radius);
+    padding:clamp(26px,4vw,38px);box-shadow:var(--shadow)}
+  .contact__card h3{font-family:var(--serif);font-weight:900;font-size:1.5rem;margin-bottom:6px}
+  .contact__card .sub{color:var(--ink-soft);margin-bottom:24px;font-weight:500}
+  .contact__list{display:grid;gap:14px;margin-bottom:26px}
+  .contact__item{display:flex;align-items:center;gap:14px;font-weight:600}
+  .contact__item .ci{width:46px;height:46px;border:var(--border);border-radius:14px;display:grid;place-items:center;flex:0 0 auto}
+  .contact__item .ci svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.7}
+  .contact__item:nth-child(1) .ci{background:var(--mint);color:#fff}
+  .contact__item:nth-child(2) .ci{background:var(--gold);color:var(--ink)}
+  .contact__item:nth-child(3) .ci{background:var(--coral);color:#fff}
+  .contact__item small{display:block;font-weight:600;color:var(--ink-soft);font-size:.82rem}
+  .contact__cta{display:flex;flex-wrap:wrap;gap:12px}
+
+  /* ============== BIG CTA ============== */
+  .bigcta{padding-block:clamp(56px,9vw,110px);text-align:center;position:relative;overflow:hidden}
+  .bigcta h2{font-family:var(--serif);font-weight:900;font-size:clamp(2.3rem,7vw,4.4rem);line-height:1;letter-spacing:-.02em;margin-bottom:22px}
+  .bigcta h2 .u{color:var(--coral-text)}
+  .bigcta p{max-width:36ch;margin-inline:auto;color:var(--ink-soft);font-size:1.12rem;font-weight:500;margin-bottom:30px}
+  .bigcta__cta{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+  .bigcta__blob{position:absolute;width:300px;height:300px;border-radius:50%;background:var(--blush);opacity:.4;filter:blur(8px);z-index:-1}
+  .bigcta__blob.l{left:-120px;top:20%}
+  .bigcta__blob.r{right:-120px;bottom:10%;background:var(--mint);opacity:.3}
+
+  /* ============== FOOTER ============== */
+  footer.foot{background:var(--ink);color:var(--cream);border-top:var(--border);padding-block:46px 30px}
+  .foot__grid{display:grid;gap:30px;grid-template-columns:1fr}
+  @media(min-width:720px){.foot__grid{grid-template-columns:1.4fr 1fr 1fr}}
+  .foot .brand{color:var(--cream);margin-bottom:14px}
+  .foot__about{color:color-mix(in srgb,var(--cream) 72%,transparent);max-width:34ch;font-size:.95rem}
+  .foot h4{font-weight:800;font-size:.95rem;margin-bottom:14px;color:var(--gold);letter-spacing:.04em}
+  .foot ul{list-style:none;display:grid;gap:2px}
+  .foot ul a{display:inline-flex;align-items:center;min-height:44px;
+    color:color-mix(in srgb,var(--cream) 80%,transparent);font-weight:500;transition:color .2s,padding-left .2s}
+  .foot ul a:hover{color:var(--gold);padding-left:5px}
+  .foot__bottom{margin-top:36px;padding-top:22px;border-top:2px solid rgba(255,244,242,.14);
+    display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;
+    color:color-mix(in srgb,var(--cream) 60%,transparent);font-size:.85rem;font-weight:500}
+  .foot__bottom .heart{color:var(--coral)}
+
+  /* reveal-on-scroll */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ============== REDUCED MOTION ============== */
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
+      transition-duration:.001ms!important;scroll-behavior:auto!important}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+<script src="/abra-demos/analytics.js" defer></script>
+</head>
+<body>
+
+<a class="skip" href="#top">გადასვლა მთავარ კონტენტზე</a>
+<div class="demo-badge" aria-label="დემო ვერსია">დემო ვერსია</div>
+
+<!-- ===== KINETIC MARQUEE ===== -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>თმა · ფრჩხილები · წამწამები</span>
+    <span>მაკიაჟი ნებისმიერ შემთხვევაზე</span>
+    <span>სახის მოვლა</span>
+    <span>თბილისის გული</span>
+    <span>ჩაწერა WhatsApp-ით</span>
+    <span>თმა · ფრჩხილები · წამწამები</span>
+    <span>მაკიაჟი ნებისმიერ შემთხვევაზე</span>
+    <span>სახის მოვლა</span>
+    <span>თბილისის გული</span>
+    <span>ჩაწერა WhatsApp-ით</span>
+  </div>
+</div>
+
+<!-- ===== NAV ===== -->
+<header class="nav">
+  <div class="wrap nav__bar">
+    <a href="#top" class="brand" aria-label="Sisters Beauty — მთავარი">
+      <span class="mark" aria-hidden="true">S</span>
+      Sisters<span style="color:var(--coral-text)">.</span>
+    </a>
+    <nav class="nav__links" aria-label="მთავარი ნავიგაცია">
+      <a href="#about">ჩვენ შესახებ</a>
+      <a href="#services">სერვისები</a>
+      <a href="#gallery">გალერეა</a>
+      <a href="#visit">ვიზიტი</a>
+    </nav>
+    <a class="nav__cta" href="https://wa.me/995551467711" target="_blank" rel="noopener">
+      <span aria-hidden="true">✦</span> ჩაწერა
+    </a>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<main id="top">
+<section class="hero">
+  <span class="hero__blob blob-a" aria-hidden="true"></span>
+  <span class="hero__blob blob-b" aria-hidden="true"></span>
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <span class="eyebrow">სილამაზის სალონი · თბილისი</span>
+      <h1>
+        <span class="wink">სილამაზე</span>,<br>
+        რომელიც <span class="draw">გიხდება</span>.
+      </h1>
+      <p class="lead">Sisters Beauty — თმა, ფრჩხილები, წამწამები და მაკიაჟი ერთ მხიარულ, მყუდრო სივრცეში. შემოგვიარეთ და წადით განახლებული.</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="https://wa.me/995551467711" target="_blank" rel="noopener"><span aria-hidden="true">✦</span> ჩაწერა WhatsApp-ით</a>
+        <a class="btn btn--ghost" href="#services"><span aria-hidden="true">✶</span> სერვისები</a>
+      </div>
+      <div class="rating" role="img" aria-label="გუგლის შეფასება 4.4 ვარსკვლავი 26 შეფასებიდან">
+        <span class="stars" aria-hidden="true">★★★★½</span>
+        <span><b>4.4</b> Google</span>
+        <span class="pill">26 შეფასება</span>
+      </div>
+    </div>
+
+    <div class="hero__art">
+      <div class="stamp hero__stamp" aria-hidden="true">
+        <span><small>4.4★</small>26<br>შეფასება</span>
+      </div>
+      <div class="hero__frame">
+        <img src="../assets/photo1.jpg" alt="Sisters Beauty-ის სილამაზის სალონის ინტერიერი თბილისში" loading="eager" fetchpriority="high" decoding="async" width="900" height="900">
+      </div>
+      <div class="hero__chip chip-1"><span class="dot" aria-hidden="true"></span> ჩაწერა ღიაა</div>
+      <div class="hero__chip chip-2"><span aria-hidden="true">✨</span> სრული მოვლა</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STAT STRIP ===== -->
+<section class="strip" aria-label="ფაქტები">
+  <div class="wrap strip__grid">
+    <div class="stat reveal"><div class="n">4.4★</div><div class="l">Google შეფასება</div></div>
+    <div class="stat reveal"><div class="n">26</div><div class="l">სტუმრის შეფასება</div></div>
+    <div class="stat reveal"><div class="n">5+</div><div class="l">სილამაზის სერვისი</div></div>
+    <div class="stat reveal"><div class="n">1</div><div class="l">მყუდრო სალონი თბილისში</div></div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="sec" id="about">
+  <div class="wrap about__grid">
+    <div class="about__media reveal">
+      <div class="photo">
+        <img src="../assets/photo2.jpg" alt="Sisters Beauty-ის სალონის ინტერიერი და სამუშაო სივრცე" loading="lazy" width="900" height="1100">
+      </div>
+      <div class="mini">
+        <img src="../assets/photo4.jpg" alt="მოვლის დეტალი Sisters Beauty-ში" loading="lazy" width="500" height="500">
+      </div>
+    </div>
+    <div class="about__copy">
+      <span class="eyebrow">ჩვენი ამბავი</span>
+      <h2>პატარა სალონი <em>დიდი</em> ზრუნვით</h2>
+      <p class="lede">ჩვენ გვჯერა, რომ სილამაზე უნდა იყოს მხიარული რიტუალი — ისეთი, რომელიც განწყობას მატებს და თავდაჯერებას ანიჭებს.</p>
+      <p>Sisters Beauty-ში თმა, ფრჩხილები, წამწამები და მაკიაჟი ერთ სივრცეშია გაერთიანებული. გვინდა, რომ ყოველი ვიზიტი მსუბუქი, სასიამოვნო და უსაფრთხო იყოს.</p>
+      <p>სუფთა გარემო, ყურადღებიანი მიდგომა და დეტალებზე ზრუნვა — შემოგვიარეთ და დარჩით ცოტა ხნით.</p>
+      <div class="tags">
+        <span class="sticker">✦ ყურადღებიანი მიდგომა</span>
+        <span class="sticker sticker--sun">✨ სრული მოვლა</span>
+        <span class="sticker sticker--mint">♥ მყუდრო გარემო</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="sec services" id="services">
+  <div class="wrap">
+    <div class="sec__head center">
+      <span class="eyebrow" style="justify-content:center">რას შემოგთავაზებთ</span>
+      <h2>ჩვენი <em>სერვისები</em></h2>
+      <p>თითო პროცედურა ყურადღებითა და სიყვარულით სრულდება. ზუსტი ფასები — სალონში.</p>
+    </div>
+    <div class="services__grid">
+      <article class="card reveal">
+        <div class="card__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0-6 6c0 3 2 5 2 8h8c0-3 2-5 2-8a6 6 0 0 0-6-6Z"/><path d="M9 21h6"/></svg></div>
+        <h3>თმის შეჭრა &amp; სტაილინგი</h3>
+        <p>შეჭრა, ფენი და ფორმის მიცემა, რომელიც თქვენს სახესა და სტილს უხდება.</p>
+      </article>
+      <article class="card reveal">
+        <div class="card__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 11l5-7 9 4-3 9-7 1-4-7Z"/><path d="M10 4l2 7"/></svg></div>
+        <h3>შეღებვა &amp; ტონირება</h3>
+        <p>ფერის შერჩევა და დატანა გულდასმით, თმის სიჯანსაღის გათვალისწინებით.</p>
+      </article>
+      <article class="card reveal">
+        <div class="card__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4c0-1 1-1 2-1s2 0 2 1v9a4 4 0 1 1-6 0V8"/></svg></div>
+        <h3>მანიკიური &amp; პედიკიური</h3>
+        <p>მოვლა, ფორმა და ფერი — გელ-ლაქის ჩათვლით, სუფთად შესრულებული.</p>
+      </article>
+      <article class="card reveal">
+        <div class="card__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12s3-5 9-5 9 5 9 5-3 5-9 5-9-5-9-5Z"/><circle cx="12" cy="12" r="2"/></svg></div>
+        <h3>წამწამები &amp; წარბები</h3>
+        <p>წამწამების დაგრძელება და წარბების კორექცია გამოკვეთილი მზერისთვის.</p>
+      </article>
+      <article class="card reveal">
+        <div class="card__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l2.2 5.5L20 9l-4.5 3.6L17 19l-5-3.2L7 19l1.5-6.4L4 9l5.8-.5L12 3Z"/></svg></div>
+        <h3>მაკიაჟი</h3>
+        <p>დღის ან საღამოს მაკიაჟი ნებისმიერი შემთხვევისთვის — ბუნებრივიდან გამოკვეთილამდე.</p>
+      </article>
+      <article class="card reveal">
+        <div class="card__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 14s1.2 1.5 3 1.5S15 14 15 14"/><path d="M9 9h.01M15 9h.01"/></svg></div>
+        <h3>სახის მოვლა</h3>
+        <p>დამატენიანებელი და გამაახალგაზრდავებელი პროცედურები მოსვენებული კანისთვის.</p>
+      </article>
+    </div>
+    <p class="services__note">ალტერნატიული დრო, კონკრეტული სერვისი თუ შეკითხვა? <b>მოგვწერეთ — სიამოვნებით დაგეხმარებით.</b></p>
+  </div>
+</section>
+
+<!-- ===== SIGNATURE FEATURE ===== -->
+<section class="sec feature">
+  <div class="wrap">
+    <div class="feature__inner reveal">
+      <div class="feature__copy">
+        <span class="sticker sticker--sun" style="margin-bottom:18px">✨ ერთ ადგილას</span>
+        <h2>თქვენი <em>სრული</em> სილამაზის დღე</h2>
+        <p>თმა, ფრჩხილები, წამწამები და მაკიაჟი — ყველაფერი ერთ ვიზიტში. დაგვიკავშირდით, შეგირჩევთ მოსახერხებელ დროს და დაგეგმავთ თქვენთვის სასურველ პროცედურებს.</p>
+        <a class="btn btn--ink" href="https://wa.me/995551467711" target="_blank" rel="noopener"><span aria-hidden="true">💬</span> დაჯავშნე ვიზიტი</a>
+      </div>
+      <div class="feature__media">
+        <div class="stamp" aria-hidden="true"><span><small>★</small>ერთ<br>სივრცეში</span></div>
+        <div class="ph">
+          <img src="../assets/photo3.jpg" alt="Sisters Beauty-ში მოვლის პროცესი" loading="lazy" width="600" height="800">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section class="sec" id="gallery">
+  <div class="wrap">
+    <div class="sec__head center">
+      <span class="eyebrow" style="justify-content:center">ერთი შეხედვით</span>
+      <h2>ჩვენი <em>სივრცე</em></h2>
+      <p>ატმოსფერო, რომელსაც ფოტოზეც გრძნობ.</p>
+    </div>
+    <div class="gallery__grid">
+      <figure class="g-tall">
+        <img src="../assets/photo1.jpg" alt="Sisters Beauty-ის სალონის ინტერიერი" loading="lazy" width="600" height="800">
+        <figcaption>ჩვენი სალონი</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/photo3.jpg" alt="მოვლის სამუშაო ადგილი Sisters Beauty-ში" loading="lazy" width="400" height="300">
+        <figcaption>სამუშაო ადგილი</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/photo5.jpg" alt="Sisters Beauty-ის სალონის კუთხე" loading="lazy" width="400" height="300">
+        <figcaption>მყუდრო კუთხე</figcaption>
+      </figure>
+      <figure class="g-wide">
+        <img src="../assets/photo2.jpg" alt="Sisters Beauty-ის ინტერიერი და სამუშაო სივრცე" loading="lazy" width="800" height="400">
+        <figcaption>ინტერიერი</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/photo4.jpg" alt="მოვლის დეტალი Sisters Beauty-ში" loading="lazy" width="400" height="300">
+        <figcaption>დეტალები</figcaption>
+      </figure>
+      <figure class="g-wide">
+        <img src="../assets/photo6.jpg" alt="Sisters Beauty-ის სალონის სივრცე თბილისში" loading="lazy" width="800" height="400">
+        <figcaption>გვესტუმრეთ</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VISIT (HOURS + CONTACT) ===== -->
+<section class="sec visit" id="visit">
+  <div class="wrap visit__grid">
+    <div>
+      <span class="eyebrow" style="color:var(--gold)">სამუშაო საათები</span>
+      <h2>გვესტუმრეთ <em>თბილისში</em></h2>
+      <p style="color:color-mix(in srgb,var(--cream) 78%,transparent);margin-bottom:26px;font-weight:500">საათები მითითებულია ზოგადად — ვიზიტამდე გთხოვთ დაგვირეკოთ ან მოგვწეროთ.</p>
+      <div class="hours" id="hours">
+        <div class="hours__row" data-day="1"><span class="day">ორშაბათი</span><span class="time">10:00 – 20:00</span></div>
+        <div class="hours__row" data-day="2"><span class="day">სამშაბათი</span><span class="time">10:00 – 20:00</span></div>
+        <div class="hours__row" data-day="3"><span class="day">ოთხშაბათი</span><span class="time">10:00 – 20:00</span></div>
+        <div class="hours__row" data-day="4"><span class="day">ხუთშაბათი</span><span class="time">10:00 – 20:00</span></div>
+        <div class="hours__row" data-day="5"><span class="day">პარასკევი</span><span class="time">10:00 – 20:00</span></div>
+        <div class="hours__row" data-day="6"><span class="day">შაბათი</span><span class="time">10:00 – 20:00</span></div>
+        <div class="hours__row" data-day="0"><span class="day">კვირა</span><span class="time">შეთანხმებით</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="contact__card reveal">
+        <h3>დაგვიკავშირდით 👋</h3>
+        <p class="sub">გაქვთ შეკითხვა ან გსურთ ვიზიტის დაჯავშნა? ერთ შეტყობინებაშია.</p>
+        <div class="contact__list">
+          <a class="contact__item" href="https://wa.me/995551467711" target="_blank" rel="noopener">
+            <span class="ci" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-11.6 7.1L4 20l1.4-4.3A8 8 0 1 1 20 11.5Z" stroke-linejoin="round"/></svg></span>
+            <span>WhatsApp<small>მოგვწერეთ — სწრაფად ვპასუხობთ</small></span>
+          </a>
+          <a class="contact__item" href="tel:+995551467711">
+            <span class="ci" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" stroke-linejoin="round"/></svg></span>
+            <span>551 46 77 11<small>დაგვირეკეთ პირდაპირ</small></span>
+          </a>
+          <div class="contact__item">
+            <span class="ci" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span>თბილისი<small>საქართველო</small></span>
+          </div>
+        </div>
+        <div class="contact__cta">
+          <a class="btn btn--primary" href="https://wa.me/995551467711" target="_blank" rel="noopener"><span aria-hidden="true">✦</span> WhatsApp</a>
+          <a class="btn btn--sun" href="tel:+995551467711"><span aria-hidden="true">☎</span> დარეკვა</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BIG CTA ===== -->
+<section class="bigcta">
+  <span class="bigcta__blob l" aria-hidden="true"></span>
+  <span class="bigcta__blob r" aria-hidden="true"></span>
+  <div class="wrap">
+    <h2>მზად ხართ <span class="u">განახლებისთვის?</span></h2>
+    <p>დაჯავშნეთ ვიზიტი Sisters Beauty-ში და მიეცით თავს ცოტა ზრუნვა.</p>
+    <div class="bigcta__cta">
+      <a class="btn btn--primary" href="https://wa.me/995551467711" target="_blank" rel="noopener"><span aria-hidden="true">💬</span> მოგვწერეთ WhatsApp-ზე</a>
+      <a class="btn btn--ink" href="tel:+995551467711"><span aria-hidden="true">📞</span> 551 46 77 11</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div>
+        <a href="#top" class="brand"><span class="mark" aria-hidden="true">S</span> Sisters<span style="color:var(--coral-text)">.</span></a>
+        <p class="foot__about">სილამაზის სალონი თბილისში — თმა, ფრჩხილები, წამწამები და მაკიაჟი ერთ მყუდრო სივრცეში.</p>
+        <div class="rating" style="margin-top:18px" role="img" aria-label="გუგლის შეფასება 4.4 ვარსკვლავი 26 შეფასებიდან">
+          <span class="stars" aria-hidden="true">★★★★½</span>
+          <span><b>4.4</b></span>
+          <span class="pill">26 შეფასება</span>
+        </div>
+      </div>
+      <div>
+        <h4>ნავიგაცია</h4>
+        <ul>
+          <li><a href="#about">ჩვენ შესახებ</a></li>
+          <li><a href="#services">სერვისები</a></li>
+          <li><a href="#gallery">გალერეა</a></li>
+          <li><a href="#visit">ვიზიტი &amp; საათები</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>კონტაქტი</h4>
+        <ul>
+          <li><a href="https://wa.me/995551467711" target="_blank" rel="noopener">WhatsApp ჩატი</a></li>
+          <li><a href="tel:+995551467711">551 46 77 11</a></li>
+          <li><a href="#visit">სამუშაო საათები</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <span>© 2026 Sisters Beauty · ყველა უფლება დაცულია</span>
+      <span>შექმნილია <span class="heart" aria-hidden="true">♥</span>-ით თბილისში</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ----- highlight today's hours ----- */
+  try{
+    var today = new Date().getDay(); // 0=Sun..6=Sat
+    var row = document.querySelector('.hours__row[data-day="'+today+'"]');
+    if(row){
+      row.classList.add('today');
+      var badge = document.createElement('span');
+      badge.className='badge-now';
+      badge.textContent='დღეს';
+      row.querySelector('.day').appendChild(badge);
+    }
+  }catch(e){}
+
+  /* ----- reveal on scroll ----- */
+  var els = document.querySelectorAll('.reveal');
+  if(reduce || !('IntersectionObserver' in window)){
+    els.forEach(function(el){el.classList.add('in');});
+  }else{
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    },{threshold:.16, rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(el){io.observe(el);});
+  }
+
+  /* ----- gentle parallax tilt on hero frame (pointer, desktop only) ----- */
+  if(!reduce && window.matchMedia('(pointer:fine)').matches){
+    var frame = document.querySelector('.hero__frame');
+    var art = document.querySelector('.hero__art');
+    if(frame && art){
+      art.addEventListener('mousemove', function(e){
+        var r = art.getBoundingClientRect();
+        var x = (e.clientX - r.left)/r.width - .5;
+        var y = (e.clientY - r.top)/r.height - .5;
+        frame.style.transform = 'rotate(0deg) scale(1.01) rotateY('+(x*7)+'deg) rotateX('+(-y*7)+'deg)';
+      });
+      art.addEventListener('mouseleave', function(){ frame.style.transform = ''; });
+    }
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex" />
+<title>Beauty salon Lady Mara — სილამაზის სალონი თბილისში</title>
+<meta name="description" content="Beauty salon Lady Mara — ნათელი, თანამედროვე სილამაზის სალონი თბილისში. თმა, მაკიაჟი, ფრჩხილები, სახის მოვლა. ★ 4.7 · 69 შეფასება." />
+<meta name="theme-color" content="#fff4f7" />
+
+<meta property="og:title" content="Beauty salon Lady Mara — სილამაზის სალონი" />
+<meta property="og:description" content="ნათელი და თანამედროვე მოვლის სივრცე თბილისში — თმა, მაკიაჟი, ფრჩხილები, სახის მოვლა." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700;800&family=Noto+Serif+Georgian:opsz,wght@8..144,500;8..144,600;8..144,700&display=swap" rel="stylesheet" />
+
+<style>
+  /* ============================================================
+     BEAUTY SALON LADY MARA — Variant 4 · Fresh / Modern / Bright
+     Single-file static page. All copy in Georgian. Real data only.
+     Soft blush + rose + mint + peach on a light canvas.
+     ============================================================ */
+
+  :root{
+    --bg:        #fff6f8;   /* warm blush canvas */
+    --bg-2:      #ffeef3;   /* soft panel */
+    --bg-3:      #ffffff;   /* card / surface */
+    --ink:       #2c1f2a;   /* plum-ink text (high contrast) */
+    --ink-soft:  #6b5560;   /* secondary text */
+    --muted:     #9a8690;   /* tertiary */
+
+    --rose:      #e86a8e;   /* primary accent (decorative fills) */
+    --rose-btn:  #d23d6a;   /* AA-safe rose for white text */
+    --rose-text: #c23560;   /* AA-safe rose for text on light */
+    --peach:     #ffb38a;   /* warm peach */
+    --mint:      #7fd1c1;   /* fresh mint (decorative) */
+    --mint-deep: #2f9685;   /* AA-safe mint text */
+    --gold:      #e8b96a;   /* soft gold detail */
+    --lilac:     #b89bef;   /* playful lilac pop */
+
+    --radius:    26px;
+    --radius-lg: 40px;
+    --shadow-sm: 0 10px 24px -16px rgba(124,52,80,.45);
+    --shadow:    0 26px 60px -30px rgba(124,52,80,.45);
+    --shadow-pop:0 30px 64px -28px rgba(124,52,80,.45);
+    --ring:      1px solid rgba(124,52,80,.10);
+    --ease:      cubic-bezier(.34,1.56,.64,1);   /* springy */
+    --ease-out:  cubic-bezier(.16,1,.3,1);
+
+    --maxw: 1200px;
+    --gut: clamp(18px,5vw,44px);
+    --sans:  "Noto Sans Georgian", system-ui, -apple-system, sans-serif;
+    --serif: "Noto Serif Georgian", Georgia, serif;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+  body{
+    font-family:var(--sans);
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.58;
+    font-size:clamp(15px,1.05vw,17px);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  img{ display:block; max-width:100%; }
+  a{ color:inherit; text-decoration:none; }
+  button{ font-family:inherit; cursor:pointer; }
+  h1,h2,h3,h4{ margin:0; line-height:1.06; }
+  ::selection{ background:var(--rose); color:#fff; }
+
+  a:focus-visible, button:focus-visible{ outline:3px solid var(--lilac); outline-offset:3px; border-radius:10px; }
+
+  .wrap{ width:100%; max-width:var(--maxw); margin-inline:auto; padding-inline:var(--gut); }
+
+  /* skip link */
+  .skip{
+    position:absolute; left:14px; top:-60px; z-index:200;
+    background:var(--rose-btn); color:#fff; padding:12px 18px; border-radius:12px; font-weight:700;
+    transition:top .2s var(--ease);
+  }
+  .skip:focus{ top:14px; }
+
+  /* DEMO badge (fixed) */
+  .demo-badge{
+    position:fixed; left:14px; bottom:14px; z-index:160;
+    display:inline-flex; align-items:center; gap:8px;
+    background:#fff; color:var(--rose-text); border:1px solid rgba(124,52,80,.14);
+    padding:8px 15px; border-radius:999px;
+    font-size:.72rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase;
+    box-shadow:var(--shadow-sm);
+  }
+  .demo-badge::before{ content:""; width:8px; height:8px; border-radius:50%; background:var(--mint); }
+
+  /* ============== KICKER / EYEBROW ============== */
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:9px;
+    font-weight:800; color:var(--mint-deep);
+    letter-spacing:.12em; text-transform:uppercase; font-size:.8rem; margin-bottom:16px;
+  }
+  .eyebrow::before{ content:""; width:28px; height:3px; background:var(--rose); border-radius:3px; }
+  .eyebrow.center{ justify-content:center; }
+
+  /* ============== BUTTONS ============== */
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:10px;
+    font-weight:700; font-size:1rem; min-height:52px; padding:14px 28px;
+    border-radius:999px; border:1px solid transparent;
+    transition:transform .22s var(--ease), box-shadow .22s var(--ease), background .25s var(--ease), color .25s var(--ease);
+    box-shadow:var(--shadow-sm);
+  }
+  .btn--primary{ background:var(--rose-btn); color:#fff; }
+  .btn--peach{ background:linear-gradient(120deg,var(--peach),#ffd0a8); color:var(--ink); }
+  .btn--ink{ background:var(--ink); color:#fff; }
+  .btn--ghost{ background:#fff; color:var(--ink); border-color:rgba(124,52,80,.16); }
+  .btn:hover{ transform:translateY(-4px); box-shadow:var(--shadow); }
+  .btn:active{ transform:translateY(-1px); }
+  @media (prefers-reduced-motion: reduce){ .btn:hover,.btn:active{ transform:none; } }
+
+  /* ============== PILL / STICKER ============== */
+  .pill{
+    display:inline-flex; align-items:center; gap:8px;
+    background:#fff; border:var(--ring); border-radius:999px;
+    padding:9px 16px; font-weight:700; font-size:.85rem; box-shadow:var(--shadow-sm);
+  }
+  .pill--rose{ background:#ffe3ec; color:var(--rose-text); border-color:transparent; }
+  .pill--mint{ background:#ddf3ee; color:var(--mint-deep); border-color:transparent; }
+  .pill--peach{ background:#ffe7d6; color:#9a5a2a; border-color:transparent; }
+
+  /* ============== TOP RIBBON ============== */
+  .ribbon{
+    background:linear-gradient(90deg,var(--rose),var(--lilac));
+    color:#fff; overflow:hidden; white-space:nowrap;
+    padding-block:10px; position:relative; z-index:60;
+  }
+  .ribbon__track{ display:inline-flex; gap:0; animation:slide 30s linear infinite; will-change:transform; }
+  .ribbon span{ font-weight:700; font-size:.9rem; letter-spacing:.04em; padding-inline:24px; display:inline-flex; align-items:center; gap:24px; }
+  .ribbon span::after{ content:"✦"; color:#fff; opacity:.85; }
+  @keyframes slide{ to{ transform:translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce){ .ribbon__track{ animation:none; } }
+
+  /* ============== NAV ============== */
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:color-mix(in srgb, var(--bg) 84%, transparent);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(124,52,80,.08);
+  }
+  .nav__bar{ display:flex; align-items:center; justify-content:space-between; gap:18px; padding-block:13px; }
+  .brand{ display:flex; align-items:center; gap:11px; font-family:var(--serif); font-weight:700; font-size:1.24rem; letter-spacing:-.01em; }
+  .brand .mark{
+    width:44px; height:44px; border-radius:52% 48% 50% 50% / 50% 50% 52% 48%;
+    background:linear-gradient(135deg,var(--rose),var(--peach)); color:#fff;
+    display:grid; place-items:center; font-family:var(--serif); font-size:1rem; font-weight:700;
+    transform:rotate(-6deg); transition:transform .4s var(--ease); flex:0 0 auto;
+    box-shadow:0 8px 22px -10px rgba(216,61,106,.7);
+  }
+  .brand:hover .mark{ transform:rotate(6deg) scale(1.06); }
+  .brand small{ display:block; font-family:var(--sans); font-size:.56rem; font-weight:700; letter-spacing:.28em; text-transform:uppercase; color:var(--rose-text); margin-top:1px; }
+  .nav__links{ display:none; gap:30px; font-weight:600; }
+  .nav__links a{ position:relative; padding-block:4px; color:var(--ink-soft); transition:color .25s var(--ease); }
+  .nav__links a::after{ content:""; position:absolute; left:0; right:100%; bottom:-2px; height:3px; background:var(--rose); border-radius:3px; transition:right .3s var(--ease); }
+  .nav__links a:hover{ color:var(--ink); }
+  .nav__links a:hover::after{ right:0; }
+  .nav__right{ display:flex; align-items:center; gap:12px; }
+  @media(min-width:920px){ .nav__links{ display:flex; } }
+
+  /* hamburger */
+  .burger{ display:inline-flex; width:46px; height:46px; background:#fff; border:var(--ring); border-radius:14px; padding:0; align-items:center; justify-content:center; flex-direction:column; gap:5px; box-shadow:var(--shadow-sm); }
+  .burger span{ width:20px; height:2px; background:var(--ink); border-radius:2px; transition:.3s var(--ease); }
+  .burger[aria-expanded="true"] span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .burger[aria-expanded="true"] span:nth-child(2){ opacity:0; }
+  .burger[aria-expanded="true"] span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+  @media(min-width:920px){ .burger{ display:none; } }
+
+  .mobile-menu{
+    position:fixed; inset:0 0 0 auto; width:min(82vw,340px);
+    background:var(--bg-3); z-index:99; border-left:1px solid rgba(124,52,80,.10);
+    transform:translateX(100%); transition:transform .45s var(--ease-out);
+    padding:96px var(--gut) 40px; display:flex; flex-direction:column; gap:4px;
+    box-shadow:-30px 0 60px -30px rgba(124,52,80,.4);
+  }
+  .mobile-menu.open{ transform:translateX(0); }
+  .mobile-menu a{ font-family:var(--serif); font-size:1.4rem; font-weight:600; padding:13px 0; border-bottom:1px solid rgba(124,52,80,.08); }
+  .mobile-menu a:hover{ color:var(--rose-text); }
+  .mobile-menu .btn{ margin-top:22px; }
+  .scrim{ position:fixed; inset:0; background:rgba(44,31,42,.4); z-index:98; opacity:0; visibility:hidden; transition:.4s var(--ease); backdrop-filter:blur(2px); }
+  .scrim.show{ opacity:1; visibility:visible; }
+
+  /* ============== HERO ============== */
+  .hero{ position:relative; padding-top:clamp(34px,6vw,68px); padding-bottom:clamp(44px,7vw,92px); overflow:hidden; }
+  .hero__blob{ position:absolute; z-index:0; border-radius:46% 54% 60% 40% / 52% 44% 56% 48%; filter:blur(6px); opacity:.55; pointer-events:none; }
+  .blob-a{ width:360px; height:360px; background:var(--peach); top:-90px; right:-90px; animation:morph 16s ease-in-out infinite; }
+  .blob-b{ width:300px; height:300px; background:var(--mint); bottom:-120px; left:-120px; opacity:.4; animation:morph 20s ease-in-out infinite reverse; }
+  .blob-c{ width:220px; height:220px; background:var(--lilac); top:40%; left:42%; opacity:.18; animation:morph 24s ease-in-out infinite; }
+  @keyframes morph{ 0%,100%{ border-radius:46% 54% 60% 40% / 52% 44% 56% 48%; } 50%{ border-radius:60% 40% 42% 58% / 44% 58% 42% 56%; } }
+  @media (prefers-reduced-motion: reduce){ .hero__blob{ animation:none; } }
+
+  .hero__grid{ position:relative; z-index:2; display:grid; gap:clamp(28px,5vw,52px); align-items:center; }
+  @media(min-width:900px){ .hero__grid{ grid-template-columns:1.04fr .96fr; } }
+
+  .hero h1{
+    font-family:var(--serif); font-weight:700;
+    font-size:clamp(2.8rem,8vw,5.4rem); line-height:.98; letter-spacing:-.02em; margin-bottom:20px;
+  }
+  .hero h1 .wink{ color:var(--rose-text); position:relative; display:inline-block; }
+  .hero h1 .wink::after{ content:""; position:absolute; left:1%; right:1%; bottom:.06em; height:.16em; background:var(--peach); z-index:-1; border-radius:6px; transform:rotate(-1.1deg); opacity:.8; }
+  .hero h1 .draw{ color:var(--mint-deep); font-style:italic; }
+  .hero p.lead{ font-size:clamp(1.04rem,2.2vw,1.26rem); max-width:38ch; color:var(--ink-soft); margin-bottom:28px; font-weight:500; }
+  .hero__cta{ display:flex; flex-wrap:wrap; gap:14px; margin-bottom:28px; }
+
+  .rating{
+    display:inline-flex; align-items:center; gap:13px; background:#fff;
+    border:var(--ring); border-radius:999px; padding:9px 9px 9px 18px; box-shadow:var(--shadow-sm); max-width:max-content;
+  }
+  .rating .stars{ color:var(--gold); font-size:1.05rem; letter-spacing:1px; }
+  .rating b{ font-weight:800; }
+  .rating .rpill{ background:var(--ink); color:#fff; font-weight:700; font-size:.78rem; padding:6px 13px; border-radius:999px; }
+
+  /* hero photo cluster */
+  .hero__art{ position:relative; justify-self:center; width:100%; max-width:480px; }
+  .hero__frame{
+    position:relative; border:6px solid #fff; border-radius:50% 50% 48% 52% / 46% 50% 50% 54%;
+    overflow:hidden; background:var(--bg-2); box-shadow:var(--shadow-pop);
+    aspect-ratio:1/1; transform:rotate(-2deg); transition:transform .5s var(--ease);
+  }
+  .hero__frame img{ width:100%; height:100%; object-fit:cover; }
+  .hero__art:hover .hero__frame{ transform:rotate(0deg) scale(1.01); }
+  .hero__chip{
+    position:absolute; background:#fff; border:var(--ring); border-radius:18px;
+    padding:11px 15px; box-shadow:var(--shadow-pop); font-weight:700; font-size:.85rem; z-index:6;
+    display:flex; align-items:center; gap:9px;
+  }
+  .hero__chip .dot{ width:11px; height:11px; border-radius:50%; background:var(--mint); box-shadow:0 0 0 4px color-mix(in srgb,var(--mint) 30%,transparent); }
+  .chip-1{ top:6%; left:-5%; transform:rotate(-6deg); animation:float 5.2s ease-in-out infinite; --r:-6deg; }
+  .chip-2{ bottom:8%; right:-6%; transform:rotate(6deg); background:#fff; animation:float 6.4s ease-in-out infinite; --r:6deg; }
+  @keyframes float{ 0%,100%{ transform:translateY(0) rotate(var(--r,-6deg)); } 50%{ transform:translateY(-12px) rotate(var(--r,-6deg)); } }
+  @media (prefers-reduced-motion: reduce){ .hero__chip{ animation:none; } }
+  .hero__stamp{
+    position:absolute; top:-22px; right:6%; width:118px; height:118px; border-radius:50%;
+    background:linear-gradient(135deg,var(--gold),var(--peach)); color:var(--ink);
+    display:grid; place-content:center; text-align:center; font-weight:800; font-size:.74rem; line-height:1.25;
+    box-shadow:var(--shadow-pop); z-index:5; animation:wobble 7s ease-in-out infinite;
+  }
+  .hero__stamp small{ display:block; font-family:var(--serif); font-size:1.6rem; line-height:1; }
+  @keyframes wobble{ 0%,100%{ transform:rotate(-8deg); } 50%{ transform:rotate(6deg); } }
+  @media (prefers-reduced-motion: reduce){ .hero__stamp{ animation:none; } }
+
+  /* ============== STAT STRIP ============== */
+  .strip{ background:linear-gradient(120deg,var(--ink),#3d2b3a); color:#fff; padding-block:clamp(30px,5vw,46px); }
+  .strip__grid{ display:grid; gap:24px; grid-template-columns:repeat(2,1fr); text-align:center; }
+  @media(min-width:760px){ .strip__grid{ grid-template-columns:repeat(4,1fr); } }
+  .stat .n{ font-family:var(--serif); font-weight:700; font-size:clamp(2rem,5vw,2.9rem); line-height:1; color:var(--peach); }
+  .stat:nth-child(2) .n{ color:var(--rose); }
+  .stat:nth-child(3) .n{ color:var(--mint); }
+  .stat:nth-child(4) .n{ color:var(--gold); }
+  .stat .l{ font-weight:500; font-size:.9rem; color:rgba(255,255,255,.82); margin-top:6px; }
+
+  /* ============== SECTION HEADERS ============== */
+  .sec{ padding-block:clamp(56px,9vw,108px); position:relative; }
+  .sec__head{ max-width:640px; margin-bottom:clamp(34px,5vw,56px); }
+  .sec__head.center{ margin-inline:auto; text-align:center; }
+  .sec h2{ font-family:var(--serif); font-weight:700; font-size:clamp(2.1rem,5.4vw,3.4rem); line-height:1.04; letter-spacing:-.02em; margin-block:12px; }
+  .sec h2 em{ font-style:italic; color:var(--rose-text); }
+  .sec__head p{ color:var(--ink-soft); font-size:1.06rem; font-weight:500; }
+  .sec__head.center p{ margin-inline:auto; }
+
+  /* ============== ABOUT ============== */
+  .about__grid{ display:grid; gap:clamp(30px,5vw,60px); align-items:center; }
+  @media(min-width:880px){ .about__grid{ grid-template-columns:1fr 1fr; } }
+  .about__media{ position:relative; }
+  .about__media .photo{
+    border:6px solid #fff; border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow);
+    aspect-ratio:4/5; transform:rotate(1.5deg); transition:transform .5s var(--ease);
+  }
+  .about__media .photo img{ width:100%; height:100%; object-fit:cover; }
+  .about__media:hover .photo{ transform:rotate(0); }
+  .about__media .mini{
+    position:absolute; bottom:-22px; left:-18px; width:46%; aspect-ratio:1/1;
+    border:5px solid #fff; border-radius:24px; overflow:hidden; box-shadow:var(--shadow-pop);
+    transform:rotate(-5deg); background:var(--bg-2);
+  }
+  .about__media .mini img{ width:100%; height:100%; object-fit:cover; }
+  .about__media .blob-tag{ position:absolute; top:-18px; right:-10px; }
+  .about__copy .lede{ font-family:var(--serif); font-weight:600; font-size:clamp(1.3rem,3vw,1.65rem); line-height:1.32; margin-bottom:16px; }
+  .about__copy p{ color:var(--ink-soft); margin-bottom:14px; }
+  .tags{ display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
+
+  /* ============== SERVICES ============== */
+  .services{ background:var(--bg-2); }
+  .services__grid{ display:grid; gap:20px; }
+  @media(min-width:680px){ .services__grid{ grid-template-columns:repeat(2,1fr); } }
+  @media(min-width:1000px){ .services__grid{ grid-template-columns:repeat(3,1fr); } }
+  .card{
+    background:var(--bg-3); border:var(--ring); border-radius:var(--radius);
+    padding:28px 26px; box-shadow:var(--shadow-sm); position:relative;
+    transition:transform .35s var(--ease), box-shadow .35s var(--ease); overflow:hidden;
+  }
+  .card:hover{ transform:translateY(-8px); box-shadow:var(--shadow); }
+  .card__ico{
+    width:62px; height:62px; border-radius:54% 46% 50% 50% / 50% 50% 54% 46%;
+    display:grid; place-items:center; margin-bottom:18px; transition:transform .4s var(--ease); color:#fff;
+  }
+  .card__ico svg{ width:28px; height:28px; stroke:currentColor; fill:none; }
+  .card:hover .card__ico{ transform:rotate(-8deg) scale(1.08); }
+  .card:nth-child(1) .card__ico{ background:linear-gradient(135deg,var(--rose),var(--peach)); }
+  .card:nth-child(2) .card__ico{ background:linear-gradient(135deg,var(--mint),#a9e3d6); color:#0c4c43; }
+  .card:nth-child(3) .card__ico{ background:linear-gradient(135deg,var(--lilac),#d3c0ff); }
+  .card:nth-child(4) .card__ico{ background:linear-gradient(135deg,var(--peach),#ffd6b0); color:#7a4520; }
+  .card:nth-child(5) .card__ico{ background:linear-gradient(135deg,var(--gold),#f4d79a); color:#6b4d1c; }
+  .card:nth-child(6) .card__ico{ background:linear-gradient(135deg,var(--rose),var(--lilac)); }
+  .card h3{ font-size:1.2rem; font-weight:800; margin-bottom:8px; }
+  .card p{ color:var(--ink-soft); font-size:.96rem; }
+  .services__note{ margin-top:30px; text-align:center; font-weight:600; color:var(--ink-soft); }
+  .services__note b{ color:var(--ink); }
+
+  /* ============== SIGNATURE BANNER ============== */
+  .feature{ position:relative; overflow:hidden; }
+  .feature__inner{
+    background:linear-gradient(135deg,var(--rose-btn),var(--lilac)); border-radius:var(--radius-lg);
+    color:#fff; padding:clamp(34px,6vw,64px); box-shadow:var(--shadow);
+    display:grid; gap:34px; align-items:center; position:relative; overflow:hidden;
+  }
+  @media(min-width:900px){ .feature__inner{ grid-template-columns:1.1fr .9fr; } }
+  .feature__inner::before{ content:""; position:absolute; width:380px; height:380px; border-radius:50%; background:rgba(255,255,255,.14); top:-150px; right:-90px; }
+  .feature__inner::after{ content:""; position:absolute; width:220px; height:220px; border-radius:50%; background:rgba(255,255,255,.10); bottom:-90px; left:-60px; }
+  .feature h2{ font-family:var(--serif); font-weight:700; font-size:clamp(2rem,5vw,3.2rem); line-height:1.04; letter-spacing:-.02em; color:#fff; position:relative; }
+  .feature h2 em{ font-style:italic; color:#fff2c8; }
+  .feature p{ color:rgba(255,255,255,.94); font-size:1.08rem; font-weight:500; margin-block:16px 26px; max-width:44ch; position:relative; }
+  .feature .feature__copy .btn{ position:relative; }
+  .feature__media{ position:relative; z-index:2; }
+  .feature__media .ph{
+    border:6px solid #fff; border-radius:34px; overflow:hidden; box-shadow:var(--shadow-pop);
+    aspect-ratio:3/4; background:var(--bg-2); transform:rotate(2.5deg); transition:transform .5s var(--ease);
+  }
+  .feature__media:hover .ph{ transform:rotate(-1deg) scale(1.02); }
+  .feature__media .ph img{ width:100%; height:100%; object-fit:cover; }
+  .feature__media .float-stamp{
+    position:absolute; bottom:-20px; left:-16px; width:104px; height:104px; border-radius:50%;
+    background:var(--ink); color:var(--peach); display:grid; place-content:center; text-align:center;
+    font-weight:800; font-size:.72rem; line-height:1.25; box-shadow:var(--shadow-pop); z-index:3;
+    animation:wobble 7s ease-in-out infinite;
+  }
+  .float-stamp small{ display:block; font-family:var(--serif); font-size:1.4rem; line-height:1; }
+  @media (prefers-reduced-motion: reduce){ .feature__media .float-stamp{ animation:none; } }
+
+  /* ============== GALLERY ============== */
+  .gallery__grid{ display:grid; gap:14px; grid-template-columns:repeat(2,1fr); }
+  @media(min-width:760px){ .gallery__grid{ grid-template-columns:repeat(4,1fr); grid-auto-rows:160px; } }
+  .gallery__grid figure{
+    border:5px solid #fff; border-radius:24px; overflow:hidden; position:relative;
+    box-shadow:var(--shadow-sm); background:var(--bg-2); min-height:170px;
+  }
+  .gallery__grid img{ width:100%; height:100%; object-fit:cover; transition:transform .6s var(--ease); }
+  .gallery__grid figure:hover img{ transform:scale(1.08); }
+  .gallery__grid figcaption{
+    position:absolute; left:12px; bottom:12px; background:#fff; color:var(--ink);
+    border-radius:999px; padding:5px 14px; font-weight:800; font-size:.78rem;
+    transform:translateY(140%); transition:transform .35s var(--ease); box-shadow:var(--shadow-sm);
+  }
+  .gallery__grid figure:hover figcaption{ transform:translateY(0); }
+  @media(min-width:760px){
+    .g-tall{ grid-row:span 2; }
+    .g-wide{ grid-column:span 2; }
+  }
+
+  /* ============== VISIT (HOURS + CONTACT) ============== */
+  .visit{ background:var(--bg-2); }
+  .visit__grid{ display:grid; gap:clamp(28px,5vw,52px); }
+  @media(min-width:900px){ .visit__grid{ grid-template-columns:1fr 1fr; align-items:start; } }
+  .hours-box{ background:var(--bg-3); border:var(--ring); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-sm); }
+  .hours-box__row{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding:15px 22px; border-bottom:1px solid rgba(124,52,80,.08); font-weight:600; }
+  .hours-box__row:last-child{ border-bottom:0; }
+  .hours-box__row.today{ background:linear-gradient(120deg,#ffe3ec,#ffe7d6); color:var(--ink); font-weight:800; }
+  .hours-box__row .day{ display:flex; align-items:center; gap:10px; }
+  .hours-box__row.today .badge-now{ background:var(--rose-btn); color:#fff; font-size:.68rem; padding:3px 9px; border-radius:999px; font-weight:800; letter-spacing:.04em; }
+  .hours-box__row .time{ font-variant-numeric:tabular-nums; color:var(--ink-soft); }
+  .hours-box__row.today .time{ color:var(--ink); }
+
+  .contact__card{ background:var(--bg-3); border:var(--ring); border-radius:var(--radius); padding:clamp(26px,4vw,38px); box-shadow:var(--shadow-sm); }
+  .contact__card h3{ font-family:var(--serif); font-weight:700; font-size:1.5rem; margin-bottom:6px; }
+  .contact__card .sub{ color:var(--ink-soft); margin-bottom:24px; font-weight:500; }
+  .contact__list{ display:grid; gap:14px; margin-bottom:26px; }
+  .contact__item{ display:flex; align-items:center; gap:14px; font-weight:700; }
+  .contact__item .ci{ width:48px; height:48px; border-radius:16px; display:grid; place-items:center; flex:0 0 auto; color:#fff; }
+  .contact__item .ci svg{ width:22px; height:22px; stroke:currentColor; fill:none; }
+  .contact__item:nth-child(1) .ci{ background:linear-gradient(135deg,var(--mint),#a9e3d6); color:#0c4c43; }
+  .contact__item:nth-child(2) .ci{ background:linear-gradient(135deg,var(--peach),#ffd6b0); color:#7a4520; }
+  .contact__item:nth-child(3) .ci{ background:linear-gradient(135deg,var(--rose),var(--lilac)); }
+  .contact__item small{ display:block; font-weight:500; color:var(--ink-soft); font-size:.82rem; }
+  .contact__cta{ display:flex; flex-wrap:wrap; gap:12px; }
+
+  /* ============== BIG CTA ============== */
+  .bigcta{ padding-block:clamp(56px,9vw,108px); text-align:center; position:relative; overflow:hidden; }
+  .bigcta h2{ font-family:var(--serif); font-weight:700; font-size:clamp(2.3rem,7vw,4.2rem); line-height:1.02; letter-spacing:-.02em; margin-bottom:20px; }
+  .bigcta h2 .u{ color:var(--rose-text); }
+  .bigcta p{ max-width:38ch; margin-inline:auto; color:var(--ink-soft); font-size:1.1rem; font-weight:500; margin-bottom:28px; }
+  .bigcta__cta{ display:flex; flex-wrap:wrap; gap:14px; justify-content:center; }
+  .bigcta__blob{ position:absolute; width:300px; height:300px; border-radius:50%; opacity:.32; filter:blur(10px); z-index:-1; }
+  .bigcta__blob.l{ left:-120px; top:18%; background:var(--peach); }
+  .bigcta__blob.r{ right:-120px; bottom:8%; background:var(--mint); }
+
+  /* ============== FOOTER ============== */
+  footer.foot{ background:linear-gradient(120deg,var(--ink),#3d2b3a); color:#fff; padding-block:48px 30px; }
+  .foot__grid{ display:grid; gap:30px; grid-template-columns:1fr; }
+  @media(min-width:720px){ .foot__grid{ grid-template-columns:1.4fr 1fr 1fr; } }
+  .foot .brand{ color:#fff; margin-bottom:14px; }
+  .foot .brand small{ color:var(--peach); }
+  .foot__about{ color:rgba(255,255,255,.76); max-width:36ch; font-size:.95rem; }
+  .foot h4{ font-weight:800; font-size:.78rem; letter-spacing:.18em; text-transform:uppercase; margin-bottom:14px; color:var(--peach); }
+  .foot ul{ list-style:none; display:grid; gap:2px; }
+  .foot ul a, .foot ul li{ display:inline-flex; align-items:center; min-height:42px; color:rgba(255,255,255,.82); font-weight:500; transition:color .2s,padding-left .2s; }
+  .foot ul a:hover{ color:var(--peach); padding-left:5px; }
+  .foot__social{ display:flex; gap:12px; margin-top:16px; }
+  .foot__social a{ width:44px; height:44px; border:1px solid rgba(255,255,255,.18); border-radius:50%; display:grid; place-items:center; color:#fff; transition:.3s var(--ease); }
+  .foot__social a:hover{ background:rgba(255,255,255,.10); transform:translateY(-3px); }
+  .foot__social svg{ width:19px; height:19px; stroke:currentColor; fill:none; }
+  .foot__bottom{ margin-top:36px; padding-top:22px; border-top:1px solid rgba(255,255,255,.14); display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; align-items:center; color:rgba(255,255,255,.62); font-size:.85rem; font-weight:500; }
+  .foot__bottom .stars{ color:var(--gold); }
+
+  /* reveal-on-scroll */
+  .reveal{ opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s var(--ease); }
+  .reveal.in{ opacity:1; transform:none; }
+  .reveal.d1{ transition-delay:.07s; }
+  .reveal.d2{ transition-delay:.14s; }
+  .reveal.d3{ transition-delay:.21s; }
+
+  /* ============== REDUCED MOTION ============== */
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{ animation-duration:.001ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; scroll-behavior:auto!important; }
+    .reveal{ opacity:1; transform:none; }
+  }
+</style>
+<script src="/abra-demos/analytics.js" defer></script>
+</head>
+<body>
+
+<a class="skip" href="#main">გადასვლა მთავარ კონტენტზე</a>
+<div class="demo-badge" aria-label="დემო ვერსია">დემო ვერსია</div>
+
+<!-- ===== TOP RIBBON ===== -->
+<div class="ribbon" aria-hidden="true">
+  <div class="ribbon__track">
+    <span>თმა · მაკიაჟი · ფრჩხილები</span>
+    <span>სახის მოვლა &amp; კოსმეტოლოგია</span>
+    <span>თბილისი</span>
+    <span>★ 4.7 · 69 შეფასება</span>
+    <span>თმა · მაკიაჟი · ფრჩხილები</span>
+    <span>სახის მოვლა &amp; კოსმეტოლოგია</span>
+    <span>თბილისი</span>
+    <span>★ 4.7 · 69 შეფასება</span>
+  </div>
+</div>
+
+<!-- ===== NAV ===== -->
+<header class="nav">
+  <div class="wrap nav__bar">
+    <a href="#top" class="brand" aria-label="Beauty salon Lady Mara — მთავარი">
+      <span class="mark" aria-hidden="true">LM</span>
+      <span>Lady Mara<small>Beauty Salon</small></span>
+    </a>
+    <nav class="nav__links" aria-label="მთავარი ნავიგაცია">
+      <a href="#about">ჩვენ შესახებ</a>
+      <a href="#services">სერვისები</a>
+      <a href="#gallery">გალერეა</a>
+      <a href="#visit">ვიზიტი</a>
+    </nav>
+    <div class="nav__right">
+      <a class="btn btn--primary" href="https://wa.me/995593580490" target="_blank" rel="noopener" style="min-height:46px;padding:11px 22px;font-size:.92rem;">
+        <span aria-hidden="true">✦</span> დაჯავშნა
+      </a>
+      <button class="burger" id="burger" aria-label="მენიუს გახსნა" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- mobile menu -->
+<div class="scrim" id="scrim"></div>
+<aside class="mobile-menu" id="mobileMenu" aria-label="მობილური მენიუ">
+  <a href="#about">ჩვენ შესახებ</a>
+  <a href="#services">სერვისები</a>
+  <a href="#gallery">გალერეა</a>
+  <a href="#visit">ვიზიტი</a>
+  <a class="btn btn--primary" href="https://wa.me/995593580490" target="_blank" rel="noopener">დაჯავშნა WhatsApp-ით</a>
+</aside>
+
+<main id="main">
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <span class="hero__blob blob-a" aria-hidden="true"></span>
+  <span class="hero__blob blob-b" aria-hidden="true"></span>
+  <span class="hero__blob blob-c" aria-hidden="true"></span>
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <span class="eyebrow">სილამაზის სალონი · თბილისი</span>
+      <h1>
+        შენი <span class="wink">სილამაზე</span>,<br>
+        ჩვენი <span class="draw">ზრუნვა</span>.
+      </h1>
+      <p class="lead">Beauty salon Lady Mara — ნათელი, თანამედროვე სივრცე თმის, მაკიაჟის, ფრჩხილებისა და სახის მოვლისთვის. შემოგვიარე და განებივრდი.</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="https://wa.me/995593580490" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.6 7.1L4 20l1.4-4.3A8 8 0 1 1 20 11.5Z" stroke-width="1.7" stroke-linejoin="round"/></svg>
+          ჯავშანი WhatsApp-ით
+        </a>
+        <a class="btn btn--ghost" href="#services">
+          <span aria-hidden="true">✨</span> სერვისები
+        </a>
+      </div>
+      <div class="rating" role="img" aria-label="შეფასება 4.7 ვარსკვლავი 69 შეფასებიდან">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <span><b>4.7</b></span>
+        <span class="rpill">69 შეფასება</span>
+      </div>
+    </div>
+
+    <div class="hero__art">
+      <div class="hero__stamp" aria-hidden="true">
+        <span><small>4.7★</small>სტუმრების<br>შეფასება</span>
+      </div>
+      <div class="hero__frame">
+        <img src="../assets/photo1.jpg" alt="Beauty salon Lady Mara — ნათელი ინტერიერი და მოვლის სივრცე" loading="eager" fetchpriority="high" decoding="async" width="900" height="900" />
+      </div>
+      <div class="hero__chip chip-1"><span class="dot" aria-hidden="true"></span> ჯავშანი ღიაა</div>
+      <div class="hero__chip chip-2"><span aria-hidden="true">💖</span> Lady Mara</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STAT STRIP ===== -->
+<section class="strip" aria-label="ფაქტები">
+  <div class="wrap strip__grid">
+    <div class="stat reveal"><div class="n">4.7★</div><div class="l">საშუალო შეფასება</div></div>
+    <div class="stat reveal"><div class="n">69</div><div class="l">სტუმრის შეფასება</div></div>
+    <div class="stat reveal"><div class="n">5+</div><div class="l">სერვისის მიმართულება</div></div>
+    <div class="stat reveal"><div class="n">თბილისი</div><div class="l">ქალაქის ცენტრში</div></div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="sec" id="about">
+  <div class="wrap about__grid">
+    <div class="about__media reveal">
+      <span class="pill pill--peach blob-tag" aria-hidden="true">✨ მოვლა სიყვარულით</span>
+      <div class="photo">
+        <img src="../assets/photo2.jpg" alt="Beauty salon Lady Mara — სამუშაო სივრცე და მოვლის ზონა" loading="lazy" width="900" height="1100" />
+      </div>
+      <div class="mini">
+        <img src="../assets/photo4.jpg" alt="Beauty salon Lady Mara — მოვლის დეტალი" loading="lazy" width="500" height="500" />
+      </div>
+    </div>
+    <div class="about__copy">
+      <span class="eyebrow">ჩვენი ამბავი</span>
+      <h2>ნათელი სივრცე <em>შენი</em> განწყობისთვის</h2>
+      <p class="lede">ჩვენ გვჯერა, რომ მოვლა უნდა იყოს სასიამოვნო — როგორც პატარა დღესასწაული საკუთარი თავისთვის.</p>
+      <p>Beauty salon Lady Mara თბილისში გთავაზობთ თმის, მაკიაჟის, ფრჩხილებისა და სახის მოვლის სერვისებს ერთ თანამედროვე და მყუდრო სივრცეში. ჩვენი ოსტატები ყურადღებიანი არიან დეტალებზე და მუშაობენ ხარისხიან მასალებზე.</p>
+      <p>შემოგვიარე ერთ პროცედურაზე ან დაგეგმე სრული მოვლა — დაგხვდებით ღიმილითა და კომფორტული ატმოსფეროთი.</p>
+      <div class="tags">
+        <span class="pill pill--rose">💇 თმა &amp; სტაილინგი</span>
+        <span class="pill pill--mint">💅 ფრჩხილები</span>
+        <span class="pill pill--peach">💄 მაკიაჟი</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="sec services" id="services">
+  <div class="wrap">
+    <div class="sec__head center">
+      <span class="eyebrow center">რას შემოგთავაზებთ</span>
+      <h2>ჩვენი <em>სერვისები</em></h2>
+      <p>სრული მოვლა ერთ სივრცეში. ზუსტი ღირებულება დამოკიდებულია სერვისზე — დაგვირეკეთ ან მოგვწერეთ.</p>
+    </div>
+    <div class="services__grid">
+      <article class="card reveal">
+        <div class="card__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6c4 0 6 2 8 6 2-4 4-6 8-6" stroke-width="1.6"/><path d="M12 12v8" stroke-width="1.6"/></svg></div>
+        <h3>თმის სტილისტიკა</h3>
+        <p>შეჭრა, დასახვა და მოვლის რჩევა — ქალისა და მამაკაცისთვის, თქვენი სტილის მიხედვით.</p>
+      </article>
+      <article class="card reveal">
+        <div class="card__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3c2 4 6 5 6 9a6 6 0 0 1-12 0c0-4 4-5 6-9Z" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+        <h3>შეღებვა &amp; ტონირება</h3>
+        <p>ერთტონიანი შეღებვა, ბალაიაჟი და ფერის გაცოცხლება ხარისხიანი მასალებით.</p>
+      </article>
+      <article class="card reveal">
+        <div class="card__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="5" stroke-width="1.6"/><path d="M8 14l-2 6 6-3 6 3-2-6" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+        <h3>მაკიაჟი</h3>
+        <p>დღის, საღამოს და ღონისძიების მაკიაჟი — ბუნებრივი ან გამომხატველი მზერა.</p>
+      </article>
+      <article class="card reveal">
+        <div class="card__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 3h6v9a3 3 0 0 1-6 0Z" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 7h6" stroke-width="1.6"/><path d="M10 21h4" stroke-width="1.6"/></svg></div>
+        <h3>მანიკიური &amp; პედიკიური</h3>
+        <p>მოვლა, დიზაინი და გამძლე საფარი ხელისა და ფეხის ფრჩხილებისთვის.</p>
+      </article>
+      <article class="card reveal">
+        <div class="card__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12c3-4 7-4 9-4s6 0 9 4c-3 4-7 4-9 4s-6 0-9-4Z" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.4" stroke-width="1.6"/></svg></div>
+        <h3>წარბები &amp; წამწამები</h3>
+        <p>ფორმის კორექცია, შეღებვა და გამოკვეთილი, გამომხატველი მზერა.</p>
+      </article>
+      <article class="card reveal">
+        <div class="card__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-width="1.6"/><path d="M9 10h.01M15 10h.01" stroke-width="1.8" stroke-linecap="round"/><path d="M9 15c1 1 5 1 6 0" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <h3>სახის მოვლა</h3>
+        <p>გამწმენდი და დამატენიანებელი კოსმეტოლოგიური პროცედურები კანის სიჯანსაღისთვის.</p>
+      </article>
+    </div>
+    <p class="services__note">გსურს რამდენიმე სერვისი ერთ ვიზიტში? <b>მოგვწერე და შევარჩევთ მოსახერხებელ დროს.</b></p>
+  </div>
+</section>
+
+<!-- ===== SIGNATURE FEATURE ===== -->
+<section class="sec feature">
+  <div class="wrap">
+    <div class="feature__inner reveal">
+      <div class="feature__copy">
+        <span class="pill" style="margin-bottom:18px; background:#fff;">💖 პერსონალური მიდგომა</span>
+        <h2>მოვლა, რომელიც <em>შენ</em> გიხდება</h2>
+        <p>ჩვენთვის მნიშვნელოვანია, რომ შედეგი შენი სურვილისა და ცხოვრების სტილის შესაბამისი იყოს. პირველ ვიზიტზევე ვისმენთ და ვთავაზობთ გადაწყვეტას, რომელსაც ყოველდღე ისიამოვნებ.</p>
+        <a class="btn btn--ink" href="https://wa.me/995593580490" target="_blank" rel="noopener"><span aria-hidden="true">💬</span> დაჯავშნე ვიზიტი</a>
+      </div>
+      <div class="feature__media">
+        <div class="float-stamp" aria-hidden="true"><span><small>★</small>4.7 /<br>69</span></div>
+        <div class="ph">
+          <img src="../assets/photo3.jpg" alt="Beauty salon Lady Mara — მოვლის დეტალი და ატმოსფერო" loading="lazy" width="600" height="800" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section class="sec" id="gallery">
+  <div class="wrap">
+    <div class="sec__head center">
+      <span class="eyebrow center">ერთი შეხედვით</span>
+      <h2>ჩვენი <em>კადრები</em></h2>
+      <p>ნათელი ინტერიერი და ატმოსფერო, რომელიც ფოტოზეც კი იგრძნობა.</p>
+    </div>
+    <div class="gallery__grid">
+      <figure class="g-tall">
+        <img src="../assets/photo1.jpg" alt="Beauty salon Lady Mara — ინტერიერი" loading="lazy" width="600" height="800" />
+        <figcaption>ჩვენი სივრცე</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/photo3.jpg" alt="Beauty salon Lady Mara — მოვლის დეტალი" loading="lazy" width="400" height="300" />
+        <figcaption>მოვლის დეტალი</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/photo5.jpg" alt="Beauty salon Lady Mara — სილამაზის სერვისი" loading="lazy" width="400" height="300" />
+        <figcaption>სილამაზის სერვისი</figcaption>
+      </figure>
+      <figure class="g-wide">
+        <img src="../assets/photo2.jpg" alt="Beauty salon Lady Mara — სამუშაო სივრცე" loading="lazy" width="800" height="400" />
+        <figcaption>სამუშაო სივრცე</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/photo4.jpg" alt="Beauty salon Lady Mara — მოვლის მომენტი" loading="lazy" width="400" height="300" />
+        <figcaption>მოვლის მომენტი</figcaption>
+      </figure>
+      <figure class="g-wide">
+        <img src="../assets/photo6.jpg" alt="Beauty salon Lady Mara — ატმოსფერო" loading="lazy" width="800" height="400" />
+        <figcaption>ჩვენი ატმოსფერო</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VISIT (HOURS + CONTACT) ===== -->
+<section class="sec visit" id="visit">
+  <div class="wrap">
+    <div class="sec__head">
+      <span class="eyebrow">ვიზიტი</span>
+      <h2>გვესტუმრე <em>მარტივად</em></h2>
+      <p>დაგვირეკე ან მოგვწერე WhatsApp-ით — სიამოვნებით შევარჩევთ შენთვის მოსახერხებელ დროს.</p>
+    </div>
+    <div class="visit__grid">
+      <div>
+        <div class="hours-box" id="hours">
+          <div class="hours-box__row" data-day="1"><span class="day">ორშაბათი</span><span class="time">10:00 – 20:00</span></div>
+          <div class="hours-box__row" data-day="2"><span class="day">სამშაბათი</span><span class="time">10:00 – 20:00</span></div>
+          <div class="hours-box__row" data-day="3"><span class="day">ოთხშაბათი</span><span class="time">10:00 – 20:00</span></div>
+          <div class="hours-box__row" data-day="4"><span class="day">ხუთშაბათი</span><span class="time">10:00 – 20:00</span></div>
+          <div class="hours-box__row" data-day="5"><span class="day">პარასკევი</span><span class="time">10:00 – 20:00</span></div>
+          <div class="hours-box__row" data-day="6"><span class="day">შაბათი</span><span class="time">10:00 – 19:00</span></div>
+          <div class="hours-box__row" data-day="0"><span class="day">კვირა</span><span class="time">დასვენება</span></div>
+        </div>
+        <p style="margin-top:16px; color:var(--ink-soft); font-weight:500; font-size:.92rem;">
+          ვიზიტი სასურველია წინასწარი ჯავშნით. დროის დასაზუსტებლად დაგვირეკე ან მოგვწერე.
+        </p>
+      </div>
+
+      <div>
+        <div class="contact__card reveal">
+          <h3>დაგვიკავშირდი 👋</h3>
+          <p class="sub">გაქვს შეკითხვა ან გინდა დროის დაჯავშნა? ერთ შეტყობინებაშია.</p>
+          <div class="contact__list">
+            <a class="contact__item" href="https://wa.me/995593580490" target="_blank" rel="noopener">
+              <span class="ci" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-11.6 7.1L4 20l1.4-4.3A8 8 0 1 1 20 11.5Z" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
+              <span>WhatsApp<small>მოგვწერე — სწრაფად ვპასუხობთ</small></span>
+            </a>
+            <a class="contact__item" href="tel:+995593580490">
+              <span class="ci" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
+              <span>593 58 04 90<small>დაგვირეკე პირდაპირ</small></span>
+            </a>
+            <div class="contact__item">
+              <span class="ci" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z" stroke-width="1.7"/><circle cx="12" cy="10" r="3" stroke-width="1.7"/></svg></span>
+              <span>თბილისი<small>საქართველო</small></span>
+            </div>
+          </div>
+          <div class="contact__cta">
+            <a class="btn btn--primary" href="https://wa.me/995593580490" target="_blank" rel="noopener"><span aria-hidden="true">✦</span> WhatsApp</a>
+            <a class="btn btn--peach" href="tel:+995593580490"><span aria-hidden="true">☎</span> დარეკვა</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BIG CTA ===== -->
+<section class="bigcta">
+  <span class="bigcta__blob l" aria-hidden="true"></span>
+  <span class="bigcta__blob r" aria-hidden="true"></span>
+  <div class="wrap">
+    <h2>მზად ხარ <span class="u">ახალი განწყობისთვის?</span></h2>
+    <p>დაჯავშნე ვიზიტი Beauty salon Lady Mara-ში და განებივრე საკუთარი თავი.</p>
+    <div class="bigcta__cta">
+      <a class="btn btn--primary" href="https://wa.me/995593580490" target="_blank" rel="noopener"><span aria-hidden="true">💬</span> მოგვწერე WhatsApp-ზე</a>
+      <a class="btn btn--ink" href="tel:+995593580490"><span aria-hidden="true">📞</span> 593 58 04 90</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div>
+        <a href="#top" class="brand"><span class="mark" aria-hidden="true">LM</span> <span>Lady Mara<small>Beauty Salon</small></span></a>
+        <p class="foot__about">სილამაზის სალონი თბილისში — თმა, მაკიაჟი, ფრჩხილები და სახის მოვლა ერთ ნათელ სივრცეში.</p>
+        <div class="rating" style="margin-top:18px" role="img" aria-label="შეფასება 4.7 ვარსკვლავი 69 შეფასებიდან">
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <span><b>4.7</b></span>
+          <span class="rpill">69 შეფასება</span>
+        </div>
+        <div class="foot__social">
+          <a href="https://wa.me/995593580490" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.6 7.1L4 20l1.4-4.3A8 8 0 1 1 20 11.5Z" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="tel:+995593580490" aria-label="დარეკვა">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#visit" aria-label="მდებარეობა">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z" stroke-width="1.6"/><circle cx="12" cy="10" r="3" stroke-width="1.6"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4>ნავიგაცია</h4>
+        <ul>
+          <li><a href="#about">ჩვენ შესახებ</a></li>
+          <li><a href="#services">სერვისები</a></li>
+          <li><a href="#gallery">გალერეა</a></li>
+          <li><a href="#visit">ვიზიტი &amp; საათები</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>კონტაქტი</h4>
+        <ul>
+          <li><a href="https://wa.me/995593580490" target="_blank" rel="noopener">WhatsApp ჩატი</a></li>
+          <li><a href="tel:+995593580490">593 58 04 90</a></li>
+          <li><a href="#visit">სამუშაო საათები</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <span>© <span id="year">2026</span> Beauty salon Lady Mara · ყველა უფლება დაცულია</span>
+      <span><span class="stars" aria-hidden="true">★</span> 4.7 / 69 შეფასება</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ----- year ----- */
+  var y = document.getElementById('year'); if(y){ y.textContent = new Date().getFullYear(); }
+
+  /* ----- mobile menu ----- */
+  var burger = document.getElementById('burger');
+  var menu = document.getElementById('mobileMenu');
+  var scrim = document.getElementById('scrim');
+  function setMenu(open){
+    menu.classList.toggle('open', open);
+    scrim.classList.toggle('show', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? 'მენიუს დახურვა' : 'მენიუს გახსნა');
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  burger.addEventListener('click', function(){ setMenu(!menu.classList.contains('open')); });
+  scrim.addEventListener('click', function(){ setMenu(false); });
+  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setMenu(false); }); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') setMenu(false); });
+
+  /* ----- highlight today's hours ----- */
+  try{
+    var today = new Date().getDay();
+    var row = document.querySelector('.hours-box__row[data-day="'+today+'"]');
+    if(row){
+      row.classList.add('today');
+      var badge = document.createElement('span');
+      badge.className='badge-now';
+      badge.textContent='დღეს';
+      row.querySelector('.day').appendChild(badge);
+    }
+  }catch(e){}
+
+  /* ----- reveal on scroll ----- */
+  var els = document.querySelectorAll('.reveal');
+  if(reduce || !('IntersectionObserver' in window)){
+    els.forEach(function(el){ el.classList.add('in'); });
+  }else{
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    },{ threshold:.16, rootMargin:'0px 0px -8% 0px' });
+    els.forEach(function(el){ io.observe(el); });
+  }
+})();
+</script>
+</body>
+</html>

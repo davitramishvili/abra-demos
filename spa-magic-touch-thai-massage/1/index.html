@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex" />
+<title>Spa Magic Touch — ტაილანდური მასაჟი | თბილისი</title>
+<meta name="description" content="Spa Magic Touch — ტაილანდური მასაჟი თბილისში. სიმშვიდე, აღდგენა და ზრუნვა. დაჯავშნე WhatsApp-ით." />
+
+<!-- Georgian-complete fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@300;400;500;600&family=Noto+Serif+Georgian:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  /* ============================================================
+     SPA MAGIC TOUCH — Thai Massage
+     Variant 1 · Clean Calm Minimal — serene sage + warm sand
+     Spacious, soft, wellness-first.
+     ============================================================ */
+
+  :root {
+    /* Palette — soft spa: misty sage, warm sand, deep moss ink */
+    --bg:        #F6F3EC;   /* warm off-white linen */
+    --bg-2:      #EFEAE0;   /* deeper sand panel */
+    --ink:       #2C342C;   /* deep calm moss-charcoal */
+    --ink-soft:  #5C645A;   /* muted text */
+    --sage:      #7E947F;   /* primary calm sage-green */
+    --sage-deep: #5E7460;   /* deeper sage for hover */
+    --clay:      #C99B7B;   /* soft warm clay accent */
+    --mist:      #DDE4DB;   /* pale sage tint */
+    --line:      rgba(44,52,44,0.12);
+    --line-2:    rgba(44,52,44,0.07);
+
+    --serif: "Noto Serif Georgian", Georgia, serif;
+    --sans:  "Noto Sans Georgian", system-ui, sans-serif;
+
+    --step--1: clamp(0.82rem, 0.78rem + 0.18vw, 0.94rem);
+    --step-0:  clamp(1.00rem, 0.96rem + 0.22vw, 1.15rem);
+    --step-1:  clamp(1.22rem, 1.10rem + 0.6vw, 1.65rem);
+    --step-2:  clamp(1.55rem, 1.28rem + 1.3vw, 2.5rem);
+    --step-3:  clamp(2.1rem, 1.6rem + 2.5vw, 3.9rem);
+    --display: clamp(2.7rem, 1.9rem + 4.4vw, 6.4rem);
+
+    --maxw: 1240px;
+    --gutter: clamp(1.15rem, 4vw, 4.5rem);
+    --radius: 18px;
+    --radius-sm: 12px;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    font-size: var(--step-0);
+    font-weight: 400;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  /* very soft ambient wash so flats breathe */
+  body::before {
+    content: "";
+    position: fixed; inset: 0; z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(60% 50% at 80% 0%, rgba(126,148,127,0.10), transparent 70%),
+      radial-gradient(55% 45% at 0% 100%, rgba(201,155,123,0.08), transparent 70%);
+  }
+
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; text-decoration: none; }
+
+  ::selection { background: var(--sage); color: #fff; }
+
+  :focus-visible { outline: 2.5px solid var(--sage-deep); outline-offset: 3px; border-radius: 4px; }
+
+  .wrap { max-width: var(--maxw); margin-inline: auto; padding-inline: var(--gutter); position: relative; z-index: 1; }
+
+  .kicker {
+    font-family: var(--sans);
+    font-size: var(--step--1);
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--sage-deep);
+    display: inline-flex; align-items: center; gap: 0.7em;
+  }
+  .kicker::before { content: ""; width: 1.8rem; height: 1px; background: currentColor; display: inline-block; }
+  .kicker.center { justify-content: center; }
+  .kicker.center::after { content: ""; width: 1.8rem; height: 1px; background: currentColor; display: inline-block; }
+
+  h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.12; letter-spacing: -0.005em; }
+
+  .skip { position: absolute; left: -999px; top: 0; background: var(--ink); color: #fff; padding: 0.8rem 1.2rem; z-index: 300; border-radius: 8px; }
+  .skip:focus { left: 1rem; top: 1rem; }
+
+  /* ---- Demo badge (fixed) ---- */
+  .demo-badge {
+    position: fixed; z-index: 250;
+    right: clamp(0.7rem, 2vw, 1.4rem); bottom: clamp(0.7rem, 2vw, 1.4rem);
+    background: var(--ink); color: var(--bg);
+    font-family: var(--sans); font-size: 0.74rem; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 0.5rem 0.95rem; border-radius: 100px;
+    box-shadow: 0 10px 26px -12px rgba(44,52,44,0.6);
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    pointer-events: none;
+  }
+  .demo-badge::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--clay); }
+
+  /* ---- Buttons ---- */
+  .btn {
+    --bg: var(--sage); --fg: #fff;
+    display: inline-flex; align-items: center; gap: 0.6em;
+    min-height: 54px; padding: 0 1.8rem;
+    background: var(--bg); color: var(--fg);
+    font-family: var(--sans); font-weight: 600; font-size: var(--step-0);
+    border: 1.5px solid var(--bg); border-radius: 100px;
+    cursor: pointer;
+    transition: transform .4s var(--ease), background .35s var(--ease), color .35s var(--ease), box-shadow .4s var(--ease), border-color .35s var(--ease);
+    will-change: transform;
+  }
+  .btn .ico { transition: transform .4s var(--ease); display: inline-flex; }
+  .btn:hover { transform: translateY(-3px); background: var(--sage-deep); border-color: var(--sage-deep); box-shadow: 0 16px 34px -16px rgba(94,116,96,0.7); }
+  .btn:hover .ico { transform: translateX(4px); }
+  .btn.ghost { --bg: transparent; --fg: var(--ink); border-color: var(--line); }
+  .btn.ghost:hover { background: transparent; color: var(--ink); border-color: var(--ink); box-shadow: none; }
+  .btn svg { width: 18px; height: 18px; }
+
+  /* ============================================================
+     NAV
+     ============================================================ */
+  header.nav {
+    position: sticky; top: 0; z-index: 100;
+    background: color-mix(in srgb, var(--bg) 80%, transparent);
+    backdrop-filter: saturate(140%) blur(14px);
+    -webkit-backdrop-filter: saturate(140%) blur(14px);
+    border-bottom: 1px solid transparent;
+    transition: border-color .4s var(--ease), box-shadow .4s var(--ease);
+  }
+  header.nav.scrolled { border-bottom-color: var(--line); box-shadow: 0 10px 30px -24px rgba(44,52,44,0.5); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 76px; max-width: var(--maxw); margin-inline: auto; padding-inline: var(--gutter); gap: 1rem; }
+  .brand { font-family: var(--serif); font-weight: 700; font-size: 1.28rem; letter-spacing: -0.01em; display: flex; align-items: center; gap: 0.6rem; line-height: 1.05; }
+  .brand .lotus { width: 28px; height: 28px; flex: none; color: var(--sage); }
+  .brand b { font-weight: 700; }
+  .brand small { display: block; font-family: var(--sans); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-soft); margin-top: 1px; }
+  .nav-links { display: none; gap: 2.2rem; align-items: center; }
+  .nav-links a { font-size: var(--step--1); font-weight: 500; letter-spacing: 0.02em; position: relative; padding: 0.4rem 0; color: var(--ink-soft); transition: color .3s var(--ease); }
+  .nav-links a::after { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 1.5px; background: var(--sage); transform: scaleX(0); transform-origin: right; transition: transform .4s var(--ease); }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+  .nav-cta { display: none; }
+
+  @media (min-width: 940px) {
+    .nav-links { display: flex; }
+    .nav-cta { display: inline-flex; }
+  }
+
+  /* ============================================================
+     HERO
+     ============================================================ */
+  .hero { position: relative; padding-top: clamp(1.6rem, 4vw, 3.4rem); }
+  .hero-grid { display: grid; grid-template-columns: 1fr; gap: clamp(1.8rem, 4vw, 3.2rem); align-items: center; }
+  .hero-copy { position: relative; z-index: 3; }
+
+  .rating-inline { display: inline-flex; align-items: center; gap: 0.6rem; margin-top: 1.4rem; font-size: var(--step--1); color: var(--ink-soft); }
+  .rating-inline .stars { color: var(--clay); letter-spacing: 0.1em; font-size: 1.02rem; }
+  .rating-inline b { color: var(--ink); font-weight: 600; }
+
+  .hero-title { font-size: var(--display); font-weight: 600; line-height: 1.02; letter-spacing: -0.02em; margin: 1.1rem 0 0; }
+  .hero-title em { font-style: italic; font-weight: 500; color: var(--sage-deep); }
+
+  .hero-sub { max-width: 44ch; margin-top: 1.5rem; font-size: var(--step-1); line-height: 1.55; color: var(--ink-soft); font-weight: 400; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 2.1rem; }
+
+  .hero-media { position: relative; }
+  .hero-photo {
+    position: relative; aspect-ratio: 4 / 5; border-radius: var(--radius);
+    overflow: hidden; background: var(--bg-2);
+    box-shadow: 0 40px 80px -40px rgba(44,52,44,0.5);
+  }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.05); will-change: transform; }
+  .hero-photo::after { content: ""; position: absolute; inset: 0; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.18); border-radius: var(--radius); }
+
+  /* floating soft rating card */
+  .hero-float {
+    position: absolute; z-index: 4;
+    left: clamp(-0.4rem, 1vw, -1.6rem); bottom: clamp(0.8rem, 2vw, 1.6rem);
+    background: color-mix(in srgb, var(--bg) 94%, transparent);
+    backdrop-filter: blur(8px);
+    border-radius: var(--radius-sm);
+    padding: 0.85rem 1.1rem;
+    display: flex; align-items: center; gap: 0.8rem;
+    box-shadow: 0 18px 40px -20px rgba(44,52,44,0.55);
+    border: 1px solid var(--line-2);
+  }
+  .hero-float .big { font-family: var(--serif); font-weight: 700; font-size: 1.9rem; line-height: 1; color: var(--ink); }
+  .hero-float .meta .stars { color: var(--clay); font-size: 0.85rem; letter-spacing: 0.08em; }
+  .hero-float .meta span { display: block; font-size: 0.74rem; color: var(--ink-soft); }
+
+  /* hero trust row */
+  .hero-trust { display: flex; flex-wrap: wrap; gap: clamp(1.4rem, 4vw, 3.2rem); margin-top: 2.6rem; padding-top: 1.8rem; border-top: 1px solid var(--line); }
+  .hero-trust .t .k { font-family: var(--serif); font-weight: 700; font-size: var(--step-2); line-height: 1; color: var(--ink); }
+  .hero-trust .t .v { font-size: var(--step--1); color: var(--ink-soft); letter-spacing: 0.03em; margin-top: 0.4rem; }
+
+  @media (min-width: 900px) {
+    .hero-grid { grid-template-columns: 1.08fr 0.92fr; gap: clamp(2.4rem, 5vw, 4.5rem); }
+    .hero-photo { aspect-ratio: 3 / 4; }
+  }
+
+  /* ============================================================
+     BENEFIT STRIP (soft pills, calm)
+     ============================================================ */
+  .strip { margin-top: clamp(2.6rem, 6vw, 5rem); background: var(--bg-2); border-block: 1px solid var(--line-2); }
+  .strip-inner { display: flex; flex-wrap: wrap; gap: clamp(1rem, 3vw, 2.6rem); justify-content: center; padding-block: clamp(1.4rem, 3vw, 2rem); }
+  .strip-item { display: inline-flex; align-items: center; gap: 0.7rem; font-size: var(--step--1); color: var(--ink-soft); letter-spacing: 0.02em; }
+  .strip-item svg { width: 20px; height: 20px; color: var(--sage); flex: none; }
+
+  /* ============================================================
+     SECTION SHELL
+     ============================================================ */
+  section { position: relative; z-index: 2; }
+  .section-pad { padding-block: clamp(4rem, 9vw, 8rem); }
+
+  .sec-head { display: grid; gap: 1.1rem; margin-bottom: clamp(2.2rem, 5vw, 4rem); }
+  .sec-head h2 { font-size: var(--step-3); max-width: 18ch; }
+  .sec-head .lead { font-size: var(--step-1); color: var(--ink-soft); max-width: 54ch; font-weight: 400; }
+  .sec-head.center { text-align: center; justify-items: center; }
+  @media (min-width: 900px) {
+    .sec-head.split { grid-template-columns: 1fr 1fr; align-items: end; gap: clamp(2rem, 5vw, 5rem); }
+    .sec-head.split .lead { justify-self: end; }
+  }
+
+  /* ============================================================
+     ABOUT — calm asymmetric
+     ============================================================ */
+  .about-grid { display: grid; grid-template-columns: 1fr; gap: clamp(1.8rem, 4vw, 3.4rem); align-items: center; }
+  .about-media { position: relative; border-radius: var(--radius); overflow: hidden; aspect-ratio: 5 / 6; box-shadow: 0 36px 70px -42px rgba(44,52,44,0.5); }
+  .about-media img { width: 100%; height: 100%; object-fit: cover; }
+  .about-copy .big { font-family: var(--serif); font-weight: 600; color: var(--ink); font-size: var(--step-2); line-height: 1.22; margin-bottom: 1.3rem; letter-spacing: -0.01em; }
+  .about-copy p { color: var(--ink-soft); }
+  .about-copy p + p { margin-top: 1.05rem; }
+  .about-marks { margin-top: 1.9rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line-2); border: 1px solid var(--line-2); border-radius: var(--radius-sm); overflow: hidden; }
+  .about-marks .m { background: var(--bg); padding: 1.1rem 1.2rem; }
+  .about-marks .m b { display: block; font-family: var(--serif); font-weight: 700; font-size: 1.5rem; color: var(--ink); line-height: 1; }
+  .about-marks .m span { font-size: 0.78rem; letter-spacing: 0.04em; color: var(--ink-soft); }
+  @media (min-width: 900px) {
+    .about-grid { grid-template-columns: 0.9fr 1.1fr; gap: clamp(3rem, 6vw, 6rem); }
+    .about-media { aspect-ratio: 4 / 5; }
+  }
+
+  /* ============================================================
+     SERVICES — soft cards
+     ============================================================ */
+  .services { background: var(--bg-2); border-block: 1px solid var(--line-2); }
+  .svc-grid { display: grid; grid-template-columns: 1fr; gap: clamp(1rem, 2.5vw, 1.6rem); }
+  .svc-card {
+    background: var(--bg); border-radius: var(--radius); padding: clamp(1.6rem, 3vw, 2.3rem);
+    border: 1px solid var(--line-2); position: relative; overflow: hidden;
+    transition: transform .5s var(--ease), box-shadow .5s var(--ease);
+  }
+  .svc-card:hover { transform: translateY(-5px); box-shadow: 0 30px 60px -34px rgba(44,52,44,0.5); }
+  .svc-ico {
+    width: 56px; height: 56px; border-radius: 50%;
+    display: grid; place-items: center; margin-bottom: 1.3rem;
+    background: var(--mist); color: var(--sage-deep);
+  }
+  .svc-ico svg { width: 28px; height: 28px; }
+  .svc-card h3 { font-size: var(--step-1); margin-bottom: 0.6rem; }
+  .svc-card p { color: var(--ink-soft); font-size: var(--step-0); }
+  .svc-card .dur { margin-top: 1rem; font-size: var(--step--1); color: var(--sage-deep); font-weight: 600; letter-spacing: 0.04em; display: inline-flex; align-items: center; gap: 0.5rem; }
+  .svc-card .dur::before { content: ""; width: 1.4rem; height: 1px; background: currentColor; }
+  @media (min-width: 720px) { .svc-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1040px) { .svc-grid { grid-template-columns: repeat(3, 1fr); } }
+
+  /* ============================================================
+     CALM FEATURE BAND (deep moss) — "why us"
+     ============================================================ */
+  .feature { background: var(--ink); color: var(--bg); overflow: hidden; }
+  .feature .kicker { color: var(--clay); }
+  .feature-grid { display: grid; grid-template-columns: 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+  .feature-media { position: relative; border-radius: var(--radius); overflow: hidden; aspect-ratio: 4 / 5; max-width: 440px; margin-inline: auto; }
+  .feature-media img { width: 100%; height: 100%; object-fit: cover; }
+  .feature h2 { font-size: var(--step-3); color: var(--bg); max-width: 16ch; }
+  .feature h2 em { font-style: italic; font-weight: 500; color: var(--clay); }
+  .feature-list { margin-top: 1.8rem; display: grid; gap: 1.2rem; }
+  .feature-list li { list-style: none; display: flex; gap: 0.9rem; align-items: flex-start; color: color-mix(in srgb, var(--bg) 80%, transparent); font-size: var(--step-0); line-height: 1.5; }
+  .feature-list .ck { flex: none; width: 26px; height: 26px; border-radius: 50%; background: color-mix(in srgb, var(--sage) 40%, transparent); color: var(--bg); display: grid; place-items: center; margin-top: 2px; }
+  .feature-list .ck svg { width: 15px; height: 15px; }
+  .feature-list b { color: var(--bg); font-weight: 600; }
+  @media (min-width: 900px) {
+    .feature-grid { grid-template-columns: 0.85fr 1.15fr; gap: clamp(3rem, 6vw, 6rem); }
+    .feature-media { margin-inline: 0; }
+  }
+
+  /* ============================================================
+     GALLERY
+     ============================================================ */
+  .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(0.6rem, 1.5vw, 1rem); }
+  .g-item { position: relative; overflow: hidden; border-radius: var(--radius-sm); background: var(--bg-2); }
+  .g-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .9s var(--ease); }
+  .g-item:hover img { transform: scale(1.06); }
+  .g-item figcaption {
+    position: absolute; left: 0; right: 0; bottom: 0; padding: 1.4rem 1rem 0.85rem;
+    color: #fff; font-size: var(--step--1); font-weight: 600; letter-spacing: 0.03em;
+    background: linear-gradient(transparent, rgba(20,26,20,0.72));
+    transform: translateY(8px); opacity: 0; transition: transform .5s var(--ease), opacity .5s var(--ease);
+  }
+  .g-item:hover figcaption, .g-item:focus-within figcaption { transform: translateY(0); opacity: 1; }
+  .g-item.tall { grid-row: span 2; }
+  @media (min-width: 760px) {
+    .gallery-grid { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 1fr; }
+    .g-item.wide { grid-column: span 2; }
+  }
+
+  /* ============================================================
+     VISIT — hours + contact
+     ============================================================ */
+  .visit-grid { display: grid; grid-template-columns: 1fr; gap: clamp(1.6rem, 4vw, 3rem); }
+  .hours-card { background: var(--bg-2); border-radius: var(--radius); padding: clamp(1.6rem, 4vw, 2.6rem); border: 1px solid var(--line-2); }
+  .hours-card h3 { font-size: var(--step-2); margin-bottom: 1.4rem; }
+  .hours-list { display: grid; gap: 0; }
+  .hours-list .h-row { display: flex; justify-content: space-between; align-items: baseline; padding: 0.85rem 0; border-bottom: 1px dashed var(--line); font-size: var(--step-0); }
+  .hours-list .h-row:last-child { border-bottom: 0; }
+  .hours-list .day { font-weight: 500; }
+  .hours-list .time { color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .hours-list .h-row.now .time, .hours-list .h-row.now .day { color: var(--sage-deep); font-weight: 700; }
+  .hours-note { margin-top: 1.2rem; font-size: var(--step--1); color: var(--ink-soft); }
+
+  .visit-info { display: grid; gap: 1.5rem; align-content: start; }
+  .info-block .label { font-size: var(--step--1); letter-spacing: 0.18em; text-transform: uppercase; color: var(--sage-deep); font-weight: 600; margin-bottom: 0.45rem; }
+  .info-block .val { font-family: var(--serif); font-weight: 600; font-size: var(--step-1); line-height: 1.3; }
+  .info-block .val a { transition: color .3s var(--ease); }
+  .info-block .val a:hover { color: var(--sage-deep); }
+  @media (min-width: 860px) {
+    .visit-grid { grid-template-columns: 1.05fr 0.95fr; gap: clamp(2.5rem, 5vw, 5rem); align-items: start; }
+  }
+
+  /* ============================================================
+     CTA — closing serene full-bleed
+     ============================================================ */
+  .cta { position: relative; overflow: hidden; color: #fff; text-align: center; isolation: isolate; }
+  .cta-bg { position: absolute; inset: 0; z-index: -2; }
+  .cta-bg img { width: 100%; height: 100%; object-fit: cover; }
+  .cta::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(34,42,34,0.72), rgba(34,42,34,0.78)); }
+  .cta .inner { padding-block: clamp(4.5rem, 11vw, 9rem); }
+  .cta h2 { font-size: var(--display); line-height: 1.04; color: #fff; max-width: 18ch; margin-inline: auto; letter-spacing: -0.02em; font-weight: 600; }
+  .cta h2 em { font-style: italic; font-weight: 500; color: var(--clay); }
+  .cta p { font-size: var(--step-1); color: rgba(255,255,255,0.82); margin: 1.5rem auto 0; max-width: 46ch; }
+  .cta .hero-actions { justify-content: center; margin-top: 2.3rem; }
+  .cta .btn.ghost { --fg: #fff; border-color: rgba(255,255,255,0.55); }
+  .cta .btn.ghost:hover { background: #fff; color: var(--ink); border-color: #fff; }
+
+  /* ============================================================
+     FOOTER
+     ============================================================ */
+  footer.foot { background: var(--ink); color: var(--bg); padding-block: clamp(3rem, 6vw, 5rem) 2rem; }
+  .foot-top { display: grid; grid-template-columns: 1fr; gap: 2.4rem; padding-bottom: 2.6rem; border-bottom: 1px solid rgba(246,243,236,0.14); }
+  .foot-brand .brand { font-size: 1.5rem; color: var(--bg); }
+  .foot-brand .brand small { color: rgba(246,243,236,0.6); }
+  .foot-brand p { color: rgba(246,243,236,0.62); margin-top: 1rem; max-width: 34ch; font-size: var(--step--1); }
+  .foot-col h4 { font-family: var(--sans); font-size: var(--step--1); font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--clay); margin-bottom: 1.1rem; }
+  .foot-col a, .foot-col p { display: block; color: rgba(246,243,236,0.78); font-size: var(--step-0); padding: 0.32rem 0; transition: color .3s var(--ease); }
+  .foot-col a:hover { color: var(--bg); }
+  .foot-bottom { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center; padding-top: 1.8rem; font-size: var(--step--1); color: rgba(246,243,236,0.55); }
+  @media (min-width: 760px) { .foot-top { grid-template-columns: 1.6fr 1fr 1fr; gap: 3rem; } }
+
+  /* ============================================================
+     SCROLL REVEAL
+     ============================================================ */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+  .reveal.in { opacity: 1; transform: none; }
+  .reveal[data-d="1"] { transition-delay: .08s; }
+  .reveal[data-d="2"] { transition-delay: .16s; }
+  .reveal[data-d="3"] { transition-delay: .24s; }
+  .reveal[data-d="4"] { transition-delay: .32s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+    .reveal { opacity: 1; transform: none; }
+    .hero-photo img { transform: scale(1); }
+  }
+</style>
+<script src="/abra-demos/analytics.js" defer></script>
+</head>
+<body>
+
+<a class="skip" href="#main">გადასვლა მთავარ კონტენტზე</a>
+
+<!-- DEMO badge (rule 6) -->
+<div class="demo-badge" aria-label="დემო ვერსია">დემო ვერსია</div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top" aria-label="Spa Magic Touch — მთავარი">
+      <svg class="lotus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+        <path d="M12 21c4.5 0 8-2.6 8-6.2 0-1-1.3-1.3-2.3-.8M12 21c-4.5 0-8-2.6-8-6.2 0-1 1.3-1.3 2.3-.8" stroke-linecap="round"/>
+        <path d="M12 21c2.6 0 4.2-3 4.2-6.6 0-2.8-1.9-5.7-4.2-7.4-2.3 1.7-4.2 4.6-4.2 7.4C7.8 18 9.4 21 12 21Z" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 21c0-3 1.8-5.4 4.6-6.6M12 21c0-3-1.8-5.4-4.6-6.6" stroke-linecap="round"/>
+      </svg>
+      <span>Spa Magic Touch<small>Thai Massage · თბილისი</small></span>
+    </a>
+
+    <nav class="nav-links" aria-label="მთავარი ნავიგაცია">
+      <a href="#about">ჩვენ შესახებ</a>
+      <a href="#services">სერვისები</a>
+      <a href="#why">რატომ ჩვენ</a>
+      <a href="#gallery">გალერეა</a>
+      <a href="#visit">კონტაქტი</a>
+    </nav>
+
+    <a class="btn nav-cta" href="https://wa.me/995591458143" target="_blank" rel="noopener">
+      დაჯავშნე
+      <span class="ico" aria-hidden="true">→</span>
+    </a>
+  </div>
+</header>
+
+<main id="main">
+  <span id="top"></span>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <span class="kicker">ტაილანდური მასაჟი · თბილისი</span>
+
+          <h1 class="hero-title" id="hero-h">
+            სიმშვიდე,<br>რომელიც <em>გაგახსენებს</em> სხეულს
+          </h1>
+
+          <p class="hero-sub">
+            Spa Magic Touch — მყუდრო ტაილანდური სპა თბილისის გულში.
+            ნაზი ხელები, თბილი ატმოსფერო და ნამდვილი ტაი-ტექნიკა,
+            რომელიც დაძაბულობას ხსნის და ენერგიას აღადგენს.
+          </p>
+
+          <div class="rating-inline" aria-label="შეფასება 5.0 ხუთიდან, 14 მიმოხილვა">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <span><b>5.0</b> · 14 მიმოხილვა</span>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn" href="https://wa.me/995591458143" target="_blank" rel="noopener">
+              დაჯავშნე WhatsApp-ით
+              <span class="ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.06c-.24.68-1.42 1.32-1.95 1.36-.5.04-.5.38-3.15-.66-2.66-1.04-4.32-3.74-4.45-3.91-.13-.17-1.06-1.41-1.06-2.69s.67-1.91.91-2.17c.24-.26.52-.33.69-.33.17 0 .35 0 .5.01.16.01.38-.06.59.45.24.58.81 2 .88 2.14.07.14.12.31.02.5-.1.19-.15.31-.3.48-.15.17-.31.38-.45.51-.15.14-.3.29-.13.58.17.29.76 1.25 1.63 2.02 1.12.99 2.06 1.3 2.35 1.45.29.14.46.12.63-.07.17-.19.73-.85.93-1.14.19-.29.39-.24.65-.14.27.09 1.69.79 1.98.94.29.14.48.21.55.33.07.12.07.69-.17 1.37z"/></svg>
+              </span>
+            </a>
+            <a class="btn ghost" href="tel:+995591458143">დარეკვა: 591 45 81 43</a>
+          </div>
+
+          <div class="hero-trust">
+            <div class="t"><div class="k">5.0★</div><div class="v">საშუალო შეფასება</div></div>
+            <div class="t"><div class="k">14</div><div class="v">მიმოხილვა</div></div>
+            <div class="t"><div class="k">თბილისი</div><div class="v">ჩვენი მისამართი</div></div>
+          </div>
+        </div>
+
+        <div class="hero-media">
+          <figure class="hero-photo" data-parallax>
+            <img src="../assets/photo2.jpg"
+                 alt="Spa Magic Touch-ის მასაჟის ოთახი — ორი მოწესრიგებული საწოლი ლოგინებზე გულის ფორმის ყვავილებითა და სანთლით, რბილი ლურჯი განათება." />
+          </figure>
+          <div class="hero-float" aria-hidden="true">
+            <span class="big">5.0</span>
+            <span class="meta">
+              <span class="stars">★★★★★</span>
+              <span>14 მიმოხილვა</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- benefit strip -->
+    <div class="strip" aria-label="რას გთავაზობთ">
+      <div class="wrap">
+        <div class="strip-inner">
+          <span class="strip-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.5-7 10-7 10Z" stroke-linecap="round" stroke-linejoin="round"/></svg> ნაზი, პროფესიონალური შეხება</span>
+          <span class="strip-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3c2 3 2 5 0 7s-2 4 0 7M8 6c1 2 1 3 0 5M16 6c1 2 1 3 0 5" stroke-linecap="round" stroke-linejoin="round"/></svg> არომატი &amp; თბილი ატმოსფერო</span>
+          <span class="strip-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg> მოქნილი საათები</span>
+          <span class="strip-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4L4.2 7.7l5.4-.8L12 2Z" stroke-linecap="round" stroke-linejoin="round"/></svg> 5.0 შეფასება</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about" class="section-pad" aria-labelledby="about-h">
+    <div class="wrap">
+      <div class="about-grid">
+        <figure class="about-media reveal">
+          <img src="../assets/photo1.jpg"
+               alt="Spa Magic Touch-ის მასაჟისტი ტრადიციულ წითელ ტაილანდურ სამოსში დგას ორ მასაჟის საწოლს შორის, კედელზე ყვავილების გულის დეკორი." />
+        </figure>
+
+        <div class="about-copy">
+          <span class="kicker reveal">ჩვენ შესახებ</span>
+          <h2 class="big reveal" data-d="1" id="about-h">
+            მცირე ოაზისი ქალაქის ხმაურს მიღმა — სადაც სხეული ისვენებს.
+          </h2>
+          <p class="reveal" data-d="2">
+            Spa Magic Touch შეიქმნა მარტივი იდეით: მისცე ადამიანს წუთები,
+            როცა შეუძლია სრულად დაისვენოს. ჩვენი ტაი-მასაჟის ტექნიკა
+            აერთიანებს ნაზ დაჭიმვას, წერტილოვან ზეწოლასა და მშვიდ რიტმს.
+          </p>
+          <p class="reveal" data-d="3">
+            თბილი განათება, არომატი და ფაქიზად მოწყობილი სივრცე —
+            ყველაფერი ისეა გააზრებული, რომ შენი ვიზიტი იყოს მშვიდი
+            და დასამახსოვრებელი თბილისის გულში.
+          </p>
+          <div class="about-marks reveal" data-d="3">
+            <div class="m"><b>5.0★</b><span>სტუმრების შეფასება</span></div>
+            <div class="m"><b>ტაი</b><span>ნამდვილი ტექნიკა</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SERVICES ===================== -->
+  <section id="services" class="services section-pad" aria-labelledby="services-h">
+    <div class="wrap">
+      <div class="sec-head split">
+        <div>
+          <span class="kicker reveal">სერვისები</span>
+          <h2 id="services-h" class="reveal" data-d="1">მასაჟის სახეები</h2>
+        </div>
+        <p class="lead reveal" data-d="2">
+          თითოეული სეანსი ინდივიდუალურად, შენი სხეულის საჭიროებაზე
+          მორგებით. ხანგრძლივობა შეგიძლია დააზუსტო ჯავშნისას.
+        </p>
+      </div>
+
+      <div class="svc-grid">
+        <article class="svc-card reveal">
+          <div class="svc-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 14c2-1 4-1 6 0M14 14c2-1 4-1 6 0M3 14c0-4 4-7 9-7s9 3 9 7" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 17c1.5.8 3 .8 5 0s3.5-.8 5 0" stroke-linecap="round"/></svg>
+          </div>
+          <h3>ტრადიციული ტაი-მასაჟი</h3>
+          <p>კლასიკური ტაილანდური ტექნიკა — დაჭიმვა და წერტილოვანი ზეწოლა, რომელიც სხეულს მოქნილობას უბრუნებს.</p>
+          <span class="dur">სრული სხეული</span>
+        </article>
+
+        <article class="svc-card reveal" data-d="1">
+          <div class="svc-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c1.6 2.4 1.6 4 0 6.4M8 5c1 1.6 1 2.7 0 4.3M16 5c1 1.6 1 2.7 0 4.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 13c0 4 3 7 7 7s7-3 7-7c-2 1-4 1.5-7 1.5S7 14 5 13Z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>არომა-მასაჟი</h3>
+          <p>ნაზი, მდოვრე მასაჟი ეთერული ზეთებით — ღრმა მოდუნებისა და სიმშვიდისთვის.</p>
+          <span class="dur">რელაქსაცია</span>
+        </article>
+
+        <article class="svc-card reveal" data-d="2">
+          <div class="svc-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 16c-1-3 0-6 2-8M18 16c1-3 0-6-2-8M9 18c1 1 5 1 6 0" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="6" r="2.4"/></svg>
+          </div>
+          <h3>ზურგი &amp; მხრები</h3>
+          <p>მიზანმიმართული მასაჟი ზურგის, კისრისა და მხრების დაძაბულობის მოსახსნელად — იდეალური მუშა დღის შემდეგ.</p>
+          <span class="dur">წერტილოვანი</span>
+        </article>
+
+        <article class="svc-card reveal">
+          <div class="svc-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 20c-1-2-1-4 0-6M17 20c1-2 1-4 0-6M9 9c0-2 1.3-4 3-4s3 2 3 4" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 12h8" stroke-linecap="round"/></svg>
+          </div>
+          <h3>ფეხის მასაჟი</h3>
+          <p>დამამშვიდებელი მასაჟი ფეხებსა და წვივებზე — ამსუბუქებს დაღლილობას და აუმჯობესებს სისხლის მიმოქცევას.</p>
+          <span class="dur">რეფლექსი</span>
+        </article>
+
+        <article class="svc-card reveal" data-d="1">
+          <div class="svc-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12c3-5 11-5 14 0-3 5-11 5-14 0Z" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.2"/></svg>
+          </div>
+          <h3>ზეთის მასაჟი</h3>
+          <p>თბილი ზეთით შესრულებული მდოვრე მასაჟი — კანს ანებივრებს და სხეულს ათბობს.</p>
+          <span class="dur">ნაზი რიტმი</span>
+        </article>
+
+        <article class="svc-card reveal" data-d="2">
+          <div class="svc-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 4c4 2 6 5 6 8a6 6 0 11-12 0c0-3 2-6 6-8Z" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 9c1.6 1 2.4 2.2 2.4 3.6" stroke-linecap="round"/></svg>
+          </div>
+          <h3>წყვილებისთვის</h3>
+          <p>ორი საწოლი გვერდიგვერდ — გაიზიარეთ მშვიდი წუთები ერთად, კომფორტულ და მყუდრო გარემოში.</p>
+          <span class="dur">ერთად</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WHY US (feature band) ===================== -->
+  <section id="why" class="feature section-pad" aria-labelledby="why-h">
+    <div class="wrap">
+      <div class="feature-grid">
+        <figure class="feature-media reveal">
+          <img src="../assets/photo6.jpg"
+               alt="Spa Magic Touch-ის მისაღები — რბილი ნაცრისფერი დივანი, ხის პანელის კედელი ყვავილების გირლანდებითა და თბილი განათებით." />
+        </figure>
+
+        <div class="feature-copy">
+          <span class="kicker">რატომ ჩვენ</span>
+          <h2 id="why-h">ზრუნვა, რომელიც <em>იგრძნობა</em></h2>
+          <ul class="feature-list">
+            <li>
+              <span class="ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span><b>5.0 შეფასება, 14 მიმოხილვა.</b> სტუმრების მაღალი შეფასება — ზრუნვა, რომელსაც გრძნობ.</span>
+            </li>
+            <li>
+              <span class="ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span><b>ნამდვილი ტაი-ტექნიკა.</b> გამოცდილი ხელები და ტრადიციული მიდგომა თითოეულ სეანსზე.</span>
+            </li>
+            <li>
+              <span class="ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span><b>მყუდრო, სუფთა სივრცე.</b> მშვიდი გარემო, თბილი განათება და ფაქიზად მოწყობილი ოთახები.</span>
+            </li>
+            <li>
+              <span class="ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span><b>მარტივი ჯავშანი.</b> დაგვიკავშირდი WhatsApp-ით ან ზარით — და დანარჩენზე ჩვენ ვიზრუნებთ.</span>
+            </li>
+          </ul>
+          <div class="hero-actions" style="margin-top:2rem;">
+            <a class="btn" href="https://wa.me/995591458143" target="_blank" rel="noopener">
+              დაჯავშნე ვიზიტი <span class="ico" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== GALLERY ===================== -->
+  <section id="gallery" class="section-pad" aria-labelledby="gallery-h">
+    <div class="wrap">
+      <div class="sec-head split">
+        <div>
+          <span class="kicker reveal">გალერეა</span>
+          <h2 id="gallery-h" class="reveal" data-d="1">ჩვენი სივრცე</h2>
+        </div>
+        <p class="lead reveal" data-d="2">
+          ატმოსფერო, რომელიც დასვენებისთვისაა შექმნილი — ისეთი, როგორიც
+          ადგილზე დაგხვდება.
+        </p>
+      </div>
+
+      <div class="gallery-grid">
+        <figure class="g-item tall reveal">
+          <img src="../assets/photo1.jpg" alt="მასაჟისტი წითელ ტაილანდურ სამოსში ორ მასაჟის საწოლს შორის, ყვავილების გულის დეკორით." loading="lazy" />
+          <figcaption>მისასალმებელი სივრცე</figcaption>
+        </figure>
+        <figure class="g-item wide reveal" data-d="1">
+          <img src="../assets/photo2.jpg" alt="ორი მასაჟის საწოლი გედის ფორმის გაკეცილი პირსახოცებით, სანთელი და ყვავილების გულის დეკორი." loading="lazy" />
+          <figcaption>მასაჟის ოთახი</figcaption>
+        </figure>
+        <figure class="g-item reveal" data-d="2">
+          <img src="../assets/photo6.jpg" alt="მისაღების ნაცრისფერი დივანი ხის პანელისა და ყვავილების გირლანდების ფონზე." loading="lazy" />
+          <figcaption>მისაღები</figcaption>
+        </figure>
+        <figure class="g-item reveal" data-d="3">
+          <img src="../assets/photo4.jpg" alt="Spa Magic Touch-ის გუნდი ტრადიციულ წითელ სამოსში მისაღების დახლთან." loading="lazy" />
+          <figcaption>ჩვენი გუნდი</figcaption>
+        </figure>
+        <figure class="g-item wide reveal" data-d="1">
+          <img src="../assets/photo5.jpg" alt="თბილისის ცენტრალური ქუჩა ისტორიული ფასადებითა და ფართო ტროტუარით — სპას მდებარეობა." loading="lazy" />
+          <figcaption>თბილისის ცენტრში</figcaption>
+        </figure>
+        <figure class="g-item tall reveal" data-d="2">
+          <img src="../assets/photo3.jpg" alt="Spa Magic Touch Thai Massage-ის შესასვლელი აბრა და კიბის ჩასასვლელი მოციმციმე განათებით." loading="lazy" />
+          <figcaption>შესასვლელი</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== VISIT ===================== -->
+  <section id="visit" class="section-pad" aria-labelledby="visit-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker reveal">საათები &amp; კონტაქტი</span>
+        <h2 id="visit-h" class="reveal" data-d="1">დაგვიკავშირდი</h2>
+      </div>
+
+      <div class="visit-grid">
+        <div class="hours-card reveal">
+          <h3>სამუშაო საათები</h3>
+          <div class="hours-list" id="hours">
+            <div class="h-row" data-day="1"><span class="day">ორშაბათი</span><span class="time">11:30 — 01:30</span></div>
+            <div class="h-row" data-day="2"><span class="day">სამშაბათი</span><span class="time">11:30 — 01:30</span></div>
+            <div class="h-row" data-day="3"><span class="day">ოთხშაბათი</span><span class="time">11:30 — 01:30</span></div>
+            <div class="h-row" data-day="4"><span class="day">ხუთშაბათი</span><span class="time">11:30 — 01:30</span></div>
+            <div class="h-row" data-day="5"><span class="day">პარასკევი</span><span class="time">11:30 — 01:30</span></div>
+            <div class="h-row" data-day="6"><span class="day">შაბათი</span><span class="time">11:30 — 01:30</span></div>
+            <div class="h-row" data-day="0"><span class="day">კვირა</span><span class="time">11:30 — 01:30</span></div>
+          </div>
+          <p class="hours-note">საათები შესაძლოა შეიცვალოს — გთხოვთ, დღის გრაფიკი WhatsApp-ით დააზუსტოთ.</p>
+        </div>
+
+        <div class="visit-info">
+          <div class="info-block reveal" data-d="1">
+            <div class="label">დაგვირეკე</div>
+            <div class="val"><a href="tel:+995591458143">591 45 81 43</a></div>
+          </div>
+          <div class="info-block reveal" data-d="2">
+            <div class="label">WhatsApp</div>
+            <div class="val"><a href="https://wa.me/995591458143" target="_blank" rel="noopener">დაწერე შეტყობინება →</a></div>
+          </div>
+          <div class="info-block reveal" data-d="3">
+            <div class="label">სად ვართ</div>
+            <div class="val">თბილისი, საქართველო</div>
+          </div>
+          <div class="hero-actions reveal" data-d="3" style="margin-top:.4rem;">
+            <a class="btn" href="https://wa.me/995591458143" target="_blank" rel="noopener">
+              დაჯავშნე ვიზიტი <span class="ico" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CTA ===================== -->
+  <section class="cta" aria-labelledby="cta-h">
+    <div class="cta-bg" aria-hidden="true">
+      <img src="../assets/photo2.jpg" alt="" />
+    </div>
+    <div class="wrap">
+      <div class="inner">
+        <h2 id="cta-h">დაისვენე. <em>აღდექი.</em> დაბრუნდი შენთან.</h2>
+        <p>დაჯავშნე ვიზიტი დღესვე — შენი მშვიდი წუთები გელოდება Spa Magic Touch-ში.</p>
+        <div class="hero-actions">
+          <a class="btn" href="https://wa.me/995591458143" target="_blank" rel="noopener">
+            WhatsApp
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2z"/></svg>
+            </span>
+          </a>
+          <a class="btn ghost" href="tel:+995591458143">დარეკვა: 591 45 81 43</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="brand">Spa Magic Touch<small>Thai Massage · თბილისი</small></div>
+        <p>ტაილანდური მასაჟი თბილისში — სიმშვიდე, აღდგენა და ზრუნვა მყუდრო გარემოში.</p>
+      </div>
+
+      <div class="foot-col">
+        <h4>გვერდები</h4>
+        <a href="#about">ჩვენ შესახებ</a>
+        <a href="#services">სერვისები</a>
+        <a href="#why">რატომ ჩვენ</a>
+        <a href="#gallery">გალერეა</a>
+        <a href="#visit">კონტაქტი</a>
+      </div>
+
+      <div class="foot-col">
+        <h4>კონტაქტი</h4>
+        <a href="tel:+995591458143">591 45 81 43</a>
+        <a href="https://wa.me/995591458143" target="_blank" rel="noopener">WhatsApp</a>
+        <p>თბილისი, საქართველო</p>
+        <p>★ 5.0 · 14 მიმოხილვა</p>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© <span id="yr">2026</span> Spa Magic Touch — Thai Massage</span>
+      <span>დემო ვერსია · შექმნილია სიმშვიდისთვის</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* Sticky nav shadow */
+  var nav = document.getElementById("nav");
+  var onScroll = function () {
+    if (window.scrollY > 12) nav.classList.add("scrolled");
+    else nav.classList.remove("scrolled");
+  };
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  /* Year */
+  document.getElementById("yr").textContent = new Date().getFullYear();
+
+  /* Highlight today's hours */
+  try {
+    var today = new Date().getDay();
+    var row = document.querySelector('#hours .h-row[data-day="' + today + '"]');
+    if (row) row.classList.add("now");
+  } catch (e) {}
+
+  if (reduce) {
+    document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
+    return;
+  }
+
+  /* Scroll reveal */
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.14, rootMargin: "0px 0px -8% 0px" });
+    document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+  } else {
+    document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
+  }
+
+  /* Soft hero parallax */
+  var pim = document.querySelector("[data-parallax] img");
+  if (pim && window.matchMedia("(min-width: 900px)").matches) {
+    var ticking = false;
+    window.addEventListener("scroll", function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        var y = window.scrollY;
+        var shift = Math.max(-22, Math.min(0, -y * 0.035));
+        pim.style.transform = "scale(1.07) translateY(" + shift + "px)";
+        ticking = false;
+      });
+    }, { passive: true });
+  }
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex" />
+<title>Spa Magic Touch — ტაილანდური მასაჟის რიტუალი | თბილისი</title>
+<meta name="description" content="Spa Magic Touch — ტაილანდური მასაჟი თბილისში. ნელი რიტუალი სხეულისა და სულის აღსადგენად. დაჯავშნე WhatsApp-ით." />
+
+<!-- Georgian-complete fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wght@400;500;600;700&family=Noto+Sans+Georgian:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  /* ============================================================
+     SPA MAGIC TOUCH — Thai Massage
+     Variant 2 · Warm Editorial Wellness — terracotta + cream
+     Magazine rhythm, serif voice, slow & warm.
+     ============================================================ */
+
+  :root{
+    /* Warm wellness palette */
+    --paper:      #F7F1E8;   /* warm cream */
+    --paper-2:    #F0E7D8;   /* deeper cream panel */
+    --ink:        #34291F;   /* warm espresso text (~12:1 on cream) */
+    --ink-soft:   #5E4F41;   /* softened brown body */
+    --deep:       #2A2118;   /* dark warm section bg */
+    --deep-2:     #1F1810;   /* deepest */
+    --cream-lt:   #EFE4D2;   /* light text on dark */
+    --terra:      #B5673D;   /* warm terracotta accent */
+    --terra-deep: #93502C;
+    --gold:       #BD935A;   /* muted brass */
+    --gold-lt:    #D4AE76;   /* lighter brass on dark */
+    --jade:       #7C9A7E;   /* soft jade secondary */
+    --rule:       rgba(52,41,31,.20);
+    --rule-soft:  rgba(52,41,31,.11);
+    --rule-light: rgba(239,228,210,.26);
+
+    --serif: "Noto Serif Georgian", Georgia, "Times New Roman", serif;
+    --sans:  "Noto Sans Georgian", system-ui, -apple-system, sans-serif;
+
+    --maxw: 1200px;
+    --gutter: clamp(18px, 5vw, 60px);
+
+    --shadow-soft: 0 24px 54px -30px rgba(52,41,31,.5);
+    --shadow-lift: 0 34px 74px -32px rgba(52,41,31,.58);
+    --ease: cubic-bezier(.2,.7,.2,1);
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-weight:400;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+
+  /* soft warm ambient grain */
+  body::before{
+    content:"";
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    opacity:.6;
+    background-image:
+      radial-gradient(circle at 18% 22%, rgba(181,103,61,.05), transparent 46%),
+      radial-gradient(circle at 86% 10%, rgba(189,147,90,.06), transparent 42%);
+  }
+
+  img{ display:block; max-width:100%; height:auto; }
+  a{ color:inherit; text-decoration:none; }
+
+  ::selection{ background:var(--terra); color:#fff; }
+
+  .wrap{ width:100%; max-width:var(--maxw); margin-inline:auto; padding-inline:var(--gutter); position:relative; z-index:1; }
+
+  /* ---- Type ---- */
+  .display{ font-family:var(--serif); font-weight:700; line-height:1.04; letter-spacing:-.01em; margin:0; }
+  .serif{ font-family:var(--serif); }
+  .kicker{ font-family:var(--sans); font-weight:600; font-size:.74rem; letter-spacing:.30em; text-transform:uppercase; color:var(--terra); }
+  .kicker.on-dark{ color:var(--gold-lt); }
+  .lead{ font-size:clamp(1.06rem,1.5vw,1.24rem); color:var(--ink-soft); line-height:1.7; }
+
+  .sec-no{ font-family:var(--serif); font-weight:500; font-style:italic; font-size:.95rem; color:var(--terra); letter-spacing:.02em; }
+
+  .skip{ position:absolute; left:-999px; top:0; background:var(--ink); color:var(--paper); padding:.8rem 1.2rem; z-index:300; border-radius:6px; }
+  .skip:focus{ left:1rem; top:1rem; }
+
+  /* ---- Demo badge (fixed, rule 6) ---- */
+  .demo-badge{
+    position:fixed; z-index:250;
+    right:clamp(.7rem,2vw,1.4rem); bottom:clamp(.7rem,2vw,1.4rem);
+    background:var(--ink); color:var(--paper);
+    font-family:var(--sans); font-size:.72rem; font-weight:600;
+    letter-spacing:.16em; text-transform:uppercase;
+    padding:.5rem .95rem; border-radius:4px;
+    box-shadow:var(--shadow-soft);
+    display:inline-flex; align-items:center; gap:.5rem; pointer-events:none;
+  }
+  .demo-badge::before{ content:""; width:7px; height:7px; border-radius:50%; background:var(--terra); }
+
+  /* ---- Buttons ---- */
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:10px;
+    min-height:52px; padding:0 26px;
+    border-radius:4px;
+    font-family:var(--sans); font-weight:600; font-size:.95rem; letter-spacing:.02em;
+    cursor:pointer; border:1px solid transparent;
+    transition:transform .3s var(--ease), background .3s, color .3s, box-shadow .3s, border-color .3s;
+  }
+  .btn svg{ width:18px; height:18px; flex:0 0 auto; }
+  .btn-primary{ background:var(--terra); color:#fff7ef; box-shadow:0 16px 32px -16px rgba(181,103,61,.7); }
+  .btn-primary:hover{ background:var(--terra-deep); transform:translateY(-2px); }
+  .btn-ghost{ background:transparent; color:var(--ink); border-color:var(--rule); }
+  .btn-ghost:hover{ border-color:var(--ink); transform:translateY(-2px); }
+
+  /* ============================================================
+     MASTHEAD / NAV
+     ============================================================ */
+  .topbar{ border-bottom:1px solid var(--rule); background:rgba(247,241,232,.84); backdrop-filter:saturate(140%) blur(9px); position:sticky; top:0; z-index:50; }
+  .issueline{
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    padding-block:7px; font-size:.68rem; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--ink-soft); border-bottom:1px solid var(--rule-soft);
+  }
+  .issueline .star{ color:var(--terra); letter-spacing:0; }
+  .issueline span{ white-space:nowrap; }
+  .issueline .mid{ display:none; }
+
+  .nav{ display:flex; align-items:center; justify-content:space-between; padding-block:14px; gap:18px; }
+  .brand{
+    font-family:var(--serif); font-weight:700; font-size:clamp(1.3rem,3.2vw,1.62rem);
+    letter-spacing:-.01em; line-height:1.05; display:flex; align-items:center; gap:.55rem;
+  }
+  .brand .lotus{ width:26px; height:26px; flex:none; color:var(--terra); }
+  .brand small{ display:block; font-family:var(--sans); font-weight:600; font-size:.58rem; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-soft); margin-top:1px; }
+  .nav-links{ display:none; gap:30px; font-size:.86rem; letter-spacing:.04em; }
+  .nav-links a{ position:relative; padding-block:4px; color:var(--ink-soft); transition:color .25s; }
+  .nav-links a::after{ content:""; position:absolute; left:0; right:100%; bottom:-2px; height:1.5px; background:var(--terra); transition:right .3s ease; }
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-links a:hover::after{ right:0; }
+
+  .nav-cta{
+    display:none; align-items:center; gap:9px; min-height:44px; padding:0 18px;
+    border:1px solid var(--ink); border-radius:999px;
+    font-size:.8rem; font-weight:600; letter-spacing:.05em; color:var(--ink);
+    background:transparent; transition:background .28s, color .28s, transform .28s; white-space:nowrap;
+  }
+  .nav-cta:hover{ background:var(--ink); color:var(--paper); transform:translateY(-1px); }
+  .nav-cta svg{ width:16px; height:16px; }
+
+  /* ============================================================
+     HERO — asymmetric, layered, overlapping
+     ============================================================ */
+  .hero{ position:relative; padding-top:clamp(26px,5vw,52px); padding-bottom:clamp(40px,7vw,92px); }
+  .hero-grid{ display:grid; grid-template-columns:1fr; gap:clamp(28px,5vw,48px); align-items:start; }
+  .hero-head{ position:relative; z-index:3; }
+  .hero-eyebrow{ display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+  .hero-eyebrow .ln{ flex:0 0 42px; height:1px; background:var(--terra); }
+
+  .hero h1{ font-size:clamp(2.9rem, 11vw, 6.6rem); }
+  .hero h1 .it{ font-style:italic; font-weight:500; color:var(--terra); }
+
+  .hero-sub{ margin-top:22px; max-width:42ch; }
+  .hero-actions{ margin-top:30px; display:flex; flex-wrap:wrap; gap:14px; align-items:center; }
+
+  /* Hero media cluster */
+  .hero-media{ position:relative; z-index:1; }
+  .hero-photo-main{ position:relative; border-radius:6px; overflow:hidden; box-shadow:var(--shadow-lift); aspect-ratio:1/1; }
+  .hero-photo-main img{ width:100%; height:100%; object-fit:cover; }
+  .hero-photo-main::after{ content:""; position:absolute; inset:0; box-shadow:inset 0 0 0 1px rgba(255,255,255,.16); pointer-events:none; }
+
+  .hero-photo-float{
+    position:absolute; width:38%; max-width:188px; right:-6px; bottom:-30px;
+    border-radius:6px; overflow:hidden; border:6px solid var(--paper);
+    box-shadow:var(--shadow-lift); z-index:4; aspect-ratio:3/4;
+  }
+  .hero-photo-float img{ width:100%; height:100%; object-fit:cover; }
+
+  /* rotated stamp */
+  .stamp{
+    position:absolute; z-index:5; width:116px; height:116px;
+    display:grid; place-items:center; border-radius:50%;
+    background:var(--paper); border:1px solid var(--terra); color:var(--terra);
+    text-align:center; box-shadow:var(--shadow-soft);
+    left:-12px; top:-28px; transform:rotate(-11deg);
+  }
+  .stamp span{ font-family:var(--serif); font-style:italic; font-weight:600; font-size:.84rem; line-height:1.18; }
+  .stamp small{ display:block; font-family:var(--sans); font-style:normal; font-weight:600; font-size:.54rem; letter-spacing:.2em; text-transform:uppercase; margin-top:4px; color:var(--ink-soft); }
+
+  /* credit / proof line under hero */
+  .hero-credit{ margin-top:54px; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); display:grid; grid-template-columns:1fr; gap:0; }
+  .credit-item{ padding:18px 0; display:flex; align-items:center; gap:14px; }
+  .credit-item + .credit-item{ border-top:1px solid var(--rule-soft); }
+  .credit-num{ font-family:var(--serif); font-weight:700; font-size:1.9rem; line-height:1; color:var(--terra); }
+  .credit-txt{ font-size:.84rem; color:var(--ink-soft); letter-spacing:.02em; }
+  .credit-txt b{ color:var(--ink); font-weight:600; }
+  .stars{ color:var(--gold); letter-spacing:2px; font-size:.9rem; }
+
+  /* ============================================================
+     MARQUEE strip
+     ============================================================ */
+  .marquee{ background:var(--deep); color:var(--cream-lt); overflow:hidden; border-top:1px solid var(--deep-2); border-bottom:1px solid var(--deep-2); padding-block:14px; }
+  .marquee-track{ display:flex; gap:0; width:max-content; animation:scroll 36s linear infinite; }
+  .marquee-track span{ font-family:var(--serif); font-style:italic; font-size:1.18rem; padding-inline:26px; white-space:nowrap; display:inline-flex; align-items:center; gap:26px; }
+  .marquee-track span::after{ content:"✦"; color:var(--gold-lt); font-style:normal; font-size:.78rem; }
+  @keyframes scroll{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+  .marquee:hover .marquee-track{ animation-play-state:paused; }
+  @media (prefers-reduced-motion: reduce){ .marquee-track{ animation:none; transform:none; flex-wrap:wrap; width:auto; justify-content:center; } }
+
+  /* ============================================================
+     STORY / ABOUT — drop cap + pull quote
+     ============================================================ */
+  .section{ padding-block:clamp(54px,9vw,116px); position:relative; }
+  .sec-head{ display:flex; align-items:baseline; gap:16px; flex-wrap:wrap; margin-bottom:clamp(26px,4vw,46px); }
+  .sec-head h2{ font-size:clamp(2rem,5.6vw,3.4rem); flex:1 1 auto; }
+  .sec-head h2 .it{ font-style:italic; font-weight:500; color:var(--terra); }
+
+  .story-grid{ display:grid; grid-template-columns:1fr; gap:clamp(28px,5vw,56px); align-items:start; }
+  .story-body p{ margin:0 0 1.1em; color:var(--ink-soft); font-size:1.04rem; }
+  .story-body p:last-child{ margin-bottom:0; }
+  .dropcap::first-letter{ font-family:var(--serif); font-weight:700; font-size:4em; line-height:.78; float:left; padding:6px 12px 0 0; color:var(--terra); }
+  .pull{ font-family:var(--serif); font-style:italic; font-weight:500; font-size:clamp(1.3rem,2.4vw,1.7rem); line-height:1.42; color:var(--ink); margin:30px 0; padding-left:22px; border-left:2px solid var(--terra); }
+
+  .story-media{ position:relative; }
+  .story-media .ph{ border-radius:6px; overflow:hidden; box-shadow:var(--shadow-soft); }
+  .story-media .ph img{ width:100%; height:100%; object-fit:cover; }
+  .story-media .cap{ margin-top:12px; font-size:.74rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft); display:flex; align-items:center; gap:10px; }
+  .story-media .cap::before{ content:""; width:24px; height:1px; background:var(--terra); }
+
+  .facts{ margin-top:26px; display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--rule-soft); border:1px solid var(--rule-soft); border-radius:6px; overflow:hidden; }
+  .fact{ background:var(--paper); padding:16px; }
+  .fact b{ display:block; font-family:var(--serif); font-weight:700; font-size:1.5rem; color:var(--ink); line-height:1; }
+  .fact span{ font-size:.76rem; letter-spacing:.06em; color:var(--ink-soft); }
+
+  /* ============================================================
+     RITUAL / SERVICES — editorial list + featured plate
+     ============================================================ */
+  .ritual{ background:var(--paper-2); border-top:1px solid var(--rule-soft); border-bottom:1px solid var(--rule-soft); }
+  .ritual-grid{ display:grid; grid-template-columns:1fr; gap:clamp(34px,5vw,60px); align-items:start; }
+  .menu-cat{ margin-bottom:30px; }
+  .menu-cat:last-child{ margin-bottom:0; }
+  .menu-cat > h3{ font-family:var(--serif); font-weight:600; font-size:1.18rem; letter-spacing:.02em; margin:0 0 14px; display:flex; align-items:center; gap:12px; color:var(--ink); }
+  .menu-cat > h3 .em{ font-style:italic; color:var(--terra); font-weight:500; font-size:.95rem; }
+
+  .menu-item{ display:grid; grid-template-columns:auto 1fr auto; align-items:baseline; gap:6px; padding:11px 0; border-bottom:1px solid var(--rule-soft); }
+  .menu-item:last-child{ border-bottom:0; }
+  .mi-name{ grid-column:1; font-weight:500; color:var(--ink); }
+  .mi-name small{ display:block; font-weight:400; font-size:.82rem; color:var(--ink-soft); letter-spacing:.01em; }
+  .mi-dots{ grid-column:2; border-bottom:1px dotted var(--rule); transform:translateY(-4px); margin:0 4px; min-width:14px; }
+  .mi-tag{ grid-column:3; font-family:var(--serif); font-style:italic; font-weight:500; color:var(--terra); white-space:nowrap; font-size:.96rem; }
+
+  .plate{ position:relative; }
+  .plate-photo{ border-radius:6px; overflow:hidden; box-shadow:var(--shadow-lift); aspect-ratio:4/5; }
+  .plate-photo img{ width:100%; height:100%; object-fit:cover; }
+  .plate-badge{ position:absolute; top:-16px; right:-10px; background:var(--terra); color:#fff7ef; font-family:var(--serif); font-style:italic; font-weight:500; font-size:.92rem; padding:10px 16px; border-radius:3px; box-shadow:var(--shadow-soft); transform:rotate(3deg); }
+  .plate-cap{ margin-top:16px; }
+  .plate-cap .lbl{ font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; color:var(--terra); }
+  .plate-cap h4{ font-family:var(--serif); font-weight:600; font-size:1.45rem; margin:6px 0 8px; color:var(--ink); }
+  .plate-cap p{ margin:0; font-size:.98rem; color:var(--ink-soft); }
+
+  /* ============================================================
+     PROMISE band (jade tinted, calm) — "რატომ ჩვენ"
+     ============================================================ */
+  .promise{ background:var(--paper); }
+  .promise-grid{ display:grid; grid-template-columns:1fr; gap:clamp(18px,3vw,26px); }
+  .promise-card{ background:var(--paper-2); border:1px solid var(--rule-soft); border-radius:8px; padding:clamp(22px,3.2vw,30px); }
+  .promise-card .pn{ font-family:var(--serif); font-style:italic; font-weight:600; font-size:1.3rem; color:var(--terra); }
+  .promise-card h3{ font-family:var(--serif); font-weight:600; font-size:1.22rem; margin:.7rem 0 .5rem; color:var(--ink); }
+  .promise-card p{ margin:0; color:var(--ink-soft); font-size:.98rem; }
+  @media (min-width:640px){ .promise-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (min-width:1000px){ .promise-grid{ grid-template-columns:repeat(4,1fr); } }
+
+  /* ============================================================
+     GALLERY — photo-essay mosaic
+     ============================================================ */
+  .gallery-grid{ display:grid; grid-template-columns:repeat(2,1fr); grid-auto-rows:1fr; gap:14px; }
+  .g-item{ position:relative; overflow:hidden; border-radius:6px; box-shadow:var(--shadow-soft); }
+  .g-item img{ width:100%; height:100%; object-fit:cover; transition:transform .8s var(--ease); }
+  .g-item:hover img{ transform:scale(1.05); }
+  .g-item figcaption{
+    position:absolute; left:0; right:0; bottom:0; padding:14px;
+    font-size:.74rem; letter-spacing:.08em; text-transform:uppercase; color:#f9f1e6;
+    background:linear-gradient(to top, rgba(31,24,16,.84), rgba(31,24,16,0));
+    opacity:0; transform:translateY(8px); transition:opacity .4s, transform .4s;
+  }
+  .g-item:hover figcaption, .g-item:focus-within figcaption{ opacity:1; transform:translateY(0); }
+  .g-item figcaption b{ font-weight:600; }
+  .g-tall{ grid-row:span 2; }
+  .g-wide{ grid-column:span 2; }
+
+  /* ============================================================
+     VISIT — dark warm editorial block
+     ============================================================ */
+  .visit{ background:var(--deep); color:var(--cream-lt); }
+  .visit .sec-no{ color:var(--gold-lt); }
+  .visit h2{ color:var(--cream-lt); }
+  .visit h2 .it{ color:var(--gold-lt); }
+  .visit .lead{ color:var(--cream-lt); opacity:.82; }
+
+  .visit-grid{ display:grid; grid-template-columns:1fr; gap:clamp(32px,5vw,56px); align-items:start; }
+
+  .hours-table{ width:100%; border-collapse:collapse; }
+  .hours-table caption{ text-align:left; font-family:var(--serif); font-weight:600; font-size:1.25rem; color:var(--cream-lt); padding-bottom:12px; }
+  .hours-table th, .hours-table td{ text-align:left; padding:13px 0; border-bottom:1px solid var(--rule-light); font-size:.96rem; }
+  .hours-table th{ font-weight:400; color:var(--cream-lt); opacity:.88; }
+  .hours-table td{ text-align:right; font-family:var(--serif); color:var(--gold-lt); font-weight:500; font-variant-numeric:tabular-nums; }
+  .hours-table tr.today th{ color:#fff; opacity:1; font-weight:600; }
+  .hours-table tr.today td{ color:#fff; }
+  .hours-note{ margin-top:14px; font-size:.82rem; opacity:.7; }
+
+  .contact-card .addr{ font-family:var(--serif); font-size:1.45rem; line-height:1.4; color:var(--cream-lt); margin:0 0 6px; }
+  .contact-sub{ font-size:.92rem; opacity:.75; margin-bottom:24px; }
+  .contact-actions{ display:flex; flex-direction:column; gap:12px; }
+  .c-btn{
+    display:flex; align-items:center; gap:14px; min-height:58px; padding:0 20px;
+    border-radius:6px; border:1px solid var(--rule-light); color:var(--cream-lt);
+    transition:background .26s, border-color .26s, transform .26s; font-size:1rem;
+  }
+  .c-btn:hover{ background:rgba(239,228,210,.06); border-color:var(--gold-lt); transform:translateY(-1px); }
+  .c-btn .ic{ width:44px; height:44px; flex:0 0 auto; border-radius:50%; display:grid; place-items:center; background:rgba(239,228,210,.08); }
+  .c-btn .ic svg{ width:20px; height:20px; }
+  .c-btn.wa .ic{ background:rgba(37,211,102,.16); }
+  .c-btn.wa svg{ color:#5fe39a; }
+  .c-btn b{ display:block; font-weight:600; }
+  .c-btn span{ display:block; font-size:.78rem; opacity:.7; letter-spacing:.04em; }
+
+  .visit-photos{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:30px; }
+  .visit-photos .ph{ border-radius:6px; overflow:hidden; aspect-ratio:3/4; box-shadow:var(--shadow-lift); }
+  .visit-photos .ph img{ width:100%; height:100%; object-fit:cover; }
+
+  /* ============================================================
+     FOOTER
+     ============================================================ */
+  .foot{ background:var(--deep-2); color:var(--cream-lt); padding-block:38px; }
+  .foot-grid{ display:flex; flex-direction:column; gap:22px; align-items:flex-start; justify-content:space-between; }
+  .foot .brand{ color:var(--cream-lt); }
+  .foot .brand small{ color:rgba(239,228,210,.55); }
+  .foot-tag{ font-family:var(--serif); font-style:italic; opacity:.8; font-size:1rem; margin-top:8px; }
+  .foot-links{ display:flex; flex-wrap:wrap; gap:18px 28px; font-size:.88rem; opacity:.85; }
+  .foot-links a{ transition:opacity .2s; }
+  .foot-links a:hover{ opacity:.6; }
+  .foot-meta{ font-size:.76rem; opacity:.55; letter-spacing:.04em; line-height:1.7; }
+
+  /* ============================================================
+     SCROLL REVEAL
+     ============================================================ */
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .8s var(--ease), transform .8s var(--ease); }
+  .reveal.in{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1 !important; transform:none !important; transition:none !important; }
+    .g-item img, .btn, .nav-cta, .c-btn{ transition:none !important; }
+  }
+
+  /* ============================================================
+     RESPONSIVE
+     ============================================================ */
+  @media (min-width:560px){
+    .issueline .mid{ display:inline; }
+    .hero-credit{ grid-template-columns:repeat(3,1fr); }
+    .credit-item + .credit-item{ border-top:0; border-left:1px solid var(--rule-soft); padding-left:24px; }
+    .credit-item{ padding-block:22px; }
+  }
+  @media (min-width:900px){
+    .nav-links{ display:flex; }
+    .nav-cta{ display:inline-flex; }
+    .hero-grid{ grid-template-columns:1.05fr .95fr; gap:clamp(30px,4vw,60px); align-items:center; }
+    .hero h1{ font-size:clamp(3.6rem,7.6vw,7rem); }
+    .hero-photo-float{ width:198px; right:-32px; bottom:-42px; }
+    .stamp{ width:128px; height:128px; left:-38px; top:-42px; }
+    .story-grid{ grid-template-columns:1.15fr .85fr; }
+    .story-grid.flip{ grid-template-columns:.85fr 1.15fr; }
+    .story-grid.flip .story-media{ order:-1; }
+    .ritual-grid{ grid-template-columns:1fr .9fr; }
+    .gallery-grid{ grid-template-columns:repeat(4,1fr); grid-auto-rows:200px; }
+    .visit-grid{ grid-template-columns:.9fr 1.1fr; gap:clamp(40px,5vw,80px); }
+    .foot-grid{ flex-direction:row; align-items:center; }
+  }
+  @media (min-width:1100px){ .gallery-grid{ grid-auto-rows:226px; } }
+
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--terra); outline-offset:3px; border-radius:4px; }
+  .visit a:focus-visible, .foot a:focus-visible{ outline-color:var(--gold-lt); }
+</style>
+<script src="/abra-demos/analytics.js" defer></script>
+</head>
+
+<body>
+
+  <a class="skip" href="#top">გადასვლა მთავარ კონტენტზე</a>
+
+  <!-- DEMO badge (rule 6) -->
+  <div class="demo-badge" aria-label="დემო ვერსია">დემო ვერსია</div>
+
+  <!-- ===================== MASTHEAD ===================== -->
+  <header class="topbar">
+    <div class="wrap issueline">
+      <span>თბილისი · ტაილანდური სპა</span>
+      <span class="mid">ნელი რიტუალი &nbsp;·&nbsp; სხეულისა და სულის აღსადგენად</span>
+      <span><span class="star">★</span> 5.0 — 14 მიმოხილვა</span>
+    </div>
+    <nav class="wrap nav" aria-label="მთავარი ნავიგაცია">
+      <a href="#top" class="brand" aria-label="Spa Magic Touch — მთავარი">
+        <svg class="lotus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <path d="M12 21c4.5 0 8-2.6 8-6.2 0-1-1.3-1.3-2.3-.8M12 21c-4.5 0-8-2.6-8-6.2 0-1 1.3-1.3 2.3-.8" stroke-linecap="round"/>
+          <path d="M12 21c2.6 0 4.2-3 4.2-6.6 0-2.8-1.9-5.7-4.2-7.4-2.3 1.7-4.2 4.6-4.2 7.4C7.8 18 9.4 21 12 21Z" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 21c0-3 1.8-5.4 4.6-6.6M12 21c0-3-1.8-5.4-4.6-6.6" stroke-linecap="round"/>
+        </svg>
+        <span>Spa Magic Touch<small>Thai Massage · თბილისი</small></span>
+      </a>
+      <div class="nav-links">
+        <a href="#story">ჩვენ შესახებ</a>
+        <a href="#ritual">რიტუალები</a>
+        <a href="#promise">რატომ ჩვენ</a>
+        <a href="#gallery">გალერეა</a>
+        <a href="#visit">კონტაქტი</a>
+      </div>
+      <a class="nav-cta" href="https://wa.me/995591458143" target="_blank" rel="noopener" aria-label="დაგვიკავშირდით WhatsApp-ით">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.06c-.24.68-1.42 1.32-1.95 1.36-.5.04-.5.38-3.15-.66-2.66-1.04-4.32-3.74-4.45-3.91-.13-.17-1.06-1.41-1.06-2.69s.67-1.91.91-2.17c.24-.26.52-.33.69-.33.17 0 .35 0 .5.01.16.01.38-.06.59.45.24.58.81 2 .88 2.14.07.14.12.31.02.5-.1.19-.15.31-.3.48-.15.17-.31.38-.45.51-.15.14-.3.29-.13.58.17.29.76 1.25 1.63 2.02 1.12.99 2.06 1.3 2.35 1.45.29.14.46.12.63-.07.17-.19.73-.85.93-1.14.19-.29.39-.24.65-.14.27.09 1.69.79 1.98.94.29.14.48.21.55.33.07.12.07.69-.17 1.37z"/></svg>
+        დაჯავშნა
+      </a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- ===================== HERO ===================== -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+
+        <div class="hero-head">
+          <div class="hero-eyebrow">
+            <span class="ln" aria-hidden="true"></span>
+            <span class="kicker">ტაილანდური მასაჟის რიტუალი</span>
+          </div>
+
+          <h1 class="display">
+            ნელი <span class="it">რიტუალი</span><br>
+            სხეულისთვის.
+          </h1>
+
+          <p class="hero-sub lead">
+            Spa Magic Touch — თბილი, მყუდრო კუთხე თბილისში, სადაც ტაილანდური
+            მასაჟი იქცევა რიტუალად: ნაზი შეხება, არომატი და სიჩუმე,
+            რომელშიც სხეული ისვენებს და სული მშვიდდება.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://wa.me/995591458143" target="_blank" rel="noopener">
+              დაჯავშნე WhatsApp-ით
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2z"/></svg>
+            </a>
+            <a class="btn btn-ghost" href="tel:+995591458143">591 45 81 43</a>
+          </div>
+        </div>
+
+        <div class="hero-media reveal">
+          <div class="stamp" aria-hidden="true">
+            <span>Magic<br>Touch<small>Thai · Tbilisi</small></span>
+          </div>
+          <figure class="hero-photo-main">
+            <img src="../assets/photo2.jpg"
+                 alt="Spa Magic Touch-ის მასაჟის ოთახი — ორი მოწესრიგებული საწოლი გედის ფორმის პირსახოცებით, სანთელი და ყვავილების გულის დეკორი, რბილი ლურჯი განათება." />
+          </figure>
+          <figure class="hero-photo-float">
+            <img src="../assets/photo6.jpg"
+                 alt="Spa Magic Touch-ის მისაღები — რბილი ნაცრისფერი დივანი და ხის პანელის კედელი ყვავილების გირლანდებით." />
+          </figure>
+        </div>
+
+      </div>
+
+      <!-- editorial proof line -->
+      <div class="wrap">
+        <div class="hero-credit">
+          <div class="credit-item reveal">
+            <span class="credit-num">5.0</span>
+            <span class="credit-txt"><span class="stars" aria-hidden="true">★★★★★</span><br><b>საშუალო შეფასება</b> · 14 მიმოხილვა</span>
+          </div>
+          <div class="credit-item reveal">
+            <span class="credit-num">ტაი</span>
+            <span class="credit-txt"><b>ნამდვილი ტექნიკა</b><br>გამოცდილი ხელები</span>
+          </div>
+          <div class="credit-item reveal">
+            <span class="credit-num">თბილისი</span>
+            <span class="credit-txt"><b>ქალაქის გულში</b><br>მყუდრო, სუფთა სივრცე</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== MARQUEE ===================== -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>ტაი-მასაჟი</span><span>არომა-მასაჟი</span><span>ზეთის მასაჟი</span><span>ფეხის მასაჟი</span><span>ზურგი &amp; მხრები</span><span>რელაქსაცია</span>
+        <span>ტაი-მასაჟი</span><span>არომა-მასაჟი</span><span>ზეთის მასაჟი</span><span>ფეხის მასაჟი</span><span>ზურგი &amp; მხრები</span><span>რელაქსაცია</span>
+      </div>
+    </div>
+
+    <!-- ===================== STORY / ABOUT ===================== -->
+    <section class="section" id="story">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="sec-no">№ 01</span>
+          <h2 class="display">ერთი ვიზიტი — <span class="it">სრული სიმშვიდე</span></h2>
+        </div>
+
+        <div class="story-grid">
+          <div class="story-body reveal">
+            <p class="dropcap">
+              Spa Magic Touch დაიბადა მარტივი რწმენით — დასვენება ფუფუნება არ არის,
+              საჭიროებაა. თბილისის ცენტრში, მყუდრო და თბილ სივრცეში, ჩვენ
+              ტაილანდურ მასაჟს ვაქცევთ ნელ რიტუალად, რომელშიც დრო ნელდება
+              და სხეული თავის რიტმს უბრუნდება.
+            </p>
+
+            <p class="pull">
+              „აქ მასაჟი ჩქარა არ კეთდება — აქ სხეულს უსმენენ.“
+            </p>
+
+            <p>
+              თითოეული სეანსი იწყება სიმშვიდით: თბილი განათება, არომატი და
+              ნაზი შეხება. ვაერთიანებთ ტრადიციულ ტაი-ტექნიკას — დაჭიმვას,
+              წერტილოვან ზეწოლასა და მშვიდ რიტმს — რომ დაძაბულობა გაქრეს
+              და ენერგია დაბრუნდეს.
+            </p>
+
+            <p>
+              პატარა სივრცე, დიდი ყურადღება დეტალისადმი — ფაქიზად მოწყობილი
+              ოთახები, ყვავილები და სითბო. შემოდი, ამოისუნთქე და მიეცი თავს
+              უფლება, ცოტა ხნით სრულად დაისვენო.
+            </p>
+
+            <div class="facts">
+              <div class="fact"><b>5.0★</b><span>სტუმრების შეფასება</span></div>
+              <div class="fact"><b>14</b><span>მიმოხილვა</span></div>
+              <div class="fact"><b>ტაი</b><span>ნამდვილი ტექნიკა</span></div>
+              <div class="fact"><b>თბილისი</b><span>ქალაქის გული</span></div>
+            </div>
+          </div>
+
+          <div class="story-media reveal">
+            <figure class="ph" style="aspect-ratio:4/5;">
+              <img src="../assets/photo1.jpg"
+                   alt="Spa Magic Touch-ის მასაჟისტი ტრადიციულ წითელ ტაილანდურ სამოსში დგას ორ მასაჟის საწოლს შორის, კედელზე ყვავილების გულის დეკორი." />
+            </figure>
+            <figcaption class="cap">მასაჟის ოთახი · ყვავილები &amp; სითბო</figcaption>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== RITUAL / SERVICES ===================== -->
+    <section class="section ritual" id="ritual">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="sec-no">№ 02</span>
+          <h2 class="display">რიტუალები &amp; <span class="it">მასაჟი</span></h2>
+        </div>
+
+        <div class="ritual-grid">
+
+          <div class="reveal">
+            <div class="menu-cat">
+              <h3>ტაი ტრადიცია <span class="em">— სხეული</span></h3>
+
+              <div class="menu-item">
+                <span class="mi-name">ტრადიციული ტაი-მასაჟი <small>დაჭიმვა &amp; წერტილოვანი ზეწოლა</small></span>
+                <span class="mi-dots" aria-hidden="true"></span>
+                <span class="mi-tag">სრული სხეული</span>
+              </div>
+              <div class="menu-item">
+                <span class="mi-name">ზურგი &amp; მხრები <small>დაძაბულობის მოხსნა</small></span>
+                <span class="mi-dots" aria-hidden="true"></span>
+                <span class="mi-tag">წერტილოვანი</span>
+              </div>
+              <div class="menu-item">
+                <span class="mi-name">ფეხის მასაჟი <small>დაღლილობის მოხსნა</small></span>
+                <span class="mi-dots" aria-hidden="true"></span>
+                <span class="mi-tag">რეფლექსი</span>
+              </div>
+            </div>
+
+            <div class="menu-cat">
+              <h3>ნაზი მოდუნება <span class="em">— ზეთი &amp; არომატი</span></h3>
+
+              <div class="menu-item">
+                <span class="mi-name">არომა-მასაჟი <small>ეთერული ზეთებით</small></span>
+                <span class="mi-dots" aria-hidden="true"></span>
+                <span class="mi-tag">რელაქსაცია</span>
+              </div>
+              <div class="menu-item">
+                <span class="mi-name">ზეთის მასაჟი <small>თბილი ზეთით, მდოვრე რიტმი</small></span>
+                <span class="mi-dots" aria-hidden="true"></span>
+                <span class="mi-tag">ნაზი</span>
+              </div>
+              <div class="menu-item">
+                <span class="mi-name">მასაჟი წყვილებისთვის <small>ორი საწოლი გვერდიგვერდ</small></span>
+                <span class="mi-dots" aria-hidden="true"></span>
+                <span class="mi-tag">ერთად</span>
+              </div>
+            </div>
+
+            <p class="hours-note" style="color:var(--ink-soft); opacity:.85; margin-top:22px;">
+              თითოეული სეანსი ინდივიდუალურია — ხანგრძლივობა WhatsApp-ით ან ზარით დააზუსტე.
+            </p>
+          </div>
+
+          <aside class="plate reveal">
+            <div class="plate-photo">
+              <img src="../assets/photo2.jpg"
+                   alt="ორი მასაჟის საწოლი გედის ფორმის გაკეცილი პირსახოცებითა და ყვავილებით, ცენტრში სანთელი და ყვავილების გულის დეკორი." />
+            </div>
+            <span class="plate-badge" aria-hidden="true">რჩეული</span>
+            <div class="plate-cap">
+              <span class="lbl">სივრცე</span>
+              <h4>ტაი-მასაჟის ოთახი</h4>
+              <p>
+                მოწესრიგებული საწოლები, თბილი განათება და ფაქიზი დეტალები —
+                სივრცე, რომელიც სიმშვიდისთვისაა შექმნილი. იდეალური წყვილებისთვისაც.
+              </p>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PROMISE / WHY US ===================== -->
+    <section class="section promise" id="promise">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="sec-no">№ 03</span>
+          <h2 class="display">რატომ <span class="it">ჩვენ</span></h2>
+        </div>
+
+        <div class="promise-grid">
+          <article class="promise-card reveal">
+            <span class="pn">01</span>
+            <h3>5.0 შეფასება</h3>
+            <p>14 მიმოხილვა და მაღალი შეფასება — ზრუნვა, რომელსაც სტუმრები გრძნობენ.</p>
+          </article>
+          <article class="promise-card reveal" data-d="1">
+            <span class="pn">02</span>
+            <h3>ნამდვილი ტაი</h3>
+            <p>გამოცდილი ხელები და ტრადიციული ტექნიკა თითოეულ სეანსზე.</p>
+          </article>
+          <article class="promise-card reveal" data-d="2">
+            <span class="pn">03</span>
+            <h3>მყუდრო სივრცე</h3>
+            <p>მშვიდი გარემო, თბილი განათება და სუფთა, ფაქიზად მოწყობილი ოთახები.</p>
+          </article>
+          <article class="promise-card reveal" data-d="3">
+            <span class="pn">04</span>
+            <h3>მარტივი ჯავშანი</h3>
+            <p>დაგვიკავშირდი WhatsApp-ით ან ზარით — დანარჩენზე ჩვენ ვიზრუნებთ.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== GALLERY ===================== -->
+    <section class="section" id="gallery">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="sec-no">№ 04</span>
+          <h2 class="display">ფოტო <span class="it">ისტორია</span></h2>
+        </div>
+
+        <div class="gallery-grid reveal">
+          <figure class="g-item g-tall g-wide">
+            <img src="../assets/photo2.jpg" loading="lazy"
+                 alt="ორი მასაჟის საწოლი გედის ფორმის პირსახოცებით, სანთელი და ყვავილების გულის დეკორი — Spa Magic Touch-ის ოთახი." />
+            <figcaption><b>მასაჟის ოთახი</b> — სიმშვიდე</figcaption>
+          </figure>
+
+          <figure class="g-item">
+            <img src="../assets/photo1.jpg" loading="lazy"
+                 alt="მასაჟისტი წითელ ტაილანდურ სამოსში ორ საწოლს შორის, ყვავილების გულის დეკორით." />
+            <figcaption><b>მისასალმებელი</b> — ზრუნვა</figcaption>
+          </figure>
+
+          <figure class="g-item">
+            <img src="../assets/photo6.jpg" loading="lazy"
+                 alt="მისაღების ნაცრისფერი დივანი ხის პანელისა და ყვავილების გირლანდების ფონზე." />
+            <figcaption><b>მისაღები</b> — დაისვენე</figcaption>
+          </figure>
+
+          <figure class="g-item g-wide">
+            <img src="../assets/photo4.jpg" loading="lazy"
+                 alt="Spa Magic Touch-ის გუნდი ტრადიციულ წითელ სამოსში მისაღების დახლთან." />
+            <figcaption><b>ჩვენი გუნდი</b> — Magic Touch</figcaption>
+          </figure>
+
+          <figure class="g-item g-tall">
+            <img src="../assets/photo3.jpg" loading="lazy"
+                 alt="Spa Magic Touch Thai Massage-ის შესასვლელი აბრა და კიბის ჩასასვლელი მოციმციმე განათებით." />
+            <figcaption><b>შესასვლელი</b> — აბრა</figcaption>
+          </figure>
+
+          <figure class="g-item">
+            <img src="../assets/photo5.jpg" loading="lazy"
+                 alt="თბილისის ცენტრალური ქუჩა ისტორიული ფასადებითა და ფართო ტროტუარით — სპას მდებარეობა." />
+            <figcaption><b>თბილისი</b> — ქალაქის გული</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== VISIT: HOURS + CONTACT ===================== -->
+    <section class="section visit" id="visit">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="sec-no">№ 05</span>
+          <h2 class="display">მოგვაკითხე <span class="it">თბილისში</span></h2>
+        </div>
+
+        <div class="visit-grid">
+
+          <div class="reveal">
+            <table class="hours-table">
+              <caption>სამუშაო საათები</caption>
+              <tbody id="hours">
+                <tr data-day="1"><th scope="row">ორშაბათი</th><td>11:30 — 01:30</td></tr>
+                <tr data-day="2"><th scope="row">სამშაბათი</th><td>11:30 — 01:30</td></tr>
+                <tr data-day="3"><th scope="row">ოთხშაბათი</th><td>11:30 — 01:30</td></tr>
+                <tr data-day="4"><th scope="row">ხუთშაბათი</th><td>11:30 — 01:30</td></tr>
+                <tr data-day="5"><th scope="row">პარასკევი</th><td>11:30 — 01:30</td></tr>
+                <tr data-day="6"><th scope="row">შაბათი</th><td>11:30 — 01:30</td></tr>
+                <tr data-day="0"><th scope="row">კვირა</th><td>11:30 — 01:30</td></tr>
+              </tbody>
+            </table>
+            <p class="hours-note">
+              საათები შესაძლოა შეიცვალოს — დღევანდელი გრაფიკი WhatsApp-ით დააზუსტე.
+            </p>
+
+            <div class="visit-photos">
+              <figure class="ph">
+                <img src="../assets/photo3.jpg" loading="lazy"
+                     alt="Spa Magic Touch Thai Massage-ის შესასვლელი აბრა მოციმციმე განათებითა და კიბის ჩასასვლელით." />
+              </figure>
+              <figure class="ph">
+                <img src="../assets/photo6.jpg" loading="lazy"
+                     alt="Spa Magic Touch-ის მისაღები — ნაცრისფერი დივანი და ყვავილების გირლანდები ხის კედელზე." />
+              </figure>
+            </div>
+          </div>
+
+          <div class="contact-card reveal">
+            <span class="kicker on-dark">კონტაქტი &amp; ადგილმდებარეობა</span>
+            <p class="addr" style="margin-top:14px;">თბილისი<br>საქართველო</p>
+            <p class="contact-sub">გვიპოვი „Spa Magic Touch — Thai Massage“-ის აბრით; შესასვლელი კიბის ჩასასვლელით.</p>
+
+            <div class="contact-actions">
+              <a class="c-btn wa" href="https://wa.me/995591458143" target="_blank" rel="noopener">
+                <span class="ic" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.06c-.24.68-1.42 1.32-1.95 1.36-.5.04-.5.38-3.15-.66-2.66-1.04-4.32-3.74-4.45-3.91-.13-.17-1.06-1.41-1.06-2.69s.67-1.91.91-2.17c.24-.26.52-.33.69-.33.17 0 .35 0 .5.01.16.01.38-.06.59.45.24.58.81 2 .88 2.14.07.14.12.31.02.5-.1.19-.15.31-.3.48-.15.17-.31.38-.45.51-.15.14-.3.29-.13.58.17.29.76 1.25 1.63 2.02 1.12.99 2.06 1.3 2.35 1.45.29.14.46.12.63-.07.17-.19.73-.85.93-1.14.19-.29.39-.24.65-.14.27.09 1.69.79 1.98.94.29.14.48.21.55.33.07.12.07.69-.17 1.37z"/></svg>
+                </span>
+                <span style="flex:1">
+                  <b>მოგვწერე WhatsApp-ით</b>
+                  <span>591 45 81 43 · ჯავშანი წუთებში</span>
+                </span>
+              </a>
+
+              <a class="c-btn" href="tel:+995591458143">
+                <span class="ic" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0122 16.92z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <span style="flex:1">
+                  <b>დაგვირეკე</b>
+                  <span>591 45 81 43</span>
+                </span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="foot">
+    <div class="wrap foot-grid">
+      <div>
+        <a href="#top" class="brand">Spa Magic Touch<small>Thai Massage · თბილისი</small></a>
+        <p class="foot-tag">ნელი რიტუალი სხეულისა და სულის აღსადგენად — თბილისი.</p>
+      </div>
+      <nav class="foot-links" aria-label="ფუტერის ნავიგაცია">
+        <a href="#story">ჩვენ შესახებ</a>
+        <a href="#ritual">რიტუალები</a>
+        <a href="#promise">რატომ ჩვენ</a>
+        <a href="#gallery">გალერეა</a>
+        <a href="https://wa.me/995591458143" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="tel:+995591458143">591 45 81 43</a>
+      </nav>
+    </div>
+    <div class="wrap foot-meta" style="margin-top:18px;">
+      © <span id="yr">2026</span> Spa Magic Touch — Thai Massage · თბილისი, საქართველო ·
+      შეფასება 5.0★ (14 მიმოხილვა). &nbsp; დემო ვერსია.
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    /* Highlight today's hours */
+    (function(){
+      try {
+        var today = new Date().getDay();
+        var row = document.querySelector('#hours tr[data-day="' + today + '"]');
+        if (row) row.classList.add('today');
+      } catch (e) {}
+    })();
+
+    /* Scroll reveal — respects reduced motion */
+    (function(){
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var els = document.querySelectorAll('.reveal');
+      if (reduce || !('IntersectionObserver' in window)) {
+        els.forEach(function(el){ el.classList.add('in'); });
+        return;
+      }
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      els.forEach(function(el){ io.observe(el); });
+    })();
+
+    /* Gentle parallax on hero floating photo */
+    (function(){
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce) return;
+      var floatEl = document.querySelector('.hero-photo-float');
+      var stamp = document.querySelector('.stamp');
+      if (!floatEl) return;
+      var ticking = false, sy = 0;
+      window.addEventListener('scroll', function(){
+        sy = window.scrollY;
+        if (!ticking){
+          window.requestAnimationFrame(function(){
+            if (sy < 900){
+              floatEl.style.transform = 'translateY(' + (sy * 0.05) + 'px)';
+              if (stamp) stamp.style.transform = 'rotate(-11deg) translateY(' + (sy * -0.03) + 'px)';
+            }
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive:true });
+    })();
+  </script>
+
+</body>
+</html>

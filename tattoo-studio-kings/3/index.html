@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Tattoo Studio Kings — სატატუ სტუდია თბილისში</title>
+<meta name="description" content="Tattoo Studio Kings — სატატუ სტუდია თბილისში. 5.0★ 88 შეფასებიდან. დაჯავშნე სესია WhatsApp-ით.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700;800;900&family=Noto+Serif+Georgian:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0A0B;
+    --bg-2:#121214;
+    --panel:#17171A;
+    --panel-2:#1E1E22;
+    --bone:#F4F1EA;
+    --bone-2:#CFC9BD;
+    --muted:#8E887D;
+    --red:#E11D2A;
+    --red-deep:#B4111C;
+    --gold:#E0A82E;
+    --line:rgba(244,241,234,.12);
+    --line-2:rgba(244,241,234,.07);
+    --shadow-red:9px 9px 0 var(--red);
+    --shadow-bone:7px 7px 0 var(--bone);
+    --shadow-blk:8px 8px 0 #000;
+    --radius:22px;
+    --radius-lg:34px;
+    --maxw:1180px;
+    --serif:"Noto Serif Georgian",Georgia,serif;
+    --sans:"Noto Sans Georgian",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    background:var(--bg);
+    color:var(--bone);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--serif);line-height:1.02;letter-spacing:-.01em}
+  ::selection{background:var(--red);color:var(--bone)}
+  :focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;width:100%}
+
+  /* ---------- Demo badge ---------- */
+  .demo-badge{
+    position:fixed;top:14px;left:14px;z-index:300;
+    background:var(--gold);color:#1a1305;font-family:var(--sans);font-weight:900;
+    font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;
+    padding:8px 14px;border-radius:999px;border:2.5px solid #000;
+    box-shadow:4px 4px 0 #000;pointer-events:none;
+  }
+
+  /* ---------- Skip link ---------- */
+  .skip{position:absolute;left:-999px;top:0;z-index:400;background:var(--bone);color:var(--bg);padding:12px 18px;border-radius:0 0 16px 0;font-weight:800}
+  .skip:focus{left:0}
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    font-family:var(--sans);font-weight:800;font-size:1.02rem;
+    padding:16px 30px;min-height:56px;border-radius:999px;border:3px solid var(--bone);
+    cursor:pointer;transition:transform .14s ease,box-shadow .14s ease,background .14s ease,color .14s ease;
+    text-align:center;line-height:1.1;
+  }
+  .btn-primary{background:var(--red);color:var(--bone);border-color:var(--red);box-shadow:6px 6px 0 var(--bone)}
+  .btn-primary:hover{transform:translate(-2px,-2px);box-shadow:9px 9px 0 var(--bone)}
+  .btn-primary:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--bone)}
+  .btn-bone{background:var(--bone);color:var(--bg);box-shadow:6px 6px 0 var(--red)}
+  .btn-bone:hover{transform:translate(-2px,-2px);box-shadow:9px 9px 0 var(--red)}
+  .btn-bone:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--red)}
+  .btn-ghost{background:transparent;color:var(--bone);box-shadow:none}
+  .btn-ghost:hover{background:var(--bone);color:var(--bg)}
+  .btn .ic{width:22px;height:22px;flex:none}
+
+  /* ---------- Nav ---------- */
+  header.nav{position:sticky;top:0;z-index:120;background:rgba(10,10,11,.92);backdrop-filter:blur(10px);border-bottom:3px solid var(--bone);transition:box-shadow .2s ease}
+  header.nav.scrolled{box-shadow:0 8px 0 -3px rgba(225,29,42,.5)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 22px;max-width:var(--maxw);margin:0 auto}
+  .brand{display:flex;align-items:center;gap:12px;font-family:var(--serif);font-weight:900;font-size:1.4rem;letter-spacing:-.02em}
+  .brand .mark{width:40px;height:40px;border-radius:11px;border:2.5px solid var(--bone);background:var(--red);display:flex;align-items:center;justify-content:center;flex:none}
+  .brand .mark svg{width:24px;height:24px;color:var(--bone)}
+  .brand b{color:var(--red)}
+  .nav-links{display:flex;align-items:center;gap:6px}
+  .nav-links a{font-weight:700;font-size:.98rem;padding:9px 14px;border-radius:999px;transition:background .15s ease,color .15s ease}
+  .nav-links a:hover{background:var(--bone);color:var(--bg)}
+  .nav-cta{display:flex;align-items:center;gap:10px}
+  .menu-btn{display:none;background:var(--red);color:var(--bone);border:3px solid var(--bone);width:52px;height:52px;border-radius:16px;cursor:pointer;align-items:center;justify-content:center}
+  .menu-btn svg{width:26px;height:26px}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;padding:56px 0 30px;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;z-index:0;background:radial-gradient(720px 420px at 82% -10%,rgba(225,29,42,.22),transparent 60%),radial-gradient(620px 480px at -10% 110%,rgba(224,168,46,.10),transparent 60%)}
+  .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;background:var(--bone);color:var(--bg);font-weight:900;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;padding:9px 16px;border-radius:999px;margin-bottom:22px}
+  .eyebrow .dot{width:9px;height:9px;border-radius:50%;background:var(--red);animation:blink 1.6s ease-in-out infinite}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+  .hero h1{font-size:clamp(2.9rem,8vw,6.4rem);font-weight:900;color:var(--bone)}
+  .hero h1 .out{color:transparent;-webkit-text-stroke:2.5px var(--bone)}
+  .hero h1 .red{color:var(--red);position:relative;display:inline-block}
+  .hero h1 .red .ul{position:absolute;left:0;right:0;bottom:.04em;height:.16em;background:var(--gold);z-index:-1;border-radius:6px;transform:rotate(-1.2deg)}
+  .hero p.lead{font-size:1.2rem;font-weight:500;color:var(--bone-2);max-width:36ch;margin:26px 0 30px}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .hero-meta{display:flex;align-items:center;gap:18px;margin-top:30px;flex-wrap:wrap}
+  .stars{display:flex;align-items:center;gap:9px;font-weight:900;font-size:1.1rem}
+  .stars .s{color:var(--gold);font-size:1.3rem;letter-spacing:1px}
+  .hero-meta .div{width:2px;height:30px;background:var(--bone);opacity:.3}
+  .hero-meta small{font-weight:600;color:var(--muted);font-size:.95rem;line-height:1.3}
+
+  /* Hero photo collage */
+  .hero-photo{position:relative}
+  .photo-frame{position:relative;border:4px solid var(--bone);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-red);background:#000}
+  .photo-frame img{width:100%;height:540px;object-fit:cover;filter:contrast(1.06) saturate(.96)}
+  .photo-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.5))}
+  .sticker{position:absolute;z-index:5;font-family:var(--serif);font-weight:900;border:3px solid #000;box-shadow:5px 5px 0 #000;transition:transform .2s ease}
+  .sticker:hover{transform:rotate(0deg) scale(1.05)!important}
+  .sticker.s-rating{top:-26px;right:-18px;background:var(--gold);color:#1a1305;border-radius:50%;width:128px;height:128px;display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(9deg);text-align:center;line-height:1}
+  .sticker.s-rating b{font-size:2.05rem;color:#1a1305}
+  .sticker.s-rating span{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:#5a4310;margin-top:5px}
+  .sticker.s-est{bottom:-22px;left:-22px;background:var(--red);color:var(--bone);border-radius:18px;padding:14px 20px;transform:rotate(-6deg);font-size:.95rem;text-align:center;line-height:1.12}
+  .sticker.s-est b{display:block;font-size:1.4rem}
+
+  /* ---------- Marquee ---------- */
+  .marquee{background:var(--red);color:var(--bone);border-top:3px solid var(--bone);border-bottom:3px solid var(--bone);overflow:hidden;padding:15px 0}
+  .marquee-track{display:flex;gap:0;white-space:nowrap;width:max-content;animation:scroll 26s linear infinite}
+  .marquee-track span{font-family:var(--serif);font-weight:800;font-size:1.4rem;display:inline-flex;align-items:center;padding:0 24px}
+  .marquee-track span i{color:#1a1305;font-style:normal;margin:0 24px;font-size:1rem}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+  .marquee:hover .marquee-track{animation-play-state:paused}
+
+  /* ---------- Section scaffolding ---------- */
+  section{position:relative}
+  .sec{padding:84px 0}
+  .sec-head{max-width:760px;margin-bottom:48px}
+  .tag{display:inline-flex;align-items:center;gap:8px;font-weight:900;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:14px}
+  .tag::before{content:"";width:26px;height:3px;background:var(--red);border-radius:3px}
+  .sec h2{font-size:clamp(2.2rem,5.4vw,4rem);font-weight:900;color:var(--bone)}
+  .sec h2 em{font-style:normal;color:var(--red)}
+  .sec-head p{margin-top:18px;font-size:1.1rem;color:var(--bone-2);font-weight:500;max-width:60ch}
+
+  /* ---------- About ---------- */
+  .about{background:var(--bg-2)}
+  .about-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:54px;align-items:center}
+  .about-media{position:relative}
+  .about-media .big{border:4px solid var(--bone);border-radius:var(--radius);overflow:hidden;box-shadow:8px 8px 0 var(--red);background:#000}
+  .about-media .big img{height:450px;width:100%;object-fit:cover;filter:contrast(1.05)}
+  .about-media .small{position:absolute;bottom:-34px;right:-24px;width:46%;border:4px solid var(--bone);border-radius:22px;overflow:hidden;box-shadow:6px 6px 0 #000;background:#000;transform:rotate(3deg)}
+  .about-media .small img{height:175px;width:100%;object-fit:cover}
+  .about-copy p{font-size:1.08rem;color:var(--bone-2);margin-bottom:18px;font-weight:500}
+  .about-copy p b{color:var(--bone)}
+  .feat{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
+  .feat .f{background:var(--panel);border:3px solid var(--bone);border-radius:18px;padding:18px;box-shadow:4px 4px 0 #000}
+  .feat .f .fi{width:46px;height:46px;border-radius:13px;background:var(--red);border:2.5px solid var(--bone);display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+  .feat .f .fi svg{width:24px;height:24px;color:var(--bone)}
+  .feat .f h3{font-family:var(--sans);font-size:1.04rem;font-weight:800;margin-bottom:4px;color:var(--bone)}
+  .feat .f p{font-size:.92rem;margin:0;font-weight:500;color:var(--muted)}
+
+  /* ---------- Services ---------- */
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .svc{background:var(--panel);border:3.5px solid var(--bone);border-radius:var(--radius);padding:30px 26px;box-shadow:7px 7px 0 #000;transition:transform .18s ease,box-shadow .18s ease;position:relative;overflow:hidden}
+  .svc:hover{transform:translate(-3px,-3px);box-shadow:11px 11px 0 var(--red)}
+  .svc.feature{background:var(--red);color:var(--bone);border-color:var(--bone)}
+  .svc.feature .svc-name{color:var(--bone)}
+  .svc.feature .svc-desc{color:#ffe2e2}
+  .svc.feature .svc-ic{background:var(--bone);border-color:#000}
+  .svc.feature .svc-ic svg{color:var(--red)}
+  .svc.feature li{color:#ffe2e2}
+  .svc.feature li svg{color:var(--gold)}
+  .svc-top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:16px}
+  .svc-ic{width:56px;height:56px;border-radius:17px;background:var(--red);border:3px solid var(--bone);display:flex;align-items:center;justify-content:center;flex:none}
+  .svc-ic svg{width:28px;height:28px;color:var(--bone)}
+  .pin{font-weight:900;font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;background:var(--gold);color:#1a1305;border:2.5px solid #000;border-radius:999px;padding:5px 12px;transform:rotate(4deg)}
+  .svc-name{font-family:var(--serif);font-weight:800;font-size:1.45rem;margin-bottom:8px;color:var(--bone)}
+  .svc-desc{font-size:.97rem;color:var(--bone-2);font-weight:500;margin-bottom:18px}
+  .svc ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+  .svc li{display:flex;align-items:center;gap:9px;font-size:.94rem;font-weight:600;color:var(--bone-2)}
+  .svc li svg{width:18px;height:18px;color:var(--gold);flex:none}
+
+  /* ---------- Gallery (centerpiece) ---------- */
+  .gallery{background:#060607}
+  .gallery .tag{color:var(--gold)}
+  .gallery .tag::before{background:var(--gold)}
+  .gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:16px}
+  .gal-item{border:3px solid var(--bone);border-radius:20px;overflow:hidden;position:relative;background:#000}
+  .gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;filter:contrast(1.05) saturate(.95)}
+  .gal-item:hover img{transform:scale(1.07)}
+  .gal-item::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.7));opacity:.55;transition:opacity .3s ease}
+  .gal-item:hover::after{opacity:.9}
+  .gal-item figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:14px 16px;font-weight:800;font-size:.82rem;letter-spacing:.04em;color:var(--bone);transform:translateY(6px);opacity:0;transition:opacity .35s ease,transform .35s ease}
+  .gal-item:hover figcaption{opacity:1;transform:translateY(0)}
+  .gal-item.tall{grid-row:span 2}
+  .gal-item.wide{grid-column:span 2}
+
+  /* ---------- Hours ---------- */
+  .hours-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:stretch}
+  .hours-card{background:var(--panel);border:3.5px solid var(--bone);border-radius:var(--radius);padding:34px 32px;box-shadow:9px 9px 0 var(--gold)}
+  .hours-card h3{font-family:var(--serif);font-size:1.65rem;font-weight:800;margin-bottom:22px;display:flex;align-items:center;gap:12px;color:var(--bone)}
+  .hours-card h3 svg{width:30px;height:30px;color:var(--red)}
+  .hrow{display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:2px dashed var(--line);font-weight:600;color:var(--bone-2)}
+  .hrow:last-child{border-bottom:none}
+  .hrow .day{font-weight:700;color:var(--bone)}
+  .hrow.today{background:var(--panel-2);margin:0 -16px;padding:13px 16px;border-radius:14px;border:none}
+  .hrow .badge-now{font-size:.66rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;background:var(--red);color:var(--bone);padding:3px 9px;border-radius:999px;border:2px solid var(--bone);margin-left:8px}
+  .promo{background:var(--red);color:var(--bone);border:3.5px solid var(--bone);border-radius:var(--radius);padding:34px 32px;box-shadow:9px 9px 0 #000;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+  .promo .star-sticker{position:absolute;top:-30px;right:-30px;width:130px;height:130px;background:var(--gold);border-radius:50%;opacity:.9;border:3px solid #000}
+  .promo h3{font-family:var(--serif);font-size:1.9rem;font-weight:900;color:var(--bone);position:relative;z-index:2;line-height:1.05}
+  .promo p{margin:14px 0 24px;font-weight:600;font-size:1.04rem;position:relative;z-index:2;color:#ffe9e9}
+  .promo .btn{position:relative;z-index:2;align-self:flex-start}
+
+  /* ---------- Contact / CTA ---------- */
+  .contact{background:var(--bg-2)}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:center}
+  .contact-list{display:flex;flex-direction:column;gap:16px;margin-top:30px}
+  .ci{display:flex;align-items:center;gap:16px;background:var(--panel);border:3px solid var(--bone);border-radius:20px;padding:18px 20px;box-shadow:5px 5px 0 #000;transition:transform .15s ease,box-shadow .15s ease}
+  .ci:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--red)}
+  .ci .ci-ic{width:54px;height:54px;border-radius:15px;border:3px solid var(--bone);display:flex;align-items:center;justify-content:center;flex:none}
+  .ci .ci-ic svg{width:26px;height:26px;color:var(--bg)}
+  .ci .ci-ic.wa{background:#25D366}
+  .ci .ci-ic.ph{background:var(--gold)}
+  .ci .ci-ic.loc{background:var(--red)}
+  .ci .ci-ic.loc svg{color:var(--bone)}
+  .ci .ci-ic.cl{background:var(--bone)}
+  .ci-txt small{display:block;font-weight:700;font-size:.76rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+  .ci-txt b{font-size:1.16rem;font-family:var(--serif);font-weight:800;color:var(--bone)}
+  .contact-card{background:var(--panel);color:var(--bone);border:4px solid var(--bone);border-radius:var(--radius-lg);padding:42px 38px;box-shadow:12px 12px 0 var(--red);position:relative;overflow:hidden}
+  .contact-card .blobx{position:absolute;width:240px;height:240px;background:var(--red);border-radius:50%;opacity:.22;bottom:-90px;right:-70px}
+  .contact-card h3{font-family:var(--serif);font-size:2rem;font-weight:900;color:var(--bone);line-height:1.05;position:relative;z-index:2}
+  .contact-card p{color:var(--bone-2);font-weight:500;margin:16px 0 28px;font-size:1.04rem;position:relative;z-index:2}
+  .contact-card .btn{width:100%;margin-bottom:14px;position:relative;z-index:2}
+  .contact-card .fineprint{font-size:.85rem;color:var(--muted);font-weight:500;text-align:center;margin-top:8px;position:relative;z-index:2}
+
+  /* ---------- Footer ---------- */
+  footer.ft{background:#060607;color:var(--bone);border-top:3px solid var(--bone);padding:60px 0 28px}
+  .ft-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;padding-bottom:38px;border-bottom:2px solid var(--line)}
+  .ft .brand{margin-bottom:16px}
+  .ft-about{color:var(--muted);font-weight:500;max-width:40ch;font-size:.97rem}
+  .ft h4{font-family:var(--sans);font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;color:var(--gold);font-weight:900;margin-bottom:16px}
+  .ft ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+  .ft ul a{color:var(--bone-2);font-weight:600;transition:color .15s ease}
+  .ft ul a:hover{color:var(--bone)}
+  .ft-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:24px;flex-wrap:wrap}
+  .ft-bottom small{color:var(--muted);font-weight:500;font-size:.9rem}
+  .socials{display:flex;gap:10px}
+  .socials a{width:46px;height:46px;border-radius:13px;border:2.5px solid var(--bone);display:flex;align-items:center;justify-content:center;transition:background .15s ease,color .15s ease}
+  .socials a:hover{background:var(--gold);border-color:var(--gold);color:#1a1305}
+  .socials svg{width:22px;height:22px}
+
+  /* ---------- Reveal animation ---------- */
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- Floating WA ---------- */
+  .fab{position:fixed;bottom:22px;right:22px;z-index:130;width:64px;height:64px;border-radius:50%;background:#25D366;border:3px solid var(--bone);box-shadow:5px 5px 0 #000;display:flex;align-items:center;justify-content:center;transition:transform .15s ease}
+  .fab:hover{transform:scale(1.08)}
+  .fab svg{width:32px;height:32px;color:#fff}
+  .fab::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:3px solid #25D366;opacity:.6;animation:ping 1.8s ease-out infinite}
+  @keyframes ping{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.5);opacity:0}}
+
+  /* ---------- Responsive ---------- */
+  @media(max-width:960px){
+    .nav-links{display:none}
+    .menu-btn{display:flex}
+    .nav-links.open{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--bg);border-bottom:3px solid var(--bone);padding:14px 22px;gap:4px;align-items:stretch}
+    .nav-links.open a{padding:14px;border-radius:14px;font-size:1.05rem}
+    .nav-cta .btn-bone{display:none}
+    .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
+    .hero-photo{order:-1;max-width:480px;margin:0 auto}
+    .svc-grid{grid-template-columns:1fr 1fr}
+    .hours-grid{grid-template-columns:1fr}
+    .ft-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:680px){
+    .sec{padding:60px 0}
+    .photo-frame img{height:430px}
+    .svc-grid{grid-template-columns:1fr}
+    .gal-grid{grid-template-columns:1fr 1fr;grid-auto-rows:150px}
+    .gal-item.wide{grid-column:span 2}
+    .gal-item.tall{grid-row:span 1}
+    .feat,.ft-grid{grid-template-columns:1fr}
+    .about-media .small{position:relative;bottom:auto;right:auto;width:62%;margin:20px auto 0;transform:rotate(-2deg)}
+    .sticker.s-rating{width:104px;height:104px}
+    .ft-bottom{flex-direction:column;align-items:flex-start}
+    .fab{width:58px;height:58px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;scroll-behavior:auto!important}
+    .reveal{opacity:1;transform:none;transition:none}
+    .btn,.svc,.ci,.gal-item img{transition:none}
+  }
+</style>
+<script src="/abra-demos/analytics.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">გადახტომა მთავარ კონტენტზე</a>
+<div class="demo-badge" aria-hidden="true">დემო ვერსია</div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="top">
+  <div class="nav-in">
+    <a class="brand" href="#top" aria-label="Tattoo Studio Kings მთავარი">
+      <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 18l4-12 4 7 4-7 4 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span>Kings<b>.</b></span>
+    </a>
+    <nav class="nav-links" id="navlinks" aria-label="მთავარი ნავიგაცია">
+      <a href="#about">სტუდია</a>
+      <a href="#services">სერვისები</a>
+      <a href="#gallery">ნამუშევრები</a>
+      <a href="#hours">საათები</a>
+      <a href="#contact">კონტაქტი</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-bone" href="https://wa.me/995599023240" aria-label="დაჯავშნა WhatsApp-ით">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 21l1.8-5.1A8 8 0 1 1 8 18.3L3 21z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        დაჯავშნა
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-label="მენიუს გახსნა" aria-expanded="false" aria-controls="navlinks">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero" aria-labelledby="hero-h">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <span class="eyebrow"><span class="dot" aria-hidden="true"></span>სატატუ სტუდია · თბილისი</span>
+      <h1 id="hero-h">
+        მელანი,<br>
+        რომელიც <span class="red">რჩება<span class="ul" aria-hidden="true"></span></span><br>
+        <span class="out">სამუდამოდ</span>
+      </h1>
+      <p class="lead">მკაფიო ხაზი, ღრმა შავი და ინდივიდუალური დიზაინი — Tattoo Studio Kings აქცევს შენს იდეას კანზე დარჩენილ ხელოვნებად.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://wa.me/995599023240">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 21l1.8-5.1A8 8 0 1 1 8 18.3L3 21z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          დაჯავშნე სესია
+        </a>
+        <a class="btn btn-ghost" href="#gallery">ნამუშევრების ნახვა</a>
+      </div>
+      <div class="hero-meta">
+        <div class="stars">
+          <span class="s" aria-hidden="true">★★★★★</span>
+          <span>5.0</span>
+        </div>
+        <span class="div" aria-hidden="true"></span>
+        <small><b>88</b> ნამდვილი შეფასება<br>Google-ზე</small>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="photo-frame">
+        <img src="../assets/photo1.jpg" alt="Tattoo Studio Kings — სატატუ სტუდიის სამუშაო სივრცე თბილისში">
+      </div>
+      <div class="sticker s-rating" aria-hidden="true">
+        <b>5.0★</b><span>Google Reviews</span>
+      </div>
+      <div class="sticker s-est" aria-hidden="true">
+        სტუდია<b>თბილისი</b>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>ინდივიდუალური დიზაინი<i>✦</i>ბლექვორქი<i>✦</i>ფაინ-ლაინი<i>✦</i>რეალიზმი<i>✦</i>კოვერ-აპი<i>✦</i>სტერილური სტუდია<i>✦</i>
+    <span>ინდივიდუალური დიზაინი<i>✦</i>ბლექვორქი<i>✦</i>ფაინ-ლაინი<i>✦</i>რეალიზმი<i>✦</i>კოვერ-აპი<i>✦</i>სტერილური სტუდია<i>✦</i></span></span>
+  </div>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<section class="sec about" id="about" aria-labelledby="about-h">
+  <div class="wrap about-grid">
+    <div class="about-media reveal">
+      <div class="big">
+        <img src="../assets/photo2.jpg" alt="Tattoo Studio Kings-ის ინტერიერი — სატატუ სტუდიის ატმოსფერო">
+      </div>
+      <div class="small">
+        <img src="../assets/photo3.jpg" alt="დეტალი Tattoo Studio Kings-ის სამუშაო სივრციდან">
+      </div>
+    </div>
+    <div class="about-copy reveal">
+      <span class="tag">სტუდიის შესახებ</span>
+      <h2 id="about-h">სტუდია, სადაც <em>ხელობა</em> წყვეტს</h2>
+      <p>Tattoo Studio Kings არის სატატუ სტუდია თბილისში, სადაც ყოველი ნამუშევარი იბადება იდეიდან და სრულდება ზუსტი ხელით. ჩვენთვის ტატუ მხოლოდ სურათი არ არის — ეს არის შენი ისტორია, რომელსაც კანზე ვწერთ.</p>
+      <p>ჩვენი ოსტატები მუშაობენ სტერილურ გარემოში, ერთჯერადი ნემსებითა და ხარისხიანი მელნებით. ამ მიდგომას აფასებენ — <b>5.0 ★</b> 88 შეფასებიდან.</p>
+      <div class="feat">
+        <div class="f">
+          <div class="fi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 18l4-12 4 7 4-7 4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>ოსტატი ტატუისტები</h3>
+          <p>გამოცდილი გუნდი და მკაფიო, სუფთა ხაზი.</p>
+        </div>
+        <div class="f">
+          <div class="fi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2.5 5.2L20 9l-4 4 1 5.7L12 16l-5 2.7L8 13 4 9l5.5-.8L12 3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div>
+          <h3>სტერილური გარემო</h3>
+          <p>ერთჯერადი ნემსი და სრული ჰიგიენა.</p>
+        </div>
+        <div class="f">
+          <div class="fi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M14 7l-1.6 1.6m-3.8 3.8L4 16.5V20h3.5l4.1-4.6M14 7l3-3 3 3-3 3M14 7l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>ინდ. დიზაინი</h3>
+          <p>ესკიზი იქმნება სპეციალურად შენთვის.</p>
+        </div>
+        <div class="f">
+          <div class="fi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 7v5l3 2M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>სწრაფი ჯავშანი</h3>
+          <p>დაგვიკავშირდი WhatsApp-ით წამებში.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="sec" id="services" aria-labelledby="svc-h">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="tag">სერვისები</span>
+      <h2 id="svc-h">აირჩიე შენი <em>სტილი</em></h2>
+      <p>თითოეული სესია იწყება უფასო კონსულტაციით — ვმსჯელობთ იდეაზე, ზომაზე და განთავსებაზე, შემდეგ ვქმნით ესკიზს.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="svc reveal">
+        <div class="svc-top">
+          <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M3 17l9-9 4 4-9 9H3v-4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 6l2.5-2.5a2 2 0 0 1 3 3L17 9" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div>
+        </div>
+        <h3 class="svc-name">ფაინ-ლაინი</h3>
+        <p class="svc-desc">დახვეწილი, თხელი ხაზები — მინიმალისტური და ელეგანტური ტატუებისთვის.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>კონსულტაცია + ესკიზი</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>მცირე & საშუალო ზომა</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>მოვლის ინსტრუქცია</li>
+        </ul>
+      </article>
+
+      <article class="svc feature reveal">
+        <div class="svc-top">
+          <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 19c4-2 5-7 5-11 2 2 3 5 3 8 1-1 2-3 2-5 3 3 4 6 2 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <span class="pin">პოპულარული</span>
+        </div>
+        <h3 class="svc-name">ბლექვორქი</h3>
+        <p class="svc-desc">მკვრივი შავი, გრაფიკული ფორმები და ძლიერი კონტრასტი — გამორჩეული სტეიტმენტისთვის.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>ორნამენტი & გეომეტრია</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>დიდი ფართობი</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>რამდენიმე სესია საჭიროებისამებრ</li>
+        </ul>
+      </article>
+
+      <article class="svc reveal">
+        <div class="svc-top">
+          <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/></svg></div>
+        </div>
+        <h3 class="svc-name">რეალიზმი</h3>
+        <p class="svc-desc">ფოტოს დონის დეტალი და ღრმა ტონები — პორტრეტი თუ ბუნება, ცოცხალი ნამუშევარი.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>შავ-თეთრი ან ფერადი</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>დეტალური ესკიზი წინასწარ</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>ხანგრძლივი სესია</li>
+        </ul>
+      </article>
+
+      <article class="svc reveal">
+        <div class="svc-top">
+          <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2.5 5.2L20 9l-4 4 1 5.7L12 16l-5 2.7L8 13 4 9l5.5-.8L12 3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div>
+        </div>
+        <h3 class="svc-name">ფერადი ტატუ</h3>
+        <p class="svc-desc">ცოცხალი, ნათელი ფერები და გლუვი გადასვლები — ნამუშევარი, რომელიც გამოირჩევა.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>ხარისხიანი მელნები</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>ფერის ტესტი საჭიროებისას</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>მოვლის ინსტრუქცია</li>
+        </ul>
+      </article>
+
+      <article class="svc reveal">
+        <div class="svc-top">
+          <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12c3-5 13-5 16 0-3 5-13 5-16 0z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.4" stroke="currentColor" stroke-width="2"/></svg></div>
+        </div>
+        <h3 class="svc-name">კოვერ-აპი</h3>
+        <p class="svc-desc">ძველი ან არასასურველი ტატუს გადაფარვა ახალი, გააზრებული დიზაინით.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>ინდივიდუალური შეფასება</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>ფერისა და ფორმის ანალიზი</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>ეტაპობრივი მიდგომა</li>
+        </ul>
+      </article>
+
+      <article class="svc reveal">
+        <div class="svc-top">
+          <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.4-9-9a4.8 4.8 0 0 1 9-2 4.8 4.8 0 0 1 9 2c-2 4.6-9 9-9 9z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div>
+          <span class="pin">კონსულტაცია</span>
+        </div>
+        <h3 class="svc-name">ესკიზი & კონსულტაცია</h3>
+        <p class="svc-desc">დაჯავშნამდე ერთად ვმსჯელობთ იდეაზე, სტილსა და განთავსებაზე.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>იდეის განხილვა</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>პერსონალური ესკიზი</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>WhatsApp-ით ჯავშანი</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="sec gallery" id="gallery" aria-labelledby="gal-h">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="tag">ნამუშევრები</span>
+      <h2 id="gal-h">ჩვენი <em>პორტფოლიო</em></h2>
+      <p>ნამდვილი ნამუშევრები და სტუდიის ატმოსფერო — დაათვალიერე და იპოვე შენი შემდეგი ტატუს ინსპირაცია.</p>
+    </div>
+    <div class="gal-grid">
+      <div class="gal-item tall reveal"><img src="../assets/photo4.jpg" alt="Tattoo Studio Kings-ის ნამუშევარი — ტატუს დეტალი"><figcaption>ნამუშევარი</figcaption></div>
+      <div class="gal-item wide reveal"><img src="../assets/photo1.jpg" alt="ტატუისტი მუშაობს კლიენტთან Tattoo Studio Kings-ში"><figcaption>სამუშაო პროცესი</figcaption></div>
+      <div class="gal-item reveal"><img src="../assets/photo3.jpg" alt="Tattoo Studio Kings-ის სამუშაო სივრცის დეტალი"><figcaption>სტუდია</figcaption></div>
+      <div class="gal-item reveal"><img src="../assets/photo2.jpg" alt="Tattoo Studio Kings-ის ინტერიერი"><figcaption>ატმოსფერო</figcaption></div>
+      <div class="gal-item wide reveal"><img src="../assets/photo6.jpg" alt="Tattoo Studio Kings — სტუდიის ხედი თბილისში"><figcaption>სტუდია თბილისში</figcaption></div>
+      <div class="gal-item reveal"><img src="../assets/photo5.jpg" alt="Tattoo Studio Kings-ის ნამუშევრის დეტალი"><figcaption>დეტალი</figcaption></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOURS ============ -->
+<section class="sec" id="hours" aria-labelledby="hours-h">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="tag">სამუშაო საათები</span>
+      <h2 id="hours-h">როდის <em>გელოდებით</em></h2>
+    </div>
+    <div class="hours-grid">
+      <div class="hours-card reveal">
+        <h3><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 7v5l3 2M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>გრაფიკი</h3>
+        <div id="hoursList">
+          <div class="hrow" data-day="1"><span class="day">ორშაბათი</span><span class="open">12:00 – 21:00</span></div>
+          <div class="hrow" data-day="2"><span class="day">სამშაბათი</span><span class="open">12:00 – 21:00</span></div>
+          <div class="hrow" data-day="3"><span class="day">ოთხშაბათი</span><span class="open">12:00 – 21:00</span></div>
+          <div class="hrow" data-day="4"><span class="day">ხუთშაბათი</span><span class="open">12:00 – 21:00</span></div>
+          <div class="hrow" data-day="5"><span class="day">პარასკევი</span><span class="open">12:00 – 22:00</span></div>
+          <div class="hrow" data-day="6"><span class="day">შაბათი</span><span class="open">12:00 – 22:00</span></div>
+          <div class="hrow" data-day="0"><span class="day">კვირა</span><span class="open">ჯავშნით</span></div>
+        </div>
+      </div>
+      <div class="promo reveal">
+        <span class="star-sticker" aria-hidden="true"></span>
+        <h3>ფიქრობ ახალ ტატუზე?<br>დაიწყე იდეით</h3>
+        <p>მოგვწერე შენი იდეა WhatsApp-ით — მოვამზადებთ ესკიზს და შევარჩევთ მოსახერხებელ დროს.</p>
+        <a class="btn btn-bone" href="https://wa.me/995599023240">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 21l1.8-5.1A8 8 0 1 1 8 18.3L3 21z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          დაჯავშნე ახლავე
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="sec contact" id="contact" aria-labelledby="contact-h">
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <span class="tag">კონტაქტი</span>
+      <h2 id="contact-h">მოდი <em>სტუდიაში</em></h2>
+      <div class="contact-list">
+        <a class="ci" href="https://wa.me/995599023240">
+          <span class="ci-ic wa" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M3 21l1.8-5.1A8 8 0 1 1 8 18.3L3 21z" stroke="#0A0A0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="ci-txt"><small>WhatsApp</small><b>599 02 32 40</b></span>
+        </a>
+        <a class="ci" href="tel:+995599023240">
+          <span class="ci-ic ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 5 5L19 13l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" stroke="#0A0A0B" stroke-width="2" stroke-linejoin="round"/></svg></span>
+          <span class="ci-txt"><small>დარეკე</small><b>599 02 32 40</b></span>
+        </a>
+        <div class="ci">
+          <span class="ci-ic loc" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="2"/></svg></span>
+          <span class="ci-txt"><small>მდებარეობა</small><b>თბილისი, საქართველო</b></span>
+        </div>
+        <div class="ci">
+          <span class="ci-ic cl" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 7v5l3 2M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" stroke="#0A0A0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="ci-txt"><small>სესია</small><b>წინასწარი ჯავშნით</b></span>
+        </div>
+      </div>
+    </div>
+    <div class="contact-card reveal">
+      <span class="blobx" aria-hidden="true"></span>
+      <h3>დაჯავშნე სესია<br>WhatsApp-ით</h3>
+      <p>მოგვწერე იდეა ან რეფერენსი, ან დაგვირეკე — შევარჩევთ მოსახერხებელ დროს და ოსტატს.</p>
+      <a class="btn btn-primary" href="https://wa.me/995599023240">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 21l1.8-5.1A8 8 0 1 1 8 18.3L3 21z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        WhatsApp-ით დაჯავშნა
+      </a>
+      <a class="btn btn-bone" href="tel:+995599023240">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 5 5L19 13l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        599 02 32 40
+      </a>
+      <p class="fineprint">პასუხს ჩვეულებრივ მალევე ვცემთ</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="ft" aria-labelledby="ft-h">
+  <div class="wrap">
+    <h2 id="ft-h" class="skip">საიტის ქვედა ნაწილი</h2>
+    <div class="ft-grid">
+      <div>
+        <div class="brand"><span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 18l4-12 4 7 4-7 4 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Kings<b>.</b></span></div>
+        <p class="ft-about">სატატუ სტუდია თბილისში. მკაფიო ხაზი, ღრმა შავი და ინდივიდუალური დიზაინი — ხელოვნება, რომელიც რჩება.</p>
+      </div>
+      <div>
+        <h4>ნავიგაცია</h4>
+        <ul>
+          <li><a href="#about">სტუდია</a></li>
+          <li><a href="#services">სერვისები</a></li>
+          <li><a href="#gallery">ნამუშევრები</a></li>
+          <li><a href="#hours">საათები</a></li>
+          <li><a href="#contact">კონტაქტი</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>დაჯავშნა</h4>
+        <ul>
+          <li><a href="https://wa.me/995599023240">WhatsApp</a></li>
+          <li><a href="tel:+995599023240">599 02 32 40</a></li>
+          <li><a href="#hours">სამუშაო საათები</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <small>© 2026 Tattoo Studio Kings · თბილისი, საქართველო · 5.0 ★ · 88 შეფასება</small>
+      <div class="socials" aria-label="სოციალური ქსელები">
+        <a href="https://wa.me/995599023240" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 21l1.8-5.1A8 8 0 1 1 8 18.3L3 21z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="#contact" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></a>
+        <a href="tel:+995599023240" aria-label="დარეკვა"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 5 5L19 13l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a class="fab" href="https://wa.me/995599023240" aria-label="დაჯავშნა WhatsApp-ით">
+  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 21l1.8-5.1A8 8 0 1 1 8 18.3L3 21z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</a>
+
+<script>
+  (function(){
+    var nav=document.querySelector('header.nav');
+    var onScroll=function(){nav.classList.toggle('scrolled',window.scrollY>10)};
+    window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+    var btn=document.getElementById('menuBtn'),links=document.getElementById('navlinks');
+    btn.addEventListener('click',function(){
+      var open=links.classList.toggle('open');
+      btn.setAttribute('aria-expanded',open?'true':'false');
+    });
+    links.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click',function(){links.classList.remove('open');btn.setAttribute('aria-expanded','false')});
+    });
+
+    var today=new Date().getDay();
+    var row=document.querySelector('.hrow[data-day="'+today+'"]');
+    if(row){
+      row.classList.add('today');
+      var b=document.createElement('span');b.className='badge-now';b.textContent='დღეს';
+      row.querySelector('.day').appendChild(b);
+    }
+
+    var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var els=document.querySelectorAll('.reveal');
+    if(reduce||!('IntersectionObserver'in window)){els.forEach(function(e){e.classList.add('in')});return;}
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+    },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(e){io.observe(e)});
+  })();
+</script>
+</body>
+</html>
